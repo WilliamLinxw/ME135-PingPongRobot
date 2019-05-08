@@ -128,8 +128,9 @@ def sendData(upAndDown, LeftAndRight):
 # Basic control for the flipping motor
 # ---------------------------
 def flippingMotor():
-    number = [7]
-    bts = bytes(number)
+    # number = [7]
+    # bts = bytes(number)
+    bts = b'H'
     ser.write(bts)
     time.sleep(.005)
     return
