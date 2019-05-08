@@ -105,6 +105,15 @@ def sendData(upAndDown, LeftAndRight):
     return
 # ---------------------------
 
+# Basic control for the flipping motor
+# ---------------------------
+def flippingMotor():
+    number = [7]
+    bts = bytes(number)
+    ser.write(bts)
+    time.sleep(.005)
+# ---------------------------
+
 
 # need to make a function that takes the data from the deque and returns an array
 # ---------------------------
@@ -232,6 +241,9 @@ while True:
         showYCoords = np.append(showYCoords, [Real_world_coordinate[1]])
         showZCoords = np.append(showZCoords, [Real_world_coordinate[2]])
 
+        if Real_world_coordinate[1] > A:
+            flippingMotor()
+
     cv2.imshow('YZ', frame)
     cv2.imshow('XZ', frame2)
     after = timer()
@@ -277,12 +289,12 @@ while True:
 
             # assuming our (zero, zero) is on the same line as our laptop cameray
             """
-                                        [Robot]        
+                                        [Robot]
                 ⌄     |~~~~~~~~~~~~~~~~~~~{X}~~~~~~~~~~~~~~~~~~~~~
                       |                  /
-                      |                 / 
+                      |                 /
                 A     |                /
-                      |               /   
+                      |               /
                 ^     |              /
             [Josh's]  |             /
             camera]   |            /
@@ -293,10 +305,10 @@ while True:
                       |_______/__________________________________
                 ^      [-    B     -][laptop camera][-    B     -]
                 _
-              / ⌄ \          
+              / ⌄ \
              |>{C}<|
-              \ ^ /          
-            The above is what the following line of code predicts:       
+              \ ^ /
+            The above is what the following line of code predicts:
             """
             predictedX = (20.5 - b) / m  # change to 2A when doing the demo
             if predictedX < 0:
