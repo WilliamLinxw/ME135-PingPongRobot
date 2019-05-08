@@ -130,7 +130,7 @@ def sendData(upAndDown, LeftAndRight):
 def flippingMotor():
     # number = [7]
     # bts = bytes(number)
-    bts = b'H'
+    bts = b'H'  # will now send an H whenever it runs, to match the code Caeser did
     ser.write(bts)
     time.sleep(.005)
     return
