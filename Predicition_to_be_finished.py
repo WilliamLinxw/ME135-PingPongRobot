@@ -86,19 +86,39 @@ def sendData(upAndDown, LeftAndRight):
     secondByte = bytes(str(upAndDown % 10), 'ascii')
     # letter4send = b'1'
     ser.write(firstByte)
-    time.sleep(.01)
+    time.sleep(.005)
     ser.write(secondByte)
-    time.sleep(.01)
+    time.sleep(.005)
     letter6send = b'x'
     ser.write(letter6send)
-    time.sleep(.01)
+    time.sleep(.005)
 
-    LRByteOne = bytes(str(LeftAndRight // 10), 'ascii')
-    LRByteTwo = bytes(str(LeftAndRight % 10), 'ascii')
-    ser.write(LRByteOne)
-    time.sleep(.01)
-    ser.write(LRByteTwo)
-    time.sleep(.01)
+    # LRByteOne = bytes(str(LeftAndRight // 10), 'ascii')
+    # LRByteTwo = bytes(str(LeftAndRight % 10), 'ascii')
+    # ser.write(LRByteOne)
+    # time.sleep(.01)
+    # ser.write(LRByteTwo)
+    # time.sleep(.01)
+    # letter8send = b'y'
+    # ser.write(letter8send)
+    # time.sleep(.01)
+
+    # print(highNumber // 1000)
+    ser.write(bytes(str(LeftAndRight // 1000), 'ascii'))
+    time.sleep(.005)
+    LeftAndRight = LeftAndRight % 1000
+    # print(LeftAndRight // 100)
+    ser.write(bytes(str(LeftAndRight // 100), 'ascii'))
+    time.sleep(.005)
+    LeftAndRight = LeftAndRight % 100
+    # print(LeftAndRight // 10)
+    ser.write(bytes(str(LeftAndRight // 10), 'ascii'))
+    time.sleep(.005)
+    LeftAndRight = LeftAndRight % 10
+    # print(LeftAndRight // 1)
+    ser.write(bytes(str(LeftAndRight // 1), 'ascii'))
+    time.sleep(.005)
+
     letter8send = b'y'
     ser.write(letter8send)
     time.sleep(.01)
@@ -112,6 +132,7 @@ def flippingMotor():
     bts = bytes(number)
     ser.write(bts)
     time.sleep(.005)
+    return
 # ---------------------------
 
 
