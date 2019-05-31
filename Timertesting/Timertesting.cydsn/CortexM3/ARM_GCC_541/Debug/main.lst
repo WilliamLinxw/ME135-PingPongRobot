@@ -1,0 +1,3005 @@
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.Targetchanging,"ax",%progbits
+  20              		.align	2
+  21              		.global	Targetchanging
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	Targetchanging, %function
+  25              	Targetchanging:
+  26              	.LFB69:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** #include "project.h"
+  13:main.c        **** #include "stdio.h"
+  14:main.c        **** #include "stdlib.h"
+  15:main.c        **** #include "string.h"
+  16:main.c        **** 
+  17:main.c        **** // Parameters for motor 1
+  18:main.c        **** signed short int cnt1 = 0;
+  19:main.c        **** signed short int target1 = 0;
+  20:main.c        **** int error1 = 0;
+  21:main.c        **** int last_error1 = 0;
+  22:main.c        **** int derivative1 = 0;
+  23:main.c        **** int integral1 = 0;
+  24:main.c        **** int duty_cycle1 = 0;
+  25:main.c        **** char transmitbuffer1[2]; // transmit buffer taken out for testing purposes
+  26:main.c        **** char stopbyte1 = 'x';
+  27:main.c        **** 
+  28:main.c        **** // Parameters for motor 2
+  29:main.c        **** signed short int cnt2 = 0;
+  30:main.c        **** signed short int target2 = 0;
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 2
+
+
+  31:main.c        **** int error2 = 0;
+  32:main.c        **** int last_error2 = 0;
+  33:main.c        **** int derivative2 = 0;
+  34:main.c        **** int integral2 = 0;
+  35:main.c        **** int duty_cycle2 = 0;
+  36:main.c        **** char transmitbuffer2[2]; // transmit buffer taken out for testing purposes
+  37:main.c        **** int transmit2 = 0;
+  38:main.c        **** char stopbyte2 = 'y';
+  39:main.c        **** 
+  40:main.c        **** // Parameter for both
+  41:main.c        **** char new_get;
+  42:main.c        **** char new_target[16];
+  43:main.c        **** char concatination[2];
+  44:main.c        **** uint8 counts[8];
+  45:main.c        **** uint8 multitasking = 1;
+  46:main.c        **** int transmit = 0;
+  47:main.c        **** 
+  48:main.c        **** // The following function is a non-general implementation of 
+  49:main.c        **** // finding out how long the sending array is.
+  50:main.c        **** // Needed near the duty cycle calculaion
+  51:main.c        **** int bytesCharArrayNeeds(int dutyCycle) {
+  52:main.c        ****     int arrSize = 1;
+  53:main.c        ****     if (dutyCycle >= 10) {
+  54:main.c        ****       arrSize += 1;
+  55:main.c        ****     }
+  56:main.c        ****     if (dutyCycle >= 100) {
+  57:main.c        ****       arrSize += 1;
+  58:main.c        ****     }
+  59:main.c        ****     if (dutyCycle >= 1000) {
+  60:main.c        ****       arrSize += 1;
+  61:main.c        ****     }
+  62:main.c        ****     if (dutyCycle >= 10000) {
+  63:main.c        ****       arrSize += 1;
+  64:main.c        ****     }
+  65:main.c        ****   return arrSize;
+  66:main.c        **** }
+  67:main.c        **** 
+  68:main.c        **** // only works for a two byte integer, no nothing larger than 16000-ish
+  69:main.c        **** uint8 firstByte(short int number) {
+  70:main.c        ****     return (number & 0xFF00) >> 8;
+  71:main.c        **** }
+  72:main.c        **** 
+  73:main.c        **** uint8 forthByte(short int number) {
+  74:main.c        ****     return 0x00FF & number;
+  75:main.c        **** }
+  76:main.c        **** 
+  77:main.c        **** signed short int combineBytes(uint8 firstByte, uint8 secondByte) {
+  78:main.c        ****   return ((firstByte << 8) & 0xFF00) | (0x00FF & secondByte);
+  79:main.c        **** }
+  80:main.c        **** 
+  81:main.c        **** 
+  82:main.c        **** // PID Control for both motors
+  83:main.c        **** CY_ISR(MotorControl) {
+  84:main.c        ****     /*
+  85:main.c        ****         The code below is for contorl of motor1
+  86:main.c        ****     */
+  87:main.c        ****     
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 3
+
+
+  88:main.c        ****     // Get the current position
+  89:main.c        ****     cnt1 = QuadDec_1_GetCounter();
+  90:main.c        ****     //sprintf(transmitbuffer1,"Count1: %d \r\n",cnt1);
+  91:main.c        ****     //UART_PutString(transmitbuffer1);
+  92:main.c        ****     
+  93:main.c        ****     // Calculate the error
+  94:main.c        ****     error1 = target1 - cnt1;
+  95:main.c        **** 
+  96:main.c        ****     //Calculate the integral
+  97:main.c        ****     integral1 = integral1 + error1;
+  98:main.c        ****     
+  99:main.c        ****     // Calculate the Derivative
+ 100:main.c        ****     derivative1 = error1 - last_error1;
+ 101:main.c        **** 
+ 102:main.c        ****     //Calculate the control variable
+ 103:main.c        ****     duty_cycle1 = 100 * error1 + 0 * integral1 + 50 * derivative1;
+ 104:main.c        ****     
+ 105:main.c        ****     
+ 106:main.c        ****     // Limit the control variable within 100
+ 107:main.c        ****     if (duty_cycle1 > 32000){duty_cycle1 = 32000;}
+ 108:main.c        ****     else if (duty_cycle1 < -32000){duty_cycle1 = -32000;}
+ 109:main.c        ****     
+ 110:main.c        ****     //Limit the dead zone
+ 111:main.c        ****     if (duty_cycle1 < 50 && duty_cycle1 > -50){
+ 112:main.c        ****         PWM_1_WriteCompare(0);
+ 113:main.c        ****     }
+ 114:main.c        ****     
+ 115:main.c        ****     // If the control variable is positive, run the motor clockwise
+ 116:main.c        ****     if (duty_cycle1 > 0){
+ 117:main.c        ****         Direction_1_1_Write(0);
+ 118:main.c        ****         Direction_1_2_Write(1);
+ 119:main.c        ****         PWM_1_WriteCompare(duty_cycle1);
+ 120:main.c        ****     }
+ 121:main.c        ****     
+ 122:main.c        ****     // If the control variable is negative, run the motor counterclockwise
+ 123:main.c        ****     else if (duty_cycle1 < 0){
+ 124:main.c        ****         Direction_1_1_Write(1);
+ 125:main.c        ****         Direction_1_2_Write(0);
+ 126:main.c        ****         PWM_1_WriteCompare(-1*duty_cycle1);
+ 127:main.c        ****     }
+ 128:main.c        ****     
+ 129:main.c        ****     // If the control variable is zero, stop the motor
+ 130:main.c        ****     else{
+ 131:main.c        ****         Direction_1_1_Write(0);
+ 132:main.c        ****         Direction_1_2_Write(0);
+ 133:main.c        ****     }
+ 134:main.c        ****     last_error1 = error1;
+ 135:main.c        ****     
+ 136:main.c        ****     /*
+ 137:main.c        ****         The code below is for control of motor 2
+ 138:main.c        ****     */
+ 139:main.c        ****     
+ 140:main.c        ****     // Get the current position
+ 141:main.c        ****     cnt2 = QuadDec_2_GetCounter();
+ 142:main.c        ****     //sprintf(transmitbuffer2,"Count2: %d \r\n",cnt2);
+ 143:main.c        ****     //UART_PutString(transmitbuffer2);
+ 144:main.c        ****     
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 4
+
+
+ 145:main.c        ****     // Calculate the error
+ 146:main.c        ****     error2 = target2 - cnt2;
+ 147:main.c        **** 
+ 148:main.c        **** 
+ 149:main.c        ****     //Calculate the integral
+ 150:main.c        ****     integral2 = integral2 + error2;
+ 151:main.c        ****     
+ 152:main.c        ****     // Calculate the Derivative
+ 153:main.c        ****     derivative2 = error2 - last_error2;
+ 154:main.c        **** 
+ 155:main.c        ****     //Calculate the control variable
+ 156:main.c        ****     duty_cycle2 = 100 * error2 + 0 * integral2 + 50 * derivative2;
+ 157:main.c        ****     
+ 158:main.c        ****     
+ 159:main.c        ****     // Limit the control variable within 100
+ 160:main.c        ****     if (duty_cycle2 > 32000){duty_cycle2 = 32000;}
+ 161:main.c        ****     else if (duty_cycle2 < -32000){duty_cycle2 = -32000;}
+ 162:main.c        ****     
+ 163:main.c        ****     //Limit the dead zone
+ 164:main.c        ****     if (duty_cycle2 < 50 && duty_cycle2 > -50){
+ 165:main.c        ****         PWM_2_WriteCompare(0);
+ 166:main.c        ****     }
+ 167:main.c        ****     
+ 168:main.c        ****     // If the control variable is positive, run the motor clockwise
+ 169:main.c        ****     if (duty_cycle2 > 0){
+ 170:main.c        ****         Direction_2_1_Write(0);
+ 171:main.c        ****         Direction_2_2_Write(1);
+ 172:main.c        ****         PWM_2_WriteCompare(duty_cycle2);
+ 173:main.c        ****     }
+ 174:main.c        ****     
+ 175:main.c        ****     // If the control variable is negative, run the motor counterclockwise
+ 176:main.c        ****     else if (duty_cycle2 < 0){
+ 177:main.c        ****         Direction_2_1_Write(1);
+ 178:main.c        ****         Direction_2_2_Write(0);
+ 179:main.c        ****         PWM_2_WriteCompare(-1*duty_cycle2);
+ 180:main.c        ****     }
+ 181:main.c        ****     
+ 182:main.c        ****     // If the control variable is zero, stop the motor
+ 183:main.c        ****     else{
+ 184:main.c        ****         Direction_2_1_Write(0);
+ 185:main.c        ****         Direction_2_2_Write(0);
+ 186:main.c        ****     }
+ 187:main.c        ****     last_error2 = error2;
+ 188:main.c        ****     
+ 189:main.c        ****     // Scheduling for storing data into a 6 bytes array
+ 190:main.c        ****     multitasking += 1;
+ 191:main.c        ****     if (multitasking % 32 == 0) {
+ 192:main.c        ****         if (transmit == 0){
+ 193:main.c        ****             counts[0] = 0x00;
+ 194:main.c        ****             counts[1] = 0x00;
+ 195:main.c        ****             counts[2] = firstByte(cnt1);
+ 196:main.c        ****             counts[3] = forthByte(cnt1);
+ 197:main.c        ****             counts[4] = firstByte(cnt2);
+ 198:main.c        ****             counts[5] = forthByte(cnt2);
+ 199:main.c        ****             counts[6] = 0x00;
+ 200:main.c        ****             counts[7] = 0x00;
+ 201:main.c        ****             transmit = 1;
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 5
+
+
+ 202:main.c        ****         }
+ 203:main.c        ****     }
+ 204:main.c        **** 
+ 205:main.c        **** }
+ 206:main.c        **** 
+ 207:main.c        **** // Logic of getting new target position, implemented in UART_Rx_Interrupt
+ 208:main.c        **** CY_ISR(Targetchanging){
+  28              		.loc 1 208 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+ 209:main.c        ****     
+ 210:main.c        ****     // Once receive a new byte, start building a new target position
+ 211:main.c        ****     new_get = UART_GetChar();
+  36              		.loc 1 211 0
+  37 0002 FFF7FEFF 		bl	UART_GetChar
+  38              	.LVL0:
+  39 0006 164B     		ldr	r3, .L6
+  40 0008 1870     		strb	r0, [r3]
+ 212:main.c        ****     
+ 213:main.c        ****     // If the new byte is the stopbyte of target1, assign target1 with the new_target string
+ 214:main.c        ****     if (new_get == stopbyte1){
+  41              		.loc 1 214 0
+  42 000a 164B     		ldr	r3, .L6+4
+  43 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  44 000e 9842     		cmp	r0, r3
+  45 0010 0CD1     		bne	.L2
+ 215:main.c        ****         target1 = atoi(new_target);
+  46              		.loc 1 215 0
+  47 0012 154C     		ldr	r4, .L6+8
+  48 0014 2046     		mov	r0, r4
+  49 0016 FFF7FEFF 		bl	atoi
+  50              	.LVL1:
+  51 001a 144B     		ldr	r3, .L6+12
+  52 001c 1880     		strh	r0, [r3]	@ movhi
+ 216:main.c        ****         new_target[0] = '\0';
+  53              		.loc 1 216 0
+  54 001e 0023     		movs	r3, #0
+  55 0020 2370     		strb	r3, [r4]
+ 217:main.c        ****         concatination[0] = '\0';
+  56              		.loc 1 217 0
+  57 0022 134A     		ldr	r2, .L6+16
+  58 0024 1370     		strb	r3, [r2]
+ 218:main.c        ****         UART_ClearRxBuffer();
+  59              		.loc 1 218 0
+  60 0026 FFF7FEFF 		bl	UART_ClearRxBuffer
+  61              	.LVL2:
+  62 002a 10BD     		pop	{r4, pc}
+  63              	.L2:
+ 219:main.c        ****     }
+ 220:main.c        ****     // If the new byte is the stopbyte of target2, assign target2 with the new_target string
+ 221:main.c        ****     else if (new_get == stopbyte2){
+  64              		.loc 1 221 0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 6
+
+
+  65 002c 0D4B     		ldr	r3, .L6+4
+  66 002e 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+  67 0030 9842     		cmp	r0, r3
+  68 0032 0CD1     		bne	.L4
+ 222:main.c        ****         target2 = atoi(new_target);
+  69              		.loc 1 222 0
+  70 0034 0C4C     		ldr	r4, .L6+8
+  71 0036 2046     		mov	r0, r4
+  72 0038 FFF7FEFF 		bl	atoi
+  73              	.LVL3:
+  74 003c 0B4B     		ldr	r3, .L6+12
+  75 003e 5880     		strh	r0, [r3, #2]	@ movhi
+ 223:main.c        ****         new_target[0] = '\0';
+  76              		.loc 1 223 0
+  77 0040 0023     		movs	r3, #0
+  78 0042 2370     		strb	r3, [r4]
+ 224:main.c        ****         concatination[0] = '\0';
+  79              		.loc 1 224 0
+  80 0044 0A4A     		ldr	r2, .L6+16
+  81 0046 1370     		strb	r3, [r2]
+ 225:main.c        ****         UART_ClearRxBuffer();
+  82              		.loc 1 225 0
+  83 0048 FFF7FEFF 		bl	UART_ClearRxBuffer
+  84              	.LVL4:
+  85 004c 10BD     		pop	{r4, pc}
+  86              	.L4:
+  87              	.LBB2:
+ 226:main.c        ****     }
+ 227:main.c        ****     // If the new byte is not the stopbyte of anyone, concatinate the new byte to the new_target st
+ 228:main.c        ****     else {
+ 229:main.c        ****         concatination[0] = new_get;
+  88              		.loc 1 229 0
+  89 004e 0849     		ldr	r1, .L6+16
+  90 0050 0870     		strb	r0, [r1]
+ 230:main.c        ****         concatination[1] = '\0';
+  91              		.loc 1 230 0
+  92 0052 0023     		movs	r3, #0
+  93 0054 4B70     		strb	r3, [r1, #1]
+  94              	.LVL5:
+ 231:main.c        ****         char* concat = concatination;
+ 232:main.c        ****         strcat(new_target, concat);
+  95              		.loc 1 232 0
+  96 0056 0448     		ldr	r0, .L6+8
+  97 0058 FFF7FEFF 		bl	strcat
+  98              	.LVL6:
+  99 005c 10BD     		pop	{r4, pc}
+ 100              	.L7:
+ 101 005e 00BF     		.align	2
+ 102              	.L6:
+ 103 0060 00000000 		.word	new_get
+ 104 0064 00000000 		.word	.LANCHOR0
+ 105 0068 00000000 		.word	new_target
+ 106 006c 00000000 		.word	.LANCHOR1
+ 107 0070 00000000 		.word	concatination
+ 108              	.LBE2:
+ 109              		.cfi_endproc
+ 110              	.LFE69:
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 7
+
+
+ 111              		.size	Targetchanging, .-Targetchanging
+ 112              		.section	.text.bytesCharArrayNeeds,"ax",%progbits
+ 113              		.align	2
+ 114              		.global	bytesCharArrayNeeds
+ 115              		.thumb
+ 116              		.thumb_func
+ 117              		.type	bytesCharArrayNeeds, %function
+ 118              	bytesCharArrayNeeds:
+ 119              	.LFB64:
+  51:main.c        ****     int arrSize = 1;
+ 120              		.loc 1 51 0
+ 121              		.cfi_startproc
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+ 125              	.LVL7:
+  53:main.c        ****       arrSize += 1;
+ 126              		.loc 1 53 0
+ 127 0000 0928     		cmp	r0, #9
+ 128 0002 01DC     		bgt	.L13
+  52:main.c        ****     if (dutyCycle >= 10) {
+ 129              		.loc 1 52 0
+ 130 0004 0123     		movs	r3, #1
+ 131 0006 00E0     		b	.L9
+ 132              	.L13:
+  54:main.c        ****     }
+ 133              		.loc 1 54 0
+ 134 0008 0223     		movs	r3, #2
+ 135              	.L9:
+ 136              	.LVL8:
+  56:main.c        ****       arrSize += 1;
+ 137              		.loc 1 56 0
+ 138 000a 6328     		cmp	r0, #99
+ 139 000c 00DD     		ble	.L10
+  57:main.c        ****     }
+ 140              		.loc 1 57 0
+ 141 000e 0133     		adds	r3, r3, #1
+ 142              	.LVL9:
+ 143              	.L10:
+  59:main.c        ****       arrSize += 1;
+ 144              		.loc 1 59 0
+ 145 0010 B0F57A7F 		cmp	r0, #1000
+ 146 0014 00DB     		blt	.L11
+  60:main.c        ****     }
+ 147              		.loc 1 60 0
+ 148 0016 0133     		adds	r3, r3, #1
+ 149              	.LVL10:
+ 150              	.L11:
+  62:main.c        ****       arrSize += 1;
+ 151              		.loc 1 62 0
+ 152 0018 42F20F72 		movw	r2, #9999
+ 153 001c 9042     		cmp	r0, r2
+ 154 001e 00DD     		ble	.L12
+  63:main.c        ****     }
+ 155              		.loc 1 63 0
+ 156 0020 0133     		adds	r3, r3, #1
+ 157              	.LVL11:
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 8
+
+
+ 158              	.L12:
+  66:main.c        **** 
+ 159              		.loc 1 66 0
+ 160 0022 1846     		mov	r0, r3
+ 161              	.LVL12:
+ 162 0024 7047     		bx	lr
+ 163              		.cfi_endproc
+ 164              	.LFE64:
+ 165              		.size	bytesCharArrayNeeds, .-bytesCharArrayNeeds
+ 166 0026 00BF     		.section	.text.firstByte,"ax",%progbits
+ 167              		.align	2
+ 168              		.global	firstByte
+ 169              		.thumb
+ 170              		.thumb_func
+ 171              		.type	firstByte, %function
+ 172              	firstByte:
+ 173              	.LFB65:
+  69:main.c        ****     return (number & 0xFF00) >> 8;
+ 174              		.loc 1 69 0
+ 175              		.cfi_startproc
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178              		@ link register save eliminated.
+ 179              	.LVL13:
+  71:main.c        **** 
+ 180              		.loc 1 71 0
+ 181 0000 C0F30720 		ubfx	r0, r0, #8, #8
+ 182              	.LVL14:
+ 183 0004 7047     		bx	lr
+ 184              		.cfi_endproc
+ 185              	.LFE65:
+ 186              		.size	firstByte, .-firstByte
+ 187 0006 00BF     		.section	.text.forthByte,"ax",%progbits
+ 188              		.align	2
+ 189              		.global	forthByte
+ 190              		.thumb
+ 191              		.thumb_func
+ 192              		.type	forthByte, %function
+ 193              	forthByte:
+ 194              	.LFB66:
+  73:main.c        ****     return 0x00FF & number;
+ 195              		.loc 1 73 0
+ 196              		.cfi_startproc
+ 197              		@ args = 0, pretend = 0, frame = 0
+ 198              		@ frame_needed = 0, uses_anonymous_args = 0
+ 199              		@ link register save eliminated.
+ 200              	.LVL15:
+  75:main.c        **** 
+ 201              		.loc 1 75 0
+ 202 0000 C0B2     		uxtb	r0, r0
+ 203              	.LVL16:
+ 204 0002 7047     		bx	lr
+ 205              		.cfi_endproc
+ 206              	.LFE66:
+ 207              		.size	forthByte, .-forthByte
+ 208              		.section	.text.MotorControl,"ax",%progbits
+ 209              		.align	2
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 9
+
+
+ 210              		.global	MotorControl
+ 211              		.thumb
+ 212              		.thumb_func
+ 213              		.type	MotorControl, %function
+ 214              	MotorControl:
+ 215              	.LFB68:
+  83:main.c        ****     /*
+ 216              		.loc 1 83 0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 221              		.cfi_def_cfa_offset 24
+ 222              		.cfi_offset 3, -24
+ 223              		.cfi_offset 4, -20
+ 224              		.cfi_offset 5, -16
+ 225              		.cfi_offset 6, -12
+ 226              		.cfi_offset 7, -8
+ 227              		.cfi_offset 14, -4
+  89:main.c        ****     //sprintf(transmitbuffer1,"Count1: %d \r\n",cnt1);
+ 228              		.loc 1 89 0
+ 229 0002 FFF7FEFF 		bl	QuadDec_1_GetCounter
+ 230              	.LVL17:
+ 231 0006 644A     		ldr	r2, .L31
+ 232 0008 9080     		strh	r0, [r2, #4]	@ movhi
+  94:main.c        **** 
+ 233              		.loc 1 94 0
+ 234 000a B2F90030 		ldrsh	r3, [r2]
+ 235 000e 181A     		subs	r0, r3, r0
+ 236 0010 9060     		str	r0, [r2, #8]
+  97:main.c        ****     
+ 237              		.loc 1 97 0
+ 238 0012 D368     		ldr	r3, [r2, #12]
+ 239 0014 0344     		add	r3, r3, r0
+ 240 0016 D360     		str	r3, [r2, #12]
+ 100:main.c        **** 
+ 241              		.loc 1 100 0
+ 242 0018 1369     		ldr	r3, [r2, #16]
+ 243 001a C31A     		subs	r3, r0, r3
+ 244 001c 5361     		str	r3, [r2, #20]
+ 103:main.c        ****     
+ 245              		.loc 1 103 0
+ 246 001e 3221     		movs	r1, #50
+ 247 0020 01FB03F3 		mul	r3, r1, r3
+ 248 0024 6421     		movs	r1, #100
+ 249 0026 01FB0030 		mla	r0, r1, r0, r3
+ 250 002a 9061     		str	r0, [r2, #24]
+ 107:main.c        ****     else if (duty_cycle1 < -32000){duty_cycle1 = -32000;}
+ 251              		.loc 1 107 0
+ 252 002c B0F5FA4F 		cmp	r0, #32000
+ 253 0030 04DD     		ble	.L17
+ 107:main.c        ****     else if (duty_cycle1 < -32000){duty_cycle1 = -32000;}
+ 254              		.loc 1 107 0 is_stmt 0 discriminator 1
+ 255 0032 4FF4FA42 		mov	r2, #32000
+ 256 0036 584B     		ldr	r3, .L31
+ 257 0038 9A61     		str	r2, [r3, #24]
+ 258 003a 05E0     		b	.L18
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 10
+
+
+ 259              	.L17:
+ 108:main.c        ****     
+ 260              		.loc 1 108 0 is_stmt 1
+ 261 003c 10F5FA4F 		cmn	r0, #32000
+ 262 0040 02DA     		bge	.L18
+ 108:main.c        ****     
+ 263              		.loc 1 108 0 is_stmt 0 discriminator 1
+ 264 0042 564A     		ldr	r2, .L31+4
+ 265 0044 544B     		ldr	r3, .L31
+ 266 0046 9A61     		str	r2, [r3, #24]
+ 267              	.L18:
+ 111:main.c        ****         PWM_1_WriteCompare(0);
+ 268              		.loc 1 111 0 is_stmt 1
+ 269 0048 534B     		ldr	r3, .L31
+ 270 004a 9B69     		ldr	r3, [r3, #24]
+ 271 004c 3133     		adds	r3, r3, #49
+ 272 004e 622B     		cmp	r3, #98
+ 273 0050 02D8     		bhi	.L19
+ 112:main.c        ****     }
+ 274              		.loc 1 112 0
+ 275 0052 0020     		movs	r0, #0
+ 276 0054 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 277              	.LVL18:
+ 278              	.L19:
+ 116:main.c        ****         Direction_1_1_Write(0);
+ 279              		.loc 1 116 0
+ 280 0058 4F4B     		ldr	r3, .L31
+ 281 005a 9B69     		ldr	r3, [r3, #24]
+ 282 005c 002B     		cmp	r3, #0
+ 283 005e 0ADD     		ble	.L20
+ 117:main.c        ****         Direction_1_2_Write(1);
+ 284              		.loc 1 117 0
+ 285 0060 0020     		movs	r0, #0
+ 286 0062 FFF7FEFF 		bl	Direction_1_1_Write
+ 287              	.LVL19:
+ 118:main.c        ****         PWM_1_WriteCompare(duty_cycle1);
+ 288              		.loc 1 118 0
+ 289 0066 0120     		movs	r0, #1
+ 290 0068 FFF7FEFF 		bl	Direction_1_2_Write
+ 291              	.LVL20:
+ 119:main.c        ****     }
+ 292              		.loc 1 119 0
+ 293 006c 4A4B     		ldr	r3, .L31
+ 294 006e 188B     		ldrh	r0, [r3, #24]
+ 295 0070 FFF7FEFF 		bl	PWM_1_WriteCompare
+ 296              	.LVL21:
+ 297 0074 14E0     		b	.L21
+ 298              	.L20:
+ 123:main.c        ****         Direction_1_1_Write(1);
+ 299              		.loc 1 123 0
+ 300 0076 002B     		cmp	r3, #0
+ 301 0078 0CDA     		bge	.L22
+ 124:main.c        ****         Direction_1_2_Write(0);
+ 302              		.loc 1 124 0
+ 303 007a 0120     		movs	r0, #1
+ 304 007c FFF7FEFF 		bl	Direction_1_1_Write
+ 305              	.LVL22:
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 11
+
+
+ 125:main.c        ****         PWM_1_WriteCompare(-1*duty_cycle1);
+ 306              		.loc 1 125 0
+ 307 0080 0020     		movs	r0, #0
+ 308 0082 FFF7FEFF 		bl	Direction_1_2_Write
+ 309              	.LVL23:
+ 126:main.c        ****     }
+ 310              		.loc 1 126 0
+ 311 0086 444B     		ldr	r3, .L31
+ 312 0088 9869     		ldr	r0, [r3, #24]
+ 313 008a 4042     		negs	r0, r0
+ 314 008c 80B2     		uxth	r0, r0
+ 315 008e FFF7FEFF 		bl	PWM_1_WriteCompare
+ 316              	.LVL24:
+ 317 0092 05E0     		b	.L21
+ 318              	.L22:
+ 131:main.c        ****         Direction_1_2_Write(0);
+ 319              		.loc 1 131 0
+ 320 0094 0020     		movs	r0, #0
+ 321 0096 FFF7FEFF 		bl	Direction_1_1_Write
+ 322              	.LVL25:
+ 132:main.c        ****     }
+ 323              		.loc 1 132 0
+ 324 009a 0020     		movs	r0, #0
+ 325 009c FFF7FEFF 		bl	Direction_1_2_Write
+ 326              	.LVL26:
+ 327              	.L21:
+ 134:main.c        ****     
+ 328              		.loc 1 134 0
+ 329 00a0 3D4C     		ldr	r4, .L31
+ 330 00a2 A368     		ldr	r3, [r4, #8]
+ 331 00a4 2361     		str	r3, [r4, #16]
+ 141:main.c        ****     //sprintf(transmitbuffer2,"Count2: %d \r\n",cnt2);
+ 332              		.loc 1 141 0
+ 333 00a6 FFF7FEFF 		bl	QuadDec_2_GetCounter
+ 334              	.LVL27:
+ 335 00aa A083     		strh	r0, [r4, #28]	@ movhi
+ 146:main.c        **** 
+ 336              		.loc 1 146 0
+ 337 00ac B4F90230 		ldrsh	r3, [r4, #2]
+ 338 00b0 181A     		subs	r0, r3, r0
+ 339 00b2 2062     		str	r0, [r4, #32]
+ 150:main.c        ****     
+ 340              		.loc 1 150 0
+ 341 00b4 636A     		ldr	r3, [r4, #36]
+ 342 00b6 0344     		add	r3, r3, r0
+ 343 00b8 6362     		str	r3, [r4, #36]
+ 153:main.c        **** 
+ 344              		.loc 1 153 0
+ 345 00ba A36A     		ldr	r3, [r4, #40]
+ 346 00bc C31A     		subs	r3, r0, r3
+ 347 00be E362     		str	r3, [r4, #44]
+ 156:main.c        ****     
+ 348              		.loc 1 156 0
+ 349 00c0 3222     		movs	r2, #50
+ 350 00c2 02FB03F3 		mul	r3, r2, r3
+ 351 00c6 6422     		movs	r2, #100
+ 352 00c8 02FB0030 		mla	r0, r2, r0, r3
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 12
+
+
+ 353 00cc 2063     		str	r0, [r4, #48]
+ 160:main.c        ****     else if (duty_cycle2 < -32000){duty_cycle2 = -32000;}
+ 354              		.loc 1 160 0
+ 355 00ce B0F5FA4F 		cmp	r0, #32000
+ 356 00d2 03DD     		ble	.L23
+ 160:main.c        ****     else if (duty_cycle2 < -32000){duty_cycle2 = -32000;}
+ 357              		.loc 1 160 0 is_stmt 0 discriminator 1
+ 358 00d4 4FF4FA42 		mov	r2, #32000
+ 359 00d8 2263     		str	r2, [r4, #48]
+ 360 00da 05E0     		b	.L24
+ 361              	.L23:
+ 161:main.c        ****     
+ 362              		.loc 1 161 0 is_stmt 1
+ 363 00dc 10F5FA4F 		cmn	r0, #32000
+ 364 00e0 02DA     		bge	.L24
+ 161:main.c        ****     
+ 365              		.loc 1 161 0 is_stmt 0 discriminator 1
+ 366 00e2 2E4A     		ldr	r2, .L31+4
+ 367 00e4 2C4B     		ldr	r3, .L31
+ 368 00e6 1A63     		str	r2, [r3, #48]
+ 369              	.L24:
+ 164:main.c        ****         PWM_2_WriteCompare(0);
+ 370              		.loc 1 164 0 is_stmt 1
+ 371 00e8 2B4B     		ldr	r3, .L31
+ 372 00ea 1B6B     		ldr	r3, [r3, #48]
+ 373 00ec 3133     		adds	r3, r3, #49
+ 374 00ee 622B     		cmp	r3, #98
+ 375 00f0 02D8     		bhi	.L25
+ 165:main.c        ****     }
+ 376              		.loc 1 165 0
+ 377 00f2 0020     		movs	r0, #0
+ 378 00f4 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 379              	.LVL28:
+ 380              	.L25:
+ 169:main.c        ****         Direction_2_1_Write(0);
+ 381              		.loc 1 169 0
+ 382 00f8 274B     		ldr	r3, .L31
+ 383 00fa 1B6B     		ldr	r3, [r3, #48]
+ 384 00fc 002B     		cmp	r3, #0
+ 385 00fe 0ADD     		ble	.L26
+ 170:main.c        ****         Direction_2_2_Write(1);
+ 386              		.loc 1 170 0
+ 387 0100 0020     		movs	r0, #0
+ 388 0102 FFF7FEFF 		bl	Direction_2_1_Write
+ 389              	.LVL29:
+ 171:main.c        ****         PWM_2_WriteCompare(duty_cycle2);
+ 390              		.loc 1 171 0
+ 391 0106 0120     		movs	r0, #1
+ 392 0108 FFF7FEFF 		bl	Direction_2_2_Write
+ 393              	.LVL30:
+ 172:main.c        ****     }
+ 394              		.loc 1 172 0
+ 395 010c 224B     		ldr	r3, .L31
+ 396 010e 188E     		ldrh	r0, [r3, #48]
+ 397 0110 FFF7FEFF 		bl	PWM_2_WriteCompare
+ 398              	.LVL31:
+ 399 0114 14E0     		b	.L27
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 13
+
+
+ 400              	.L26:
+ 176:main.c        ****         Direction_2_1_Write(1);
+ 401              		.loc 1 176 0
+ 402 0116 002B     		cmp	r3, #0
+ 403 0118 0CDA     		bge	.L28
+ 177:main.c        ****         Direction_2_2_Write(0);
+ 404              		.loc 1 177 0
+ 405 011a 0120     		movs	r0, #1
+ 406 011c FFF7FEFF 		bl	Direction_2_1_Write
+ 407              	.LVL32:
+ 178:main.c        ****         PWM_2_WriteCompare(-1*duty_cycle2);
+ 408              		.loc 1 178 0
+ 409 0120 0020     		movs	r0, #0
+ 410 0122 FFF7FEFF 		bl	Direction_2_2_Write
+ 411              	.LVL33:
+ 179:main.c        ****     }
+ 412              		.loc 1 179 0
+ 413 0126 1C4B     		ldr	r3, .L31
+ 414 0128 186B     		ldr	r0, [r3, #48]
+ 415 012a 4042     		negs	r0, r0
+ 416 012c 80B2     		uxth	r0, r0
+ 417 012e FFF7FEFF 		bl	PWM_2_WriteCompare
+ 418              	.LVL34:
+ 419 0132 05E0     		b	.L27
+ 420              	.L28:
+ 184:main.c        ****         Direction_2_2_Write(0);
+ 421              		.loc 1 184 0
+ 422 0134 0020     		movs	r0, #0
+ 423 0136 FFF7FEFF 		bl	Direction_2_1_Write
+ 424              	.LVL35:
+ 185:main.c        ****     }
+ 425              		.loc 1 185 0
+ 426 013a 0020     		movs	r0, #0
+ 427 013c FFF7FEFF 		bl	Direction_2_2_Write
+ 428              	.LVL36:
+ 429              	.L27:
+ 187:main.c        ****     
+ 430              		.loc 1 187 0
+ 431 0140 154B     		ldr	r3, .L31
+ 432 0142 1A6A     		ldr	r2, [r3, #32]
+ 433 0144 9A62     		str	r2, [r3, #40]
+ 190:main.c        ****     if (multitasking % 32 == 0) {
+ 434              		.loc 1 190 0
+ 435 0146 164A     		ldr	r2, .L31+8
+ 436 0148 9378     		ldrb	r3, [r2, #2]	@ zero_extendqisi2
+ 437 014a 0133     		adds	r3, r3, #1
+ 438 014c DBB2     		uxtb	r3, r3
+ 439 014e 9370     		strb	r3, [r2, #2]
+ 191:main.c        ****         if (transmit == 0){
+ 440              		.loc 1 191 0
+ 441 0150 13F01F0F 		tst	r3, #31
+ 442 0154 1FD1     		bne	.L16
+ 192:main.c        ****             counts[0] = 0x00;
+ 443              		.loc 1 192 0
+ 444 0156 104B     		ldr	r3, .L31
+ 445 0158 5B6B     		ldr	r3, [r3, #52]
+ 446 015a E3B9     		cbnz	r3, .L16
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 14
+
+
+ 193:main.c        ****             counts[1] = 0x00;
+ 447              		.loc 1 193 0
+ 448 015c 114C     		ldr	r4, .L31+12
+ 449 015e 0025     		movs	r5, #0
+ 450 0160 2570     		strb	r5, [r4]
+ 194:main.c        ****             counts[2] = firstByte(cnt1);
+ 451              		.loc 1 194 0
+ 452 0162 6570     		strb	r5, [r4, #1]
+ 195:main.c        ****             counts[3] = forthByte(cnt1);
+ 453              		.loc 1 195 0
+ 454 0164 0C4E     		ldr	r6, .L31
+ 455 0166 B6F90470 		ldrsh	r7, [r6, #4]
+ 456 016a 3846     		mov	r0, r7
+ 457 016c FFF7FEFF 		bl	firstByte
+ 458              	.LVL37:
+ 459 0170 A070     		strb	r0, [r4, #2]
+ 196:main.c        ****             counts[4] = firstByte(cnt2);
+ 460              		.loc 1 196 0
+ 461 0172 3846     		mov	r0, r7
+ 462 0174 FFF7FEFF 		bl	forthByte
+ 463              	.LVL38:
+ 464 0178 E070     		strb	r0, [r4, #3]
+ 197:main.c        ****             counts[5] = forthByte(cnt2);
+ 465              		.loc 1 197 0
+ 466 017a B6F91C70 		ldrsh	r7, [r6, #28]
+ 467 017e 3846     		mov	r0, r7
+ 468 0180 FFF7FEFF 		bl	firstByte
+ 469              	.LVL39:
+ 470 0184 2071     		strb	r0, [r4, #4]
+ 198:main.c        ****             counts[6] = 0x00;
+ 471              		.loc 1 198 0
+ 472 0186 3846     		mov	r0, r7
+ 473 0188 FFF7FEFF 		bl	forthByte
+ 474              	.LVL40:
+ 475 018c 6071     		strb	r0, [r4, #5]
+ 199:main.c        ****             counts[7] = 0x00;
+ 476              		.loc 1 199 0
+ 477 018e A571     		strb	r5, [r4, #6]
+ 200:main.c        ****             transmit = 1;
+ 478              		.loc 1 200 0
+ 479 0190 E571     		strb	r5, [r4, #7]
+ 201:main.c        ****         }
+ 480              		.loc 1 201 0
+ 481 0192 0123     		movs	r3, #1
+ 482 0194 7363     		str	r3, [r6, #52]
+ 483              	.L16:
+ 484 0196 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 485              	.L32:
+ 486              		.align	2
+ 487              	.L31:
+ 488 0198 00000000 		.word	.LANCHOR1
+ 489 019c 0083FFFF 		.word	-32000
+ 490 01a0 00000000 		.word	.LANCHOR0
+ 491 01a4 00000000 		.word	counts
+ 492              		.cfi_endproc
+ 493              	.LFE68:
+ 494              		.size	MotorControl, .-MotorControl
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 15
+
+
+ 495              		.section	.text.combineBytes,"ax",%progbits
+ 496              		.align	2
+ 497              		.global	combineBytes
+ 498              		.thumb
+ 499              		.thumb_func
+ 500              		.type	combineBytes, %function
+ 501              	combineBytes:
+ 502              	.LFB67:
+  77:main.c        ****   return ((firstByte << 8) & 0xFF00) | (0x00FF & secondByte);
+ 503              		.loc 1 77 0
+ 504              		.cfi_startproc
+ 505              		@ args = 0, pretend = 0, frame = 0
+ 506              		@ frame_needed = 0, uses_anonymous_args = 0
+ 507              		@ link register save eliminated.
+ 508              	.LVL41:
+  78:main.c        **** }
+ 509              		.loc 1 78 0
+ 510 0000 41EA0020 		orr	r0, r1, r0, lsl #8
+ 511              	.LVL42:
+  79:main.c        **** 
+ 512              		.loc 1 79 0
+ 513 0004 00B2     		sxth	r0, r0
+ 514 0006 7047     		bx	lr
+ 515              		.cfi_endproc
+ 516              	.LFE67:
+ 517              		.size	combineBytes, .-combineBytes
+ 518              		.section	.text.main,"ax",%progbits
+ 519              		.align	2
+ 520              		.global	main
+ 521              		.thumb
+ 522              		.thumb_func
+ 523              		.type	main, %function
+ 524              	main:
+ 525              	.LFB70:
+ 233:main.c        ****     }
+ 234:main.c        **** }
+ 235:main.c        **** 
+ 236:main.c        **** 
+ 237:main.c        **** int main(void)
+ 238:main.c        **** {
+ 526              		.loc 1 238 0
+ 527              		.cfi_startproc
+ 528              		@ args = 0, pretend = 0, frame = 0
+ 529              		@ frame_needed = 0, uses_anonymous_args = 0
+ 530 0000 08B5     		push	{r3, lr}
+ 531              		.cfi_def_cfa_offset 8
+ 532              		.cfi_offset 3, -8
+ 533              		.cfi_offset 14, -4
+ 239:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
+ 240:main.c        ****     PWM_1_Start();
+ 534              		.loc 1 240 0
+ 535 0002 FFF7FEFF 		bl	PWM_1_Start
+ 536              	.LVL43:
+ 241:main.c        ****     QuadDec_1_Start();
+ 537              		.loc 1 241 0
+ 538 0006 FFF7FEFF 		bl	QuadDec_1_Start
+ 539              	.LVL44:
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 16
+
+
+ 242:main.c        ****     QuadDec_1_SetCounter(0);
+ 540              		.loc 1 242 0
+ 541 000a 0020     		movs	r0, #0
+ 542 000c FFF7FEFF 		bl	QuadDec_1_SetCounter
+ 543              	.LVL45:
+ 243:main.c        ****     PWM_2_Start();
+ 544              		.loc 1 243 0
+ 545 0010 FFF7FEFF 		bl	PWM_2_Start
+ 546              	.LVL46:
+ 244:main.c        ****     QuadDec_2_Start();
+ 547              		.loc 1 244 0
+ 548 0014 FFF7FEFF 		bl	QuadDec_2_Start
+ 549              	.LVL47:
+ 245:main.c        ****     QuadDec_2_SetCounter(0);
+ 550              		.loc 1 245 0
+ 551 0018 0020     		movs	r0, #0
+ 552 001a FFF7FEFF 		bl	QuadDec_2_SetCounter
+ 553              	.LVL48:
+ 246:main.c        ****     UART_Start();
+ 554              		.loc 1 246 0
+ 555 001e FFF7FEFF 		bl	UART_Start
+ 556              	.LVL49:
+ 247:main.c        ****     Timer_Start(); // Configure and enable timer
+ 557              		.loc 1 247 0
+ 558 0022 FFF7FEFF 		bl	Timer_Start
+ 559              	.LVL50:
+ 248:main.c        ****     isr_motor_Start(); // Start the timer interrupt
+ 560              		.loc 1 248 0
+ 561 0026 FFF7FEFF 		bl	isr_motor_Start
+ 562              	.LVL51:
+ 249:main.c        ****     isr_motor_StartEx(MotorControl); // Point to MY_ISR_1 to carry out the interrupt sub-routine of
+ 563              		.loc 1 249 0
+ 564 002a 0A48     		ldr	r0, .L38
+ 565 002c FFF7FEFF 		bl	isr_motor_StartEx
+ 566              	.LVL52:
+ 250:main.c        ****     isr_1_Start(); // Start the control variable changing interrupt
+ 567              		.loc 1 250 0
+ 568 0030 FFF7FEFF 		bl	isr_1_Start
+ 569              	.LVL53:
+ 251:main.c        ****     isr_1_StartEx(Targetchanging); // Point to MY_ISR_2 to carry out the interrupt sub-routine of c
+ 570              		.loc 1 251 0
+ 571 0034 0848     		ldr	r0, .L38+4
+ 572 0036 FFF7FEFF 		bl	isr_1_StartEx
+ 573              	.LVL54:
+ 252:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+ 574              		.loc 1 252 0
+ 575              		.syntax unified
+ 576              	@ 252 "main.c" 1
+ 577 003a 62B6     		CPSIE   i
+ 578              	@ 0 "" 2
+ 579              		.thumb
+ 580              		.syntax unified
+ 581              	.L35:
+ 253:main.c        **** 
+ 254:main.c        ****     for(;;)
+ 255:main.c        ****     {
+ 256:main.c        ****         
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 17
+
+
+ 257:main.c        ****         /* Place your application code here. */
+ 258:main.c        ****         
+ 259:main.c        ****         // Background routine for sending data back to laptop, 32 times slower than the PID routine
+ 260:main.c        ****         if (transmit == 1){
+ 582              		.loc 1 260 0
+ 583 003c 074B     		ldr	r3, .L38+8
+ 584 003e 5B6B     		ldr	r3, [r3, #52]
+ 585 0040 012B     		cmp	r3, #1
+ 586 0042 FBD1     		bne	.L35
+ 587              	.LVL55:
+ 588              	.LBB3:
+ 261:main.c        ****             uint8* p = counts;
+ 262:main.c        ****             UART_PutArray(p, sizeof(counts));
+ 589              		.loc 1 262 0
+ 590 0044 0821     		movs	r1, #8
+ 591 0046 0648     		ldr	r0, .L38+12
+ 592 0048 FFF7FEFF 		bl	UART_PutArray
+ 593              	.LVL56:
+ 263:main.c        ****             transmit = 0;
+ 594              		.loc 1 263 0
+ 595 004c 0022     		movs	r2, #0
+ 596 004e 034B     		ldr	r3, .L38+8
+ 597 0050 5A63     		str	r2, [r3, #52]
+ 598 0052 F3E7     		b	.L35
+ 599              	.L39:
+ 600              		.align	2
+ 601              	.L38:
+ 602 0054 00000000 		.word	MotorControl
+ 603 0058 00000000 		.word	Targetchanging
+ 604 005c 00000000 		.word	.LANCHOR1
+ 605 0060 00000000 		.word	counts
+ 606              	.LBE3:
+ 607              		.cfi_endproc
+ 608              	.LFE70:
+ 609              		.size	main, .-main
+ 610              		.global	transmit
+ 611              		.global	multitasking
+ 612              		.comm	counts,8,4
+ 613              		.comm	concatination,2,4
+ 614              		.comm	new_target,16,4
+ 615              		.comm	new_get,1,1
+ 616              		.global	stopbyte2
+ 617              		.global	transmit2
+ 618              		.comm	transmitbuffer2,2,4
+ 619              		.global	duty_cycle2
+ 620              		.global	integral2
+ 621              		.global	derivative2
+ 622              		.global	last_error2
+ 623              		.global	error2
+ 624              		.global	target2
+ 625              		.global	cnt2
+ 626              		.global	stopbyte1
+ 627              		.comm	transmitbuffer1,2,4
+ 628              		.global	duty_cycle1
+ 629              		.global	integral1
+ 630              		.global	derivative1
+ 631              		.global	last_error1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 18
+
+
+ 632              		.global	error1
+ 633              		.global	target1
+ 634              		.global	cnt1
+ 635              		.data
+ 636              		.set	.LANCHOR0,. + 0
+ 637              		.type	stopbyte1, %object
+ 638              		.size	stopbyte1, 1
+ 639              	stopbyte1:
+ 640 0000 78       		.byte	120
+ 641              		.type	stopbyte2, %object
+ 642              		.size	stopbyte2, 1
+ 643              	stopbyte2:
+ 644 0001 79       		.byte	121
+ 645              		.type	multitasking, %object
+ 646              		.size	multitasking, 1
+ 647              	multitasking:
+ 648 0002 01       		.byte	1
+ 649              		.bss
+ 650              		.align	2
+ 651              		.set	.LANCHOR1,. + 0
+ 652              		.type	target1, %object
+ 653              		.size	target1, 2
+ 654              	target1:
+ 655 0000 0000     		.space	2
+ 656              		.type	target2, %object
+ 657              		.size	target2, 2
+ 658              	target2:
+ 659 0002 0000     		.space	2
+ 660              		.type	cnt1, %object
+ 661              		.size	cnt1, 2
+ 662              	cnt1:
+ 663 0004 0000     		.space	2
+ 664 0006 0000     		.space	2
+ 665              		.type	error1, %object
+ 666              		.size	error1, 4
+ 667              	error1:
+ 668 0008 00000000 		.space	4
+ 669              		.type	integral1, %object
+ 670              		.size	integral1, 4
+ 671              	integral1:
+ 672 000c 00000000 		.space	4
+ 673              		.type	last_error1, %object
+ 674              		.size	last_error1, 4
+ 675              	last_error1:
+ 676 0010 00000000 		.space	4
+ 677              		.type	derivative1, %object
+ 678              		.size	derivative1, 4
+ 679              	derivative1:
+ 680 0014 00000000 		.space	4
+ 681              		.type	duty_cycle1, %object
+ 682              		.size	duty_cycle1, 4
+ 683              	duty_cycle1:
+ 684 0018 00000000 		.space	4
+ 685              		.type	cnt2, %object
+ 686              		.size	cnt2, 2
+ 687              	cnt2:
+ 688 001c 0000     		.space	2
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 19
+
+
+ 689 001e 0000     		.space	2
+ 690              		.type	error2, %object
+ 691              		.size	error2, 4
+ 692              	error2:
+ 693 0020 00000000 		.space	4
+ 694              		.type	integral2, %object
+ 695              		.size	integral2, 4
+ 696              	integral2:
+ 697 0024 00000000 		.space	4
+ 698              		.type	last_error2, %object
+ 699              		.size	last_error2, 4
+ 700              	last_error2:
+ 701 0028 00000000 		.space	4
+ 702              		.type	derivative2, %object
+ 703              		.size	derivative2, 4
+ 704              	derivative2:
+ 705 002c 00000000 		.space	4
+ 706              		.type	duty_cycle2, %object
+ 707              		.size	duty_cycle2, 4
+ 708              	duty_cycle2:
+ 709 0030 00000000 		.space	4
+ 710              		.type	transmit, %object
+ 711              		.size	transmit, 4
+ 712              	transmit:
+ 713 0034 00000000 		.space	4
+ 714              		.type	transmit2, %object
+ 715              		.size	transmit2, 4
+ 716              	transmit2:
+ 717 0038 00000000 		.space	4
+ 718              		.text
+ 719              	.Letext0:
+ 720              		.file 2 "d:\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\include\\mac
+ 721              		.file 3 "d:\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\include\\sys
+ 722              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 723              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 724              		.file 6 "d:\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\include\\str
+ 725              		.file 7 "Generated_Source\\PSoC5/UART.h"
+ 726              		.file 8 "d:\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\include\\std
+ 727              		.file 9 "Generated_Source\\PSoC5/QuadDec_1.h"
+ 728              		.file 10 "Generated_Source\\PSoC5/PWM_1.h"
+ 729              		.file 11 "Generated_Source\\PSoC5/Direction_1_1.h"
+ 730              		.file 12 "Generated_Source\\PSoC5/Direction_1_2.h"
+ 731              		.file 13 "Generated_Source\\PSoC5/QuadDec_2.h"
+ 732              		.file 14 "Generated_Source\\PSoC5/PWM_2.h"
+ 733              		.file 15 "Generated_Source\\PSoC5/Direction_2_1.h"
+ 734              		.file 16 "Generated_Source\\PSoC5/Direction_2_2.h"
+ 735              		.file 17 "Generated_Source\\PSoC5/Timer.h"
+ 736              		.file 18 "Generated_Source\\PSoC5/isr_motor.h"
+ 737              		.file 19 "Generated_Source\\PSoC5/isr_1.h"
+ 738              		.section	.debug_info,"",%progbits
+ 739              	.Ldebug_info0:
+ 740 0000 96070000 		.4byte	0x796
+ 741 0004 0400     		.2byte	0x4
+ 742 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 743 000a 04       		.byte	0x4
+ 744 000b 01       		.uleb128 0x1
+ 745 000c B4020000 		.4byte	.LASF79
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 20
+
+
+ 746 0010 0C       		.byte	0xc
+ 747 0011 A9030000 		.4byte	.LASF80
+ 748 0015 90010000 		.4byte	.LASF81
+ 749 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 750 001d 00000000 		.4byte	0
+ 751 0021 00000000 		.4byte	.Ldebug_line0
+ 752 0025 02       		.uleb128 0x2
+ 753 0026 01       		.byte	0x1
+ 754 0027 06       		.byte	0x6
+ 755 0028 50020000 		.4byte	.LASF0
+ 756 002c 02       		.uleb128 0x2
+ 757 002d 01       		.byte	0x1
+ 758 002e 08       		.byte	0x8
+ 759 002f D5010000 		.4byte	.LASF1
+ 760 0033 02       		.uleb128 0x2
+ 761 0034 02       		.byte	0x2
+ 762 0035 05       		.byte	0x5
+ 763 0036 8E000000 		.4byte	.LASF2
+ 764 003a 02       		.uleb128 0x2
+ 765 003b 02       		.byte	0x2
+ 766 003c 07       		.byte	0x7
+ 767 003d A1020000 		.4byte	.LASF3
+ 768 0041 03       		.uleb128 0x3
+ 769 0042 21040000 		.4byte	.LASF9
+ 770 0046 02       		.byte	0x2
+ 771 0047 3F       		.byte	0x3f
+ 772 0048 4C000000 		.4byte	0x4c
+ 773 004c 02       		.uleb128 0x2
+ 774 004d 04       		.byte	0x4
+ 775 004e 05       		.byte	0x5
+ 776 004f 47030000 		.4byte	.LASF4
+ 777 0053 02       		.uleb128 0x2
+ 778 0054 04       		.byte	0x4
+ 779 0055 07       		.byte	0x7
+ 780 0056 BB030000 		.4byte	.LASF5
+ 781 005a 02       		.uleb128 0x2
+ 782 005b 08       		.byte	0x8
+ 783 005c 05       		.byte	0x5
+ 784 005d 26010000 		.4byte	.LASF6
+ 785 0061 02       		.uleb128 0x2
+ 786 0062 08       		.byte	0x8
+ 787 0063 07       		.byte	0x7
+ 788 0064 5C020000 		.4byte	.LASF7
+ 789 0068 04       		.uleb128 0x4
+ 790 0069 04       		.byte	0x4
+ 791 006a 05       		.byte	0x5
+ 792 006b 696E7400 		.ascii	"int\000"
+ 793 006f 02       		.uleb128 0x2
+ 794 0070 04       		.byte	0x4
+ 795 0071 07       		.byte	0x7
+ 796 0072 73020000 		.4byte	.LASF8
+ 797 0076 03       		.uleb128 0x3
+ 798 0077 70030000 		.4byte	.LASF10
+ 799 007b 03       		.byte	0x3
+ 800 007c 2C       		.byte	0x2c
+ 801 007d 41000000 		.4byte	0x41
+ 802 0081 05       		.uleb128 0x5
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 21
+
+
+ 803 0082 07010000 		.4byte	.LASF11
+ 804 0086 04       		.byte	0x4
+ 805 0087 E401     		.2byte	0x1e4
+ 806 0089 2C000000 		.4byte	0x2c
+ 807 008d 02       		.uleb128 0x2
+ 808 008e 04       		.byte	0x4
+ 809 008f 04       		.byte	0x4
+ 810 0090 20010000 		.4byte	.LASF12
+ 811 0094 02       		.uleb128 0x2
+ 812 0095 08       		.byte	0x8
+ 813 0096 04       		.byte	0x4
+ 814 0097 D7030000 		.4byte	.LASF13
+ 815 009b 02       		.uleb128 0x2
+ 816 009c 01       		.byte	0x1
+ 817 009d 08       		.byte	0x8
+ 818 009e 42030000 		.4byte	.LASF14
+ 819 00a2 02       		.uleb128 0x2
+ 820 00a3 08       		.byte	0x8
+ 821 00a4 04       		.byte	0x4
+ 822 00a5 09020000 		.4byte	.LASF15
+ 823 00a9 02       		.uleb128 0x2
+ 824 00aa 04       		.byte	0x4
+ 825 00ab 07       		.byte	0x7
+ 826 00ac AA000000 		.4byte	.LASF16
+ 827 00b0 06       		.uleb128 0x6
+ 828 00b1 04       		.byte	0x4
+ 829 00b2 9B000000 		.4byte	0x9b
+ 830 00b6 07       		.uleb128 0x7
+ 831 00b7 7F000000 		.4byte	.LASF24
+ 832 00bb 01       		.byte	0x1
+ 833 00bc D0       		.byte	0xd0
+ 834 00bd 00000000 		.4byte	.LFB69
+ 835 00c1 74000000 		.4byte	.LFE69-.LFB69
+ 836 00c5 01       		.uleb128 0x1
+ 837 00c6 9C       		.byte	0x9c
+ 838 00c7 4B010000 		.4byte	0x14b
+ 839 00cb 08       		.uleb128 0x8
+ 840 00cc 4E000000 		.4byte	.LBB2
+ 841 00d0 26000000 		.4byte	.LBE2-.LBB2
+ 842 00d4 07010000 		.4byte	0x107
+ 843 00d8 09       		.uleb128 0x9
+ 844 00d9 15020000 		.4byte	.LASF17
+ 845 00dd 01       		.byte	0x1
+ 846 00de E7       		.byte	0xe7
+ 847 00df B0000000 		.4byte	0xb0
+ 848 00e3 06       		.uleb128 0x6
+ 849 00e4 03       		.byte	0x3
+ 850 00e5 00000000 		.4byte	concatination
+ 851 00e9 9F       		.byte	0x9f
+ 852 00ea 0A       		.uleb128 0xa
+ 853 00eb 5C000000 		.4byte	.LVL6
+ 854 00ef 86060000 		.4byte	0x686
+ 855 00f3 0B       		.uleb128 0xb
+ 856 00f4 01       		.uleb128 0x1
+ 857 00f5 50       		.byte	0x50
+ 858 00f6 05       		.uleb128 0x5
+ 859 00f7 03       		.byte	0x3
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 22
+
+
+ 860 00f8 00000000 		.4byte	new_target
+ 861 00fc 0B       		.uleb128 0xb
+ 862 00fd 01       		.uleb128 0x1
+ 863 00fe 51       		.byte	0x51
+ 864 00ff 05       		.uleb128 0x5
+ 865 0100 03       		.byte	0x3
+ 866 0101 00000000 		.4byte	concatination
+ 867 0105 00       		.byte	0
+ 868 0106 00       		.byte	0
+ 869 0107 0C       		.uleb128 0xc
+ 870 0108 06000000 		.4byte	.LVL0
+ 871 010c 91060000 		.4byte	0x691
+ 872 0110 0D       		.uleb128 0xd
+ 873 0111 1A000000 		.4byte	.LVL1
+ 874 0115 9C060000 		.4byte	0x69c
+ 875 0119 24010000 		.4byte	0x124
+ 876 011d 0B       		.uleb128 0xb
+ 877 011e 01       		.uleb128 0x1
+ 878 011f 50       		.byte	0x50
+ 879 0120 02       		.uleb128 0x2
+ 880 0121 74       		.byte	0x74
+ 881 0122 00       		.sleb128 0
+ 882 0123 00       		.byte	0
+ 883 0124 0C       		.uleb128 0xc
+ 884 0125 2A000000 		.4byte	.LVL2
+ 885 0129 A7060000 		.4byte	0x6a7
+ 886 012d 0D       		.uleb128 0xd
+ 887 012e 3C000000 		.4byte	.LVL3
+ 888 0132 9C060000 		.4byte	0x69c
+ 889 0136 41010000 		.4byte	0x141
+ 890 013a 0B       		.uleb128 0xb
+ 891 013b 01       		.uleb128 0x1
+ 892 013c 50       		.byte	0x50
+ 893 013d 02       		.uleb128 0x2
+ 894 013e 74       		.byte	0x74
+ 895 013f 00       		.sleb128 0
+ 896 0140 00       		.byte	0
+ 897 0141 0C       		.uleb128 0xc
+ 898 0142 4C000000 		.4byte	.LVL4
+ 899 0146 A7060000 		.4byte	0x6a7
+ 900 014a 00       		.byte	0
+ 901 014b 0E       		.uleb128 0xe
+ 902 014c 0D040000 		.4byte	.LASF19
+ 903 0150 01       		.byte	0x1
+ 904 0151 33       		.byte	0x33
+ 905 0152 68000000 		.4byte	0x68
+ 906 0156 00000000 		.4byte	.LFB64
+ 907 015a 26000000 		.4byte	.LFE64-.LFB64
+ 908 015e 01       		.uleb128 0x1
+ 909 015f 9C       		.byte	0x9c
+ 910 0160 83010000 		.4byte	0x183
+ 911 0164 0F       		.uleb128 0xf
+ 912 0165 40010000 		.4byte	.LASF21
+ 913 0169 01       		.byte	0x1
+ 914 016a 33       		.byte	0x33
+ 915 016b 68000000 		.4byte	0x68
+ 916 016f 00000000 		.4byte	.LLST0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 23
+
+
+ 917 0173 10       		.uleb128 0x10
+ 918 0174 C2000000 		.4byte	.LASF18
+ 919 0178 01       		.byte	0x1
+ 920 0179 34       		.byte	0x34
+ 921 017a 68000000 		.4byte	0x68
+ 922 017e 21000000 		.4byte	.LLST1
+ 923 0182 00       		.byte	0
+ 924 0183 0E       		.uleb128 0xe
+ 925 0184 80020000 		.4byte	.LASF20
+ 926 0188 01       		.byte	0x1
+ 927 0189 45       		.byte	0x45
+ 928 018a 81000000 		.4byte	0x81
+ 929 018e 00000000 		.4byte	.LFB65
+ 930 0192 06000000 		.4byte	.LFE65-.LFB65
+ 931 0196 01       		.uleb128 0x1
+ 932 0197 9C       		.byte	0x9c
+ 933 0198 AC010000 		.4byte	0x1ac
+ 934 019c 0F       		.uleb128 0xf
+ 935 019d 73040000 		.4byte	.LASF22
+ 936 01a1 01       		.byte	0x1
+ 937 01a2 45       		.byte	0x45
+ 938 01a3 33000000 		.4byte	0x33
+ 939 01a7 40000000 		.4byte	.LLST2
+ 940 01ab 00       		.byte	0
+ 941 01ac 0E       		.uleb128 0xe
+ 942 01ad B3000000 		.4byte	.LASF23
+ 943 01b1 01       		.byte	0x1
+ 944 01b2 49       		.byte	0x49
+ 945 01b3 81000000 		.4byte	0x81
+ 946 01b7 00000000 		.4byte	.LFB66
+ 947 01bb 04000000 		.4byte	.LFE66-.LFB66
+ 948 01bf 01       		.uleb128 0x1
+ 949 01c0 9C       		.byte	0x9c
+ 950 01c1 D5010000 		.4byte	0x1d5
+ 951 01c5 0F       		.uleb128 0xf
+ 952 01c6 73040000 		.4byte	.LASF22
+ 953 01ca 01       		.byte	0x1
+ 954 01cb 49       		.byte	0x49
+ 955 01cc 33000000 		.4byte	0x33
+ 956 01d0 61000000 		.4byte	.LLST3
+ 957 01d4 00       		.byte	0
+ 958 01d5 07       		.uleb128 0x7
+ 959 01d6 6B000000 		.4byte	.LASF25
+ 960 01da 01       		.byte	0x1
+ 961 01db 53       		.byte	0x53
+ 962 01dc 00000000 		.4byte	.LFB68
+ 963 01e0 A8010000 		.4byte	.LFE68-.LFB68
+ 964 01e4 01       		.uleb128 0x1
+ 965 01e5 9C       		.byte	0x9c
+ 966 01e6 77030000 		.4byte	0x377
+ 967 01ea 0C       		.uleb128 0xc
+ 968 01eb 06000000 		.4byte	.LVL17
+ 969 01ef B2060000 		.4byte	0x6b2
+ 970 01f3 0D       		.uleb128 0xd
+ 971 01f4 58000000 		.4byte	.LVL18
+ 972 01f8 BD060000 		.4byte	0x6bd
+ 973 01fc 06020000 		.4byte	0x206
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 24
+
+
+ 974 0200 0B       		.uleb128 0xb
+ 975 0201 01       		.uleb128 0x1
+ 976 0202 50       		.byte	0x50
+ 977 0203 01       		.uleb128 0x1
+ 978 0204 30       		.byte	0x30
+ 979 0205 00       		.byte	0
+ 980 0206 0D       		.uleb128 0xd
+ 981 0207 66000000 		.4byte	.LVL19
+ 982 020b C8060000 		.4byte	0x6c8
+ 983 020f 19020000 		.4byte	0x219
+ 984 0213 0B       		.uleb128 0xb
+ 985 0214 01       		.uleb128 0x1
+ 986 0215 50       		.byte	0x50
+ 987 0216 01       		.uleb128 0x1
+ 988 0217 30       		.byte	0x30
+ 989 0218 00       		.byte	0
+ 990 0219 0D       		.uleb128 0xd
+ 991 021a 6C000000 		.4byte	.LVL20
+ 992 021e D3060000 		.4byte	0x6d3
+ 993 0222 2C020000 		.4byte	0x22c
+ 994 0226 0B       		.uleb128 0xb
+ 995 0227 01       		.uleb128 0x1
+ 996 0228 50       		.byte	0x50
+ 997 0229 01       		.uleb128 0x1
+ 998 022a 31       		.byte	0x31
+ 999 022b 00       		.byte	0
+ 1000 022c 0C       		.uleb128 0xc
+ 1001 022d 74000000 		.4byte	.LVL21
+ 1002 0231 BD060000 		.4byte	0x6bd
+ 1003 0235 0D       		.uleb128 0xd
+ 1004 0236 80000000 		.4byte	.LVL22
+ 1005 023a C8060000 		.4byte	0x6c8
+ 1006 023e 48020000 		.4byte	0x248
+ 1007 0242 0B       		.uleb128 0xb
+ 1008 0243 01       		.uleb128 0x1
+ 1009 0244 50       		.byte	0x50
+ 1010 0245 01       		.uleb128 0x1
+ 1011 0246 31       		.byte	0x31
+ 1012 0247 00       		.byte	0
+ 1013 0248 0D       		.uleb128 0xd
+ 1014 0249 86000000 		.4byte	.LVL23
+ 1015 024d D3060000 		.4byte	0x6d3
+ 1016 0251 5B020000 		.4byte	0x25b
+ 1017 0255 0B       		.uleb128 0xb
+ 1018 0256 01       		.uleb128 0x1
+ 1019 0257 50       		.byte	0x50
+ 1020 0258 01       		.uleb128 0x1
+ 1021 0259 30       		.byte	0x30
+ 1022 025a 00       		.byte	0
+ 1023 025b 0C       		.uleb128 0xc
+ 1024 025c 92000000 		.4byte	.LVL24
+ 1025 0260 BD060000 		.4byte	0x6bd
+ 1026 0264 0D       		.uleb128 0xd
+ 1027 0265 9A000000 		.4byte	.LVL25
+ 1028 0269 C8060000 		.4byte	0x6c8
+ 1029 026d 77020000 		.4byte	0x277
+ 1030 0271 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 25
+
+
+ 1031 0272 01       		.uleb128 0x1
+ 1032 0273 50       		.byte	0x50
+ 1033 0274 01       		.uleb128 0x1
+ 1034 0275 30       		.byte	0x30
+ 1035 0276 00       		.byte	0
+ 1036 0277 0D       		.uleb128 0xd
+ 1037 0278 A0000000 		.4byte	.LVL26
+ 1038 027c D3060000 		.4byte	0x6d3
+ 1039 0280 8A020000 		.4byte	0x28a
+ 1040 0284 0B       		.uleb128 0xb
+ 1041 0285 01       		.uleb128 0x1
+ 1042 0286 50       		.byte	0x50
+ 1043 0287 01       		.uleb128 0x1
+ 1044 0288 30       		.byte	0x30
+ 1045 0289 00       		.byte	0
+ 1046 028a 0C       		.uleb128 0xc
+ 1047 028b AA000000 		.4byte	.LVL27
+ 1048 028f DE060000 		.4byte	0x6de
+ 1049 0293 0D       		.uleb128 0xd
+ 1050 0294 F8000000 		.4byte	.LVL28
+ 1051 0298 E9060000 		.4byte	0x6e9
+ 1052 029c A6020000 		.4byte	0x2a6
+ 1053 02a0 0B       		.uleb128 0xb
+ 1054 02a1 01       		.uleb128 0x1
+ 1055 02a2 50       		.byte	0x50
+ 1056 02a3 01       		.uleb128 0x1
+ 1057 02a4 30       		.byte	0x30
+ 1058 02a5 00       		.byte	0
+ 1059 02a6 0D       		.uleb128 0xd
+ 1060 02a7 06010000 		.4byte	.LVL29
+ 1061 02ab F4060000 		.4byte	0x6f4
+ 1062 02af B9020000 		.4byte	0x2b9
+ 1063 02b3 0B       		.uleb128 0xb
+ 1064 02b4 01       		.uleb128 0x1
+ 1065 02b5 50       		.byte	0x50
+ 1066 02b6 01       		.uleb128 0x1
+ 1067 02b7 30       		.byte	0x30
+ 1068 02b8 00       		.byte	0
+ 1069 02b9 0D       		.uleb128 0xd
+ 1070 02ba 0C010000 		.4byte	.LVL30
+ 1071 02be FF060000 		.4byte	0x6ff
+ 1072 02c2 CC020000 		.4byte	0x2cc
+ 1073 02c6 0B       		.uleb128 0xb
+ 1074 02c7 01       		.uleb128 0x1
+ 1075 02c8 50       		.byte	0x50
+ 1076 02c9 01       		.uleb128 0x1
+ 1077 02ca 31       		.byte	0x31
+ 1078 02cb 00       		.byte	0
+ 1079 02cc 0C       		.uleb128 0xc
+ 1080 02cd 14010000 		.4byte	.LVL31
+ 1081 02d1 E9060000 		.4byte	0x6e9
+ 1082 02d5 0D       		.uleb128 0xd
+ 1083 02d6 20010000 		.4byte	.LVL32
+ 1084 02da F4060000 		.4byte	0x6f4
+ 1085 02de E8020000 		.4byte	0x2e8
+ 1086 02e2 0B       		.uleb128 0xb
+ 1087 02e3 01       		.uleb128 0x1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 26
+
+
+ 1088 02e4 50       		.byte	0x50
+ 1089 02e5 01       		.uleb128 0x1
+ 1090 02e6 31       		.byte	0x31
+ 1091 02e7 00       		.byte	0
+ 1092 02e8 0D       		.uleb128 0xd
+ 1093 02e9 26010000 		.4byte	.LVL33
+ 1094 02ed FF060000 		.4byte	0x6ff
+ 1095 02f1 FB020000 		.4byte	0x2fb
+ 1096 02f5 0B       		.uleb128 0xb
+ 1097 02f6 01       		.uleb128 0x1
+ 1098 02f7 50       		.byte	0x50
+ 1099 02f8 01       		.uleb128 0x1
+ 1100 02f9 30       		.byte	0x30
+ 1101 02fa 00       		.byte	0
+ 1102 02fb 0C       		.uleb128 0xc
+ 1103 02fc 32010000 		.4byte	.LVL34
+ 1104 0300 E9060000 		.4byte	0x6e9
+ 1105 0304 0D       		.uleb128 0xd
+ 1106 0305 3A010000 		.4byte	.LVL35
+ 1107 0309 F4060000 		.4byte	0x6f4
+ 1108 030d 17030000 		.4byte	0x317
+ 1109 0311 0B       		.uleb128 0xb
+ 1110 0312 01       		.uleb128 0x1
+ 1111 0313 50       		.byte	0x50
+ 1112 0314 01       		.uleb128 0x1
+ 1113 0315 30       		.byte	0x30
+ 1114 0316 00       		.byte	0
+ 1115 0317 0D       		.uleb128 0xd
+ 1116 0318 40010000 		.4byte	.LVL36
+ 1117 031c FF060000 		.4byte	0x6ff
+ 1118 0320 2A030000 		.4byte	0x32a
+ 1119 0324 0B       		.uleb128 0xb
+ 1120 0325 01       		.uleb128 0x1
+ 1121 0326 50       		.byte	0x50
+ 1122 0327 01       		.uleb128 0x1
+ 1123 0328 30       		.byte	0x30
+ 1124 0329 00       		.byte	0
+ 1125 032a 0D       		.uleb128 0xd
+ 1126 032b 70010000 		.4byte	.LVL37
+ 1127 032f 83010000 		.4byte	0x183
+ 1128 0333 3E030000 		.4byte	0x33e
+ 1129 0337 0B       		.uleb128 0xb
+ 1130 0338 01       		.uleb128 0x1
+ 1131 0339 50       		.byte	0x50
+ 1132 033a 02       		.uleb128 0x2
+ 1133 033b 77       		.byte	0x77
+ 1134 033c 00       		.sleb128 0
+ 1135 033d 00       		.byte	0
+ 1136 033e 0D       		.uleb128 0xd
+ 1137 033f 78010000 		.4byte	.LVL38
+ 1138 0343 AC010000 		.4byte	0x1ac
+ 1139 0347 52030000 		.4byte	0x352
+ 1140 034b 0B       		.uleb128 0xb
+ 1141 034c 01       		.uleb128 0x1
+ 1142 034d 50       		.byte	0x50
+ 1143 034e 02       		.uleb128 0x2
+ 1144 034f 77       		.byte	0x77
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 27
+
+
+ 1145 0350 00       		.sleb128 0
+ 1146 0351 00       		.byte	0
+ 1147 0352 0D       		.uleb128 0xd
+ 1148 0353 84010000 		.4byte	.LVL39
+ 1149 0357 83010000 		.4byte	0x183
+ 1150 035b 66030000 		.4byte	0x366
+ 1151 035f 0B       		.uleb128 0xb
+ 1152 0360 01       		.uleb128 0x1
+ 1153 0361 50       		.byte	0x50
+ 1154 0362 02       		.uleb128 0x2
+ 1155 0363 77       		.byte	0x77
+ 1156 0364 00       		.sleb128 0
+ 1157 0365 00       		.byte	0
+ 1158 0366 0A       		.uleb128 0xa
+ 1159 0367 8C010000 		.4byte	.LVL40
+ 1160 036b AC010000 		.4byte	0x1ac
+ 1161 036f 0B       		.uleb128 0xb
+ 1162 0370 01       		.uleb128 0x1
+ 1163 0371 50       		.byte	0x50
+ 1164 0372 02       		.uleb128 0x2
+ 1165 0373 77       		.byte	0x77
+ 1166 0374 00       		.sleb128 0
+ 1167 0375 00       		.byte	0
+ 1168 0376 00       		.byte	0
+ 1169 0377 0E       		.uleb128 0xe
+ 1170 0378 74010000 		.4byte	.LASF26
+ 1171 037c 01       		.byte	0x1
+ 1172 037d 4D       		.byte	0x4d
+ 1173 037e 33000000 		.4byte	0x33
+ 1174 0382 00000000 		.4byte	.LFB67
+ 1175 0386 08000000 		.4byte	.LFE67-.LFB67
+ 1176 038a 01       		.uleb128 0x1
+ 1177 038b 9C       		.byte	0x9c
+ 1178 038c AD030000 		.4byte	0x3ad
+ 1179 0390 0F       		.uleb128 0xf
+ 1180 0391 80020000 		.4byte	.LASF20
+ 1181 0395 01       		.byte	0x1
+ 1182 0396 4D       		.byte	0x4d
+ 1183 0397 81000000 		.4byte	0x81
+ 1184 039b 82000000 		.4byte	.LLST4
+ 1185 039f 11       		.uleb128 0x11
+ 1186 03a0 8A020000 		.4byte	.LASF27
+ 1187 03a4 01       		.byte	0x1
+ 1188 03a5 4D       		.byte	0x4d
+ 1189 03a6 81000000 		.4byte	0x81
+ 1190 03aa 01       		.uleb128 0x1
+ 1191 03ab 51       		.byte	0x51
+ 1192 03ac 00       		.byte	0
+ 1193 03ad 12       		.uleb128 0x12
+ 1194 03ae BD000000 		.4byte	.LASF82
+ 1195 03b2 01       		.byte	0x1
+ 1196 03b3 ED       		.byte	0xed
+ 1197 03b4 68000000 		.4byte	0x68
+ 1198 03b8 00000000 		.4byte	.LFB70
+ 1199 03bc 64000000 		.4byte	.LFE70-.LFB70
+ 1200 03c0 01       		.uleb128 0x1
+ 1201 03c1 9C       		.byte	0x9c
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 28
+
+
+ 1202 03c2 96040000 		.4byte	0x496
+ 1203 03c6 08       		.uleb128 0x8
+ 1204 03c7 44000000 		.4byte	.LBB3
+ 1205 03cb 20000000 		.4byte	.LBE3-.LBB3
+ 1206 03cf FD030000 		.4byte	0x3fd
+ 1207 03d3 13       		.uleb128 0x13
+ 1208 03d4 7000     		.ascii	"p\000"
+ 1209 03d6 01       		.byte	0x1
+ 1210 03d7 0501     		.2byte	0x105
+ 1211 03d9 96040000 		.4byte	0x496
+ 1212 03dd 06       		.uleb128 0x6
+ 1213 03de 03       		.byte	0x3
+ 1214 03df 00000000 		.4byte	counts
+ 1215 03e3 9F       		.byte	0x9f
+ 1216 03e4 0A       		.uleb128 0xa
+ 1217 03e5 4C000000 		.4byte	.LVL56
+ 1218 03e9 0A070000 		.4byte	0x70a
+ 1219 03ed 0B       		.uleb128 0xb
+ 1220 03ee 01       		.uleb128 0x1
+ 1221 03ef 50       		.byte	0x50
+ 1222 03f0 05       		.uleb128 0x5
+ 1223 03f1 03       		.byte	0x3
+ 1224 03f2 00000000 		.4byte	counts
+ 1225 03f6 0B       		.uleb128 0xb
+ 1226 03f7 01       		.uleb128 0x1
+ 1227 03f8 51       		.byte	0x51
+ 1228 03f9 01       		.uleb128 0x1
+ 1229 03fa 38       		.byte	0x38
+ 1230 03fb 00       		.byte	0
+ 1231 03fc 00       		.byte	0
+ 1232 03fd 0C       		.uleb128 0xc
+ 1233 03fe 06000000 		.4byte	.LVL43
+ 1234 0402 15070000 		.4byte	0x715
+ 1235 0406 0C       		.uleb128 0xc
+ 1236 0407 0A000000 		.4byte	.LVL44
+ 1237 040b 20070000 		.4byte	0x720
+ 1238 040f 0D       		.uleb128 0xd
+ 1239 0410 10000000 		.4byte	.LVL45
+ 1240 0414 2B070000 		.4byte	0x72b
+ 1241 0418 22040000 		.4byte	0x422
+ 1242 041c 0B       		.uleb128 0xb
+ 1243 041d 01       		.uleb128 0x1
+ 1244 041e 50       		.byte	0x50
+ 1245 041f 01       		.uleb128 0x1
+ 1246 0420 30       		.byte	0x30
+ 1247 0421 00       		.byte	0
+ 1248 0422 0C       		.uleb128 0xc
+ 1249 0423 14000000 		.4byte	.LVL46
+ 1250 0427 36070000 		.4byte	0x736
+ 1251 042b 0C       		.uleb128 0xc
+ 1252 042c 18000000 		.4byte	.LVL47
+ 1253 0430 41070000 		.4byte	0x741
+ 1254 0434 0D       		.uleb128 0xd
+ 1255 0435 1E000000 		.4byte	.LVL48
+ 1256 0439 4C070000 		.4byte	0x74c
+ 1257 043d 47040000 		.4byte	0x447
+ 1258 0441 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 29
+
+
+ 1259 0442 01       		.uleb128 0x1
+ 1260 0443 50       		.byte	0x50
+ 1261 0444 01       		.uleb128 0x1
+ 1262 0445 30       		.byte	0x30
+ 1263 0446 00       		.byte	0
+ 1264 0447 0C       		.uleb128 0xc
+ 1265 0448 22000000 		.4byte	.LVL49
+ 1266 044c 57070000 		.4byte	0x757
+ 1267 0450 0C       		.uleb128 0xc
+ 1268 0451 26000000 		.4byte	.LVL50
+ 1269 0455 62070000 		.4byte	0x762
+ 1270 0459 0C       		.uleb128 0xc
+ 1271 045a 2A000000 		.4byte	.LVL51
+ 1272 045e 6D070000 		.4byte	0x76d
+ 1273 0462 0D       		.uleb128 0xd
+ 1274 0463 30000000 		.4byte	.LVL52
+ 1275 0467 78070000 		.4byte	0x778
+ 1276 046b 79040000 		.4byte	0x479
+ 1277 046f 0B       		.uleb128 0xb
+ 1278 0470 01       		.uleb128 0x1
+ 1279 0471 50       		.byte	0x50
+ 1280 0472 05       		.uleb128 0x5
+ 1281 0473 03       		.byte	0x3
+ 1282 0474 00000000 		.4byte	MotorControl
+ 1283 0478 00       		.byte	0
+ 1284 0479 0C       		.uleb128 0xc
+ 1285 047a 34000000 		.4byte	.LVL53
+ 1286 047e 83070000 		.4byte	0x783
+ 1287 0482 0A       		.uleb128 0xa
+ 1288 0483 3A000000 		.4byte	.LVL54
+ 1289 0487 8E070000 		.4byte	0x78e
+ 1290 048b 0B       		.uleb128 0xb
+ 1291 048c 01       		.uleb128 0x1
+ 1292 048d 50       		.byte	0x50
+ 1293 048e 05       		.uleb128 0x5
+ 1294 048f 03       		.byte	0x3
+ 1295 0490 00000000 		.4byte	Targetchanging
+ 1296 0494 00       		.byte	0
+ 1297 0495 00       		.byte	0
+ 1298 0496 06       		.uleb128 0x6
+ 1299 0497 04       		.byte	0x4
+ 1300 0498 81000000 		.4byte	0x81
+ 1301 049c 14       		.uleb128 0x14
+ 1302 049d DE030000 		.4byte	.LASF28
+ 1303 04a1 05       		.byte	0x5
+ 1304 04a2 1207     		.2byte	0x712
+ 1305 04a4 A8040000 		.4byte	0x4a8
+ 1306 04a8 15       		.uleb128 0x15
+ 1307 04a9 76000000 		.4byte	0x76
+ 1308 04ad 16       		.uleb128 0x16
+ 1309 04ae CD030000 		.4byte	.LASF29
+ 1310 04b2 01       		.byte	0x1
+ 1311 04b3 12       		.byte	0x12
+ 1312 04b4 33000000 		.4byte	0x33
+ 1313 04b8 05       		.uleb128 0x5
+ 1314 04b9 03       		.byte	0x3
+ 1315 04ba 00000000 		.4byte	cnt1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 30
+
+
+ 1316 04be 16       		.uleb128 0x16
+ 1317 04bf 7A040000 		.4byte	.LASF30
+ 1318 04c3 01       		.byte	0x1
+ 1319 04c4 13       		.byte	0x13
+ 1320 04c5 33000000 		.4byte	0x33
+ 1321 04c9 05       		.uleb128 0x5
+ 1322 04ca 03       		.byte	0x3
+ 1323 04cb 00000000 		.4byte	target1
+ 1324 04cf 16       		.uleb128 0x16
+ 1325 04d0 82040000 		.4byte	.LASF31
+ 1326 04d4 01       		.byte	0x1
+ 1327 04d5 14       		.byte	0x14
+ 1328 04d6 68000000 		.4byte	0x68
+ 1329 04da 05       		.uleb128 0x5
+ 1330 04db 03       		.byte	0x3
+ 1331 04dc 00000000 		.4byte	error1
+ 1332 04e0 16       		.uleb128 0x16
+ 1333 04e1 2B040000 		.4byte	.LASF32
+ 1334 04e5 01       		.byte	0x1
+ 1335 04e6 15       		.byte	0x15
+ 1336 04e7 68000000 		.4byte	0x68
+ 1337 04eb 05       		.uleb128 0x5
+ 1338 04ec 03       		.byte	0x3
+ 1339 04ed 00000000 		.4byte	last_error1
+ 1340 04f1 16       		.uleb128 0x16
+ 1341 04f2 30020000 		.4byte	.LASF33
+ 1342 04f6 01       		.byte	0x1
+ 1343 04f7 16       		.byte	0x16
+ 1344 04f8 68000000 		.4byte	0x68
+ 1345 04fc 05       		.uleb128 0x5
+ 1346 04fd 03       		.byte	0x3
+ 1347 04fe 00000000 		.4byte	derivative1
+ 1348 0502 16       		.uleb128 0x16
+ 1349 0503 4A010000 		.4byte	.LASF34
+ 1350 0507 01       		.byte	0x1
+ 1351 0508 17       		.byte	0x17
+ 1352 0509 68000000 		.4byte	0x68
+ 1353 050d 05       		.uleb128 0x5
+ 1354 050e 03       		.byte	0x3
+ 1355 050f 00000000 		.4byte	integral1
+ 1356 0513 16       		.uleb128 0x16
+ 1357 0514 43040000 		.4byte	.LASF35
+ 1358 0518 01       		.byte	0x1
+ 1359 0519 18       		.byte	0x18
+ 1360 051a 68000000 		.4byte	0x68
+ 1361 051e 05       		.uleb128 0x5
+ 1362 051f 03       		.byte	0x3
+ 1363 0520 00000000 		.4byte	duty_cycle1
+ 1364 0524 17       		.uleb128 0x17
+ 1365 0525 9B000000 		.4byte	0x9b
+ 1366 0529 34050000 		.4byte	0x534
+ 1367 052d 18       		.uleb128 0x18
+ 1368 052e A9000000 		.4byte	0xa9
+ 1369 0532 01       		.byte	0x1
+ 1370 0533 00       		.byte	0
+ 1371 0534 16       		.uleb128 0x16
+ 1372 0535 E7000000 		.4byte	.LASF36
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 31
+
+
+ 1373 0539 01       		.byte	0x1
+ 1374 053a 19       		.byte	0x19
+ 1375 053b 24050000 		.4byte	0x524
+ 1376 053f 05       		.uleb128 0x5
+ 1377 0540 03       		.byte	0x3
+ 1378 0541 00000000 		.4byte	transmitbuffer1
+ 1379 0545 16       		.uleb128 0x16
+ 1380 0546 29000000 		.4byte	.LASF37
+ 1381 054a 01       		.byte	0x1
+ 1382 054b 1A       		.byte	0x1a
+ 1383 054c 9B000000 		.4byte	0x9b
+ 1384 0550 05       		.uleb128 0x5
+ 1385 0551 03       		.byte	0x3
+ 1386 0552 00000000 		.4byte	stopbyte1
+ 1387 0556 16       		.uleb128 0x16
+ 1388 0557 D2030000 		.4byte	.LASF38
+ 1389 055b 01       		.byte	0x1
+ 1390 055c 1D       		.byte	0x1d
+ 1391 055d 33000000 		.4byte	0x33
+ 1392 0561 05       		.uleb128 0x5
+ 1393 0562 03       		.byte	0x3
+ 1394 0563 00000000 		.4byte	cnt2
+ 1395 0567 16       		.uleb128 0x16
+ 1396 0568 6C010000 		.4byte	.LASF39
+ 1397 056c 01       		.byte	0x1
+ 1398 056d 1E       		.byte	0x1e
+ 1399 056e 33000000 		.4byte	0x33
+ 1400 0572 05       		.uleb128 0x5
+ 1401 0573 03       		.byte	0x3
+ 1402 0574 00000000 		.4byte	target2
+ 1403 0578 16       		.uleb128 0x16
+ 1404 0579 89040000 		.4byte	.LASF40
+ 1405 057d 01       		.byte	0x1
+ 1406 057e 1F       		.byte	0x1f
+ 1407 057f 68000000 		.4byte	0x68
+ 1408 0583 05       		.uleb128 0x5
+ 1409 0584 03       		.byte	0x3
+ 1410 0585 00000000 		.4byte	error2
+ 1411 0589 16       		.uleb128 0x16
+ 1412 058a 37040000 		.4byte	.LASF41
+ 1413 058e 01       		.byte	0x1
+ 1414 058f 20       		.byte	0x20
+ 1415 0590 68000000 		.4byte	0x68
+ 1416 0594 05       		.uleb128 0x5
+ 1417 0595 03       		.byte	0x3
+ 1418 0596 00000000 		.4byte	last_error2
+ 1419 059a 16       		.uleb128 0x16
+ 1420 059b AE040000 		.4byte	.LASF42
+ 1421 059f 01       		.byte	0x1
+ 1422 05a0 21       		.byte	0x21
+ 1423 05a1 68000000 		.4byte	0x68
+ 1424 05a5 05       		.uleb128 0x5
+ 1425 05a6 03       		.byte	0x3
+ 1426 05a7 00000000 		.4byte	derivative2
+ 1427 05ab 16       		.uleb128 0x16
+ 1428 05ac 54010000 		.4byte	.LASF43
+ 1429 05b0 01       		.byte	0x1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 32
+
+
+ 1430 05b1 22       		.byte	0x22
+ 1431 05b2 68000000 		.4byte	0x68
+ 1432 05b6 05       		.uleb128 0x5
+ 1433 05b7 03       		.byte	0x3
+ 1434 05b8 00000000 		.4byte	integral2
+ 1435 05bc 16       		.uleb128 0x16
+ 1436 05bd 4F040000 		.4byte	.LASF44
+ 1437 05c1 01       		.byte	0x1
+ 1438 05c2 23       		.byte	0x23
+ 1439 05c3 68000000 		.4byte	0x68
+ 1440 05c7 05       		.uleb128 0x5
+ 1441 05c8 03       		.byte	0x3
+ 1442 05c9 00000000 		.4byte	duty_cycle2
+ 1443 05cd 16       		.uleb128 0x16
+ 1444 05ce F7000000 		.4byte	.LASF45
+ 1445 05d2 01       		.byte	0x1
+ 1446 05d3 24       		.byte	0x24
+ 1447 05d4 24050000 		.4byte	0x524
+ 1448 05d8 05       		.uleb128 0x5
+ 1449 05d9 03       		.byte	0x3
+ 1450 05da 00000000 		.4byte	transmitbuffer2
+ 1451 05de 16       		.uleb128 0x16
+ 1452 05df 81010000 		.4byte	.LASF46
+ 1453 05e3 01       		.byte	0x1
+ 1454 05e4 25       		.byte	0x25
+ 1455 05e5 68000000 		.4byte	0x68
+ 1456 05e9 05       		.uleb128 0x5
+ 1457 05ea 03       		.byte	0x3
+ 1458 05eb 00000000 		.4byte	transmit2
+ 1459 05ef 16       		.uleb128 0x16
+ 1460 05f0 33000000 		.4byte	.LASF47
+ 1461 05f4 01       		.byte	0x1
+ 1462 05f5 26       		.byte	0x26
+ 1463 05f6 9B000000 		.4byte	0x9b
+ 1464 05fa 05       		.uleb128 0x5
+ 1465 05fb 03       		.byte	0x3
+ 1466 05fc 00000000 		.4byte	stopbyte2
+ 1467 0600 16       		.uleb128 0x16
+ 1468 0601 5B040000 		.4byte	.LASF48
+ 1469 0605 01       		.byte	0x1
+ 1470 0606 29       		.byte	0x29
+ 1471 0607 9B000000 		.4byte	0x9b
+ 1472 060b 05       		.uleb128 0x5
+ 1473 060c 03       		.byte	0x3
+ 1474 060d 00000000 		.4byte	new_get
+ 1475 0611 17       		.uleb128 0x17
+ 1476 0612 9B000000 		.4byte	0x9b
+ 1477 0616 21060000 		.4byte	0x621
+ 1478 061a 18       		.uleb128 0x18
+ 1479 061b A9000000 		.4byte	0xa9
+ 1480 061f 0F       		.byte	0xf
+ 1481 0620 00       		.byte	0
+ 1482 0621 16       		.uleb128 0x16
+ 1483 0622 B0030000 		.4byte	.LASF49
+ 1484 0626 01       		.byte	0x1
+ 1485 0627 2A       		.byte	0x2a
+ 1486 0628 11060000 		.4byte	0x611
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 33
+
+
+ 1487 062c 05       		.uleb128 0x5
+ 1488 062d 03       		.byte	0x3
+ 1489 062e 00000000 		.4byte	new_target
+ 1490 0632 16       		.uleb128 0x16
+ 1491 0633 3D000000 		.4byte	.LASF50
+ 1492 0637 01       		.byte	0x1
+ 1493 0638 2B       		.byte	0x2b
+ 1494 0639 24050000 		.4byte	0x524
+ 1495 063d 05       		.uleb128 0x5
+ 1496 063e 03       		.byte	0x3
+ 1497 063f 00000000 		.4byte	concatination
+ 1498 0643 17       		.uleb128 0x17
+ 1499 0644 81000000 		.4byte	0x81
+ 1500 0648 53060000 		.4byte	0x653
+ 1501 064c 18       		.uleb128 0x18
+ 1502 064d A9000000 		.4byte	0xa9
+ 1503 0651 07       		.byte	0x7
+ 1504 0652 00       		.byte	0
+ 1505 0653 16       		.uleb128 0x16
+ 1506 0654 78000000 		.4byte	.LASF51
+ 1507 0658 01       		.byte	0x1
+ 1508 0659 2C       		.byte	0x2c
+ 1509 065a 43060000 		.4byte	0x643
+ 1510 065e 05       		.uleb128 0x5
+ 1511 065f 03       		.byte	0x3
+ 1512 0660 00000000 		.4byte	counts
+ 1513 0664 16       		.uleb128 0x16
+ 1514 0665 EB030000 		.4byte	.LASF52
+ 1515 0669 01       		.byte	0x1
+ 1516 066a 2D       		.byte	0x2d
+ 1517 066b 81000000 		.4byte	0x81
+ 1518 066f 05       		.uleb128 0x5
+ 1519 0670 03       		.byte	0x3
+ 1520 0671 00000000 		.4byte	multitasking
+ 1521 0675 16       		.uleb128 0x16
+ 1522 0676 A5040000 		.4byte	.LASF53
+ 1523 067a 01       		.byte	0x1
+ 1524 067b 2E       		.byte	0x2e
+ 1525 067c 68000000 		.4byte	0x68
+ 1526 0680 05       		.uleb128 0x5
+ 1527 0681 03       		.byte	0x3
+ 1528 0682 00000000 		.4byte	transmit
+ 1529 0686 19       		.uleb128 0x19
+ 1530 0687 06040000 		.4byte	.LASF54
+ 1531 068b 06040000 		.4byte	.LASF54
+ 1532 068f 06       		.byte	0x6
+ 1533 0690 1A       		.byte	0x1a
+ 1534 0691 19       		.uleb128 0x19
+ 1535 0692 DA000000 		.4byte	.LASF55
+ 1536 0696 DA000000 		.4byte	.LASF55
+ 1537 069a 07       		.byte	0x7
+ 1538 069b 71       		.byte	0x71
+ 1539 069c 19       		.uleb128 0x19
+ 1540 069d 8B010000 		.4byte	.LASF56
+ 1541 06a1 8B010000 		.4byte	.LASF56
+ 1542 06a5 08       		.byte	0x8
+ 1543 06a6 4D       		.byte	0x4d
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 34
+
+
+ 1544 06a7 19       		.uleb128 0x19
+ 1545 06a8 F6010000 		.4byte	.LASF57
+ 1546 06ac F6010000 		.4byte	.LASF57
+ 1547 06b0 07       		.byte	0x7
+ 1548 06b1 75       		.byte	0x75
+ 1549 06b2 19       		.uleb128 0x19
+ 1550 06b3 50030000 		.4byte	.LASF58
+ 1551 06b7 50030000 		.4byte	.LASF58
+ 1552 06bb 09       		.byte	0x9
+ 1553 06bc 4E       		.byte	0x4e
+ 1554 06bd 19       		.uleb128 0x19
+ 1555 06be E3010000 		.4byte	.LASF59
+ 1556 06c2 E3010000 		.4byte	.LASF59
+ 1557 06c6 0A       		.byte	0xa
+ 1558 06c7 C3       		.byte	0xc3
+ 1559 06c8 19       		.uleb128 0x19
+ 1560 06c9 1C020000 		.4byte	.LASF60
+ 1561 06cd 1C020000 		.4byte	.LASF60
+ 1562 06d1 0B       		.byte	0xb
+ 1563 06d2 26       		.byte	0x26
+ 1564 06d3 19       		.uleb128 0x19
+ 1565 06d4 15000000 		.4byte	.LASF61
+ 1566 06d8 15000000 		.4byte	.LASF61
+ 1567 06dc 0C       		.byte	0xc
+ 1568 06dd 26       		.byte	0x26
+ 1569 06de 19       		.uleb128 0x19
+ 1570 06df 78030000 		.4byte	.LASF62
+ 1571 06e3 78030000 		.4byte	.LASF62
+ 1572 06e7 0D       		.byte	0xd
+ 1573 06e8 4E       		.byte	0x4e
+ 1574 06e9 19       		.uleb128 0x19
+ 1575 06ea 0D010000 		.4byte	.LASF63
+ 1576 06ee 0D010000 		.4byte	.LASF63
+ 1577 06f2 0E       		.byte	0xe
+ 1578 06f3 C3       		.byte	0xc3
+ 1579 06f4 19       		.uleb128 0x19
+ 1580 06f5 3C020000 		.4byte	.LASF64
+ 1581 06f9 3C020000 		.4byte	.LASF64
+ 1582 06fd 0F       		.byte	0xf
+ 1583 06fe 26       		.byte	0x26
+ 1584 06ff 19       		.uleb128 0x19
+ 1585 0700 4B000000 		.4byte	.LASF65
+ 1586 0704 4B000000 		.4byte	.LASF65
+ 1587 0708 10       		.byte	0x10
+ 1588 0709 26       		.byte	0x26
+ 1589 070a 19       		.uleb128 0x19
+ 1590 070b F8030000 		.4byte	.LASF66
+ 1591 070f F8030000 		.4byte	.LASF66
+ 1592 0713 07       		.byte	0x7
+ 1593 0714 8C       		.byte	0x8c
+ 1594 0715 19       		.uleb128 0x19
+ 1595 0716 5F000000 		.4byte	.LASF67
+ 1596 071a 5F000000 		.4byte	.LASF67
+ 1597 071e 0A       		.byte	0xa
+ 1598 071f 92       		.byte	0x92
+ 1599 0720 19       		.uleb128 0x19
+ 1600 0721 CA000000 		.4byte	.LASF68
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 35
+
+
+ 1601 0725 CA000000 		.4byte	.LASF68
+ 1602 0729 09       		.byte	0x9
+ 1603 072a 48       		.byte	0x48
+ 1604 072b 19       		.uleb128 0x19
+ 1605 072c 90040000 		.4byte	.LASF69
+ 1606 0730 90040000 		.4byte	.LASF69
+ 1607 0734 09       		.byte	0x9
+ 1608 0735 4F       		.byte	0x4f
+ 1609 0736 19       		.uleb128 0x19
+ 1610 0737 95020000 		.4byte	.LASF70
+ 1611 073b 95020000 		.4byte	.LASF70
+ 1612 073f 0E       		.byte	0xe
+ 1613 0740 92       		.byte	0x92
+ 1614 0741 19       		.uleb128 0x19
+ 1615 0742 99030000 		.4byte	.LASF71
+ 1616 0746 99030000 		.4byte	.LASF71
+ 1617 074a 0D       		.byte	0xd
+ 1618 074b 48       		.byte	0x48
+ 1619 074c 19       		.uleb128 0x19
+ 1620 074d 00000000 		.4byte	.LASF72
+ 1621 0751 00000000 		.4byte	.LASF72
+ 1622 0755 0D       		.byte	0xd
+ 1623 0756 4F       		.byte	0x4f
+ 1624 0757 19       		.uleb128 0x19
+ 1625 0758 65030000 		.4byte	.LASF73
+ 1626 075c 65030000 		.4byte	.LASF73
+ 1627 0760 07       		.byte	0x7
+ 1628 0761 54       		.byte	0x54
+ 1629 0762 19       		.uleb128 0x19
+ 1630 0763 34010000 		.4byte	.LASF74
+ 1631 0767 34010000 		.4byte	.LASF74
+ 1632 076b 11       		.byte	0x11
+ 1633 076c 5A       		.byte	0x5a
+ 1634 076d 19       		.uleb128 0x19
+ 1635 076e 63040000 		.4byte	.LASF75
+ 1636 0772 63040000 		.4byte	.LASF75
+ 1637 0776 12       		.byte	0x12
+ 1638 0777 17       		.byte	0x17
+ 1639 0778 19       		.uleb128 0x19
+ 1640 0779 98000000 		.4byte	.LASF76
+ 1641 077d 98000000 		.4byte	.LASF76
+ 1642 0781 12       		.byte	0x12
+ 1643 0782 18       		.byte	0x18
+ 1644 0783 19       		.uleb128 0x19
+ 1645 0784 8D030000 		.4byte	.LASF77
+ 1646 0788 8D030000 		.4byte	.LASF77
+ 1647 078c 13       		.byte	0x13
+ 1648 078d 17       		.byte	0x17
+ 1649 078e 19       		.uleb128 0x19
+ 1650 078f 5E010000 		.4byte	.LASF78
+ 1651 0793 5E010000 		.4byte	.LASF78
+ 1652 0797 13       		.byte	0x13
+ 1653 0798 18       		.byte	0x18
+ 1654 0799 00       		.byte	0
+ 1655              		.section	.debug_abbrev,"",%progbits
+ 1656              	.Ldebug_abbrev0:
+ 1657 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 36
+
+
+ 1658 0001 11       		.uleb128 0x11
+ 1659 0002 01       		.byte	0x1
+ 1660 0003 25       		.uleb128 0x25
+ 1661 0004 0E       		.uleb128 0xe
+ 1662 0005 13       		.uleb128 0x13
+ 1663 0006 0B       		.uleb128 0xb
+ 1664 0007 03       		.uleb128 0x3
+ 1665 0008 0E       		.uleb128 0xe
+ 1666 0009 1B       		.uleb128 0x1b
+ 1667 000a 0E       		.uleb128 0xe
+ 1668 000b 55       		.uleb128 0x55
+ 1669 000c 17       		.uleb128 0x17
+ 1670 000d 11       		.uleb128 0x11
+ 1671 000e 01       		.uleb128 0x1
+ 1672 000f 10       		.uleb128 0x10
+ 1673 0010 17       		.uleb128 0x17
+ 1674 0011 00       		.byte	0
+ 1675 0012 00       		.byte	0
+ 1676 0013 02       		.uleb128 0x2
+ 1677 0014 24       		.uleb128 0x24
+ 1678 0015 00       		.byte	0
+ 1679 0016 0B       		.uleb128 0xb
+ 1680 0017 0B       		.uleb128 0xb
+ 1681 0018 3E       		.uleb128 0x3e
+ 1682 0019 0B       		.uleb128 0xb
+ 1683 001a 03       		.uleb128 0x3
+ 1684 001b 0E       		.uleb128 0xe
+ 1685 001c 00       		.byte	0
+ 1686 001d 00       		.byte	0
+ 1687 001e 03       		.uleb128 0x3
+ 1688 001f 16       		.uleb128 0x16
+ 1689 0020 00       		.byte	0
+ 1690 0021 03       		.uleb128 0x3
+ 1691 0022 0E       		.uleb128 0xe
+ 1692 0023 3A       		.uleb128 0x3a
+ 1693 0024 0B       		.uleb128 0xb
+ 1694 0025 3B       		.uleb128 0x3b
+ 1695 0026 0B       		.uleb128 0xb
+ 1696 0027 49       		.uleb128 0x49
+ 1697 0028 13       		.uleb128 0x13
+ 1698 0029 00       		.byte	0
+ 1699 002a 00       		.byte	0
+ 1700 002b 04       		.uleb128 0x4
+ 1701 002c 24       		.uleb128 0x24
+ 1702 002d 00       		.byte	0
+ 1703 002e 0B       		.uleb128 0xb
+ 1704 002f 0B       		.uleb128 0xb
+ 1705 0030 3E       		.uleb128 0x3e
+ 1706 0031 0B       		.uleb128 0xb
+ 1707 0032 03       		.uleb128 0x3
+ 1708 0033 08       		.uleb128 0x8
+ 1709 0034 00       		.byte	0
+ 1710 0035 00       		.byte	0
+ 1711 0036 05       		.uleb128 0x5
+ 1712 0037 16       		.uleb128 0x16
+ 1713 0038 00       		.byte	0
+ 1714 0039 03       		.uleb128 0x3
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 37
+
+
+ 1715 003a 0E       		.uleb128 0xe
+ 1716 003b 3A       		.uleb128 0x3a
+ 1717 003c 0B       		.uleb128 0xb
+ 1718 003d 3B       		.uleb128 0x3b
+ 1719 003e 05       		.uleb128 0x5
+ 1720 003f 49       		.uleb128 0x49
+ 1721 0040 13       		.uleb128 0x13
+ 1722 0041 00       		.byte	0
+ 1723 0042 00       		.byte	0
+ 1724 0043 06       		.uleb128 0x6
+ 1725 0044 0F       		.uleb128 0xf
+ 1726 0045 00       		.byte	0
+ 1727 0046 0B       		.uleb128 0xb
+ 1728 0047 0B       		.uleb128 0xb
+ 1729 0048 49       		.uleb128 0x49
+ 1730 0049 13       		.uleb128 0x13
+ 1731 004a 00       		.byte	0
+ 1732 004b 00       		.byte	0
+ 1733 004c 07       		.uleb128 0x7
+ 1734 004d 2E       		.uleb128 0x2e
+ 1735 004e 01       		.byte	0x1
+ 1736 004f 3F       		.uleb128 0x3f
+ 1737 0050 19       		.uleb128 0x19
+ 1738 0051 03       		.uleb128 0x3
+ 1739 0052 0E       		.uleb128 0xe
+ 1740 0053 3A       		.uleb128 0x3a
+ 1741 0054 0B       		.uleb128 0xb
+ 1742 0055 3B       		.uleb128 0x3b
+ 1743 0056 0B       		.uleb128 0xb
+ 1744 0057 27       		.uleb128 0x27
+ 1745 0058 19       		.uleb128 0x19
+ 1746 0059 11       		.uleb128 0x11
+ 1747 005a 01       		.uleb128 0x1
+ 1748 005b 12       		.uleb128 0x12
+ 1749 005c 06       		.uleb128 0x6
+ 1750 005d 40       		.uleb128 0x40
+ 1751 005e 18       		.uleb128 0x18
+ 1752 005f 9742     		.uleb128 0x2117
+ 1753 0061 19       		.uleb128 0x19
+ 1754 0062 01       		.uleb128 0x1
+ 1755 0063 13       		.uleb128 0x13
+ 1756 0064 00       		.byte	0
+ 1757 0065 00       		.byte	0
+ 1758 0066 08       		.uleb128 0x8
+ 1759 0067 0B       		.uleb128 0xb
+ 1760 0068 01       		.byte	0x1
+ 1761 0069 11       		.uleb128 0x11
+ 1762 006a 01       		.uleb128 0x1
+ 1763 006b 12       		.uleb128 0x12
+ 1764 006c 06       		.uleb128 0x6
+ 1765 006d 01       		.uleb128 0x1
+ 1766 006e 13       		.uleb128 0x13
+ 1767 006f 00       		.byte	0
+ 1768 0070 00       		.byte	0
+ 1769 0071 09       		.uleb128 0x9
+ 1770 0072 34       		.uleb128 0x34
+ 1771 0073 00       		.byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 38
+
+
+ 1772 0074 03       		.uleb128 0x3
+ 1773 0075 0E       		.uleb128 0xe
+ 1774 0076 3A       		.uleb128 0x3a
+ 1775 0077 0B       		.uleb128 0xb
+ 1776 0078 3B       		.uleb128 0x3b
+ 1777 0079 0B       		.uleb128 0xb
+ 1778 007a 49       		.uleb128 0x49
+ 1779 007b 13       		.uleb128 0x13
+ 1780 007c 02       		.uleb128 0x2
+ 1781 007d 18       		.uleb128 0x18
+ 1782 007e 00       		.byte	0
+ 1783 007f 00       		.byte	0
+ 1784 0080 0A       		.uleb128 0xa
+ 1785 0081 898201   		.uleb128 0x4109
+ 1786 0084 01       		.byte	0x1
+ 1787 0085 11       		.uleb128 0x11
+ 1788 0086 01       		.uleb128 0x1
+ 1789 0087 31       		.uleb128 0x31
+ 1790 0088 13       		.uleb128 0x13
+ 1791 0089 00       		.byte	0
+ 1792 008a 00       		.byte	0
+ 1793 008b 0B       		.uleb128 0xb
+ 1794 008c 8A8201   		.uleb128 0x410a
+ 1795 008f 00       		.byte	0
+ 1796 0090 02       		.uleb128 0x2
+ 1797 0091 18       		.uleb128 0x18
+ 1798 0092 9142     		.uleb128 0x2111
+ 1799 0094 18       		.uleb128 0x18
+ 1800 0095 00       		.byte	0
+ 1801 0096 00       		.byte	0
+ 1802 0097 0C       		.uleb128 0xc
+ 1803 0098 898201   		.uleb128 0x4109
+ 1804 009b 00       		.byte	0
+ 1805 009c 11       		.uleb128 0x11
+ 1806 009d 01       		.uleb128 0x1
+ 1807 009e 31       		.uleb128 0x31
+ 1808 009f 13       		.uleb128 0x13
+ 1809 00a0 00       		.byte	0
+ 1810 00a1 00       		.byte	0
+ 1811 00a2 0D       		.uleb128 0xd
+ 1812 00a3 898201   		.uleb128 0x4109
+ 1813 00a6 01       		.byte	0x1
+ 1814 00a7 11       		.uleb128 0x11
+ 1815 00a8 01       		.uleb128 0x1
+ 1816 00a9 31       		.uleb128 0x31
+ 1817 00aa 13       		.uleb128 0x13
+ 1818 00ab 01       		.uleb128 0x1
+ 1819 00ac 13       		.uleb128 0x13
+ 1820 00ad 00       		.byte	0
+ 1821 00ae 00       		.byte	0
+ 1822 00af 0E       		.uleb128 0xe
+ 1823 00b0 2E       		.uleb128 0x2e
+ 1824 00b1 01       		.byte	0x1
+ 1825 00b2 3F       		.uleb128 0x3f
+ 1826 00b3 19       		.uleb128 0x19
+ 1827 00b4 03       		.uleb128 0x3
+ 1828 00b5 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 39
+
+
+ 1829 00b6 3A       		.uleb128 0x3a
+ 1830 00b7 0B       		.uleb128 0xb
+ 1831 00b8 3B       		.uleb128 0x3b
+ 1832 00b9 0B       		.uleb128 0xb
+ 1833 00ba 27       		.uleb128 0x27
+ 1834 00bb 19       		.uleb128 0x19
+ 1835 00bc 49       		.uleb128 0x49
+ 1836 00bd 13       		.uleb128 0x13
+ 1837 00be 11       		.uleb128 0x11
+ 1838 00bf 01       		.uleb128 0x1
+ 1839 00c0 12       		.uleb128 0x12
+ 1840 00c1 06       		.uleb128 0x6
+ 1841 00c2 40       		.uleb128 0x40
+ 1842 00c3 18       		.uleb128 0x18
+ 1843 00c4 9742     		.uleb128 0x2117
+ 1844 00c6 19       		.uleb128 0x19
+ 1845 00c7 01       		.uleb128 0x1
+ 1846 00c8 13       		.uleb128 0x13
+ 1847 00c9 00       		.byte	0
+ 1848 00ca 00       		.byte	0
+ 1849 00cb 0F       		.uleb128 0xf
+ 1850 00cc 05       		.uleb128 0x5
+ 1851 00cd 00       		.byte	0
+ 1852 00ce 03       		.uleb128 0x3
+ 1853 00cf 0E       		.uleb128 0xe
+ 1854 00d0 3A       		.uleb128 0x3a
+ 1855 00d1 0B       		.uleb128 0xb
+ 1856 00d2 3B       		.uleb128 0x3b
+ 1857 00d3 0B       		.uleb128 0xb
+ 1858 00d4 49       		.uleb128 0x49
+ 1859 00d5 13       		.uleb128 0x13
+ 1860 00d6 02       		.uleb128 0x2
+ 1861 00d7 17       		.uleb128 0x17
+ 1862 00d8 00       		.byte	0
+ 1863 00d9 00       		.byte	0
+ 1864 00da 10       		.uleb128 0x10
+ 1865 00db 34       		.uleb128 0x34
+ 1866 00dc 00       		.byte	0
+ 1867 00dd 03       		.uleb128 0x3
+ 1868 00de 0E       		.uleb128 0xe
+ 1869 00df 3A       		.uleb128 0x3a
+ 1870 00e0 0B       		.uleb128 0xb
+ 1871 00e1 3B       		.uleb128 0x3b
+ 1872 00e2 0B       		.uleb128 0xb
+ 1873 00e3 49       		.uleb128 0x49
+ 1874 00e4 13       		.uleb128 0x13
+ 1875 00e5 02       		.uleb128 0x2
+ 1876 00e6 17       		.uleb128 0x17
+ 1877 00e7 00       		.byte	0
+ 1878 00e8 00       		.byte	0
+ 1879 00e9 11       		.uleb128 0x11
+ 1880 00ea 05       		.uleb128 0x5
+ 1881 00eb 00       		.byte	0
+ 1882 00ec 03       		.uleb128 0x3
+ 1883 00ed 0E       		.uleb128 0xe
+ 1884 00ee 3A       		.uleb128 0x3a
+ 1885 00ef 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 40
+
+
+ 1886 00f0 3B       		.uleb128 0x3b
+ 1887 00f1 0B       		.uleb128 0xb
+ 1888 00f2 49       		.uleb128 0x49
+ 1889 00f3 13       		.uleb128 0x13
+ 1890 00f4 02       		.uleb128 0x2
+ 1891 00f5 18       		.uleb128 0x18
+ 1892 00f6 00       		.byte	0
+ 1893 00f7 00       		.byte	0
+ 1894 00f8 12       		.uleb128 0x12
+ 1895 00f9 2E       		.uleb128 0x2e
+ 1896 00fa 01       		.byte	0x1
+ 1897 00fb 3F       		.uleb128 0x3f
+ 1898 00fc 19       		.uleb128 0x19
+ 1899 00fd 03       		.uleb128 0x3
+ 1900 00fe 0E       		.uleb128 0xe
+ 1901 00ff 3A       		.uleb128 0x3a
+ 1902 0100 0B       		.uleb128 0xb
+ 1903 0101 3B       		.uleb128 0x3b
+ 1904 0102 0B       		.uleb128 0xb
+ 1905 0103 27       		.uleb128 0x27
+ 1906 0104 19       		.uleb128 0x19
+ 1907 0105 49       		.uleb128 0x49
+ 1908 0106 13       		.uleb128 0x13
+ 1909 0107 8701     		.uleb128 0x87
+ 1910 0109 19       		.uleb128 0x19
+ 1911 010a 11       		.uleb128 0x11
+ 1912 010b 01       		.uleb128 0x1
+ 1913 010c 12       		.uleb128 0x12
+ 1914 010d 06       		.uleb128 0x6
+ 1915 010e 40       		.uleb128 0x40
+ 1916 010f 18       		.uleb128 0x18
+ 1917 0110 9742     		.uleb128 0x2117
+ 1918 0112 19       		.uleb128 0x19
+ 1919 0113 01       		.uleb128 0x1
+ 1920 0114 13       		.uleb128 0x13
+ 1921 0115 00       		.byte	0
+ 1922 0116 00       		.byte	0
+ 1923 0117 13       		.uleb128 0x13
+ 1924 0118 34       		.uleb128 0x34
+ 1925 0119 00       		.byte	0
+ 1926 011a 03       		.uleb128 0x3
+ 1927 011b 08       		.uleb128 0x8
+ 1928 011c 3A       		.uleb128 0x3a
+ 1929 011d 0B       		.uleb128 0xb
+ 1930 011e 3B       		.uleb128 0x3b
+ 1931 011f 05       		.uleb128 0x5
+ 1932 0120 49       		.uleb128 0x49
+ 1933 0121 13       		.uleb128 0x13
+ 1934 0122 02       		.uleb128 0x2
+ 1935 0123 18       		.uleb128 0x18
+ 1936 0124 00       		.byte	0
+ 1937 0125 00       		.byte	0
+ 1938 0126 14       		.uleb128 0x14
+ 1939 0127 34       		.uleb128 0x34
+ 1940 0128 00       		.byte	0
+ 1941 0129 03       		.uleb128 0x3
+ 1942 012a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 41
+
+
+ 1943 012b 3A       		.uleb128 0x3a
+ 1944 012c 0B       		.uleb128 0xb
+ 1945 012d 3B       		.uleb128 0x3b
+ 1946 012e 05       		.uleb128 0x5
+ 1947 012f 49       		.uleb128 0x49
+ 1948 0130 13       		.uleb128 0x13
+ 1949 0131 3F       		.uleb128 0x3f
+ 1950 0132 19       		.uleb128 0x19
+ 1951 0133 3C       		.uleb128 0x3c
+ 1952 0134 19       		.uleb128 0x19
+ 1953 0135 00       		.byte	0
+ 1954 0136 00       		.byte	0
+ 1955 0137 15       		.uleb128 0x15
+ 1956 0138 35       		.uleb128 0x35
+ 1957 0139 00       		.byte	0
+ 1958 013a 49       		.uleb128 0x49
+ 1959 013b 13       		.uleb128 0x13
+ 1960 013c 00       		.byte	0
+ 1961 013d 00       		.byte	0
+ 1962 013e 16       		.uleb128 0x16
+ 1963 013f 34       		.uleb128 0x34
+ 1964 0140 00       		.byte	0
+ 1965 0141 03       		.uleb128 0x3
+ 1966 0142 0E       		.uleb128 0xe
+ 1967 0143 3A       		.uleb128 0x3a
+ 1968 0144 0B       		.uleb128 0xb
+ 1969 0145 3B       		.uleb128 0x3b
+ 1970 0146 0B       		.uleb128 0xb
+ 1971 0147 49       		.uleb128 0x49
+ 1972 0148 13       		.uleb128 0x13
+ 1973 0149 3F       		.uleb128 0x3f
+ 1974 014a 19       		.uleb128 0x19
+ 1975 014b 02       		.uleb128 0x2
+ 1976 014c 18       		.uleb128 0x18
+ 1977 014d 00       		.byte	0
+ 1978 014e 00       		.byte	0
+ 1979 014f 17       		.uleb128 0x17
+ 1980 0150 01       		.uleb128 0x1
+ 1981 0151 01       		.byte	0x1
+ 1982 0152 49       		.uleb128 0x49
+ 1983 0153 13       		.uleb128 0x13
+ 1984 0154 01       		.uleb128 0x1
+ 1985 0155 13       		.uleb128 0x13
+ 1986 0156 00       		.byte	0
+ 1987 0157 00       		.byte	0
+ 1988 0158 18       		.uleb128 0x18
+ 1989 0159 21       		.uleb128 0x21
+ 1990 015a 00       		.byte	0
+ 1991 015b 49       		.uleb128 0x49
+ 1992 015c 13       		.uleb128 0x13
+ 1993 015d 2F       		.uleb128 0x2f
+ 1994 015e 0B       		.uleb128 0xb
+ 1995 015f 00       		.byte	0
+ 1996 0160 00       		.byte	0
+ 1997 0161 19       		.uleb128 0x19
+ 1998 0162 2E       		.uleb128 0x2e
+ 1999 0163 00       		.byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 42
+
+
+ 2000 0164 3F       		.uleb128 0x3f
+ 2001 0165 19       		.uleb128 0x19
+ 2002 0166 3C       		.uleb128 0x3c
+ 2003 0167 19       		.uleb128 0x19
+ 2004 0168 6E       		.uleb128 0x6e
+ 2005 0169 0E       		.uleb128 0xe
+ 2006 016a 03       		.uleb128 0x3
+ 2007 016b 0E       		.uleb128 0xe
+ 2008 016c 3A       		.uleb128 0x3a
+ 2009 016d 0B       		.uleb128 0xb
+ 2010 016e 3B       		.uleb128 0x3b
+ 2011 016f 0B       		.uleb128 0xb
+ 2012 0170 00       		.byte	0
+ 2013 0171 00       		.byte	0
+ 2014 0172 00       		.byte	0
+ 2015              		.section	.debug_loc,"",%progbits
+ 2016              	.Ldebug_loc0:
+ 2017              	.LLST0:
+ 2018 0000 00000000 		.4byte	.LVL7
+ 2019 0004 24000000 		.4byte	.LVL12
+ 2020 0008 0100     		.2byte	0x1
+ 2021 000a 50       		.byte	0x50
+ 2022 000b 24000000 		.4byte	.LVL12
+ 2023 000f 26000000 		.4byte	.LFE64
+ 2024 0013 0400     		.2byte	0x4
+ 2025 0015 F3       		.byte	0xf3
+ 2026 0016 01       		.uleb128 0x1
+ 2027 0017 50       		.byte	0x50
+ 2028 0018 9F       		.byte	0x9f
+ 2029 0019 00000000 		.4byte	0
+ 2030 001d 00000000 		.4byte	0
+ 2031              	.LLST1:
+ 2032 0021 00000000 		.4byte	.LVL7
+ 2033 0025 0A000000 		.4byte	.LVL8
+ 2034 0029 0200     		.2byte	0x2
+ 2035 002b 31       		.byte	0x31
+ 2036 002c 9F       		.byte	0x9f
+ 2037 002d 0A000000 		.4byte	.LVL8
+ 2038 0031 26000000 		.4byte	.LFE64
+ 2039 0035 0100     		.2byte	0x1
+ 2040 0037 53       		.byte	0x53
+ 2041 0038 00000000 		.4byte	0
+ 2042 003c 00000000 		.4byte	0
+ 2043              	.LLST2:
+ 2044 0040 00000000 		.4byte	.LVL13
+ 2045 0044 04000000 		.4byte	.LVL14
+ 2046 0048 0100     		.2byte	0x1
+ 2047 004a 50       		.byte	0x50
+ 2048 004b 04000000 		.4byte	.LVL14
+ 2049 004f 06000000 		.4byte	.LFE65
+ 2050 0053 0400     		.2byte	0x4
+ 2051 0055 F3       		.byte	0xf3
+ 2052 0056 01       		.uleb128 0x1
+ 2053 0057 50       		.byte	0x50
+ 2054 0058 9F       		.byte	0x9f
+ 2055 0059 00000000 		.4byte	0
+ 2056 005d 00000000 		.4byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 43
+
+
+ 2057              	.LLST3:
+ 2058 0061 00000000 		.4byte	.LVL15
+ 2059 0065 02000000 		.4byte	.LVL16
+ 2060 0069 0100     		.2byte	0x1
+ 2061 006b 50       		.byte	0x50
+ 2062 006c 02000000 		.4byte	.LVL16
+ 2063 0070 04000000 		.4byte	.LFE66
+ 2064 0074 0400     		.2byte	0x4
+ 2065 0076 F3       		.byte	0xf3
+ 2066 0077 01       		.uleb128 0x1
+ 2067 0078 50       		.byte	0x50
+ 2068 0079 9F       		.byte	0x9f
+ 2069 007a 00000000 		.4byte	0
+ 2070 007e 00000000 		.4byte	0
+ 2071              	.LLST4:
+ 2072 0082 00000000 		.4byte	.LVL41
+ 2073 0086 04000000 		.4byte	.LVL42
+ 2074 008a 0100     		.2byte	0x1
+ 2075 008c 50       		.byte	0x50
+ 2076 008d 04000000 		.4byte	.LVL42
+ 2077 0091 08000000 		.4byte	.LFE67
+ 2078 0095 0400     		.2byte	0x4
+ 2079 0097 F3       		.byte	0xf3
+ 2080 0098 01       		.uleb128 0x1
+ 2081 0099 50       		.byte	0x50
+ 2082 009a 9F       		.byte	0x9f
+ 2083 009b 00000000 		.4byte	0
+ 2084 009f 00000000 		.4byte	0
+ 2085              		.section	.debug_aranges,"",%progbits
+ 2086 0000 4C000000 		.4byte	0x4c
+ 2087 0004 0200     		.2byte	0x2
+ 2088 0006 00000000 		.4byte	.Ldebug_info0
+ 2089 000a 04       		.byte	0x4
+ 2090 000b 00       		.byte	0
+ 2091 000c 0000     		.2byte	0
+ 2092 000e 0000     		.2byte	0
+ 2093 0010 00000000 		.4byte	.LFB69
+ 2094 0014 74000000 		.4byte	.LFE69-.LFB69
+ 2095 0018 00000000 		.4byte	.LFB64
+ 2096 001c 26000000 		.4byte	.LFE64-.LFB64
+ 2097 0020 00000000 		.4byte	.LFB65
+ 2098 0024 06000000 		.4byte	.LFE65-.LFB65
+ 2099 0028 00000000 		.4byte	.LFB66
+ 2100 002c 04000000 		.4byte	.LFE66-.LFB66
+ 2101 0030 00000000 		.4byte	.LFB68
+ 2102 0034 A8010000 		.4byte	.LFE68-.LFB68
+ 2103 0038 00000000 		.4byte	.LFB67
+ 2104 003c 08000000 		.4byte	.LFE67-.LFB67
+ 2105 0040 00000000 		.4byte	.LFB70
+ 2106 0044 64000000 		.4byte	.LFE70-.LFB70
+ 2107 0048 00000000 		.4byte	0
+ 2108 004c 00000000 		.4byte	0
+ 2109              		.section	.debug_ranges,"",%progbits
+ 2110              	.Ldebug_ranges0:
+ 2111 0000 00000000 		.4byte	.LFB69
+ 2112 0004 74000000 		.4byte	.LFE69
+ 2113 0008 00000000 		.4byte	.LFB64
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 44
+
+
+ 2114 000c 26000000 		.4byte	.LFE64
+ 2115 0010 00000000 		.4byte	.LFB65
+ 2116 0014 06000000 		.4byte	.LFE65
+ 2117 0018 00000000 		.4byte	.LFB66
+ 2118 001c 04000000 		.4byte	.LFE66
+ 2119 0020 00000000 		.4byte	.LFB68
+ 2120 0024 A8010000 		.4byte	.LFE68
+ 2121 0028 00000000 		.4byte	.LFB67
+ 2122 002c 08000000 		.4byte	.LFE67
+ 2123 0030 00000000 		.4byte	.LFB70
+ 2124 0034 64000000 		.4byte	.LFE70
+ 2125 0038 00000000 		.4byte	0
+ 2126 003c 00000000 		.4byte	0
+ 2127              		.section	.debug_line,"",%progbits
+ 2128              	.Ldebug_line0:
+ 2129 0000 18030000 		.section	.debug_str,"MS",%progbits,1
+ 2129      02002702 
+ 2129      00000201 
+ 2129      FB0E0D00 
+ 2129      01010101 
+ 2130              	.LASF72:
+ 2131 0000 51756164 		.ascii	"QuadDec_2_SetCounter\000"
+ 2131      4465635F 
+ 2131      325F5365 
+ 2131      74436F75 
+ 2131      6E746572 
+ 2132              	.LASF61:
+ 2133 0015 44697265 		.ascii	"Direction_1_2_Write\000"
+ 2133      6374696F 
+ 2133      6E5F315F 
+ 2133      325F5772 
+ 2133      69746500 
+ 2134              	.LASF37:
+ 2135 0029 73746F70 		.ascii	"stopbyte1\000"
+ 2135      62797465 
+ 2135      3100
+ 2136              	.LASF47:
+ 2137 0033 73746F70 		.ascii	"stopbyte2\000"
+ 2137      62797465 
+ 2137      3200
+ 2138              	.LASF50:
+ 2139 003d 636F6E63 		.ascii	"concatination\000"
+ 2139      6174696E 
+ 2139      6174696F 
+ 2139      6E00
+ 2140              	.LASF65:
+ 2141 004b 44697265 		.ascii	"Direction_2_2_Write\000"
+ 2141      6374696F 
+ 2141      6E5F325F 
+ 2141      325F5772 
+ 2141      69746500 
+ 2142              	.LASF67:
+ 2143 005f 50574D5F 		.ascii	"PWM_1_Start\000"
+ 2143      315F5374 
+ 2143      61727400 
+ 2144              	.LASF25:
+ 2145 006b 4D6F746F 		.ascii	"MotorControl\000"
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 45
+
+
+ 2145      72436F6E 
+ 2145      74726F6C 
+ 2145      00
+ 2146              	.LASF51:
+ 2147 0078 636F756E 		.ascii	"counts\000"
+ 2147      747300
+ 2148              	.LASF24:
+ 2149 007f 54617267 		.ascii	"Targetchanging\000"
+ 2149      65746368 
+ 2149      616E6769 
+ 2149      6E6700
+ 2150              	.LASF2:
+ 2151 008e 73686F72 		.ascii	"short int\000"
+ 2151      7420696E 
+ 2151      7400
+ 2152              	.LASF76:
+ 2153 0098 6973725F 		.ascii	"isr_motor_StartEx\000"
+ 2153      6D6F746F 
+ 2153      725F5374 
+ 2153      61727445 
+ 2153      7800
+ 2154              	.LASF16:
+ 2155 00aa 73697A65 		.ascii	"sizetype\000"
+ 2155      74797065 
+ 2155      00
+ 2156              	.LASF23:
+ 2157 00b3 666F7274 		.ascii	"forthByte\000"
+ 2157      68427974 
+ 2157      6500
+ 2158              	.LASF82:
+ 2159 00bd 6D61696E 		.ascii	"main\000"
+ 2159      00
+ 2160              	.LASF18:
+ 2161 00c2 61727253 		.ascii	"arrSize\000"
+ 2161      697A6500 
+ 2162              	.LASF68:
+ 2163 00ca 51756164 		.ascii	"QuadDec_1_Start\000"
+ 2163      4465635F 
+ 2163      315F5374 
+ 2163      61727400 
+ 2164              	.LASF55:
+ 2165 00da 55415254 		.ascii	"UART_GetChar\000"
+ 2165      5F476574 
+ 2165      43686172 
+ 2165      00
+ 2166              	.LASF36:
+ 2167 00e7 7472616E 		.ascii	"transmitbuffer1\000"
+ 2167      736D6974 
+ 2167      62756666 
+ 2167      65723100 
+ 2168              	.LASF45:
+ 2169 00f7 7472616E 		.ascii	"transmitbuffer2\000"
+ 2169      736D6974 
+ 2169      62756666 
+ 2169      65723200 
+ 2170              	.LASF11:
+ 2171 0107 75696E74 		.ascii	"uint8\000"
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 46
+
+
+ 2171      3800
+ 2172              	.LASF63:
+ 2173 010d 50574D5F 		.ascii	"PWM_2_WriteCompare\000"
+ 2173      325F5772 
+ 2173      69746543 
+ 2173      6F6D7061 
+ 2173      726500
+ 2174              	.LASF12:
+ 2175 0120 666C6F61 		.ascii	"float\000"
+ 2175      7400
+ 2176              	.LASF6:
+ 2177 0126 6C6F6E67 		.ascii	"long long int\000"
+ 2177      206C6F6E 
+ 2177      6720696E 
+ 2177      7400
+ 2178              	.LASF74:
+ 2179 0134 54696D65 		.ascii	"Timer_Start\000"
+ 2179      725F5374 
+ 2179      61727400 
+ 2180              	.LASF21:
+ 2181 0140 64757479 		.ascii	"dutyCycle\000"
+ 2181      4379636C 
+ 2181      6500
+ 2182              	.LASF34:
+ 2183 014a 696E7465 		.ascii	"integral1\000"
+ 2183      6772616C 
+ 2183      3100
+ 2184              	.LASF43:
+ 2185 0154 696E7465 		.ascii	"integral2\000"
+ 2185      6772616C 
+ 2185      3200
+ 2186              	.LASF78:
+ 2187 015e 6973725F 		.ascii	"isr_1_StartEx\000"
+ 2187      315F5374 
+ 2187      61727445 
+ 2187      7800
+ 2188              	.LASF39:
+ 2189 016c 74617267 		.ascii	"target2\000"
+ 2189      65743200 
+ 2190              	.LASF26:
+ 2191 0174 636F6D62 		.ascii	"combineBytes\000"
+ 2191      696E6542 
+ 2191      79746573 
+ 2191      00
+ 2192              	.LASF46:
+ 2193 0181 7472616E 		.ascii	"transmit2\000"
+ 2193      736D6974 
+ 2193      3200
+ 2194              	.LASF56:
+ 2195 018b 61746F69 		.ascii	"atoi\000"
+ 2195      00
+ 2196              	.LASF81:
+ 2197 0190 433A5C55 		.ascii	"C:\\Users\\Caesar\\Desktop\\Spring\\ME135\\Timertes"
+ 2197      73657273 
+ 2197      5C436165 
+ 2197      7361725C 
+ 2197      4465736B 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 47
+
+
+ 2198 01bd 74696E67 		.ascii	"ting\\Timertesting.cydsn\000"
+ 2198      5C54696D 
+ 2198      65727465 
+ 2198      7374696E 
+ 2198      672E6379 
+ 2199              	.LASF1:
+ 2200 01d5 756E7369 		.ascii	"unsigned char\000"
+ 2200      676E6564 
+ 2200      20636861 
+ 2200      7200
+ 2201              	.LASF59:
+ 2202 01e3 50574D5F 		.ascii	"PWM_1_WriteCompare\000"
+ 2202      315F5772 
+ 2202      69746543 
+ 2202      6F6D7061 
+ 2202      726500
+ 2203              	.LASF57:
+ 2204 01f6 55415254 		.ascii	"UART_ClearRxBuffer\000"
+ 2204      5F436C65 
+ 2204      61725278 
+ 2204      42756666 
+ 2204      657200
+ 2205              	.LASF15:
+ 2206 0209 6C6F6E67 		.ascii	"long double\000"
+ 2206      20646F75 
+ 2206      626C6500 
+ 2207              	.LASF17:
+ 2208 0215 636F6E63 		.ascii	"concat\000"
+ 2208      617400
+ 2209              	.LASF60:
+ 2210 021c 44697265 		.ascii	"Direction_1_1_Write\000"
+ 2210      6374696F 
+ 2210      6E5F315F 
+ 2210      315F5772 
+ 2210      69746500 
+ 2211              	.LASF33:
+ 2212 0230 64657269 		.ascii	"derivative1\000"
+ 2212      76617469 
+ 2212      76653100 
+ 2213              	.LASF64:
+ 2214 023c 44697265 		.ascii	"Direction_2_1_Write\000"
+ 2214      6374696F 
+ 2214      6E5F325F 
+ 2214      315F5772 
+ 2214      69746500 
+ 2215              	.LASF0:
+ 2216 0250 7369676E 		.ascii	"signed char\000"
+ 2216      65642063 
+ 2216      68617200 
+ 2217              	.LASF7:
+ 2218 025c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2218      206C6F6E 
+ 2218      6720756E 
+ 2218      7369676E 
+ 2218      65642069 
+ 2219              	.LASF8:
+ 2220 0273 756E7369 		.ascii	"unsigned int\000"
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 48
+
+
+ 2220      676E6564 
+ 2220      20696E74 
+ 2220      00
+ 2221              	.LASF20:
+ 2222 0280 66697273 		.ascii	"firstByte\000"
+ 2222      74427974 
+ 2222      6500
+ 2223              	.LASF27:
+ 2224 028a 7365636F 		.ascii	"secondByte\000"
+ 2224      6E644279 
+ 2224      746500
+ 2225              	.LASF70:
+ 2226 0295 50574D5F 		.ascii	"PWM_2_Start\000"
+ 2226      325F5374 
+ 2226      61727400 
+ 2227              	.LASF3:
+ 2228 02a1 73686F72 		.ascii	"short unsigned int\000"
+ 2228      7420756E 
+ 2228      7369676E 
+ 2228      65642069 
+ 2228      6E7400
+ 2229              	.LASF79:
+ 2230 02b4 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2230      43313120 
+ 2230      352E342E 
+ 2230      31203230 
+ 2230      31363036 
+ 2231 02e7 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 2231      20726576 
+ 2231      6973696F 
+ 2231      6E203233 
+ 2231      37373135 
+ 2232 031a 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2232      66756E63 
+ 2232      74696F6E 
+ 2232      2D736563 
+ 2232      74696F6E 
+ 2233              	.LASF14:
+ 2234 0342 63686172 		.ascii	"char\000"
+ 2234      00
+ 2235              	.LASF4:
+ 2236 0347 6C6F6E67 		.ascii	"long int\000"
+ 2236      20696E74 
+ 2236      00
+ 2237              	.LASF58:
+ 2238 0350 51756164 		.ascii	"QuadDec_1_GetCounter\000"
+ 2238      4465635F 
+ 2238      315F4765 
+ 2238      74436F75 
+ 2238      6E746572 
+ 2239              	.LASF73:
+ 2240 0365 55415254 		.ascii	"UART_Start\000"
+ 2240      5F537461 
+ 2240      727400
+ 2241              	.LASF10:
+ 2242 0370 696E7433 		.ascii	"int32_t\000"
+ 2242      325F7400 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 49
+
+
+ 2243              	.LASF62:
+ 2244 0378 51756164 		.ascii	"QuadDec_2_GetCounter\000"
+ 2244      4465635F 
+ 2244      325F4765 
+ 2244      74436F75 
+ 2244      6E746572 
+ 2245              	.LASF77:
+ 2246 038d 6973725F 		.ascii	"isr_1_Start\000"
+ 2246      315F5374 
+ 2246      61727400 
+ 2247              	.LASF71:
+ 2248 0399 51756164 		.ascii	"QuadDec_2_Start\000"
+ 2248      4465635F 
+ 2248      325F5374 
+ 2248      61727400 
+ 2249              	.LASF80:
+ 2250 03a9 6D61696E 		.ascii	"main.c\000"
+ 2250      2E6300
+ 2251              	.LASF49:
+ 2252 03b0 6E65775F 		.ascii	"new_target\000"
+ 2252      74617267 
+ 2252      657400
+ 2253              	.LASF5:
+ 2254 03bb 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2254      20756E73 
+ 2254      69676E65 
+ 2254      6420696E 
+ 2254      7400
+ 2255              	.LASF29:
+ 2256 03cd 636E7431 		.ascii	"cnt1\000"
+ 2256      00
+ 2257              	.LASF38:
+ 2258 03d2 636E7432 		.ascii	"cnt2\000"
+ 2258      00
+ 2259              	.LASF13:
+ 2260 03d7 646F7562 		.ascii	"double\000"
+ 2260      6C6500
+ 2261              	.LASF28:
+ 2262 03de 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2262      52784275 
+ 2262      66666572 
+ 2262      00
+ 2263              	.LASF52:
+ 2264 03eb 6D756C74 		.ascii	"multitasking\000"
+ 2264      69746173 
+ 2264      6B696E67 
+ 2264      00
+ 2265              	.LASF66:
+ 2266 03f8 55415254 		.ascii	"UART_PutArray\000"
+ 2266      5F507574 
+ 2266      41727261 
+ 2266      7900
+ 2267              	.LASF54:
+ 2268 0406 73747263 		.ascii	"strcat\000"
+ 2268      617400
+ 2269              	.LASF19:
+ 2270 040d 62797465 		.ascii	"bytesCharArrayNeeds\000"
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 50
+
+
+ 2270      73436861 
+ 2270      72417272 
+ 2270      61794E65 
+ 2270      65647300 
+ 2271              	.LASF9:
+ 2272 0421 5F5F696E 		.ascii	"__int32_t\000"
+ 2272      7433325F 
+ 2272      7400
+ 2273              	.LASF32:
+ 2274 042b 6C617374 		.ascii	"last_error1\000"
+ 2274      5F657272 
+ 2274      6F723100 
+ 2275              	.LASF41:
+ 2276 0437 6C617374 		.ascii	"last_error2\000"
+ 2276      5F657272 
+ 2276      6F723200 
+ 2277              	.LASF35:
+ 2278 0443 64757479 		.ascii	"duty_cycle1\000"
+ 2278      5F637963 
+ 2278      6C653100 
+ 2279              	.LASF44:
+ 2280 044f 64757479 		.ascii	"duty_cycle2\000"
+ 2280      5F637963 
+ 2280      6C653200 
+ 2281              	.LASF48:
+ 2282 045b 6E65775F 		.ascii	"new_get\000"
+ 2282      67657400 
+ 2283              	.LASF75:
+ 2284 0463 6973725F 		.ascii	"isr_motor_Start\000"
+ 2284      6D6F746F 
+ 2284      725F5374 
+ 2284      61727400 
+ 2285              	.LASF22:
+ 2286 0473 6E756D62 		.ascii	"number\000"
+ 2286      657200
+ 2287              	.LASF30:
+ 2288 047a 74617267 		.ascii	"target1\000"
+ 2288      65743100 
+ 2289              	.LASF31:
+ 2290 0482 6572726F 		.ascii	"error1\000"
+ 2290      723100
+ 2291              	.LASF40:
+ 2292 0489 6572726F 		.ascii	"error2\000"
+ 2292      723200
+ 2293              	.LASF69:
+ 2294 0490 51756164 		.ascii	"QuadDec_1_SetCounter\000"
+ 2294      4465635F 
+ 2294      315F5365 
+ 2294      74436F75 
+ 2294      6E746572 
+ 2295              	.LASF53:
+ 2296 04a5 7472616E 		.ascii	"transmit\000"
+ 2296      736D6974 
+ 2296      00
+ 2297              	.LASF42:
+ 2298 04ae 64657269 		.ascii	"derivative2\000"
+ 2298      76617469 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cca5y8nl.s 			page 51
+
+
+ 2298      76653200 
+ 2299              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

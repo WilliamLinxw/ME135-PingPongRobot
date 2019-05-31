@@ -1,0 +1,4216 @@
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_metadata
+  20              		.global	cy_meta_flashprotect
+  21              		.global	cy_meta_wonvl
+  22              		.global	cy_meta_custnvl
+  23              		.global	cy_meta_configecc
+  24              		.section	.cyconfigecc,"a",%progbits
+  25              		.align	2
+  26              		.type	cy_meta_configecc, %object
+  27              		.size	cy_meta_configecc, 3524
+  28              	cy_meta_configecc:
+  29 0000 03       		.byte	3
+  30 0001 52       		.byte	82
+  31 0002 00       		.byte	0
+  32 0003 40       		.byte	64
+  33 0004 07       		.byte	7
+  34 0005 64       		.byte	100
+  35 0006 00       		.byte	0
+  36 0007 40       		.byte	64
+  37 0008 03       		.byte	3
+  38 0009 65       		.byte	101
+  39 000a 00       		.byte	0
+  40 000b 40       		.byte	64
+  41 000c 52       		.byte	82
+  42 000d 00       		.byte	0
+  43 000e 01       		.byte	1
+  44 000f 40       		.byte	64
+  45 0010 2B       		.byte	43
+  46 0011 01       		.byte	1
+  47 0012 01       		.byte	1
+  48 0013 40       		.byte	64
+  49 0014 3C       		.byte	60
+  50 0015 02       		.byte	2
+  51 0016 01       		.byte	1
+  52 0017 40       		.byte	64
+  53 0018 2E       		.byte	46
+  54 0019 03       		.byte	3
+  55 001a 01       		.byte	1
+  56 001b 40       		.byte	64
+  57 001c 4A       		.byte	74
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 2
+
+
+  58 001d 04       		.byte	4
+  59 001e 01       		.byte	1
+  60 001f 40       		.byte	64
+  61 0020 3D       		.byte	61
+  62 0021 05       		.byte	5
+  63 0022 01       		.byte	1
+  64 0023 40       		.byte	64
+  65 0024 5E       		.byte	94
+  66 0025 06       		.byte	6
+  67 0026 01       		.byte	1
+  68 0027 40       		.byte	64
+  69 0028 3D       		.byte	61
+  70 0029 07       		.byte	7
+  71 002a 01       		.byte	1
+  72 002b 40       		.byte	64
+  73 002c 45       		.byte	69
+  74 002d 08       		.byte	8
+  75 002e 01       		.byte	1
+  76 002f 40       		.byte	64
+  77 0030 42       		.byte	66
+  78 0031 09       		.byte	9
+  79 0032 01       		.byte	1
+  80 0033 40       		.byte	64
+  81 0034 59       		.byte	89
+  82 0035 0A       		.byte	10
+  83 0036 01       		.byte	1
+  84 0037 40       		.byte	64
+  85 0038 45       		.byte	69
+  86 0039 0B       		.byte	11
+  87 003a 01       		.byte	1
+  88 003b 40       		.byte	64
+  89 003c 5F       		.byte	95
+  90 003d 0C       		.byte	12
+  91 003e 01       		.byte	1
+  92 003f 40       		.byte	64
+  93 0040 3B       		.byte	59
+  94 0041 0D       		.byte	13
+  95 0042 01       		.byte	1
+  96 0043 40       		.byte	64
+  97 0044 3B       		.byte	59
+  98 0045 0E       		.byte	14
+  99 0046 01       		.byte	1
+ 100 0047 40       		.byte	64
+ 101 0048 2B       		.byte	43
+ 102 0049 0F       		.byte	15
+ 103 004a 01       		.byte	1
+ 104 004b 40       		.byte	64
+ 105 004c 49       		.byte	73
+ 106 004d 14       		.byte	20
+ 107 004e 01       		.byte	1
+ 108 004f 40       		.byte	64
+ 109 0050 2C       		.byte	44
+ 110 0051 15       		.byte	21
+ 111 0052 01       		.byte	1
+ 112 0053 40       		.byte	64
+ 113 0054 5A       		.byte	90
+ 114 0055 16       		.byte	22
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 3
+
+
+ 115 0056 01       		.byte	1
+ 116 0057 40       		.byte	64
+ 117 0058 33       		.byte	51
+ 118 0059 17       		.byte	23
+ 119 005a 01       		.byte	1
+ 120 005b 40       		.byte	64
+ 121 005c 4C       		.byte	76
+ 122 005d 18       		.byte	24
+ 123 005e 01       		.byte	1
+ 124 005f 40       		.byte	64
+ 125 0060 32       		.byte	50
+ 126 0061 19       		.byte	25
+ 127 0062 01       		.byte	1
+ 128 0063 40       		.byte	64
+ 129 0064 3E       		.byte	62
+ 130 0065 1A       		.byte	26
+ 131 0066 01       		.byte	1
+ 132 0067 40       		.byte	64
+ 133 0068 43       		.byte	67
+ 134 0069 1B       		.byte	27
+ 135 006a 01       		.byte	1
+ 136 006b 40       		.byte	64
+ 137 006c 03       		.byte	3
+ 138 006d 40       		.byte	64
+ 139 006e 01       		.byte	1
+ 140 006f 40       		.byte	64
+ 141 0070 04       		.byte	4
+ 142 0071 41       		.byte	65
+ 143 0072 01       		.byte	1
+ 144 0073 40       		.byte	64
+ 145 0074 03       		.byte	3
+ 146 0075 42       		.byte	66
+ 147 0076 01       		.byte	1
+ 148 0077 40       		.byte	64
+ 149 0078 04       		.byte	4
+ 150 0079 43       		.byte	67
+ 151 007a 01       		.byte	1
+ 152 007b 40       		.byte	64
+ 153 007c 02       		.byte	2
+ 154 007d 44       		.byte	68
+ 155 007e 01       		.byte	1
+ 156 007f 40       		.byte	64
+ 157 0080 04       		.byte	4
+ 158 0081 45       		.byte	69
+ 159 0082 01       		.byte	1
+ 160 0083 40       		.byte	64
+ 161 0084 02       		.byte	2
+ 162 0085 46       		.byte	70
+ 163 0086 01       		.byte	1
+ 164 0087 40       		.byte	64
+ 165 0088 02       		.byte	2
+ 166 0089 47       		.byte	71
+ 167 008a 01       		.byte	1
+ 168 008b 40       		.byte	64
+ 169 008c 01       		.byte	1
+ 170 008d 48       		.byte	72
+ 171 008e 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 4
+
+
+ 172 008f 40       		.byte	64
+ 173 0090 0D       		.byte	13
+ 174 0091 49       		.byte	73
+ 175 0092 01       		.byte	1
+ 176 0093 40       		.byte	64
+ 177 0094 01       		.byte	1
+ 178 0095 4C       		.byte	76
+ 179 0096 01       		.byte	1
+ 180 0097 40       		.byte	64
+ 181 0098 07       		.byte	7
+ 182 0099 4D       		.byte	77
+ 183 009a 01       		.byte	1
+ 184 009b 40       		.byte	64
+ 185 009c 04       		.byte	4
+ 186 009d 50       		.byte	80
+ 187 009e 01       		.byte	1
+ 188 009f 40       		.byte	64
+ 189 00a0 01       		.byte	1
+ 190 00a1 51       		.byte	81
+ 191 00a2 01       		.byte	1
+ 192 00a3 40       		.byte	64
+ 193 00a4 10       		.byte	16
+ 194 00a5 20       		.byte	32
+ 195 00a6 11       		.byte	17
+ 196 00a7 20       		.byte	32
+ 197 00a8 18       		.byte	24
+ 198 00a9 80       		.byte	-128
+ 199 00aa 81       		.byte	-127
+ 200 00ab 6F       		.byte	111
+ 201 00ac 83       		.byte	-125
+ 202 00ad 0F       		.byte	15
+ 203 00ae 87       		.byte	-121
+ 204 00af 0D       		.byte	13
+ 205 00b0 88       		.byte	-120
+ 206 00b1 0F       		.byte	15
+ 207 00b2 8B       		.byte	-117
+ 208 00b3 6F       		.byte	111
+ 209 00b4 8D       		.byte	-115
+ 210 00b5 0D       		.byte	13
+ 211 00b6 8F       		.byte	-113
+ 212 00b7 0F       		.byte	15
+ 213 00b8 87       		.byte	-121
+ 214 00b9 0D       		.byte	13
+ 215 00ba 89       		.byte	-119
+ 216 00bb 72       		.byte	114
+ 217 00bc 8B       		.byte	-117
+ 218 00bd 38       		.byte	56
+ 219 00be 04       		.byte	4
+ 220 00bf 01       		.byte	1
+ 221 00c0 11       		.byte	17
+ 222 00c1 01       		.byte	1
+ 223 00c2 19       		.byte	25
+ 224 00c3 01       		.byte	1
+ 225 00c4 24       		.byte	36
+ 226 00c5 01       		.byte	1
+ 227 00c6 2C       		.byte	44
+ 228 00c7 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 5
+
+
+ 229 00c8 31       		.byte	49
+ 230 00c9 01       		.byte	1
+ 231 00ca 34       		.byte	52
+ 232 00cb 01       		.byte	1
+ 233 00cc 38       		.byte	56
+ 234 00cd 20       		.byte	32
+ 235 00ce 39       		.byte	57
+ 236 00cf 02       		.byte	2
+ 237 00d0 3E       		.byte	62
+ 238 00d1 10       		.byte	16
+ 239 00d2 40       		.byte	64
+ 240 00d3 62       		.byte	98
+ 241 00d4 41       		.byte	65
+ 242 00d5 03       		.byte	3
+ 243 00d6 49       		.byte	73
+ 244 00d7 FF       		.byte	-1
+ 245 00d8 4A       		.byte	74
+ 246 00d9 FF       		.byte	-1
+ 247 00da 4B       		.byte	75
+ 248 00db FF       		.byte	-1
+ 249 00dc 4D       		.byte	77
+ 250 00dd A0       		.byte	-96
+ 251 00de 4F       		.byte	79
+ 252 00df 01       		.byte	1
+ 253 00e0 50       		.byte	80
+ 254 00e1 18       		.byte	24
+ 255 00e2 58       		.byte	88
+ 256 00e3 04       		.byte	4
+ 257 00e4 59       		.byte	89
+ 258 00e5 04       		.byte	4
+ 259 00e6 5A       		.byte	90
+ 260 00e7 04       		.byte	4
+ 261 00e8 5C       		.byte	92
+ 262 00e9 90       		.byte	-112
+ 263 00ea 5D       		.byte	93
+ 264 00eb 09       		.byte	9
+ 265 00ec 5F       		.byte	95
+ 266 00ed 01       		.byte	1
+ 267 00ee 60       		.byte	96
+ 268 00ef 40       		.byte	64
+ 269 00f0 62       		.byte	98
+ 270 00f1 80       		.byte	-128
+ 271 00f2 64       		.byte	100
+ 272 00f3 40       		.byte	64
+ 273 00f4 65       		.byte	101
+ 274 00f5 40       		.byte	64
+ 275 00f6 66       		.byte	102
+ 276 00f7 80       		.byte	-128
+ 277 00f8 68       		.byte	104
+ 278 00f9 40       		.byte	64
+ 279 00fa 6A       		.byte	106
+ 280 00fb 80       		.byte	-128
+ 281 00fc 6C       		.byte	108
+ 282 00fd 40       		.byte	64
+ 283 00fe 6D       		.byte	109
+ 284 00ff 20       		.byte	32
+ 285 0100 6E       		.byte	110
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 6
+
+
+ 286 0101 80       		.byte	-128
+ 287 0102 80       		.byte	-128
+ 288 0103 02       		.byte	2
+ 289 0104 83       		.byte	-125
+ 290 0105 02       		.byte	2
+ 291 0106 8C       		.byte	-116
+ 292 0107 01       		.byte	1
+ 293 0108 92       		.byte	-110
+ 294 0109 04       		.byte	4
+ 295 010a 9E       		.byte	-98
+ 296 010b 01       		.byte	1
+ 297 010c A5       		.byte	-91
+ 298 010d 01       		.byte	1
+ 299 010e A6       		.byte	-90
+ 300 010f 02       		.byte	2
+ 301 0110 AB       		.byte	-85
+ 302 0111 04       		.byte	4
+ 303 0112 AF       		.byte	-81
+ 304 0113 01       		.byte	1
+ 305 0114 B0       		.byte	-80
+ 306 0115 01       		.byte	1
+ 307 0116 B1       		.byte	-79
+ 308 0117 04       		.byte	4
+ 309 0118 B3       		.byte	-77
+ 310 0119 01       		.byte	1
+ 311 011a B4       		.byte	-76
+ 312 011b 04       		.byte	4
+ 313 011c B6       		.byte	-74
+ 314 011d 02       		.byte	2
+ 315 011e B7       		.byte	-73
+ 316 011f 02       		.byte	2
+ 317 0120 BE       		.byte	-66
+ 318 0121 41       		.byte	65
+ 319 0122 BF       		.byte	-65
+ 320 0123 04       		.byte	4
+ 321 0124 C0       		.byte	-64
+ 322 0125 26       		.byte	38
+ 323 0126 C1       		.byte	-63
+ 324 0127 03       		.byte	3
+ 325 0128 C5       		.byte	-59
+ 326 0129 4C       		.byte	76
+ 327 012a C6       		.byte	-58
+ 328 012b 20       		.byte	32
+ 329 012c C7       		.byte	-57
+ 330 012d 3E       		.byte	62
+ 331 012e C8       		.byte	-56
+ 332 012f 3B       		.byte	59
+ 333 0130 C9       		.byte	-55
+ 334 0131 FF       		.byte	-1
+ 335 0132 CA       		.byte	-54
+ 336 0133 FF       		.byte	-1
+ 337 0134 CB       		.byte	-53
+ 338 0135 FF       		.byte	-1
+ 339 0136 CD       		.byte	-51
+ 340 0137 AF       		.byte	-81
+ 341 0138 CE       		.byte	-50
+ 342 0139 07       		.byte	7
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 7
+
+
+ 343 013a CF       		.byte	-49
+ 344 013b 01       		.byte	1
+ 345 013c D0       		.byte	-48
+ 346 013d 18       		.byte	24
+ 347 013e D4       		.byte	-44
+ 348 013f 0F       		.byte	15
+ 349 0140 D8       		.byte	-40
+ 350 0141 04       		.byte	4
+ 351 0142 D9       		.byte	-39
+ 352 0143 04       		.byte	4
+ 353 0144 DA       		.byte	-38
+ 354 0145 04       		.byte	4
+ 355 0146 DB       		.byte	-37
+ 356 0147 04       		.byte	4
+ 357 0148 DC       		.byte	-36
+ 358 0149 99       		.byte	-103
+ 359 014a DD       		.byte	-35
+ 360 014b 99       		.byte	-103
+ 361 014c DF       		.byte	-33
+ 362 014d 05       		.byte	5
+ 363 014e E0       		.byte	-32
+ 364 014f 40       		.byte	64
+ 365 0150 E2       		.byte	-30
+ 366 0151 80       		.byte	-128
+ 367 0152 E4       		.byte	-28
+ 368 0153 40       		.byte	64
+ 369 0154 E5       		.byte	-27
+ 370 0155 40       		.byte	64
+ 371 0156 E6       		.byte	-26
+ 372 0157 80       		.byte	-128
+ 373 0158 E8       		.byte	-24
+ 374 0159 40       		.byte	64
+ 375 015a EA       		.byte	-22
+ 376 015b 80       		.byte	-128
+ 377 015c EC       		.byte	-20
+ 378 015d 40       		.byte	64
+ 379 015e ED       		.byte	-19
+ 380 015f 20       		.byte	32
+ 381 0160 EE       		.byte	-18
+ 382 0161 80       		.byte	-128
+ 383 0162 03       		.byte	3
+ 384 0163 20       		.byte	32
+ 385 0164 07       		.byte	7
+ 386 0165 81       		.byte	-127
+ 387 0166 0C       		.byte	12
+ 388 0167 02       		.byte	2
+ 389 0168 0F       		.byte	15
+ 390 0169 02       		.byte	2
+ 391 016a 10       		.byte	16
+ 392 016b 22       		.byte	34
+ 393 016c 16       		.byte	22
+ 394 016d 20       		.byte	32
+ 395 016e 18       		.byte	24
+ 396 016f 04       		.byte	4
+ 397 0170 1A       		.byte	26
+ 398 0171 08       		.byte	8
+ 399 0172 1E       		.byte	30
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 8
+
+
+ 400 0173 82       		.byte	-126
+ 401 0174 1F       		.byte	31
+ 402 0175 10       		.byte	16
+ 403 0176 22       		.byte	34
+ 404 0177 02       		.byte	2
+ 405 0178 24       		.byte	36
+ 406 0179 02       		.byte	2
+ 407 017a 26       		.byte	38
+ 408 017b 04       		.byte	4
+ 409 017c 27       		.byte	39
+ 410 017d 81       		.byte	-127
+ 411 017e 2C       		.byte	44
+ 412 017f 02       		.byte	2
+ 413 0180 2E       		.byte	46
+ 414 0181 30       		.byte	48
+ 415 0182 2F       		.byte	47
+ 416 0183 10       		.byte	16
+ 417 0184 30       		.byte	48
+ 418 0185 22       		.byte	34
+ 419 0186 3F       		.byte	63
+ 420 0187 02       		.byte	2
+ 421 0188 40       		.byte	64
+ 422 0189 04       		.byte	4
+ 423 018a 43       		.byte	67
+ 424 018b 04       		.byte	4
+ 425 018c 45       		.byte	69
+ 426 018d 20       		.byte	32
+ 427 018e 47       		.byte	71
+ 428 018f 04       		.byte	4
+ 429 0190 48       		.byte	72
+ 430 0191 04       		.byte	4
+ 431 0192 4E       		.byte	78
+ 432 0193 04       		.byte	4
+ 433 0194 4F       		.byte	79
+ 434 0195 06       		.byte	6
+ 435 0196 54       		.byte	84
+ 436 0197 22       		.byte	34
+ 437 0198 56       		.byte	86
+ 438 0199 28       		.byte	40
+ 439 019a 5E       		.byte	94
+ 440 019b 9A       		.byte	-102
+ 441 019c 66       		.byte	102
+ 442 019d 08       		.byte	8
+ 443 019e 67       		.byte	103
+ 444 019f 04       		.byte	4
+ 445 01a0 7F       		.byte	127
+ 446 01a1 20       		.byte	32
+ 447 01a2 C0       		.byte	-64
+ 448 01a3 94       		.byte	-108
+ 449 01a4 C2       		.byte	-62
+ 450 01a5 90       		.byte	-112
+ 451 01a6 C4       		.byte	-60
+ 452 01a7 25       		.byte	37
+ 453 01a8 CA       		.byte	-54
+ 454 01a9 70       		.byte	112
+ 455 01aa CC       		.byte	-52
+ 456 01ab 05       		.byte	5
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 9
+
+
+ 457 01ac CE       		.byte	-50
+ 458 01ad 80       		.byte	-128
+ 459 01ae D0       		.byte	-48
+ 460 01af 66       		.byte	102
+ 461 01b0 D2       		.byte	-46
+ 462 01b1 24       		.byte	36
+ 463 01b2 D6       		.byte	-42
+ 464 01b3 F0       		.byte	-16
+ 465 01b4 D8       		.byte	-40
+ 466 01b5 60       		.byte	96
+ 467 01b6 DE       		.byte	-34
+ 468 01b7 40       		.byte	64
+ 469 01b8 00       		.byte	0
+ 470 01b9 06       		.byte	6
+ 471 01ba 11       		.byte	17
+ 472 01bb 01       		.byte	1
+ 473 01bc 13       		.byte	19
+ 474 01bd 02       		.byte	2
+ 475 01be 18       		.byte	24
+ 476 01bf 03       		.byte	3
+ 477 01c0 19       		.byte	25
+ 478 01c1 02       		.byte	2
+ 479 01c2 1B       		.byte	27
+ 480 01c3 01       		.byte	1
+ 481 01c4 1C       		.byte	28
+ 482 01c5 06       		.byte	6
+ 483 01c6 24       		.byte	36
+ 484 01c7 05       		.byte	5
+ 485 01c8 29       		.byte	41
+ 486 01c9 01       		.byte	1
+ 487 01ca 2A       		.byte	42
+ 488 01cb 08       		.byte	8
+ 489 01cc 2B       		.byte	43
+ 490 01cd 06       		.byte	6
+ 491 01ce 2D       		.byte	45
+ 492 01cf 01       		.byte	1
+ 493 01d0 2F       		.byte	47
+ 494 01d1 02       		.byte	2
+ 495 01d2 32       		.byte	50
+ 496 01d3 08       		.byte	8
+ 497 01d4 33       		.byte	51
+ 498 01d5 03       		.byte	3
+ 499 01d6 34       		.byte	52
+ 500 01d7 07       		.byte	7
+ 501 01d8 37       		.byte	55
+ 502 01d9 04       		.byte	4
+ 503 01da 38       		.byte	56
+ 504 01db 20       		.byte	32
+ 505 01dc 3B       		.byte	59
+ 506 01dd 08       		.byte	8
+ 507 01de 58       		.byte	88
+ 508 01df 04       		.byte	4
+ 509 01e0 59       		.byte	89
+ 510 01e1 04       		.byte	4
+ 511 01e2 5C       		.byte	92
+ 512 01e3 99       		.byte	-103
+ 513 01e4 5F       		.byte	95
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 10
+
+
+ 514 01e5 01       		.byte	1
+ 515 01e6 81       		.byte	-127
+ 516 01e7 10       		.byte	16
+ 517 01e8 85       		.byte	-123
+ 518 01e9 0F       		.byte	15
+ 519 01ea 88       		.byte	-120
+ 520 01eb 01       		.byte	1
+ 521 01ec 89       		.byte	-119
+ 522 01ed 03       		.byte	3
+ 523 01ee 8B       		.byte	-117
+ 524 01ef 0C       		.byte	12
+ 525 01f0 8C       		.byte	-116
+ 526 01f1 01       		.byte	1
+ 527 01f2 92       		.byte	-110
+ 528 01f3 06       		.byte	6
+ 529 01f4 93       		.byte	-109
+ 530 01f5 10       		.byte	16
+ 531 01f6 94       		.byte	-108
+ 532 01f7 0C       		.byte	12
+ 533 01f8 96       		.byte	-106
+ 534 01f9 02       		.byte	2
+ 535 01fa 97       		.byte	-105
+ 536 01fb 10       		.byte	16
+ 537 01fc 99       		.byte	-103
+ 538 01fd 05       		.byte	5
+ 539 01fe 9B       		.byte	-101
+ 540 01ff 0A       		.byte	10
+ 541 0200 9D       		.byte	-99
+ 542 0201 0A       		.byte	10
+ 543 0202 9E       		.byte	-98
+ 544 0203 0C       		.byte	12
+ 545 0204 9F       		.byte	-97
+ 546 0205 05       		.byte	5
+ 547 0206 A1       		.byte	-95
+ 548 0207 0C       		.byte	12
+ 549 0208 A2       		.byte	-94
+ 550 0209 04       		.byte	4
+ 551 020a A3       		.byte	-93
+ 552 020b 03       		.byte	3
+ 553 020c A5       		.byte	-91
+ 554 020d 07       		.byte	7
+ 555 020e A6       		.byte	-90
+ 556 020f 02       		.byte	2
+ 557 0210 AA       		.byte	-86
+ 558 0211 0A       		.byte	10
+ 559 0212 AE       		.byte	-82
+ 560 0213 01       		.byte	1
+ 561 0214 B0       		.byte	-80
+ 562 0215 0E       		.byte	14
+ 563 0216 B2       		.byte	-78
+ 564 0217 01       		.byte	1
+ 565 0218 B3       		.byte	-77
+ 566 0219 0F       		.byte	15
+ 567 021a B7       		.byte	-73
+ 568 021b 10       		.byte	16
+ 569 021c BA       		.byte	-70
+ 570 021d 02       		.byte	2
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 11
+
+
+ 571 021e BE       		.byte	-66
+ 572 021f 04       		.byte	4
+ 573 0220 BF       		.byte	-65
+ 574 0221 40       		.byte	64
+ 575 0222 D4       		.byte	-44
+ 576 0223 0F       		.byte	15
+ 577 0224 D8       		.byte	-40
+ 578 0225 04       		.byte	4
+ 579 0226 D9       		.byte	-39
+ 580 0227 04       		.byte	4
+ 581 0228 DB       		.byte	-37
+ 582 0229 04       		.byte	4
+ 583 022a DC       		.byte	-36
+ 584 022b 90       		.byte	-112
+ 585 022c DD       		.byte	-35
+ 586 022d 90       		.byte	-112
+ 587 022e DF       		.byte	-33
+ 588 022f 01       		.byte	1
+ 589 0230 03       		.byte	3
+ 590 0231 05       		.byte	5
+ 591 0232 07       		.byte	7
+ 592 0233 40       		.byte	64
+ 593 0234 0A       		.byte	10
+ 594 0235 60       		.byte	96
+ 595 0236 0B       		.byte	11
+ 596 0237 01       		.byte	1
+ 597 0238 0E       		.byte	14
+ 598 0239 0A       		.byte	10
+ 599 023a 10       		.byte	16
+ 600 023b A4       		.byte	-92
+ 601 023c 12       		.byte	18
+ 602 023d 02       		.byte	2
+ 603 023e 15       		.byte	21
+ 604 023f 08       		.byte	8
+ 605 0240 16       		.byte	22
+ 606 0241 04       		.byte	4
+ 607 0242 1A       		.byte	26
+ 608 0243 50       		.byte	80
+ 609 0244 1B       		.byte	27
+ 610 0245 02       		.byte	2
+ 611 0246 1E       		.byte	30
+ 612 0247 0C       		.byte	12
+ 613 0248 1F       		.byte	31
+ 614 0249 28       		.byte	40
+ 615 024a 21       		.byte	33
+ 616 024b 04       		.byte	4
+ 617 024c 22       		.byte	34
+ 618 024d 40       		.byte	64
+ 619 024e 27       		.byte	39
+ 620 024f 12       		.byte	18
+ 621 0250 28       		.byte	40
+ 622 0251 40       		.byte	64
+ 623 0252 2B       		.byte	43
+ 624 0253 20       		.byte	32
+ 625 0254 2E       		.byte	46
+ 626 0255 80       		.byte	-128
+ 627 0256 2F       		.byte	47
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 12
+
+
+ 628 0257 08       		.byte	8
+ 629 0258 32       		.byte	50
+ 630 0259 02       		.byte	2
+ 631 025a 33       		.byte	51
+ 632 025b 54       		.byte	84
+ 633 025c 37       		.byte	55
+ 634 025d 12       		.byte	18
+ 635 025e 38       		.byte	56
+ 636 025f 02       		.byte	2
+ 637 0260 39       		.byte	57
+ 638 0261 18       		.byte	24
+ 639 0262 5A       		.byte	90
+ 640 0263 95       		.byte	-107
+ 641 0264 85       		.byte	-123
+ 642 0265 04       		.byte	4
+ 643 0266 86       		.byte	-122
+ 644 0267 01       		.byte	1
+ 645 0268 87       		.byte	-121
+ 646 0269 04       		.byte	4
+ 647 026a 90       		.byte	-112
+ 648 026b 02       		.byte	2
+ 649 026c 9A       		.byte	-102
+ 650 026d 84       		.byte	-124
+ 651 026e 9B       		.byte	-101
+ 652 026f 01       		.byte	1
+ 653 0270 9F       		.byte	-97
+ 654 0271 04       		.byte	4
+ 655 0272 A2       		.byte	-94
+ 656 0273 02       		.byte	2
+ 657 0274 A4       		.byte	-92
+ 658 0275 04       		.byte	4
+ 659 0276 A5       		.byte	-91
+ 660 0277 20       		.byte	32
+ 661 0278 A7       		.byte	-89
+ 662 0279 20       		.byte	32
+ 663 027a AA       		.byte	-86
+ 664 027b 84       		.byte	-124
+ 665 027c C0       		.byte	-64
+ 666 027d 13       		.byte	19
+ 667 027e C2       		.byte	-62
+ 668 027f CD       		.byte	-51
+ 669 0280 C4       		.byte	-60
+ 670 0281 6F       		.byte	111
+ 671 0282 CA       		.byte	-54
+ 672 0283 33       		.byte	51
+ 673 0284 CC       		.byte	-52
+ 674 0285 AF       		.byte	-81
+ 675 0286 CE       		.byte	-50
+ 676 0287 07       		.byte	7
+ 677 0288 D6       		.byte	-42
+ 678 0289 0F       		.byte	15
+ 679 028a EA       		.byte	-22
+ 680 028b 01       		.byte	1
+ 681 028c 00       		.byte	0
+ 682 028d 05       		.byte	5
+ 683 028e 02       		.byte	2
+ 684 028f 02       		.byte	2
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 13
+
+
+ 685 0290 04       		.byte	4
+ 686 0291 03       		.byte	3
+ 687 0292 07       		.byte	7
+ 688 0293 01       		.byte	1
+ 689 0294 11       		.byte	17
+ 690 0295 03       		.byte	3
+ 691 0296 12       		.byte	18
+ 692 0297 09       		.byte	9
+ 693 0298 14       		.byte	20
+ 694 0299 06       		.byte	6
+ 695 029a 15       		.byte	21
+ 696 029b 03       		.byte	3
+ 697 029c 19       		.byte	25
+ 698 029d 02       		.byte	2
+ 699 029e 20       		.byte	32
+ 700 029f 07       		.byte	7
+ 701 02a0 23       		.byte	35
+ 702 02a1 04       		.byte	4
+ 703 02a2 24       		.byte	36
+ 704 02a3 06       		.byte	6
+ 705 02a4 26       		.byte	38
+ 706 02a5 01       		.byte	1
+ 707 02a6 28       		.byte	40
+ 708 02a7 02       		.byte	2
+ 709 02a8 29       		.byte	41
+ 710 02a9 04       		.byte	4
+ 711 02aa 2A       		.byte	42
+ 712 02ab 04       		.byte	4
+ 713 02ac 2F       		.byte	47
+ 714 02ad 04       		.byte	4
+ 715 02ae 30       		.byte	48
+ 716 02af 07       		.byte	7
+ 717 02b0 31       		.byte	49
+ 718 02b1 03       		.byte	3
+ 719 02b2 34       		.byte	52
+ 720 02b3 08       		.byte	8
+ 721 02b4 35       		.byte	53
+ 722 02b5 04       		.byte	4
+ 723 02b6 39       		.byte	57
+ 724 02b7 02       		.byte	2
+ 725 02b8 3F       		.byte	63
+ 726 02b9 11       		.byte	17
+ 727 02ba 40       		.byte	64
+ 728 02bb 04       		.byte	4
+ 729 02bc 46       		.byte	70
+ 730 02bd 04       		.byte	4
+ 731 02be 49       		.byte	73
+ 732 02bf FF       		.byte	-1
+ 733 02c0 4A       		.byte	74
+ 734 02c1 07       		.byte	7
+ 735 02c2 4B       		.byte	75
+ 736 02c3 FF       		.byte	-1
+ 737 02c4 4C       		.byte	76
+ 738 02c5 40       		.byte	64
+ 739 02c6 4D       		.byte	77
+ 740 02c7 20       		.byte	32
+ 741 02c8 4E       		.byte	78
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 14
+
+
+ 742 02c9 F0       		.byte	-16
+ 743 02ca 4F       		.byte	79
+ 744 02cb 05       		.byte	5
+ 745 02cc 50       		.byte	80
+ 746 02cd 08       		.byte	8
+ 747 02ce 52       		.byte	82
+ 748 02cf 80       		.byte	-128
+ 749 02d0 58       		.byte	88
+ 750 02d1 04       		.byte	4
+ 751 02d2 59       		.byte	89
+ 752 02d3 04       		.byte	4
+ 753 02d4 5A       		.byte	90
+ 754 02d5 04       		.byte	4
+ 755 02d6 5B       		.byte	91
+ 756 02d7 04       		.byte	4
+ 757 02d8 5C       		.byte	92
+ 758 02d9 09       		.byte	9
+ 759 02da 5D       		.byte	93
+ 760 02db 90       		.byte	-112
+ 761 02dc 5F       		.byte	95
+ 762 02dd 01       		.byte	1
+ 763 02de 60       		.byte	96
+ 764 02df 40       		.byte	64
+ 765 02e0 61       		.byte	97
+ 766 02e1 A8       		.byte	-88
+ 767 02e2 62       		.byte	98
+ 768 02e3 40       		.byte	64
+ 769 02e4 63       		.byte	99
+ 770 02e5 20       		.byte	32
+ 771 02e6 80       		.byte	-128
+ 772 02e7 9E       		.byte	-98
+ 773 02e8 82       		.byte	-126
+ 774 02e9 60       		.byte	96
+ 775 02ea 85       		.byte	-123
+ 776 02eb 04       		.byte	4
+ 777 02ec 89       		.byte	-119
+ 778 02ed 01       		.byte	1
+ 779 02ee 8A       		.byte	-118
+ 780 02ef 0F       		.byte	15
+ 781 02f0 8B       		.byte	-117
+ 782 02f1 02       		.byte	2
+ 783 02f2 93       		.byte	-109
+ 784 02f3 04       		.byte	4
+ 785 02f4 94       		.byte	-108
+ 786 02f5 94       		.byte	-108
+ 787 02f6 95       		.byte	-107
+ 788 02f7 07       		.byte	7
+ 789 02f8 96       		.byte	-106
+ 790 02f9 60       		.byte	96
+ 791 02fa 98       		.byte	-104
+ 792 02fb 73       		.byte	115
+ 793 02fc 9B       		.byte	-101
+ 794 02fd 07       		.byte	7
+ 795 02fe 9C       		.byte	-100
+ 796 02ff CF       		.byte	-49
+ 797 0300 9D       		.byte	-99
+ 798 0301 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 15
+
+
+ 799 0302 9E       		.byte	-98
+ 800 0303 30       		.byte	48
+ 801 0304 9F       		.byte	-97
+ 802 0305 02       		.byte	2
+ 803 0306 A4       		.byte	-92
+ 804 0307 FD       		.byte	-3
+ 805 0308 A6       		.byte	-90
+ 806 0309 02       		.byte	2
+ 807 030a A7       		.byte	-89
+ 808 030b 08       		.byte	8
+ 809 030c A8       		.byte	-88
+ 810 030d 30       		.byte	48
+ 811 030e A9       		.byte	-87
+ 812 030f 07       		.byte	7
+ 813 0310 AA       		.byte	-86
+ 814 0311 C9       		.byte	-55
+ 815 0312 B4       		.byte	-76
+ 816 0313 FF       		.byte	-1
+ 817 0314 B5       		.byte	-75
+ 818 0315 0F       		.byte	15
+ 819 0316 BE       		.byte	-66
+ 820 0317 10       		.byte	16
+ 821 0318 D8       		.byte	-40
+ 822 0319 04       		.byte	4
+ 823 031a D9       		.byte	-39
+ 824 031b 04       		.byte	4
+ 825 031c DC       		.byte	-36
+ 826 031d 90       		.byte	-112
+ 827 031e DF       		.byte	-33
+ 828 031f 01       		.byte	1
+ 829 0320 03       		.byte	3
+ 830 0321 60       		.byte	96
+ 831 0322 07       		.byte	7
+ 832 0323 44       		.byte	68
+ 833 0324 0A       		.byte	10
+ 834 0325 50       		.byte	80
+ 835 0326 0C       		.byte	12
+ 836 0327 40       		.byte	64
+ 837 0328 0E       		.byte	14
+ 838 0329 1A       		.byte	26
+ 839 032a 10       		.byte	16
+ 840 032b 40       		.byte	64
+ 841 032c 11       		.byte	17
+ 842 032d 04       		.byte	4
+ 843 032e 12       		.byte	18
+ 844 032f 04       		.byte	4
+ 845 0330 15       		.byte	21
+ 846 0331 0C       		.byte	12
+ 847 0332 16       		.byte	22
+ 848 0333 2C       		.byte	44
+ 849 0334 17       		.byte	23
+ 850 0335 10       		.byte	16
+ 851 0336 19       		.byte	25
+ 852 0337 21       		.byte	33
+ 853 0338 1A       		.byte	26
+ 854 0339 40       		.byte	64
+ 855 033a 1F       		.byte	31
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 16
+
+
+ 856 033b 10       		.byte	16
+ 857 033c 20       		.byte	32
+ 858 033d 08       		.byte	8
+ 859 033e 21       		.byte	33
+ 860 033f 21       		.byte	33
+ 861 0340 26       		.byte	38
+ 862 0341 20       		.byte	32
+ 863 0342 27       		.byte	39
+ 864 0343 04       		.byte	4
+ 865 0344 29       		.byte	41
+ 866 0345 21       		.byte	33
+ 867 0346 2A       		.byte	42
+ 868 0347 80       		.byte	-128
+ 869 0348 2E       		.byte	46
+ 870 0349 20       		.byte	32
+ 871 034a 2F       		.byte	47
+ 872 034b 10       		.byte	16
+ 873 034c 30       		.byte	48
+ 874 034d 04       		.byte	4
+ 875 034e 32       		.byte	50
+ 876 034f 10       		.byte	16
+ 877 0350 33       		.byte	51
+ 878 0351 02       		.byte	2
+ 879 0352 36       		.byte	54
+ 880 0353 25       		.byte	37
+ 881 0354 37       		.byte	55
+ 882 0355 40       		.byte	64
+ 883 0356 3B       		.byte	59
+ 884 0357 04       		.byte	4
+ 885 0358 3D       		.byte	61
+ 886 0359 10       		.byte	16
+ 887 035a 3E       		.byte	62
+ 888 035b 18       		.byte	24
+ 889 035c 41       		.byte	65
+ 890 035d 01       		.byte	1
+ 891 035e 48       		.byte	72
+ 892 035f 20       		.byte	32
+ 893 0360 49       		.byte	73
+ 894 0361 04       		.byte	4
+ 895 0362 4B       		.byte	75
+ 896 0363 04       		.byte	4
+ 897 0364 50       		.byte	80
+ 898 0365 80       		.byte	-128
+ 899 0366 51       		.byte	81
+ 900 0367 40       		.byte	64
+ 901 0368 72       		.byte	114
+ 902 0369 80       		.byte	-128
+ 903 036a 81       		.byte	-127
+ 904 036b 40       		.byte	64
+ 905 036c 91       		.byte	-111
+ 906 036d 08       		.byte	8
+ 907 036e 95       		.byte	-107
+ 908 036f 10       		.byte	16
+ 909 0370 96       		.byte	-106
+ 910 0371 20       		.byte	32
+ 911 0372 97       		.byte	-105
+ 912 0373 09       		.byte	9
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 17
+
+
+ 913 0374 98       		.byte	-104
+ 914 0375 04       		.byte	4
+ 915 0376 9B       		.byte	-101
+ 916 0377 10       		.byte	16
+ 917 0378 9C       		.byte	-100
+ 918 0379 40       		.byte	64
+ 919 037a 9F       		.byte	-97
+ 920 037b 44       		.byte	68
+ 921 037c A2       		.byte	-94
+ 922 037d 04       		.byte	4
+ 923 037e A3       		.byte	-93
+ 924 037f 22       		.byte	34
+ 925 0380 A4       		.byte	-92
+ 926 0381 A4       		.byte	-92
+ 927 0382 A5       		.byte	-91
+ 928 0383 20       		.byte	32
+ 929 0384 A6       		.byte	-90
+ 930 0385 01       		.byte	1
+ 931 0386 AC       		.byte	-84
+ 932 0387 04       		.byte	4
+ 933 0388 C0       		.byte	-64
+ 934 0389 5C       		.byte	92
+ 935 038a C2       		.byte	-62
+ 936 038b EC       		.byte	-20
+ 937 038c C4       		.byte	-60
+ 938 038d 6E       		.byte	110
+ 939 038e CA       		.byte	-54
+ 940 038f 6D       		.byte	109
+ 941 0390 CC       		.byte	-52
+ 942 0391 F7       		.byte	-9
+ 943 0392 CE       		.byte	-50
+ 944 0393 62       		.byte	98
+ 945 0394 D0       		.byte	-48
+ 946 0395 01       		.byte	1
+ 947 0396 E0       		.byte	-32
+ 948 0397 01       		.byte	1
+ 949 0398 EA       		.byte	-22
+ 950 0399 08       		.byte	8
+ 951 039a 00       		.byte	0
+ 952 039b 0C       		.byte	12
+ 953 039c 02       		.byte	2
+ 954 039d 01       		.byte	1
+ 955 039e 04       		.byte	4
+ 956 039f 08       		.byte	8
+ 957 03a0 05       		.byte	5
+ 958 03a1 0B       		.byte	11
+ 959 03a2 06       		.byte	6
+ 960 03a3 01       		.byte	1
+ 961 03a4 07       		.byte	7
+ 962 03a5 04       		.byte	4
+ 963 03a6 09       		.byte	9
+ 964 03a7 08       		.byte	8
+ 965 03a8 0B       		.byte	11
+ 966 03a9 01       		.byte	1
+ 967 03aa 15       		.byte	21
+ 968 03ab 07       		.byte	7
+ 969 03ac 16       		.byte	22
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 18
+
+
+ 970 03ad 0F       		.byte	15
+ 971 03ae 18       		.byte	24
+ 972 03af 07       		.byte	7
+ 973 03b0 1B       		.byte	27
+ 974 03b1 0F       		.byte	15
+ 975 03b2 1C       		.byte	28
+ 976 03b3 0C       		.byte	12
+ 977 03b4 1D       		.byte	29
+ 978 03b5 0C       		.byte	12
+ 979 03b6 1E       		.byte	30
+ 980 03b7 02       		.byte	2
+ 981 03b8 1F       		.byte	31
+ 982 03b9 02       		.byte	2
+ 983 03ba 21       		.byte	33
+ 984 03bb 0C       		.byte	12
+ 985 03bc 23       		.byte	35
+ 986 03bd 01       		.byte	1
+ 987 03be 24       		.byte	36
+ 988 03bf 0B       		.byte	11
+ 989 03c0 26       		.byte	38
+ 990 03c1 04       		.byte	4
+ 991 03c2 31       		.byte	49
+ 992 03c3 0F       		.byte	15
+ 993 03c4 36       		.byte	54
+ 994 03c5 0F       		.byte	15
+ 995 03c6 40       		.byte	64
+ 996 03c7 40       		.byte	64
+ 997 03c8 41       		.byte	65
+ 998 03c9 06       		.byte	6
+ 999 03ca 49       		.byte	73
+ 1000 03cb FF       		.byte	-1
+ 1001 03cc 4A       		.byte	74
+ 1002 03cd FF       		.byte	-1
+ 1003 03ce 4B       		.byte	75
+ 1004 03cf FF       		.byte	-1
+ 1005 03d0 4D       		.byte	77
+ 1006 03d1 A0       		.byte	-96
+ 1007 03d2 4F       		.byte	79
+ 1008 03d3 04       		.byte	4
+ 1009 03d4 50       		.byte	80
+ 1010 03d5 18       		.byte	24
+ 1011 03d6 58       		.byte	88
+ 1012 03d7 04       		.byte	4
+ 1013 03d8 59       		.byte	89
+ 1014 03d9 04       		.byte	4
+ 1015 03da 5A       		.byte	90
+ 1016 03db 04       		.byte	4
+ 1017 03dc 5C       		.byte	92
+ 1018 03dd 99       		.byte	-103
+ 1019 03de 5D       		.byte	93
+ 1020 03df 09       		.byte	9
+ 1021 03e0 5F       		.byte	95
+ 1022 03e1 01       		.byte	1
+ 1023 03e2 60       		.byte	96
+ 1024 03e3 40       		.byte	64
+ 1025 03e4 62       		.byte	98
+ 1026 03e5 C0       		.byte	-64
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 19
+
+
+ 1027 03e6 64       		.byte	100
+ 1028 03e7 40       		.byte	64
+ 1029 03e8 65       		.byte	101
+ 1030 03e9 40       		.byte	64
+ 1031 03ea 66       		.byte	102
+ 1032 03eb C0       		.byte	-64
+ 1033 03ec 68       		.byte	104
+ 1034 03ed C0       		.byte	-64
+ 1035 03ee 6A       		.byte	106
+ 1036 03ef C0       		.byte	-64
+ 1037 03f0 6C       		.byte	108
+ 1038 03f1 C0       		.byte	-64
+ 1039 03f2 6E       		.byte	110
+ 1040 03f3 C0       		.byte	-64
+ 1041 03f4 82       		.byte	-126
+ 1042 03f5 01       		.byte	1
+ 1043 03f6 86       		.byte	-122
+ 1044 03f7 02       		.byte	2
+ 1045 03f8 8C       		.byte	-116
+ 1046 03f9 02       		.byte	2
+ 1047 03fa 8F       		.byte	-113
+ 1048 03fb 0C       		.byte	12
+ 1049 03fc 91       		.byte	-111
+ 1050 03fd 01       		.byte	1
+ 1051 03fe 93       		.byte	-109
+ 1052 03ff 0E       		.byte	14
+ 1053 0400 95       		.byte	-107
+ 1054 0401 01       		.byte	1
+ 1055 0402 96       		.byte	-106
+ 1056 0403 01       		.byte	1
+ 1057 0404 97       		.byte	-105
+ 1058 0405 06       		.byte	6
+ 1059 0406 99       		.byte	-103
+ 1060 0407 0C       		.byte	12
+ 1061 0408 9B       		.byte	-101
+ 1062 0409 03       		.byte	3
+ 1063 040a 9F       		.byte	-97
+ 1064 040b 08       		.byte	8
+ 1065 040c A4       		.byte	-92
+ 1066 040d 04       		.byte	4
+ 1067 040e A7       		.byte	-89
+ 1068 040f 03       		.byte	3
+ 1069 0410 A8       		.byte	-88
+ 1070 0411 02       		.byte	2
+ 1071 0412 B0       		.byte	-80
+ 1072 0413 06       		.byte	6
+ 1073 0414 B4       		.byte	-76
+ 1074 0415 01       		.byte	1
+ 1075 0416 B5       		.byte	-75
+ 1076 0417 0F       		.byte	15
+ 1077 0418 B8       		.byte	-72
+ 1078 0419 02       		.byte	2
+ 1079 041a BB       		.byte	-69
+ 1080 041b 20       		.byte	32
+ 1081 041c BE       		.byte	-66
+ 1082 041d 10       		.byte	16
+ 1083 041e C0       		.byte	-64
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 20
+
+
+ 1084 041f 40       		.byte	64
+ 1085 0420 C1       		.byte	-63
+ 1086 0421 06       		.byte	6
+ 1087 0422 C5       		.byte	-59
+ 1088 0423 D1       		.byte	-47
+ 1089 0424 C7       		.byte	-57
+ 1090 0425 02       		.byte	2
+ 1091 0426 C8       		.byte	-56
+ 1092 0427 13       		.byte	19
+ 1093 0428 C9       		.byte	-55
+ 1094 0429 FF       		.byte	-1
+ 1095 042a CA       		.byte	-54
+ 1096 042b FF       		.byte	-1
+ 1097 042c CB       		.byte	-53
+ 1098 042d FF       		.byte	-1
+ 1099 042e CD       		.byte	-51
+ 1100 042f AF       		.byte	-81
+ 1101 0430 CE       		.byte	-50
+ 1102 0431 0F       		.byte	15
+ 1103 0432 CF       		.byte	-49
+ 1104 0433 04       		.byte	4
+ 1105 0434 D0       		.byte	-48
+ 1106 0435 18       		.byte	24
+ 1107 0436 D4       		.byte	-44
+ 1108 0437 05       		.byte	5
+ 1109 0438 D8       		.byte	-40
+ 1110 0439 04       		.byte	4
+ 1111 043a D9       		.byte	-39
+ 1112 043b 04       		.byte	4
+ 1113 043c DA       		.byte	-38
+ 1114 043d 04       		.byte	4
+ 1115 043e DB       		.byte	-37
+ 1116 043f 04       		.byte	4
+ 1117 0440 DD       		.byte	-35
+ 1118 0441 99       		.byte	-103
+ 1119 0442 DF       		.byte	-33
+ 1120 0443 01       		.byte	1
+ 1121 0444 E0       		.byte	-32
+ 1122 0445 40       		.byte	64
+ 1123 0446 E2       		.byte	-30
+ 1124 0447 C0       		.byte	-64
+ 1125 0448 E4       		.byte	-28
+ 1126 0449 40       		.byte	64
+ 1127 044a E5       		.byte	-27
+ 1128 044b 40       		.byte	64
+ 1129 044c E6       		.byte	-26
+ 1130 044d C0       		.byte	-64
+ 1131 044e E8       		.byte	-24
+ 1132 044f C0       		.byte	-64
+ 1133 0450 EA       		.byte	-22
+ 1134 0451 C0       		.byte	-64
+ 1135 0452 EC       		.byte	-20
+ 1136 0453 C0       		.byte	-64
+ 1137 0454 EE       		.byte	-18
+ 1138 0455 C0       		.byte	-64
+ 1139 0456 00       		.byte	0
+ 1140 0457 08       		.byte	8
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 21
+
+
+ 1141 0458 02       		.byte	2
+ 1142 0459 40       		.byte	64
+ 1143 045a 03       		.byte	3
+ 1144 045b 02       		.byte	2
+ 1145 045c 07       		.byte	7
+ 1146 045d 50       		.byte	80
+ 1147 045e 09       		.byte	9
+ 1148 045f 08       		.byte	8
+ 1149 0460 0E       		.byte	14
+ 1150 0461 1A       		.byte	26
+ 1151 0462 10       		.byte	16
+ 1152 0463 24       		.byte	36
+ 1153 0464 15       		.byte	21
+ 1154 0465 04       		.byte	4
+ 1155 0466 18       		.byte	24
+ 1156 0467 80       		.byte	-128
+ 1157 0468 1A       		.byte	26
+ 1158 0469 04       		.byte	4
+ 1159 046a 1E       		.byte	30
+ 1160 046b 02       		.byte	2
+ 1161 046c 1F       		.byte	31
+ 1162 046d 40       		.byte	64
+ 1163 046e 20       		.byte	32
+ 1164 046f 08       		.byte	8
+ 1165 0470 22       		.byte	34
+ 1166 0471 10       		.byte	16
+ 1167 0472 27       		.byte	39
+ 1168 0473 40       		.byte	64
+ 1169 0474 29       		.byte	41
+ 1170 0475 04       		.byte	4
+ 1171 0476 2F       		.byte	47
+ 1172 0477 40       		.byte	64
+ 1173 0478 30       		.byte	48
+ 1174 0479 84       		.byte	-124
+ 1175 047a 32       		.byte	50
+ 1176 047b 10       		.byte	16
+ 1177 047c 33       		.byte	51
+ 1178 047d 02       		.byte	2
+ 1179 047e 36       		.byte	54
+ 1180 047f 04       		.byte	4
+ 1181 0480 37       		.byte	55
+ 1182 0481 50       		.byte	80
+ 1183 0482 38       		.byte	56
+ 1184 0483 80       		.byte	-128
+ 1185 0484 3D       		.byte	61
+ 1186 0485 04       		.byte	4
+ 1187 0486 3E       		.byte	62
+ 1188 0487 10       		.byte	16
+ 1189 0488 40       		.byte	64
+ 1190 0489 80       		.byte	-128
+ 1191 048a 44       		.byte	68
+ 1192 048b 80       		.byte	-128
+ 1193 048c 46       		.byte	70
+ 1194 048d 40       		.byte	64
+ 1195 048e 49       		.byte	73
+ 1196 048f 01       		.byte	1
+ 1197 0490 4A       		.byte	74
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 22
+
+
+ 1198 0491 08       		.byte	8
+ 1199 0492 4B       		.byte	75
+ 1200 0493 04       		.byte	4
+ 1201 0494 4E       		.byte	78
+ 1202 0495 08       		.byte	8
+ 1203 0496 51       		.byte	81
+ 1204 0497 08       		.byte	8
+ 1205 0498 52       		.byte	82
+ 1206 0499 08       		.byte	8
+ 1207 049a 59       		.byte	89
+ 1208 049b 81       		.byte	-127
+ 1209 049c 5A       		.byte	90
+ 1210 049d 04       		.byte	4
+ 1211 049e 84       		.byte	-124
+ 1212 049f 04       		.byte	4
+ 1213 04a0 85       		.byte	-123
+ 1214 04a1 10       		.byte	16
+ 1215 04a2 91       		.byte	-111
+ 1216 04a3 04       		.byte	4
+ 1217 04a4 96       		.byte	-106
+ 1218 04a5 30       		.byte	48
+ 1219 04a6 97       		.byte	-105
+ 1220 04a7 09       		.byte	9
+ 1221 04a8 98       		.byte	-104
+ 1222 04a9 04       		.byte	4
+ 1223 04aa 99       		.byte	-103
+ 1224 04ab 04       		.byte	4
+ 1225 04ac 9B       		.byte	-101
+ 1226 04ad 10       		.byte	16
+ 1227 04ae 9F       		.byte	-97
+ 1228 04af 40       		.byte	64
+ 1229 04b0 A0       		.byte	-96
+ 1230 04b1 A0       		.byte	-96
+ 1231 04b2 A2       		.byte	-94
+ 1232 04b3 04       		.byte	4
+ 1233 04b4 A3       		.byte	-93
+ 1234 04b5 02       		.byte	2
+ 1235 04b6 A6       		.byte	-90
+ 1236 04b7 01       		.byte	1
+ 1237 04b8 B0       		.byte	-80
+ 1238 04b9 20       		.byte	32
+ 1239 04ba B7       		.byte	-73
+ 1240 04bb 02       		.byte	2
+ 1241 04bc C0       		.byte	-64
+ 1242 04bd 3D       		.byte	61
+ 1243 04be C2       		.byte	-62
+ 1244 04bf E4       		.byte	-28
+ 1245 04c0 C4       		.byte	-60
+ 1246 04c1 26       		.byte	38
+ 1247 04c2 CA       		.byte	-54
+ 1248 04c3 82       		.byte	-126
+ 1249 04c4 CC       		.byte	-52
+ 1250 04c5 7F       		.byte	127
+ 1251 04c6 CE       		.byte	-50
+ 1252 04c7 68       		.byte	104
+ 1253 04c8 D0       		.byte	-48
+ 1254 04c9 81       		.byte	-127
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 23
+
+
+ 1255 04ca D2       		.byte	-46
+ 1256 04cb 24       		.byte	36
+ 1257 04cc D6       		.byte	-42
+ 1258 04cd 0B       		.byte	11
+ 1259 04ce E4       		.byte	-28
+ 1260 04cf 02       		.byte	2
+ 1261 04d0 00       		.byte	0
+ 1262 04d1 14       		.byte	20
+ 1263 04d2 06       		.byte	6
+ 1264 04d3 03       		.byte	3
+ 1265 04d4 08       		.byte	8
+ 1266 04d5 20       		.byte	32
+ 1267 04d6 0B       		.byte	11
+ 1268 04d7 02       		.byte	2
+ 1269 04d8 14       		.byte	20
+ 1270 04d9 09       		.byte	9
+ 1271 04da 15       		.byte	21
+ 1272 04db 01       		.byte	1
+ 1273 04dc 16       		.byte	22
+ 1274 04dd 10       		.byte	16
+ 1275 04de 19       		.byte	25
+ 1276 04df 02       		.byte	2
+ 1277 04e0 1C       		.byte	28
+ 1278 04e1 10       		.byte	16
+ 1279 04e2 1E       		.byte	30
+ 1280 04e3 0C       		.byte	12
+ 1281 04e4 24       		.byte	36
+ 1282 04e5 1C       		.byte	28
+ 1283 04e6 26       		.byte	38
+ 1284 04e7 02       		.byte	2
+ 1285 04e8 28       		.byte	40
+ 1286 04e9 10       		.byte	16
+ 1287 04ea 2C       		.byte	44
+ 1288 04eb 0C       		.byte	12
+ 1289 04ec 2E       		.byte	46
+ 1290 04ed 11       		.byte	17
+ 1291 04ee 32       		.byte	50
+ 1292 04ef 1F       		.byte	31
+ 1293 04f0 33       		.byte	51
+ 1294 04f1 02       		.byte	2
+ 1295 04f2 34       		.byte	52
+ 1296 04f3 20       		.byte	32
+ 1297 04f4 37       		.byte	55
+ 1298 04f5 01       		.byte	1
+ 1299 04f6 3E       		.byte	62
+ 1300 04f7 10       		.byte	16
+ 1301 04f8 3F       		.byte	63
+ 1302 04f9 44       		.byte	68
+ 1303 04fa 40       		.byte	64
+ 1304 04fb 46       		.byte	70
+ 1305 04fc 41       		.byte	65
+ 1306 04fd 05       		.byte	5
+ 1307 04fe 46       		.byte	70
+ 1308 04ff 0B       		.byte	11
+ 1309 0500 47       		.byte	71
+ 1310 0501 CE       		.byte	-50
+ 1311 0502 48       		.byte	72
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 24
+
+
+ 1312 0503 34       		.byte	52
+ 1313 0504 49       		.byte	73
+ 1314 0505 FF       		.byte	-1
+ 1315 0506 4A       		.byte	74
+ 1316 0507 FF       		.byte	-1
+ 1317 0508 4B       		.byte	75
+ 1318 0509 FF       		.byte	-1
+ 1319 050a 4E       		.byte	78
+ 1320 050b F0       		.byte	-16
+ 1321 050c 4F       		.byte	79
+ 1322 050d 44       		.byte	68
+ 1323 050e 50       		.byte	80
+ 1324 050f 0C       		.byte	12
+ 1325 0510 54       		.byte	84
+ 1326 0511 01       		.byte	1
+ 1327 0512 58       		.byte	88
+ 1328 0513 04       		.byte	4
+ 1329 0514 59       		.byte	89
+ 1330 0515 04       		.byte	4
+ 1331 0516 5A       		.byte	90
+ 1332 0517 04       		.byte	4
+ 1333 0518 5B       		.byte	91
+ 1334 0519 04       		.byte	4
+ 1335 051a 5F       		.byte	95
+ 1336 051b 01       		.byte	1
+ 1337 051c 66       		.byte	102
+ 1338 051d C0       		.byte	-64
+ 1339 051e 6A       		.byte	106
+ 1340 051f 40       		.byte	64
+ 1341 0520 6B       		.byte	107
+ 1342 0521 02       		.byte	2
+ 1343 0522 84       		.byte	-124
+ 1344 0523 0C       		.byte	12
+ 1345 0524 85       		.byte	-123
+ 1346 0525 07       		.byte	7
+ 1347 0526 86       		.byte	-122
+ 1348 0527 02       		.byte	2
+ 1349 0528 88       		.byte	-120
+ 1350 0529 07       		.byte	7
+ 1351 052a 8B       		.byte	-117
+ 1352 052b 08       		.byte	8
+ 1353 052c 8C       		.byte	-116
+ 1354 052d 0B       		.byte	11
+ 1355 052e 8E       		.byte	-114
+ 1356 052f 04       		.byte	4
+ 1357 0530 91       		.byte	-111
+ 1358 0531 06       		.byte	6
+ 1359 0532 92       		.byte	-110
+ 1360 0533 0F       		.byte	15
+ 1361 0534 93       		.byte	-109
+ 1362 0535 01       		.byte	1
+ 1363 0536 94       		.byte	-108
+ 1364 0537 08       		.byte	8
+ 1365 0538 96       		.byte	-106
+ 1366 0539 01       		.byte	1
+ 1367 053a 97       		.byte	-105
+ 1368 053b 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 25
+
+
+ 1369 053c 98       		.byte	-104
+ 1370 053d 0C       		.byte	12
+ 1371 053e 99       		.byte	-103
+ 1372 053f 06       		.byte	6
+ 1373 0540 9A       		.byte	-102
+ 1374 0541 01       		.byte	1
+ 1375 0542 A5       		.byte	-91
+ 1376 0543 05       		.byte	5
+ 1377 0544 A7       		.byte	-89
+ 1378 0545 02       		.byte	2
+ 1379 0546 A9       		.byte	-87
+ 1380 0547 03       		.byte	3
+ 1381 0548 AD       		.byte	-83
+ 1382 0549 02       		.byte	2
+ 1383 054a AF       		.byte	-81
+ 1384 054b 04       		.byte	4
+ 1385 054c B2       		.byte	-78
+ 1386 054d 0F       		.byte	15
+ 1387 054e B3       		.byte	-77
+ 1388 054f 07       		.byte	7
+ 1389 0550 B5       		.byte	-75
+ 1390 0551 08       		.byte	8
+ 1391 0552 D8       		.byte	-40
+ 1392 0553 04       		.byte	4
+ 1393 0554 D9       		.byte	-39
+ 1394 0555 04       		.byte	4
+ 1395 0556 DC       		.byte	-36
+ 1396 0557 99       		.byte	-103
+ 1397 0558 DF       		.byte	-33
+ 1398 0559 01       		.byte	1
+ 1399 055a 00       		.byte	0
+ 1400 055b 10       		.byte	16
+ 1401 055c 01       		.byte	1
+ 1402 055d 08       		.byte	8
+ 1403 055e 03       		.byte	3
+ 1404 055f 09       		.byte	9
+ 1405 0560 05       		.byte	5
+ 1406 0561 04       		.byte	4
+ 1407 0562 06       		.byte	6
+ 1408 0563 44       		.byte	68
+ 1409 0564 08       		.byte	8
+ 1410 0565 01       		.byte	1
+ 1411 0566 0A       		.byte	10
+ 1412 0567 20       		.byte	32
+ 1413 0568 0B       		.byte	11
+ 1414 0569 08       		.byte	8
+ 1415 056a 0C       		.byte	12
+ 1416 056b 40       		.byte	64
+ 1417 056c 0E       		.byte	14
+ 1418 056d 10       		.byte	16
+ 1419 056e 15       		.byte	21
+ 1420 056f 44       		.byte	68
+ 1421 0570 17       		.byte	23
+ 1422 0571 20       		.byte	32
+ 1423 0572 19       		.byte	25
+ 1424 0573 08       		.byte	8
+ 1425 0574 1D       		.byte	29
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 26
+
+
+ 1426 0575 04       		.byte	4
+ 1427 0576 1E       		.byte	30
+ 1428 0577 04       		.byte	4
+ 1429 0578 22       		.byte	34
+ 1430 0579 24       		.byte	36
+ 1431 057a 24       		.byte	36
+ 1432 057b 02       		.byte	2
+ 1433 057c 26       		.byte	38
+ 1434 057d 04       		.byte	4
+ 1435 057e 28       		.byte	40
+ 1436 057f 01       		.byte	1
+ 1437 0580 29       		.byte	41
+ 1438 0581 08       		.byte	8
+ 1439 0582 2B       		.byte	43
+ 1440 0583 08       		.byte	8
+ 1441 0584 32       		.byte	50
+ 1442 0585 14       		.byte	20
+ 1443 0586 33       		.byte	51
+ 1444 0587 01       		.byte	1
+ 1445 0588 35       		.byte	53
+ 1446 0589 04       		.byte	4
+ 1447 058a 36       		.byte	54
+ 1448 058b 20       		.byte	32
+ 1449 058c 3A       		.byte	58
+ 1450 058d 20       		.byte	32
+ 1451 058e 3B       		.byte	59
+ 1452 058f 08       		.byte	8
+ 1453 0590 3E       		.byte	62
+ 1454 0591 20       		.byte	32
+ 1455 0592 44       		.byte	68
+ 1456 0593 40       		.byte	64
+ 1457 0594 4C       		.byte	76
+ 1458 0595 0A       		.byte	10
+ 1459 0596 4D       		.byte	77
+ 1460 0597 40       		.byte	64
+ 1461 0598 55       		.byte	85
+ 1462 0599 01       		.byte	1
+ 1463 059a 56       		.byte	86
+ 1464 059b 44       		.byte	68
+ 1465 059c 5D       		.byte	93
+ 1466 059d A0       		.byte	-96
+ 1467 059e 5E       		.byte	94
+ 1468 059f 04       		.byte	4
+ 1469 05a0 5F       		.byte	95
+ 1470 05a1 01       		.byte	1
+ 1471 05a2 85       		.byte	-123
+ 1472 05a3 04       		.byte	4
+ 1473 05a4 8C       		.byte	-116
+ 1474 05a5 01       		.byte	1
+ 1475 05a6 8D       		.byte	-115
+ 1476 05a7 84       		.byte	-124
+ 1477 05a8 90       		.byte	-112
+ 1478 05a9 10       		.byte	16
+ 1479 05aa 93       		.byte	-109
+ 1480 05ab 08       		.byte	8
+ 1481 05ac 95       		.byte	-107
+ 1482 05ad 04       		.byte	4
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 27
+
+
+ 1483 05ae 96       		.byte	-106
+ 1484 05af 38       		.byte	56
+ 1485 05b0 98       		.byte	-104
+ 1486 05b1 40       		.byte	64
+ 1487 05b2 9A       		.byte	-102
+ 1488 05b3 20       		.byte	32
+ 1489 05b4 9B       		.byte	-101
+ 1490 05b5 21       		.byte	33
+ 1491 05b6 9C       		.byte	-100
+ 1492 05b7 01       		.byte	1
+ 1493 05b8 9D       		.byte	-99
+ 1494 05b9 08       		.byte	8
+ 1495 05ba A0       		.byte	-96
+ 1496 05bb 0A       		.byte	10
+ 1497 05bc A1       		.byte	-95
+ 1498 05bd 04       		.byte	4
+ 1499 05be A5       		.byte	-91
+ 1500 05bf 01       		.byte	1
+ 1501 05c0 A6       		.byte	-90
+ 1502 05c1 04       		.byte	4
+ 1503 05c2 B0       		.byte	-80
+ 1504 05c3 08       		.byte	8
+ 1505 05c4 B2       		.byte	-78
+ 1506 05c5 04       		.byte	4
+ 1507 05c6 B4       		.byte	-76
+ 1508 05c7 02       		.byte	2
+ 1509 05c8 B5       		.byte	-75
+ 1510 05c9 80       		.byte	-128
+ 1511 05ca C0       		.byte	-64
+ 1512 05cb 77       		.byte	119
+ 1513 05cc C2       		.byte	-62
+ 1514 05cd AE       		.byte	-82
+ 1515 05ce C4       		.byte	-60
+ 1516 05cf E0       		.byte	-32
+ 1517 05d0 CA       		.byte	-54
+ 1518 05d1 0E       		.byte	14
+ 1519 05d2 CC       		.byte	-52
+ 1520 05d3 67       		.byte	103
+ 1521 05d4 CE       		.byte	-50
+ 1522 05d5 26       		.byte	38
+ 1523 05d6 D0       		.byte	-48
+ 1524 05d7 80       		.byte	-128
+ 1525 05d8 D2       		.byte	-46
+ 1526 05d9 30       		.byte	48
+ 1527 05da D6       		.byte	-42
+ 1528 05db F0       		.byte	-16
+ 1529 05dc EC       		.byte	-20
+ 1530 05dd 60       		.byte	96
+ 1531 05de 03       		.byte	3
+ 1532 05df 02       		.byte	2
+ 1533 05e0 04       		.byte	4
+ 1534 05e1 06       		.byte	6
+ 1535 05e2 05       		.byte	5
+ 1536 05e3 02       		.byte	2
+ 1537 05e4 08       		.byte	8
+ 1538 05e5 03       		.byte	3
+ 1539 05e6 0C       		.byte	12
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 28
+
+
+ 1540 05e7 05       		.byte	5
+ 1541 05e8 17       		.byte	23
+ 1542 05e9 03       		.byte	3
+ 1543 05ea 18       		.byte	24
+ 1544 05eb 06       		.byte	6
+ 1545 05ec 32       		.byte	50
+ 1546 05ed 07       		.byte	7
+ 1547 05ee 33       		.byte	51
+ 1548 05ef 01       		.byte	1
+ 1549 05f0 35       		.byte	53
+ 1550 05f1 02       		.byte	2
+ 1551 05f2 38       		.byte	56
+ 1552 05f3 08       		.byte	8
+ 1553 05f4 3F       		.byte	63
+ 1554 05f5 10       		.byte	16
+ 1555 05f6 40       		.byte	64
+ 1556 05f7 23       		.byte	35
+ 1557 05f8 41       		.byte	65
+ 1558 05f9 05       		.byte	5
+ 1559 05fa 49       		.byte	73
+ 1560 05fb FF       		.byte	-1
+ 1561 05fc 4A       		.byte	74
+ 1562 05fd FF       		.byte	-1
+ 1563 05fe 4B       		.byte	75
+ 1564 05ff FF       		.byte	-1
+ 1565 0600 4D       		.byte	77
+ 1566 0601 A0       		.byte	-96
+ 1567 0602 4F       		.byte	79
+ 1568 0603 01       		.byte	1
+ 1569 0604 50       		.byte	80
+ 1570 0605 18       		.byte	24
+ 1571 0606 52       		.byte	82
+ 1572 0607 80       		.byte	-128
+ 1573 0608 58       		.byte	88
+ 1574 0609 04       		.byte	4
+ 1575 060a 59       		.byte	89
+ 1576 060b 04       		.byte	4
+ 1577 060c 5A       		.byte	90
+ 1578 060d 04       		.byte	4
+ 1579 060e 5B       		.byte	91
+ 1580 060f 04       		.byte	4
+ 1581 0610 5C       		.byte	92
+ 1582 0611 99       		.byte	-103
+ 1583 0612 5D       		.byte	93
+ 1584 0613 99       		.byte	-103
+ 1585 0614 5F       		.byte	95
+ 1586 0615 01       		.byte	1
+ 1587 0616 60       		.byte	96
+ 1588 0617 40       		.byte	64
+ 1589 0618 62       		.byte	98
+ 1590 0619 80       		.byte	-128
+ 1591 061a 64       		.byte	100
+ 1592 061b 40       		.byte	64
+ 1593 061c 65       		.byte	101
+ 1594 061d 40       		.byte	64
+ 1595 061e 66       		.byte	102
+ 1596 061f 80       		.byte	-128
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 29
+
+
+ 1597 0620 68       		.byte	104
+ 1598 0621 40       		.byte	64
+ 1599 0622 6A       		.byte	106
+ 1600 0623 80       		.byte	-128
+ 1601 0624 6C       		.byte	108
+ 1602 0625 40       		.byte	64
+ 1603 0626 6D       		.byte	109
+ 1604 0627 20       		.byte	32
+ 1605 0628 6E       		.byte	110
+ 1606 0629 80       		.byte	-128
+ 1607 062a 81       		.byte	-127
+ 1608 062b 02       		.byte	2
+ 1609 062c 83       		.byte	-125
+ 1610 062d 01       		.byte	1
+ 1611 062e 89       		.byte	-119
+ 1612 062f 02       		.byte	2
+ 1613 0630 95       		.byte	-107
+ 1614 0631 02       		.byte	2
+ 1615 0632 9C       		.byte	-100
+ 1616 0633 01       		.byte	1
+ 1617 0634 9D       		.byte	-99
+ 1618 0635 01       		.byte	1
+ 1619 0636 9E       		.byte	-98
+ 1620 0637 02       		.byte	2
+ 1621 0638 A4       		.byte	-92
+ 1622 0639 01       		.byte	1
+ 1623 063a A5       		.byte	-91
+ 1624 063b 04       		.byte	4
+ 1625 063c AE       		.byte	-82
+ 1626 063d 04       		.byte	4
+ 1627 063e AF       		.byte	-81
+ 1628 063f 04       		.byte	4
+ 1629 0640 B0       		.byte	-80
+ 1630 0641 02       		.byte	2
+ 1631 0642 B1       		.byte	-79
+ 1632 0643 04       		.byte	4
+ 1633 0644 B2       		.byte	-78
+ 1634 0645 01       		.byte	1
+ 1635 0646 B3       		.byte	-77
+ 1636 0647 02       		.byte	2
+ 1637 0648 B4       		.byte	-76
+ 1638 0649 04       		.byte	4
+ 1639 064a B7       		.byte	-73
+ 1640 064b 01       		.byte	1
+ 1641 064c B8       		.byte	-72
+ 1642 064d 08       		.byte	8
+ 1643 064e B9       		.byte	-71
+ 1644 064f 08       		.byte	8
+ 1645 0650 BF       		.byte	-65
+ 1646 0651 45       		.byte	69
+ 1647 0652 C0       		.byte	-64
+ 1648 0653 23       		.byte	35
+ 1649 0654 C1       		.byte	-63
+ 1650 0655 05       		.byte	5
+ 1651 0656 C5       		.byte	-59
+ 1652 0657 2C       		.byte	44
+ 1653 0658 C6       		.byte	-58
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 30
+
+
+ 1654 0659 30       		.byte	48
+ 1655 065a C7       		.byte	-57
+ 1656 065b 4E       		.byte	78
+ 1657 065c C8       		.byte	-56
+ 1658 065d 3B       		.byte	59
+ 1659 065e C9       		.byte	-55
+ 1660 065f FF       		.byte	-1
+ 1661 0660 CA       		.byte	-54
+ 1662 0661 FF       		.byte	-1
+ 1663 0662 CB       		.byte	-53
+ 1664 0663 FF       		.byte	-1
+ 1665 0664 CD       		.byte	-51
+ 1666 0665 AF       		.byte	-81
+ 1667 0666 CE       		.byte	-50
+ 1668 0667 07       		.byte	7
+ 1669 0668 CF       		.byte	-49
+ 1670 0669 01       		.byte	1
+ 1671 066a D0       		.byte	-48
+ 1672 066b 18       		.byte	24
+ 1673 066c D4       		.byte	-44
+ 1674 066d 0F       		.byte	15
+ 1675 066e D8       		.byte	-40
+ 1676 066f 04       		.byte	4
+ 1677 0670 D9       		.byte	-39
+ 1678 0671 04       		.byte	4
+ 1679 0672 DA       		.byte	-38
+ 1680 0673 04       		.byte	4
+ 1681 0674 DB       		.byte	-37
+ 1682 0675 04       		.byte	4
+ 1683 0676 DC       		.byte	-36
+ 1684 0677 09       		.byte	9
+ 1685 0678 DD       		.byte	-35
+ 1686 0679 99       		.byte	-103
+ 1687 067a DF       		.byte	-33
+ 1688 067b 05       		.byte	5
+ 1689 067c E0       		.byte	-32
+ 1690 067d 40       		.byte	64
+ 1691 067e E2       		.byte	-30
+ 1692 067f 80       		.byte	-128
+ 1693 0680 E4       		.byte	-28
+ 1694 0681 40       		.byte	64
+ 1695 0682 E5       		.byte	-27
+ 1696 0683 40       		.byte	64
+ 1697 0684 E6       		.byte	-26
+ 1698 0685 80       		.byte	-128
+ 1699 0686 E8       		.byte	-24
+ 1700 0687 40       		.byte	64
+ 1701 0688 EA       		.byte	-22
+ 1702 0689 80       		.byte	-128
+ 1703 068a EC       		.byte	-20
+ 1704 068b 40       		.byte	64
+ 1705 068c ED       		.byte	-19
+ 1706 068d 20       		.byte	32
+ 1707 068e EE       		.byte	-18
+ 1708 068f 80       		.byte	-128
+ 1709 0690 00       		.byte	0
+ 1710 0691 10       		.byte	16
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 31
+
+
+ 1711 0692 01       		.byte	1
+ 1712 0693 08       		.byte	8
+ 1713 0694 03       		.byte	3
+ 1714 0695 01       		.byte	1
+ 1715 0696 0B       		.byte	11
+ 1716 0697 08       		.byte	8
+ 1717 0698 0F       		.byte	15
+ 1718 0699 02       		.byte	2
+ 1719 069a 16       		.byte	22
+ 1720 069b 22       		.byte	34
+ 1721 069c 18       		.byte	24
+ 1722 069d 10       		.byte	16
+ 1723 069e 19       		.byte	25
+ 1724 069f 04       		.byte	4
+ 1725 06a0 1E       		.byte	30
+ 1726 06a1 80       		.byte	-128
+ 1727 06a2 1F       		.byte	31
+ 1728 06a3 18       		.byte	24
+ 1729 06a4 20       		.byte	32
+ 1730 06a5 04       		.byte	4
+ 1731 06a6 21       		.byte	33
+ 1732 06a7 24       		.byte	36
+ 1733 06a8 24       		.byte	36
+ 1734 06a9 40       		.byte	64
+ 1735 06aa 25       		.byte	37
+ 1736 06ab 08       		.byte	8
+ 1737 06ac 27       		.byte	39
+ 1738 06ad 02       		.byte	2
+ 1739 06ae 2F       		.byte	47
+ 1740 06af 12       		.byte	18
+ 1741 06b0 32       		.byte	50
+ 1742 06b1 04       		.byte	4
+ 1743 06b2 35       		.byte	53
+ 1744 06b3 04       		.byte	4
+ 1745 06b4 36       		.byte	54
+ 1746 06b5 40       		.byte	64
+ 1747 06b6 38       		.byte	56
+ 1748 06b7 02       		.byte	2
+ 1749 06b8 39       		.byte	57
+ 1750 06b9 08       		.byte	8
+ 1751 06ba 3E       		.byte	62
+ 1752 06bb 20       		.byte	32
+ 1753 06bc 3F       		.byte	63
+ 1754 06bd 02       		.byte	2
+ 1755 06be 40       		.byte	64
+ 1756 06bf 04       		.byte	4
+ 1757 06c0 41       		.byte	65
+ 1758 06c1 08       		.byte	8
+ 1759 06c2 45       		.byte	69
+ 1760 06c3 28       		.byte	40
+ 1761 06c4 48       		.byte	72
+ 1762 06c5 01       		.byte	1
+ 1763 06c6 4A       		.byte	74
+ 1764 06c7 02       		.byte	2
+ 1765 06c8 4E       		.byte	78
+ 1766 06c9 02       		.byte	2
+ 1767 06ca 4F       		.byte	79
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 32
+
+
+ 1768 06cb 06       		.byte	6
+ 1769 06cc 56       		.byte	86
+ 1770 06cd 2A       		.byte	42
+ 1771 06ce 57       		.byte	87
+ 1772 06cf 02       		.byte	2
+ 1773 06d0 5C       		.byte	92
+ 1774 06d1 40       		.byte	64
+ 1775 06d2 5D       		.byte	93
+ 1776 06d3 10       		.byte	16
+ 1777 06d4 5E       		.byte	94
+ 1778 06d5 08       		.byte	8
+ 1779 06d6 5F       		.byte	95
+ 1780 06d7 02       		.byte	2
+ 1781 06d8 66       		.byte	102
+ 1782 06d9 08       		.byte	8
+ 1783 06da 67       		.byte	103
+ 1784 06db 04       		.byte	4
+ 1785 06dc 70       		.byte	112
+ 1786 06dd 01       		.byte	1
+ 1787 06de 7C       		.byte	124
+ 1788 06df 10       		.byte	16
+ 1789 06e0 83       		.byte	-125
+ 1790 06e1 20       		.byte	32
+ 1791 06e2 89       		.byte	-119
+ 1792 06e3 10       		.byte	16
+ 1793 06e4 8B       		.byte	-117
+ 1794 06e5 01       		.byte	1
+ 1795 06e6 93       		.byte	-109
+ 1796 06e7 08       		.byte	8
+ 1797 06e8 94       		.byte	-108
+ 1798 06e9 10       		.byte	16
+ 1799 06ea 95       		.byte	-107
+ 1800 06eb 04       		.byte	4
+ 1801 06ec 96       		.byte	-106
+ 1802 06ed 34       		.byte	52
+ 1803 06ee 97       		.byte	-105
+ 1804 06ef 20       		.byte	32
+ 1805 06f0 98       		.byte	-104
+ 1806 06f1 40       		.byte	64
+ 1807 06f2 9B       		.byte	-101
+ 1808 06f3 01       		.byte	1
+ 1809 06f4 9C       		.byte	-100
+ 1810 06f5 01       		.byte	1
+ 1811 06f6 9D       		.byte	-99
+ 1812 06f7 88       		.byte	-120
+ 1813 06f8 A0       		.byte	-96
+ 1814 06f9 01       		.byte	1
+ 1815 06fa A1       		.byte	-95
+ 1816 06fb 04       		.byte	4
+ 1817 06fc A5       		.byte	-91
+ 1818 06fd 01       		.byte	1
+ 1819 06fe A7       		.byte	-89
+ 1820 06ff 08       		.byte	8
+ 1821 0700 AF       		.byte	-81
+ 1822 0701 40       		.byte	64
+ 1823 0702 B3       		.byte	-77
+ 1824 0703 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 33
+
+
+ 1825 0704 C0       		.byte	-64
+ 1826 0705 07       		.byte	7
+ 1827 0706 C2       		.byte	-62
+ 1828 0707 82       		.byte	-126
+ 1829 0708 C4       		.byte	-60
+ 1830 0709 A0       		.byte	-96
+ 1831 070a CA       		.byte	-54
+ 1832 070b 50       		.byte	80
+ 1833 070c CC       		.byte	-52
+ 1834 070d 52       		.byte	82
+ 1835 070e CE       		.byte	-50
+ 1836 070f A3       		.byte	-93
+ 1837 0710 D0       		.byte	-48
+ 1838 0711 66       		.byte	102
+ 1839 0712 D2       		.byte	-46
+ 1840 0713 18       		.byte	24
+ 1841 0714 D6       		.byte	-42
+ 1842 0715 F0       		.byte	-16
+ 1843 0716 D8       		.byte	-40
+ 1844 0717 60       		.byte	96
+ 1845 0718 DE       		.byte	-34
+ 1846 0719 20       		.byte	32
+ 1847 071a 03       		.byte	3
+ 1848 071b 10       		.byte	16
+ 1849 071c 07       		.byte	7
+ 1850 071d 10       		.byte	16
+ 1851 071e 09       		.byte	9
+ 1852 071f 07       		.byte	7
+ 1853 0720 0C       		.byte	12
+ 1854 0721 03       		.byte	3
+ 1855 0722 0D       		.byte	13
+ 1856 0723 0F       		.byte	15
+ 1857 0724 0E       		.byte	14
+ 1858 0725 04       		.byte	4
+ 1859 0726 11       		.byte	17
+ 1860 0727 05       		.byte	5
+ 1861 0728 13       		.byte	19
+ 1862 0729 0A       		.byte	10
+ 1863 072a 15       		.byte	21
+ 1864 072b 0A       		.byte	10
+ 1865 072c 16       		.byte	22
+ 1866 072d 08       		.byte	8
+ 1867 072e 17       		.byte	23
+ 1868 072f 05       		.byte	5
+ 1869 0730 19       		.byte	25
+ 1870 0731 03       		.byte	3
+ 1871 0732 1A       		.byte	26
+ 1872 0733 05       		.byte	5
+ 1873 0734 1B       		.byte	27
+ 1874 0735 0C       		.byte	12
+ 1875 0736 1C       		.byte	28
+ 1876 0737 03       		.byte	3
+ 1877 0738 1D       		.byte	29
+ 1878 0739 10       		.byte	16
+ 1879 073a 1E       		.byte	30
+ 1880 073b 0C       		.byte	12
+ 1881 073c 21       		.byte	33
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 34
+
+
+ 1882 073d 10       		.byte	16
+ 1883 073e 24       		.byte	36
+ 1884 073f 0A       		.byte	10
+ 1885 0740 26       		.byte	38
+ 1886 0741 04       		.byte	4
+ 1887 0742 27       		.byte	39
+ 1888 0743 10       		.byte	16
+ 1889 0744 29       		.byte	41
+ 1890 0745 0C       		.byte	12
+ 1891 0746 2B       		.byte	43
+ 1892 0747 03       		.byte	3
+ 1893 0748 2C       		.byte	44
+ 1894 0749 03       		.byte	3
+ 1895 074a 2E       		.byte	46
+ 1896 074b 04       		.byte	4
+ 1897 074c 33       		.byte	51
+ 1898 074d 10       		.byte	16
+ 1899 074e 36       		.byte	54
+ 1900 074f 0F       		.byte	15
+ 1901 0750 37       		.byte	55
+ 1902 0751 0F       		.byte	15
+ 1903 0752 3A       		.byte	58
+ 1904 0753 80       		.byte	-128
+ 1905 0754 3F       		.byte	63
+ 1906 0755 04       		.byte	4
+ 1907 0756 40       		.byte	64
+ 1908 0757 60       		.byte	96
+ 1909 0758 41       		.byte	65
+ 1910 0759 02       		.byte	2
+ 1911 075a 49       		.byte	73
+ 1912 075b FF       		.byte	-1
+ 1913 075c 4A       		.byte	74
+ 1914 075d FF       		.byte	-1
+ 1915 075e 4B       		.byte	75
+ 1916 075f FF       		.byte	-1
+ 1917 0760 4D       		.byte	77
+ 1918 0761 A0       		.byte	-96
+ 1919 0762 4F       		.byte	79
+ 1920 0763 04       		.byte	4
+ 1921 0764 50       		.byte	80
+ 1922 0765 18       		.byte	24
+ 1923 0766 58       		.byte	88
+ 1924 0767 04       		.byte	4
+ 1925 0768 59       		.byte	89
+ 1926 0769 04       		.byte	4
+ 1927 076a 5A       		.byte	90
+ 1928 076b 04       		.byte	4
+ 1929 076c 5C       		.byte	92
+ 1930 076d 90       		.byte	-112
+ 1931 076e 5D       		.byte	93
+ 1932 076f 09       		.byte	9
+ 1933 0770 5F       		.byte	95
+ 1934 0771 01       		.byte	1
+ 1935 0772 60       		.byte	96
+ 1936 0773 40       		.byte	64
+ 1937 0774 62       		.byte	98
+ 1938 0775 C0       		.byte	-64
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 35
+
+
+ 1939 0776 64       		.byte	100
+ 1940 0777 40       		.byte	64
+ 1941 0778 65       		.byte	101
+ 1942 0779 40       		.byte	64
+ 1943 077a 66       		.byte	102
+ 1944 077b C0       		.byte	-64
+ 1945 077c 68       		.byte	104
+ 1946 077d C0       		.byte	-64
+ 1947 077e 6A       		.byte	106
+ 1948 077f C0       		.byte	-64
+ 1949 0780 6C       		.byte	108
+ 1950 0781 C0       		.byte	-64
+ 1951 0782 6E       		.byte	110
+ 1952 0783 C0       		.byte	-64
+ 1953 0784 92       		.byte	-110
+ 1954 0785 04       		.byte	4
+ 1955 0786 95       		.byte	-107
+ 1956 0787 02       		.byte	2
+ 1957 0788 9A       		.byte	-102
+ 1958 0789 03       		.byte	3
+ 1959 078a 9B       		.byte	-101
+ 1960 078b 03       		.byte	3
+ 1961 078c A6       		.byte	-90
+ 1962 078d 02       		.byte	2
+ 1963 078e AA       		.byte	-86
+ 1964 078f 01       		.byte	1
+ 1965 0790 B0       		.byte	-80
+ 1966 0791 02       		.byte	2
+ 1967 0792 B2       		.byte	-78
+ 1968 0793 01       		.byte	1
+ 1969 0794 B3       		.byte	-77
+ 1970 0795 01       		.byte	1
+ 1971 0796 B4       		.byte	-76
+ 1972 0797 04       		.byte	4
+ 1973 0798 B7       		.byte	-73
+ 1974 0799 02       		.byte	2
+ 1975 079a BE       		.byte	-66
+ 1976 079b 04       		.byte	4
+ 1977 079c C0       		.byte	-64
+ 1978 079d 20       		.byte	32
+ 1979 079e C1       		.byte	-63
+ 1980 079f 06       		.byte	6
+ 1981 07a0 C5       		.byte	-59
+ 1982 07a1 D1       		.byte	-47
+ 1983 07a2 C7       		.byte	-57
+ 1984 07a3 02       		.byte	2
+ 1985 07a4 C8       		.byte	-56
+ 1986 07a5 13       		.byte	19
+ 1987 07a6 C9       		.byte	-55
+ 1988 07a7 FF       		.byte	-1
+ 1989 07a8 CA       		.byte	-54
+ 1990 07a9 FF       		.byte	-1
+ 1991 07aa CB       		.byte	-53
+ 1992 07ab FF       		.byte	-1
+ 1993 07ac CD       		.byte	-51
+ 1994 07ad AF       		.byte	-81
+ 1995 07ae CE       		.byte	-50
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 36
+
+
+ 1996 07af 0F       		.byte	15
+ 1997 07b0 CF       		.byte	-49
+ 1998 07b1 04       		.byte	4
+ 1999 07b2 D0       		.byte	-48
+ 2000 07b3 18       		.byte	24
+ 2001 07b4 D2       		.byte	-46
+ 2002 07b5 80       		.byte	-128
+ 2003 07b6 D4       		.byte	-44
+ 2004 07b7 05       		.byte	5
+ 2005 07b8 D8       		.byte	-40
+ 2006 07b9 04       		.byte	4
+ 2007 07ba D9       		.byte	-39
+ 2008 07bb 04       		.byte	4
+ 2009 07bc DA       		.byte	-38
+ 2010 07bd 04       		.byte	4
+ 2011 07be DB       		.byte	-37
+ 2012 07bf 04       		.byte	4
+ 2013 07c0 DC       		.byte	-36
+ 2014 07c1 99       		.byte	-103
+ 2015 07c2 DD       		.byte	-35
+ 2016 07c3 99       		.byte	-103
+ 2017 07c4 DF       		.byte	-33
+ 2018 07c5 01       		.byte	1
+ 2019 07c6 E0       		.byte	-32
+ 2020 07c7 40       		.byte	64
+ 2021 07c8 E2       		.byte	-30
+ 2022 07c9 C0       		.byte	-64
+ 2023 07ca E4       		.byte	-28
+ 2024 07cb 40       		.byte	64
+ 2025 07cc E5       		.byte	-27
+ 2026 07cd 40       		.byte	64
+ 2027 07ce E6       		.byte	-26
+ 2028 07cf C0       		.byte	-64
+ 2029 07d0 E8       		.byte	-24
+ 2030 07d1 C0       		.byte	-64
+ 2031 07d2 EA       		.byte	-22
+ 2032 07d3 C0       		.byte	-64
+ 2033 07d4 EC       		.byte	-20
+ 2034 07d5 C0       		.byte	-64
+ 2035 07d6 EE       		.byte	-18
+ 2036 07d7 C0       		.byte	-64
+ 2037 07d8 05       		.byte	5
+ 2038 07d9 80       		.byte	-128
+ 2039 07da 0A       		.byte	10
+ 2040 07db 48       		.byte	72
+ 2041 07dc 0C       		.byte	12
+ 2042 07dd 40       		.byte	64
+ 2043 07de 0E       		.byte	14
+ 2044 07df 14       		.byte	20
+ 2045 07e0 10       		.byte	16
+ 2046 07e1 20       		.byte	32
+ 2047 07e2 12       		.byte	18
+ 2048 07e3 04       		.byte	4
+ 2049 07e4 15       		.byte	21
+ 2050 07e5 04       		.byte	4
+ 2051 07e6 16       		.byte	22
+ 2052 07e7 02       		.byte	2
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 37
+
+
+ 2053 07e8 18       		.byte	24
+ 2054 07e9 04       		.byte	4
+ 2055 07ea 19       		.byte	25
+ 2056 07eb 04       		.byte	4
+ 2057 07ec 1A       		.byte	26
+ 2058 07ed 08       		.byte	8
+ 2059 07ee 1B       		.byte	27
+ 2060 07ef 01       		.byte	1
+ 2061 07f0 1F       		.byte	31
+ 2062 07f1 40       		.byte	64
+ 2063 07f2 21       		.byte	33
+ 2064 07f3 08       		.byte	8
+ 2065 07f4 22       		.byte	34
+ 2066 07f5 40       		.byte	64
+ 2067 07f6 25       		.byte	37
+ 2068 07f7 44       		.byte	68
+ 2069 07f8 27       		.byte	39
+ 2070 07f9 01       		.byte	1
+ 2071 07fa 2C       		.byte	44
+ 2072 07fb 40       		.byte	64
+ 2073 07fc 2E       		.byte	46
+ 2074 07fd 04       		.byte	4
+ 2075 07fe 2F       		.byte	47
+ 2076 07ff 44       		.byte	68
+ 2077 0800 30       		.byte	48
+ 2078 0801 20       		.byte	32
+ 2079 0802 31       		.byte	49
+ 2080 0803 08       		.byte	8
+ 2081 0804 34       		.byte	52
+ 2082 0805 01       		.byte	1
+ 2083 0806 35       		.byte	53
+ 2084 0807 88       		.byte	-120
+ 2085 0808 37       		.byte	55
+ 2086 0809 20       		.byte	32
+ 2087 080a 3C       		.byte	60
+ 2088 080b 10       		.byte	16
+ 2089 080c 3D       		.byte	61
+ 2090 080d 86       		.byte	-122
+ 2091 080e 3E       		.byte	62
+ 2092 080f 02       		.byte	2
+ 2093 0810 40       		.byte	64
+ 2094 0811 04       		.byte	4
+ 2095 0812 46       		.byte	70
+ 2096 0813 04       		.byte	4
+ 2097 0814 48       		.byte	72
+ 2098 0815 28       		.byte	40
+ 2099 0816 49       		.byte	73
+ 2100 0817 02       		.byte	2
+ 2101 0818 4E       		.byte	78
+ 2102 0819 04       		.byte	4
+ 2103 081a 50       		.byte	80
+ 2104 081b 08       		.byte	8
+ 2105 081c 52       		.byte	82
+ 2106 081d 04       		.byte	4
+ 2107 081e 59       		.byte	89
+ 2108 081f 06       		.byte	6
+ 2109 0820 5A       		.byte	90
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 38
+
+
+ 2110 0821 A0       		.byte	-96
+ 2111 0822 5B       		.byte	91
+ 2112 0823 20       		.byte	32
+ 2113 0824 72       		.byte	114
+ 2114 0825 40       		.byte	64
+ 2115 0826 93       		.byte	-109
+ 2116 0827 08       		.byte	8
+ 2117 0828 94       		.byte	-108
+ 2118 0829 10       		.byte	16
+ 2119 082a 96       		.byte	-106
+ 2120 082b 20       		.byte	32
+ 2121 082c 97       		.byte	-105
+ 2122 082d 20       		.byte	32
+ 2123 082e 9C       		.byte	-100
+ 2124 082f 01       		.byte	1
+ 2125 0830 9D       		.byte	-99
+ 2126 0831 08       		.byte	8
+ 2127 0832 9F       		.byte	-97
+ 2128 0833 01       		.byte	1
+ 2129 0834 A0       		.byte	-96
+ 2130 0835 01       		.byte	1
+ 2131 0836 A7       		.byte	-89
+ 2132 0837 08       		.byte	8
+ 2133 0838 AB       		.byte	-85
+ 2134 0839 80       		.byte	-128
+ 2135 083a B5       		.byte	-75
+ 2136 083b 80       		.byte	-128
+ 2137 083c C0       		.byte	-64
+ 2138 083d 80       		.byte	-128
+ 2139 083e C2       		.byte	-62
+ 2140 083f EA       		.byte	-22
+ 2141 0840 C4       		.byte	-60
+ 2142 0841 A6       		.byte	-90
+ 2143 0842 CA       		.byte	-54
+ 2144 0843 E0       		.byte	-32
+ 2145 0844 CC       		.byte	-52
+ 2146 0845 F6       		.byte	-10
+ 2147 0846 CE       		.byte	-50
+ 2148 0847 F0       		.byte	-16
+ 2149 0848 D0       		.byte	-48
+ 2150 0849 24       		.byte	36
+ 2151 084a D2       		.byte	-46
+ 2152 084b 24       		.byte	36
+ 2153 084c D6       		.byte	-42
+ 2154 084d 0B       		.byte	11
+ 2155 084e 02       		.byte	2
+ 2156 084f 0F       		.byte	15
+ 2157 0850 03       		.byte	3
+ 2158 0851 08       		.byte	8
+ 2159 0852 04       		.byte	4
+ 2160 0853 9E       		.byte	-98
+ 2161 0854 06       		.byte	6
+ 2162 0855 60       		.byte	96
+ 2163 0856 07       		.byte	7
+ 2164 0857 04       		.byte	4
+ 2165 0858 08       		.byte	8
+ 2166 0859 73       		.byte	115
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 39
+
+
+ 2167 085a 09       		.byte	9
+ 2168 085b 07       		.byte	7
+ 2169 085c 0C       		.byte	12
+ 2170 085d FD       		.byte	-3
+ 2171 085e 0E       		.byte	14
+ 2172 085f 02       		.byte	2
+ 2173 0860 0F       		.byte	15
+ 2174 0861 07       		.byte	7
+ 2175 0862 10       		.byte	16
+ 2176 0863 30       		.byte	48
+ 2177 0864 11       		.byte	17
+ 2178 0865 04       		.byte	4
+ 2179 0866 12       		.byte	18
+ 2180 0867 C9       		.byte	-55
+ 2181 0868 14       		.byte	20
+ 2182 0869 94       		.byte	-108
+ 2183 086a 16       		.byte	22
+ 2184 086b 60       		.byte	96
+ 2185 086c 18       		.byte	24
+ 2186 086d CF       		.byte	-49
+ 2187 086e 19       		.byte	25
+ 2188 086f 01       		.byte	1
+ 2189 0870 1A       		.byte	26
+ 2190 0871 30       		.byte	48
+ 2191 0872 1B       		.byte	27
+ 2192 0873 02       		.byte	2
+ 2193 0874 21       		.byte	33
+ 2194 0875 07       		.byte	7
+ 2195 0876 25       		.byte	37
+ 2196 0877 01       		.byte	1
+ 2197 0878 27       		.byte	39
+ 2198 0879 02       		.byte	2
+ 2199 087a 36       		.byte	54
+ 2200 087b FF       		.byte	-1
+ 2201 087c 37       		.byte	55
+ 2202 087d 0F       		.byte	15
+ 2203 087e 3E       		.byte	62
+ 2204 087f 40       		.byte	64
+ 2205 0880 58       		.byte	88
+ 2206 0881 04       		.byte	4
+ 2207 0882 59       		.byte	89
+ 2208 0883 04       		.byte	4
+ 2209 0884 5C       		.byte	92
+ 2210 0885 90       		.byte	-112
+ 2211 0886 5F       		.byte	95
+ 2212 0887 01       		.byte	1
+ 2213 0888 81       		.byte	-127
+ 2214 0889 01       		.byte	1
+ 2215 088a 84       		.byte	-124
+ 2216 088b 18       		.byte	24
+ 2217 088c 86       		.byte	-122
+ 2218 088d 02       		.byte	2
+ 2219 088e 88       		.byte	-120
+ 2220 088f 0E       		.byte	14
+ 2221 0890 90       		.byte	-112
+ 2222 0891 10       		.byte	16
+ 2223 0892 92       		.byte	-110
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 40
+
+
+ 2224 0893 02       		.byte	2
+ 2225 0894 96       		.byte	-106
+ 2226 0895 01       		.byte	1
+ 2227 0896 98       		.byte	-104
+ 2228 0897 18       		.byte	24
+ 2229 0898 9A       		.byte	-102
+ 2230 0899 04       		.byte	4
+ 2231 089a A0       		.byte	-96
+ 2232 089b 16       		.byte	22
+ 2233 089c A2       		.byte	-94
+ 2234 089d 08       		.byte	8
+ 2235 089e A5       		.byte	-91
+ 2236 089f 01       		.byte	1
+ 2237 08a0 A6       		.byte	-90
+ 2238 08a1 1E       		.byte	30
+ 2239 08a2 A8       		.byte	-88
+ 2240 08a3 01       		.byte	1
+ 2241 08a4 AB       		.byte	-85
+ 2242 08a5 01       		.byte	1
+ 2243 08a6 AE       		.byte	-82
+ 2244 08a7 01       		.byte	1
+ 2245 08a8 AF       		.byte	-81
+ 2246 08a9 02       		.byte	2
+ 2247 08aa B0       		.byte	-80
+ 2248 08ab 01       		.byte	1
+ 2249 08ac B1       		.byte	-79
+ 2250 08ad 02       		.byte	2
+ 2251 08ae B2       		.byte	-78
+ 2252 08af 1E       		.byte	30
+ 2253 08b0 B3       		.byte	-77
+ 2254 08b1 01       		.byte	1
+ 2255 08b2 BE       		.byte	-66
+ 2256 08b3 01       		.byte	1
+ 2257 08b4 BF       		.byte	-65
+ 2258 08b5 04       		.byte	4
+ 2259 08b6 D4       		.byte	-44
+ 2260 08b7 0F       		.byte	15
+ 2261 08b8 D8       		.byte	-40
+ 2262 08b9 04       		.byte	4
+ 2263 08ba D9       		.byte	-39
+ 2264 08bb 04       		.byte	4
+ 2265 08bc DB       		.byte	-37
+ 2266 08bd 04       		.byte	4
+ 2267 08be DC       		.byte	-36
+ 2268 08bf 99       		.byte	-103
+ 2269 08c0 DD       		.byte	-35
+ 2270 08c1 90       		.byte	-112
+ 2271 08c2 DF       		.byte	-33
+ 2272 08c3 01       		.byte	1
+ 2273 08c4 00       		.byte	0
+ 2274 08c5 12       		.byte	18
+ 2275 08c6 01       		.byte	1
+ 2276 08c7 08       		.byte	8
+ 2277 08c8 03       		.byte	3
+ 2278 08c9 01       		.byte	1
+ 2279 08ca 04       		.byte	4
+ 2280 08cb 10       		.byte	16
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 41
+
+
+ 2281 08cc 05       		.byte	5
+ 2282 08cd 08       		.byte	8
+ 2283 08ce 07       		.byte	7
+ 2284 08cf 08       		.byte	8
+ 2285 08d0 08       		.byte	8
+ 2286 08d1 01       		.byte	1
+ 2287 08d2 0A       		.byte	10
+ 2288 08d3 20       		.byte	32
+ 2289 08d4 0B       		.byte	11
+ 2290 08d5 0C       		.byte	12
+ 2291 08d6 0C       		.byte	12
+ 2292 08d7 01       		.byte	1
+ 2293 08d8 0E       		.byte	14
+ 2294 08d9 10       		.byte	16
+ 2295 08da 0F       		.byte	15
+ 2296 08db 04       		.byte	4
+ 2297 08dc 14       		.byte	20
+ 2298 08dd 50       		.byte	80
+ 2299 08de 15       		.byte	21
+ 2300 08df 81       		.byte	-127
+ 2301 08e0 16       		.byte	22
+ 2302 08e1 08       		.byte	8
+ 2303 08e2 17       		.byte	23
+ 2304 08e3 01       		.byte	1
+ 2305 08e4 18       		.byte	24
+ 2306 08e5 02       		.byte	2
+ 2307 08e6 1E       		.byte	30
+ 2308 08e7 40       		.byte	64
+ 2309 08e8 1F       		.byte	31
+ 2310 08e9 04       		.byte	4
+ 2311 08ea 20       		.byte	32
+ 2312 08eb 02       		.byte	2
+ 2313 08ec 21       		.byte	33
+ 2314 08ed 40       		.byte	64
+ 2315 08ee 27       		.byte	39
+ 2316 08ef A0       		.byte	-96
+ 2317 08f0 28       		.byte	40
+ 2318 08f1 40       		.byte	64
+ 2319 08f2 29       		.byte	41
+ 2320 08f3 08       		.byte	8
+ 2321 08f4 2D       		.byte	45
+ 2322 08f5 80       		.byte	-128
+ 2323 08f6 2E       		.byte	46
+ 2324 08f7 18       		.byte	24
+ 2325 08f8 2F       		.byte	47
+ 2326 08f9 18       		.byte	24
+ 2327 08fa 30       		.byte	48
+ 2328 08fb 11       		.byte	17
+ 2329 08fc 32       		.byte	50
+ 2330 08fd 10       		.byte	16
+ 2331 08fe 38       		.byte	56
+ 2332 08ff 12       		.byte	18
+ 2333 0900 39       		.byte	57
+ 2334 0901 80       		.byte	-128
+ 2335 0902 3B       		.byte	59
+ 2336 0903 08       		.byte	8
+ 2337 0904 3C       		.byte	60
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 42
+
+
+ 2338 0905 02       		.byte	2
+ 2339 0906 5D       		.byte	93
+ 2340 0907 01       		.byte	1
+ 2341 0908 5E       		.byte	94
+ 2342 0909 40       		.byte	64
+ 2343 090a 5F       		.byte	95
+ 2344 090b 28       		.byte	40
+ 2345 090c C0       		.byte	-64
+ 2346 090d 6F       		.byte	111
+ 2347 090e C2       		.byte	-62
+ 2348 090f 7E       		.byte	126
+ 2349 0910 C4       		.byte	-60
+ 2350 0911 F0       		.byte	-16
+ 2351 0912 CA       		.byte	-54
+ 2352 0913 73       		.byte	115
+ 2353 0914 CC       		.byte	-52
+ 2354 0915 05       		.byte	5
+ 2355 0916 CE       		.byte	-50
+ 2356 0917 8F       		.byte	-113
+ 2357 0918 D6       		.byte	-42
+ 2358 0919 F0       		.byte	-16
+ 2359 091a 04       		.byte	4
+ 2360 091b 04       		.byte	4
+ 2361 091c 06       		.byte	6
+ 2362 091d 02       		.byte	2
+ 2363 091e 07       		.byte	7
+ 2364 091f 01       		.byte	1
+ 2365 0920 08       		.byte	8
+ 2366 0921 02       		.byte	2
+ 2367 0922 0A       		.byte	10
+ 2368 0923 04       		.byte	4
+ 2369 0924 0B       		.byte	11
+ 2370 0925 04       		.byte	4
+ 2371 0926 0F       		.byte	15
+ 2372 0927 01       		.byte	1
+ 2373 0928 12       		.byte	18
+ 2374 0929 08       		.byte	8
+ 2375 092a 14       		.byte	20
+ 2376 092b 02       		.byte	2
+ 2377 092c 16       		.byte	22
+ 2378 092d 04       		.byte	4
+ 2379 092e 1B       		.byte	27
+ 2380 092f 02       		.byte	2
+ 2381 0930 1C       		.byte	28
+ 2382 0931 02       		.byte	2
+ 2383 0932 1E       		.byte	30
+ 2384 0933 04       		.byte	4
+ 2385 0934 26       		.byte	38
+ 2386 0935 01       		.byte	1
+ 2387 0936 30       		.byte	48
+ 2388 0937 08       		.byte	8
+ 2389 0938 33       		.byte	51
+ 2390 0939 02       		.byte	2
+ 2391 093a 34       		.byte	52
+ 2392 093b 06       		.byte	6
+ 2393 093c 35       		.byte	53
+ 2394 093d 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 43
+
+
+ 2395 093e 36       		.byte	54
+ 2396 093f 01       		.byte	1
+ 2397 0940 37       		.byte	55
+ 2398 0941 04       		.byte	4
+ 2399 0942 3A       		.byte	58
+ 2400 0943 20       		.byte	32
+ 2401 0944 40       		.byte	64
+ 2402 0945 45       		.byte	69
+ 2403 0946 49       		.byte	73
+ 2404 0947 FF       		.byte	-1
+ 2405 0948 4A       		.byte	74
+ 2406 0949 FF       		.byte	-1
+ 2407 094a 4B       		.byte	75
+ 2408 094b FF       		.byte	-1
+ 2409 094c 4F       		.byte	79
+ 2410 094d 01       		.byte	1
+ 2411 094e 50       		.byte	80
+ 2412 094f 18       		.byte	24
+ 2413 0950 52       		.byte	82
+ 2414 0951 80       		.byte	-128
+ 2415 0952 58       		.byte	88
+ 2416 0953 04       		.byte	4
+ 2417 0954 59       		.byte	89
+ 2418 0955 04       		.byte	4
+ 2419 0956 5A       		.byte	90
+ 2420 0957 04       		.byte	4
+ 2421 0958 5B       		.byte	91
+ 2422 0959 04       		.byte	4
+ 2423 095a 5C       		.byte	92
+ 2424 095b 99       		.byte	-103
+ 2425 095c 5D       		.byte	93
+ 2426 095d 99       		.byte	-103
+ 2427 095e 5F       		.byte	95
+ 2428 095f 01       		.byte	1
+ 2429 0960 60       		.byte	96
+ 2430 0961 40       		.byte	64
+ 2431 0962 62       		.byte	98
+ 2432 0963 40       		.byte	64
+ 2433 0964 64       		.byte	100
+ 2434 0965 40       		.byte	64
+ 2435 0966 65       		.byte	101
+ 2436 0967 40       		.byte	64
+ 2437 0968 66       		.byte	102
+ 2438 0969 80       		.byte	-128
+ 2439 096a 68       		.byte	104
+ 2440 096b 80       		.byte	-128
+ 2441 096c 6A       		.byte	106
+ 2442 096d 80       		.byte	-128
+ 2443 096e 6C       		.byte	108
+ 2444 096f 80       		.byte	-128
+ 2445 0970 6E       		.byte	110
+ 2446 0971 80       		.byte	-128
+ 2447 0972 82       		.byte	-126
+ 2448 0973 01       		.byte	1
+ 2449 0974 92       		.byte	-110
+ 2450 0975 01       		.byte	1
+ 2451 0976 AA       		.byte	-86
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 44
+
+
+ 2452 0977 02       		.byte	2
+ 2453 0978 B2       		.byte	-78
+ 2454 0979 01       		.byte	1
+ 2455 097a B4       		.byte	-76
+ 2456 097b 02       		.byte	2
+ 2457 097c C0       		.byte	-64
+ 2458 097d 45       		.byte	69
+ 2459 097e C9       		.byte	-55
+ 2460 097f FF       		.byte	-1
+ 2461 0980 CA       		.byte	-54
+ 2462 0981 FF       		.byte	-1
+ 2463 0982 CB       		.byte	-53
+ 2464 0983 FF       		.byte	-1
+ 2465 0984 CD       		.byte	-51
+ 2466 0985 83       		.byte	-125
+ 2467 0986 CE       		.byte	-50
+ 2468 0987 03       		.byte	3
+ 2469 0988 CF       		.byte	-49
+ 2470 0989 01       		.byte	1
+ 2471 098a D0       		.byte	-48
+ 2472 098b 18       		.byte	24
+ 2473 098c D2       		.byte	-46
+ 2474 098d 80       		.byte	-128
+ 2475 098e D8       		.byte	-40
+ 2476 098f 04       		.byte	4
+ 2477 0990 DA       		.byte	-38
+ 2478 0991 04       		.byte	4
+ 2479 0992 DB       		.byte	-37
+ 2480 0993 04       		.byte	4
+ 2481 0994 DC       		.byte	-36
+ 2482 0995 09       		.byte	9
+ 2483 0996 DD       		.byte	-35
+ 2484 0997 99       		.byte	-103
+ 2485 0998 DF       		.byte	-33
+ 2486 0999 01       		.byte	1
+ 2487 099a E0       		.byte	-32
+ 2488 099b 40       		.byte	64
+ 2489 099c E2       		.byte	-30
+ 2490 099d 40       		.byte	64
+ 2491 099e E4       		.byte	-28
+ 2492 099f 40       		.byte	64
+ 2493 09a0 E5       		.byte	-27
+ 2494 09a1 40       		.byte	64
+ 2495 09a2 E6       		.byte	-26
+ 2496 09a3 80       		.byte	-128
+ 2497 09a4 E8       		.byte	-24
+ 2498 09a5 80       		.byte	-128
+ 2499 09a6 EA       		.byte	-22
+ 2500 09a7 80       		.byte	-128
+ 2501 09a8 EC       		.byte	-20
+ 2502 09a9 80       		.byte	-128
+ 2503 09aa EE       		.byte	-18
+ 2504 09ab 80       		.byte	-128
+ 2505 09ac 00       		.byte	0
+ 2506 09ad 14       		.byte	20
+ 2507 09ae 06       		.byte	6
+ 2508 09af 80       		.byte	-128
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 45
+
+
+ 2509 09b0 09       		.byte	9
+ 2510 09b1 82       		.byte	-126
+ 2511 09b2 0B       		.byte	11
+ 2512 09b3 20       		.byte	32
+ 2513 09b4 0C       		.byte	12
+ 2514 09b5 02       		.byte	2
+ 2515 09b6 13       		.byte	19
+ 2516 09b7 08       		.byte	8
+ 2517 09b8 17       		.byte	23
+ 2518 09b9 10       		.byte	16
+ 2519 09ba 18       		.byte	24
+ 2520 09bb 84       		.byte	-124
+ 2521 09bc 1A       		.byte	26
+ 2522 09bd 06       		.byte	6
+ 2523 09be 1D       		.byte	29
+ 2524 09bf 10       		.byte	16
+ 2525 09c0 1F       		.byte	31
+ 2526 09c1 14       		.byte	20
+ 2527 09c2 20       		.byte	32
+ 2528 09c3 10       		.byte	16
+ 2529 09c4 21       		.byte	33
+ 2530 09c5 80       		.byte	-128
+ 2531 09c6 22       		.byte	34
+ 2532 09c7 10       		.byte	16
+ 2533 09c8 31       		.byte	49
+ 2534 09c9 10       		.byte	16
+ 2535 09ca 38       		.byte	56
+ 2536 09cb 90       		.byte	-112
+ 2537 09cc 3A       		.byte	58
+ 2538 09cd 40       		.byte	64
+ 2539 09ce 3B       		.byte	59
+ 2540 09cf 04       		.byte	4
+ 2541 09d0 42       		.byte	66
+ 2542 09d1 80       		.byte	-128
+ 2543 09d2 46       		.byte	70
+ 2544 09d3 80       		.byte	-128
+ 2545 09d4 48       		.byte	72
+ 2546 09d5 02       		.byte	2
+ 2547 09d6 4C       		.byte	76
+ 2548 09d7 02       		.byte	2
+ 2549 09d8 71       		.byte	113
+ 2550 09d9 02       		.byte	2
+ 2551 09da 76       		.byte	118
+ 2552 09db 80       		.byte	-128
+ 2553 09dc 82       		.byte	-126
+ 2554 09dd 10       		.byte	16
+ 2555 09de 86       		.byte	-122
+ 2556 09df 04       		.byte	4
+ 2557 09e0 87       		.byte	-121
+ 2558 09e1 08       		.byte	8
+ 2559 09e2 8F       		.byte	-113
+ 2560 09e3 10       		.byte	16
+ 2561 09e4 93       		.byte	-109
+ 2562 09e5 04       		.byte	4
+ 2563 09e6 96       		.byte	-106
+ 2564 09e7 02       		.byte	2
+ 2565 09e8 97       		.byte	-105
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 46
+
+
+ 2566 09e9 08       		.byte	8
+ 2567 09ea 9E       		.byte	-98
+ 2568 09eb C0       		.byte	-64
+ 2569 09ec A0       		.byte	-96
+ 2570 09ed 02       		.byte	2
+ 2571 09ee B4       		.byte	-76
+ 2572 09ef 40       		.byte	64
+ 2573 09f0 C0       		.byte	-64
+ 2574 09f1 16       		.byte	22
+ 2575 09f2 C2       		.byte	-62
+ 2576 09f3 1D       		.byte	29
+ 2577 09f4 C4       		.byte	-60
+ 2578 09f5 44       		.byte	68
+ 2579 09f6 CC       		.byte	-52
+ 2580 09f7 04       		.byte	4
+ 2581 09f8 CE       		.byte	-50
+ 2582 09f9 0E       		.byte	14
+ 2583 09fa D0       		.byte	-48
+ 2584 09fb 81       		.byte	-127
+ 2585 09fc D2       		.byte	-46
+ 2586 09fd 18       		.byte	24
+ 2587 09fe E0       		.byte	-32
+ 2588 09ff 02       		.byte	2
+ 2589 0a00 E2       		.byte	-30
+ 2590 0a01 80       		.byte	-128
+ 2591 0a02 E4       		.byte	-28
+ 2592 0a03 40       		.byte	64
+ 2593 0a04 04       		.byte	4
+ 2594 0a05 01       		.byte	1
+ 2595 0a06 06       		.byte	6
+ 2596 0a07 02       		.byte	2
+ 2597 0a08 14       		.byte	20
+ 2598 0a09 02       		.byte	2
+ 2599 0a0a 16       		.byte	22
+ 2600 0a0b 01       		.byte	1
+ 2601 0a0c 17       		.byte	23
+ 2602 0a0d 02       		.byte	2
+ 2603 0a0e 18       		.byte	24
+ 2604 0a0f 01       		.byte	1
+ 2605 0a10 1A       		.byte	26
+ 2606 0a11 02       		.byte	2
+ 2607 0a12 24       		.byte	36
+ 2608 0a13 01       		.byte	1
+ 2609 0a14 26       		.byte	38
+ 2610 0a15 02       		.byte	2
+ 2611 0a16 27       		.byte	39
+ 2612 0a17 01       		.byte	1
+ 2613 0a18 2A       		.byte	42
+ 2614 0a19 04       		.byte	4
+ 2615 0a1a 32       		.byte	50
+ 2616 0a1b 03       		.byte	3
+ 2617 0a1c 33       		.byte	51
+ 2618 0a1d 02       		.byte	2
+ 2619 0a1e 34       		.byte	52
+ 2620 0a1f 04       		.byte	4
+ 2621 0a20 35       		.byte	53
+ 2622 0a21 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 47
+
+
+ 2623 0a22 3A       		.byte	58
+ 2624 0a23 08       		.byte	8
+ 2625 0a24 40       		.byte	64
+ 2626 0a25 45       		.byte	69
+ 2627 0a26 49       		.byte	73
+ 2628 0a27 FF       		.byte	-1
+ 2629 0a28 4A       		.byte	74
+ 2630 0a29 FF       		.byte	-1
+ 2631 0a2a 4B       		.byte	75
+ 2632 0a2b FF       		.byte	-1
+ 2633 0a2c 4D       		.byte	77
+ 2634 0a2d 83       		.byte	-125
+ 2635 0a2e 4E       		.byte	78
+ 2636 0a2f 03       		.byte	3
+ 2637 0a30 4F       		.byte	79
+ 2638 0a31 01       		.byte	1
+ 2639 0a32 50       		.byte	80
+ 2640 0a33 18       		.byte	24
+ 2641 0a34 58       		.byte	88
+ 2642 0a35 04       		.byte	4
+ 2643 0a36 59       		.byte	89
+ 2644 0a37 04       		.byte	4
+ 2645 0a38 5A       		.byte	90
+ 2646 0a39 04       		.byte	4
+ 2647 0a3a 5C       		.byte	92
+ 2648 0a3b 99       		.byte	-103
+ 2649 0a3c 5D       		.byte	93
+ 2650 0a3d 09       		.byte	9
+ 2651 0a3e 5F       		.byte	95
+ 2652 0a3f 01       		.byte	1
+ 2653 0a40 60       		.byte	96
+ 2654 0a41 40       		.byte	64
+ 2655 0a42 62       		.byte	98
+ 2656 0a43 40       		.byte	64
+ 2657 0a44 64       		.byte	100
+ 2658 0a45 40       		.byte	64
+ 2659 0a46 65       		.byte	101
+ 2660 0a47 40       		.byte	64
+ 2661 0a48 66       		.byte	102
+ 2662 0a49 80       		.byte	-128
+ 2663 0a4a 68       		.byte	104
+ 2664 0a4b 80       		.byte	-128
+ 2665 0a4c 6A       		.byte	106
+ 2666 0a4d 80       		.byte	-128
+ 2667 0a4e 6C       		.byte	108
+ 2668 0a4f 80       		.byte	-128
+ 2669 0a50 6E       		.byte	110
+ 2670 0a51 80       		.byte	-128
+ 2671 0a52 81       		.byte	-127
+ 2672 0a53 02       		.byte	2
+ 2673 0a54 83       		.byte	-125
+ 2674 0a55 01       		.byte	1
+ 2675 0a56 87       		.byte	-121
+ 2676 0a57 04       		.byte	4
+ 2677 0a58 8A       		.byte	-118
+ 2678 0a59 02       		.byte	2
+ 2679 0a5a 8F       		.byte	-113
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 48
+
+
+ 2680 0a5b 08       		.byte	8
+ 2681 0a5c 91       		.byte	-111
+ 2682 0a5d 01       		.byte	1
+ 2683 0a5e 93       		.byte	-109
+ 2684 0a5f 02       		.byte	2
+ 2685 0a60 98       		.byte	-104
+ 2686 0a61 01       		.byte	1
+ 2687 0a62 9E       		.byte	-98
+ 2688 0a63 04       		.byte	4
+ 2689 0a64 A3       		.byte	-93
+ 2690 0a65 08       		.byte	8
+ 2691 0a66 A6       		.byte	-90
+ 2692 0a67 01       		.byte	1
+ 2693 0a68 A9       		.byte	-87
+ 2694 0a69 01       		.byte	1
+ 2695 0a6a AB       		.byte	-85
+ 2696 0a6b 02       		.byte	2
+ 2697 0a6c AD       		.byte	-83
+ 2698 0a6d 01       		.byte	1
+ 2699 0a6e AF       		.byte	-81
+ 2700 0a6f 02       		.byte	2
+ 2701 0a70 B0       		.byte	-80
+ 2702 0a71 02       		.byte	2
+ 2703 0a72 B1       		.byte	-79
+ 2704 0a73 03       		.byte	3
+ 2705 0a74 B4       		.byte	-76
+ 2706 0a75 04       		.byte	4
+ 2707 0a76 B5       		.byte	-75
+ 2708 0a77 04       		.byte	4
+ 2709 0a78 B6       		.byte	-74
+ 2710 0a79 01       		.byte	1
+ 2711 0a7a B7       		.byte	-73
+ 2712 0a7b 08       		.byte	8
+ 2713 0a7c BB       		.byte	-69
+ 2714 0a7d 02       		.byte	2
+ 2715 0a7e BF       		.byte	-65
+ 2716 0a7f 40       		.byte	64
+ 2717 0a80 C0       		.byte	-64
+ 2718 0a81 45       		.byte	69
+ 2719 0a82 C5       		.byte	-59
+ 2720 0a83 EC       		.byte	-20
+ 2721 0a84 C7       		.byte	-57
+ 2722 0a85 20       		.byte	32
+ 2723 0a86 C8       		.byte	-56
+ 2724 0a87 23       		.byte	35
+ 2725 0a88 C9       		.byte	-55
+ 2726 0a89 FF       		.byte	-1
+ 2727 0a8a CA       		.byte	-54
+ 2728 0a8b FF       		.byte	-1
+ 2729 0a8c CB       		.byte	-53
+ 2730 0a8d FF       		.byte	-1
+ 2731 0a8e CD       		.byte	-51
+ 2732 0a8f 83       		.byte	-125
+ 2733 0a90 CE       		.byte	-50
+ 2734 0a91 03       		.byte	3
+ 2735 0a92 CF       		.byte	-49
+ 2736 0a93 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 49
+
+
+ 2737 0a94 D0       		.byte	-48
+ 2738 0a95 18       		.byte	24
+ 2739 0a96 D4       		.byte	-44
+ 2740 0a97 01       		.byte	1
+ 2741 0a98 D8       		.byte	-40
+ 2742 0a99 04       		.byte	4
+ 2743 0a9a D9       		.byte	-39
+ 2744 0a9b 04       		.byte	4
+ 2745 0a9c DA       		.byte	-38
+ 2746 0a9d 04       		.byte	4
+ 2747 0a9e DB       		.byte	-37
+ 2748 0a9f 04       		.byte	4
+ 2749 0aa0 DC       		.byte	-36
+ 2750 0aa1 99       		.byte	-103
+ 2751 0aa2 DD       		.byte	-35
+ 2752 0aa3 99       		.byte	-103
+ 2753 0aa4 DF       		.byte	-33
+ 2754 0aa5 01       		.byte	1
+ 2755 0aa6 E0       		.byte	-32
+ 2756 0aa7 40       		.byte	64
+ 2757 0aa8 E2       		.byte	-30
+ 2758 0aa9 40       		.byte	64
+ 2759 0aaa E4       		.byte	-28
+ 2760 0aab 40       		.byte	64
+ 2761 0aac E5       		.byte	-27
+ 2762 0aad 40       		.byte	64
+ 2763 0aae E6       		.byte	-26
+ 2764 0aaf 80       		.byte	-128
+ 2765 0ab0 E8       		.byte	-24
+ 2766 0ab1 80       		.byte	-128
+ 2767 0ab2 EA       		.byte	-22
+ 2768 0ab3 80       		.byte	-128
+ 2769 0ab4 EC       		.byte	-20
+ 2770 0ab5 80       		.byte	-128
+ 2771 0ab6 EE       		.byte	-18
+ 2772 0ab7 80       		.byte	-128
+ 2773 0ab8 01       		.byte	1
+ 2774 0ab9 20       		.byte	32
+ 2775 0aba 07       		.byte	7
+ 2776 0abb 10       		.byte	16
+ 2777 0abc 09       		.byte	9
+ 2778 0abd 20       		.byte	32
+ 2779 0abe 0A       		.byte	10
+ 2780 0abf 02       		.byte	2
+ 2781 0ac0 0E       		.byte	14
+ 2782 0ac1 18       		.byte	24
+ 2783 0ac2 13       		.byte	19
+ 2784 0ac3 04       		.byte	4
+ 2785 0ac4 15       		.byte	21
+ 2786 0ac5 20       		.byte	32
+ 2787 0ac6 17       		.byte	23
+ 2788 0ac7 08       		.byte	8
+ 2789 0ac8 19       		.byte	25
+ 2790 0ac9 A0       		.byte	-96
+ 2791 0aca 1B       		.byte	27
+ 2792 0acb 01       		.byte	1
+ 2793 0acc 1E       		.byte	30
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 50
+
+
+ 2794 0acd 18       		.byte	24
+ 2795 0ace 1F       		.byte	31
+ 2796 0acf 20       		.byte	32
+ 2797 0ad0 20       		.byte	32
+ 2798 0ad1 40       		.byte	64
+ 2799 0ad2 21       		.byte	33
+ 2800 0ad3 21       		.byte	33
+ 2801 0ad4 22       		.byte	34
+ 2802 0ad5 40       		.byte	64
+ 2803 0ad6 27       		.byte	39
+ 2804 0ad7 18       		.byte	24
+ 2805 0ad8 29       		.byte	41
+ 2806 0ad9 20       		.byte	32
+ 2807 0ada 2A       		.byte	42
+ 2808 0adb 01       		.byte	1
+ 2809 0adc 2B       		.byte	43
+ 2810 0add 01       		.byte	1
+ 2811 0ade 2F       		.byte	47
+ 2812 0adf 20       		.byte	32
+ 2813 0ae0 32       		.byte	50
+ 2814 0ae1 01       		.byte	1
+ 2815 0ae2 37       		.byte	55
+ 2816 0ae3 08       		.byte	8
+ 2817 0ae4 39       		.byte	57
+ 2818 0ae5 02       		.byte	2
+ 2819 0ae6 3A       		.byte	58
+ 2820 0ae7 80       		.byte	-128
+ 2821 0ae8 3B       		.byte	59
+ 2822 0ae9 04       		.byte	4
+ 2823 0aea 42       		.byte	66
+ 2824 0aeb 80       		.byte	-128
+ 2825 0aec 46       		.byte	70
+ 2826 0aed 80       		.byte	-128
+ 2827 0aee 48       		.byte	72
+ 2828 0aef 02       		.byte	2
+ 2829 0af0 49       		.byte	73
+ 2830 0af1 05       		.byte	5
+ 2831 0af2 4C       		.byte	76
+ 2832 0af3 02       		.byte	2
+ 2833 0af4 50       		.byte	80
+ 2834 0af5 02       		.byte	2
+ 2835 0af6 52       		.byte	82
+ 2836 0af7 01       		.byte	1
+ 2837 0af8 59       		.byte	89
+ 2838 0af9 05       		.byte	5
+ 2839 0afa 5A       		.byte	90
+ 2840 0afb 80       		.byte	-128
+ 2841 0afc 91       		.byte	-111
+ 2842 0afd 20       		.byte	32
+ 2843 0afe 93       		.byte	-109
+ 2844 0aff 04       		.byte	4
+ 2845 0b00 96       		.byte	-106
+ 2846 0b01 10       		.byte	16
+ 2847 0b02 97       		.byte	-105
+ 2848 0b03 08       		.byte	8
+ 2849 0b04 9D       		.byte	-99
+ 2850 0b05 80       		.byte	-128
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 51
+
+
+ 2851 0b06 9E       		.byte	-98
+ 2852 0b07 40       		.byte	64
+ 2853 0b08 B4       		.byte	-76
+ 2854 0b09 40       		.byte	64
+ 2855 0b0a B7       		.byte	-73
+ 2856 0b0b 01       		.byte	1
+ 2857 0b0c C0       		.byte	-64
+ 2858 0b0d 22       		.byte	34
+ 2859 0b0e C2       		.byte	-62
+ 2860 0b0f 63       		.byte	99
+ 2861 0b10 C4       		.byte	-60
+ 2862 0b11 64       		.byte	100
+ 2863 0b12 CA       		.byte	-54
+ 2864 0b13 4D       		.byte	77
+ 2865 0b14 CC       		.byte	-52
+ 2866 0b15 41       		.byte	65
+ 2867 0b16 CE       		.byte	-50
+ 2868 0b17 0B       		.byte	11
+ 2869 0b18 D0       		.byte	-48
+ 2870 0b19 81       		.byte	-127
+ 2871 0b1a D2       		.byte	-46
+ 2872 0b1b 18       		.byte	24
+ 2873 0b1c D6       		.byte	-42
+ 2874 0b1d 0B       		.byte	11
+ 2875 0b1e 04       		.byte	4
+ 2876 0b1f 01       		.byte	1
+ 2877 0b20 06       		.byte	6
+ 2878 0b21 06       		.byte	6
+ 2879 0b22 08       		.byte	8
+ 2880 0b23 07       		.byte	7
+ 2881 0b24 0E       		.byte	14
+ 2882 0b25 01       		.byte	1
+ 2883 0b26 14       		.byte	20
+ 2884 0b27 06       		.byte	6
+ 2885 0b28 18       		.byte	24
+ 2886 0b29 06       		.byte	6
+ 2887 0b2a 1A       		.byte	26
+ 2888 0b2b 01       		.byte	1
+ 2889 0b2c 1C       		.byte	28
+ 2890 0b2d 04       		.byte	4
+ 2891 0b2e 24       		.byte	36
+ 2892 0b2f 02       		.byte	2
+ 2893 0b30 28       		.byte	40
+ 2894 0b31 06       		.byte	6
+ 2895 0b32 2A       		.byte	42
+ 2896 0b33 01       		.byte	1
+ 2897 0b34 34       		.byte	52
+ 2898 0b35 07       		.byte	7
+ 2899 0b36 3A       		.byte	58
+ 2900 0b37 20       		.byte	32
+ 2901 0b38 40       		.byte	64
+ 2902 0b39 25       		.byte	37
+ 2903 0b3a 41       		.byte	65
+ 2904 0b3b 03       		.byte	3
+ 2905 0b3c 42       		.byte	66
+ 2906 0b3d 04       		.byte	4
+ 2907 0b3e 44       		.byte	68
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 52
+
+
+ 2908 0b3f 06       		.byte	6
+ 2909 0b40 45       		.byte	69
+ 2910 0b41 C0       		.byte	-64
+ 2911 0b42 46       		.byte	70
+ 2912 0b43 0E       		.byte	14
+ 2913 0b44 48       		.byte	72
+ 2914 0b45 06       		.byte	6
+ 2915 0b46 49       		.byte	73
+ 2916 0b47 FF       		.byte	-1
+ 2917 0b48 4A       		.byte	74
+ 2918 0b49 FF       		.byte	-1
+ 2919 0b4a 4B       		.byte	75
+ 2920 0b4b FF       		.byte	-1
+ 2921 0b4c 4C       		.byte	76
+ 2922 0b4d 62       		.byte	98
+ 2923 0b4e 4D       		.byte	77
+ 2924 0b4f A0       		.byte	-96
+ 2925 0b50 4E       		.byte	78
+ 2926 0b51 F0       		.byte	-16
+ 2927 0b52 4F       		.byte	79
+ 2928 0b53 41       		.byte	65
+ 2929 0b54 50       		.byte	80
+ 2930 0b55 0C       		.byte	12
+ 2931 0b56 58       		.byte	88
+ 2932 0b57 04       		.byte	4
+ 2933 0b58 5A       		.byte	90
+ 2934 0b59 04       		.byte	4
+ 2935 0b5a 5F       		.byte	95
+ 2936 0b5b 01       		.byte	1
+ 2937 0b5c 66       		.byte	102
+ 2938 0b5d 40       		.byte	64
+ 2939 0b5e 67       		.byte	103
+ 2940 0b5f 02       		.byte	2
+ 2941 0b60 69       		.byte	105
+ 2942 0b61 10       		.byte	16
+ 2943 0b62 6A       		.byte	106
+ 2944 0b63 30       		.byte	48
+ 2945 0b64 6B       		.byte	107
+ 2946 0b65 10       		.byte	16
+ 2947 0b66 6D       		.byte	109
+ 2948 0b67 10       		.byte	16
+ 2949 0b68 6E       		.byte	110
+ 2950 0b69 10       		.byte	16
+ 2951 0b6a 6F       		.byte	111
+ 2952 0b6b 12       		.byte	18
+ 2953 0b6c 83       		.byte	-125
+ 2954 0b6d 04       		.byte	4
+ 2955 0b6e 84       		.byte	-124
+ 2956 0b6f 02       		.byte	2
+ 2957 0b70 85       		.byte	-123
+ 2958 0b71 18       		.byte	24
+ 2959 0b72 88       		.byte	-120
+ 2960 0b73 02       		.byte	2
+ 2961 0b74 89       		.byte	-119
+ 2962 0b75 1C       		.byte	28
+ 2963 0b76 8B       		.byte	-117
+ 2964 0b77 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 53
+
+
+ 2965 0b78 8D       		.byte	-115
+ 2966 0b79 10       		.byte	16
+ 2967 0b7a 93       		.byte	-109
+ 2968 0b7b 20       		.byte	32
+ 2969 0b7c 94       		.byte	-108
+ 2970 0b7d 02       		.byte	2
+ 2971 0b7e 95       		.byte	-107
+ 2972 0b7f 1F       		.byte	31
+ 2973 0b80 98       		.byte	-104
+ 2974 0b81 02       		.byte	2
+ 2975 0b82 99       		.byte	-103
+ 2976 0b83 1C       		.byte	28
+ 2977 0b84 9B       		.byte	-101
+ 2978 0b85 02       		.byte	2
+ 2979 0b86 9F       		.byte	-97
+ 2980 0b87 40       		.byte	64
+ 2981 0b88 A1       		.byte	-95
+ 2982 0b89 04       		.byte	4
+ 2983 0b8a A3       		.byte	-93
+ 2984 0b8b C0       		.byte	-64
+ 2985 0b8c A4       		.byte	-92
+ 2986 0b8d 01       		.byte	1
+ 2987 0b8e A5       		.byte	-91
+ 2988 0b8f 07       		.byte	7
+ 2989 0b90 A7       		.byte	-89
+ 2990 0b91 18       		.byte	24
+ 2991 0b92 A8       		.byte	-88
+ 2992 0b93 01       		.byte	1
+ 2993 0b94 A9       		.byte	-87
+ 2994 0b95 08       		.byte	8
+ 2995 0b96 AC       		.byte	-84
+ 2996 0b97 01       		.byte	1
+ 2997 0b98 AF       		.byte	-81
+ 2998 0b99 03       		.byte	3
+ 2999 0b9a B0       		.byte	-80
+ 3000 0b9b 02       		.byte	2
+ 3001 0b9c B1       		.byte	-79
+ 3002 0b9d 80       		.byte	-128
+ 3003 0b9e B3       		.byte	-77
+ 3004 0b9f 60       		.byte	96
+ 3005 0ba0 B5       		.byte	-75
+ 3006 0ba1 1F       		.byte	31
+ 3007 0ba2 B6       		.byte	-74
+ 3008 0ba3 01       		.byte	1
+ 3009 0ba4 BB       		.byte	-69
+ 3010 0ba5 20       		.byte	32
+ 3011 0ba6 BE       		.byte	-66
+ 3012 0ba7 01       		.byte	1
+ 3013 0ba8 BF       		.byte	-65
+ 3014 0ba9 04       		.byte	4
+ 3015 0baa D6       		.byte	-42
+ 3016 0bab 02       		.byte	2
+ 3017 0bac D7       		.byte	-41
+ 3018 0bad 13       		.byte	19
+ 3019 0bae D8       		.byte	-40
+ 3020 0baf 04       		.byte	4
+ 3021 0bb0 D9       		.byte	-39
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 54
+
+
+ 3022 0bb1 04       		.byte	4
+ 3023 0bb2 DB       		.byte	-37
+ 3024 0bb3 04       		.byte	4
+ 3025 0bb4 DF       		.byte	-33
+ 3026 0bb5 01       		.byte	1
+ 3027 0bb6 00       		.byte	0
+ 3028 0bb7 04       		.byte	4
+ 3029 0bb8 03       		.byte	3
+ 3030 0bb9 14       		.byte	20
+ 3031 0bba 04       		.byte	4
+ 3032 0bbb 04       		.byte	4
+ 3033 0bbc 05       		.byte	5
+ 3034 0bbd 84       		.byte	-124
+ 3035 0bbe 07       		.byte	7
+ 3036 0bbf 04       		.byte	4
+ 3037 0bc0 09       		.byte	9
+ 3038 0bc1 20       		.byte	32
+ 3039 0bc2 0B       		.byte	11
+ 3040 0bc3 28       		.byte	40
+ 3041 0bc4 0E       		.byte	14
+ 3042 0bc5 15       		.byte	21
+ 3043 0bc6 10       		.byte	16
+ 3044 0bc7 2A       		.byte	42
+ 3045 0bc8 15       		.byte	21
+ 3046 0bc9 20       		.byte	32
+ 3047 0bca 17       		.byte	23
+ 3048 0bcb 08       		.byte	8
+ 3049 0bcc 19       		.byte	25
+ 3050 0bcd 82       		.byte	-126
+ 3051 0bce 1E       		.byte	30
+ 3052 0bcf 04       		.byte	4
+ 3053 0bd0 1F       		.byte	31
+ 3054 0bd1 10       		.byte	16
+ 3055 0bd2 21       		.byte	33
+ 3056 0bd3 31       		.byte	49
+ 3057 0bd4 23       		.byte	35
+ 3058 0bd5 10       		.byte	16
+ 3059 0bd6 28       		.byte	40
+ 3060 0bd7 80       		.byte	-128
+ 3061 0bd8 29       		.byte	41
+ 3062 0bd9 94       		.byte	-108
+ 3063 0bda 31       		.byte	49
+ 3064 0bdb 20       		.byte	32
+ 3065 0bdc 32       		.byte	50
+ 3066 0bdd 41       		.byte	65
+ 3067 0bde 33       		.byte	51
+ 3068 0bdf 04       		.byte	4
+ 3069 0be0 38       		.byte	56
+ 3070 0be1 88       		.byte	-120
+ 3071 0be2 39       		.byte	57
+ 3072 0be3 02       		.byte	2
+ 3073 0be4 3B       		.byte	59
+ 3074 0be5 20       		.byte	32
+ 3075 0be6 47       		.byte	71
+ 3076 0be7 15       		.byte	21
+ 3077 0be8 4D       		.byte	77
+ 3078 0be9 80       		.byte	-128
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 55
+
+
+ 3079 0bea 4F       		.byte	79
+ 3080 0beb 12       		.byte	18
+ 3081 0bec 57       		.byte	87
+ 3082 0bed 40       		.byte	64
+ 3083 0bee 59       		.byte	89
+ 3084 0bef 02       		.byte	2
+ 3085 0bf0 68       		.byte	104
+ 3086 0bf1 2A       		.byte	42
+ 3087 0bf2 70       		.byte	112
+ 3088 0bf3 44       		.byte	68
+ 3089 0bf4 71       		.byte	113
+ 3090 0bf5 10       		.byte	16
+ 3091 0bf6 72       		.byte	114
+ 3092 0bf7 11       		.byte	17
+ 3093 0bf8 73       		.byte	115
+ 3094 0bf9 08       		.byte	8
+ 3095 0bfa 96       		.byte	-106
+ 3096 0bfb 20       		.byte	32
+ 3097 0bfc 9C       		.byte	-100
+ 3098 0bfd 01       		.byte	1
+ 3099 0bfe A9       		.byte	-87
+ 3100 0bff 21       		.byte	33
+ 3101 0c00 AA       		.byte	-86
+ 3102 0c01 04       		.byte	4
+ 3103 0c02 AB       		.byte	-85
+ 3104 0c03 01       		.byte	1
+ 3105 0c04 B6       		.byte	-74
+ 3106 0c05 10       		.byte	16
+ 3107 0c06 C0       		.byte	-64
+ 3108 0c07 E6       		.byte	-26
+ 3109 0c08 C2       		.byte	-62
+ 3110 0c09 E6       		.byte	-26
+ 3111 0c0a C4       		.byte	-60
+ 3112 0c0b 67       		.byte	103
+ 3113 0c0c CA       		.byte	-54
+ 3114 0c0d 0F       		.byte	15
+ 3115 0c0e CC       		.byte	-52
+ 3116 0c0f 0F       		.byte	15
+ 3117 0c10 CE       		.byte	-50
+ 3118 0c11 0F       		.byte	15
+ 3119 0c12 D0       		.byte	-48
+ 3120 0c13 E0       		.byte	-32
+ 3121 0c14 D2       		.byte	-46
+ 3122 0c15 30       		.byte	48
+ 3123 0c16 D6       		.byte	-42
+ 3124 0c17 01       		.byte	1
+ 3125 0c18 EC       		.byte	-20
+ 3126 0c19 10       		.byte	16
+ 3127 0c1a 00       		.byte	0
+ 3128 0c1b 01       		.byte	1
+ 3129 0c1c 02       		.byte	2
+ 3130 0c1d 06       		.byte	6
+ 3131 0c1e 05       		.byte	5
+ 3132 0c1f 0C       		.byte	12
+ 3133 0c20 09       		.byte	9
+ 3134 0c21 0F       		.byte	15
+ 3135 0c22 0B       		.byte	11
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 56
+
+
+ 3136 0c23 30       		.byte	48
+ 3137 0c24 0D       		.byte	13
+ 3138 0c25 08       		.byte	8
+ 3139 0c26 10       		.byte	16
+ 3140 0c27 14       		.byte	20
+ 3141 0c28 11       		.byte	17
+ 3142 0c29 33       		.byte	51
+ 3143 0c2a 12       		.byte	18
+ 3144 0c2b 09       		.byte	9
+ 3145 0c2c 13       		.byte	19
+ 3146 0c2d 0C       		.byte	12
+ 3147 0c2e 15       		.byte	21
+ 3148 0c2f 3F       		.byte	63
+ 3149 0c30 19       		.byte	25
+ 3150 0c31 04       		.byte	4
+ 3151 0c32 1C       		.byte	28
+ 3152 0c33 0A       		.byte	10
+ 3153 0c34 1D       		.byte	29
+ 3154 0c35 22       		.byte	34
+ 3155 0c36 1E       		.byte	30
+ 3156 0c37 11       		.byte	17
+ 3157 0c38 21       		.byte	33
+ 3158 0c39 33       		.byte	51
+ 3159 0c3a 24       		.byte	36
+ 3160 0c3b 1F       		.byte	31
+ 3161 0c3c 25       		.byte	37
+ 3162 0c3d 0C       		.byte	12
+ 3163 0c3e 27       		.byte	39
+ 3164 0c3f 33       		.byte	51
+ 3165 0c40 28       		.byte	40
+ 3166 0c41 1F       		.byte	31
+ 3167 0c42 29       		.byte	41
+ 3168 0c43 11       		.byte	17
+ 3169 0c44 2F       		.byte	47
+ 3170 0c45 33       		.byte	51
+ 3171 0c46 30       		.byte	48
+ 3172 0c47 18       		.byte	24
+ 3173 0c48 35       		.byte	53
+ 3174 0c49 0F       		.byte	15
+ 3175 0c4a 36       		.byte	54
+ 3176 0c4b 07       		.byte	7
+ 3177 0c4c 37       		.byte	55
+ 3178 0c4d 30       		.byte	48
+ 3179 0c4e 3B       		.byte	59
+ 3180 0c4f 20       		.byte	32
+ 3181 0c50 58       		.byte	88
+ 3182 0c51 04       		.byte	4
+ 3183 0c52 59       		.byte	89
+ 3184 0c53 04       		.byte	4
+ 3185 0c54 5F       		.byte	95
+ 3186 0c55 01       		.byte	1
+ 3187 0c56 84       		.byte	-124
+ 3188 0c57 01       		.byte	1
+ 3189 0c58 87       		.byte	-121
+ 3190 0c59 01       		.byte	1
+ 3191 0c5a 88       		.byte	-120
+ 3192 0c5b 01       		.byte	1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 57
+
+
+ 3193 0c5c 89       		.byte	-119
+ 3194 0c5d 0C       		.byte	12
+ 3195 0c5e 8B       		.byte	-117
+ 3196 0c5f 02       		.byte	2
+ 3197 0c60 8F       		.byte	-113
+ 3198 0c61 01       		.byte	1
+ 3199 0c62 91       		.byte	-111
+ 3200 0c63 02       		.byte	2
+ 3201 0c64 92       		.byte	-110
+ 3202 0c65 02       		.byte	2
+ 3203 0c66 93       		.byte	-109
+ 3204 0c67 0C       		.byte	12
+ 3205 0c68 95       		.byte	-107
+ 3206 0c69 0E       		.byte	14
+ 3207 0c6a 96       		.byte	-106
+ 3208 0c6b 01       		.byte	1
+ 3209 0c6c 99       		.byte	-103
+ 3210 0c6d 04       		.byte	4
+ 3211 0c6e 9D       		.byte	-99
+ 3212 0c6f 08       		.byte	8
+ 3213 0c70 9E       		.byte	-98
+ 3214 0c71 02       		.byte	2
+ 3215 0c72 A5       		.byte	-91
+ 3216 0c73 0C       		.byte	12
+ 3217 0c74 A9       		.byte	-87
+ 3218 0c75 0E       		.byte	14
+ 3219 0c76 AA       		.byte	-86
+ 3220 0c77 01       		.byte	1
+ 3221 0c78 AF       		.byte	-81
+ 3222 0c79 02       		.byte	2
+ 3223 0c7a B0       		.byte	-80
+ 3224 0c7b 02       		.byte	2
+ 3225 0c7c B3       		.byte	-77
+ 3226 0c7d 01       		.byte	1
+ 3227 0c7e B4       		.byte	-76
+ 3228 0c7f 01       		.byte	1
+ 3229 0c80 B7       		.byte	-73
+ 3230 0c81 0E       		.byte	14
+ 3231 0c82 B8       		.byte	-72
+ 3232 0c83 20       		.byte	32
+ 3233 0c84 BB       		.byte	-69
+ 3234 0c85 20       		.byte	32
+ 3235 0c86 BE       		.byte	-66
+ 3236 0c87 01       		.byte	1
+ 3237 0c88 BF       		.byte	-65
+ 3238 0c89 04       		.byte	4
+ 3239 0c8a D4       		.byte	-44
+ 3240 0c8b 18       		.byte	24
+ 3241 0c8c D6       		.byte	-42
+ 3242 0c8d 04       		.byte	4
+ 3243 0c8e D8       		.byte	-40
+ 3244 0c8f 04       		.byte	4
+ 3245 0c90 D9       		.byte	-39
+ 3246 0c91 04       		.byte	4
+ 3247 0c92 DB       		.byte	-37
+ 3248 0c93 04       		.byte	4
+ 3249 0c94 DF       		.byte	-33
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 58
+
+
+ 3250 0c95 01       		.byte	1
+ 3251 0c96 00       		.byte	0
+ 3252 0c97 01       		.byte	1
+ 3253 0c98 01       		.byte	1
+ 3254 0c99 02       		.byte	2
+ 3255 0c9a 04       		.byte	4
+ 3256 0c9b 84       		.byte	-124
+ 3257 0c9c 05       		.byte	5
+ 3258 0c9d 40       		.byte	64
+ 3259 0c9e 07       		.byte	7
+ 3260 0c9f 04       		.byte	4
+ 3261 0ca0 08       		.byte	8
+ 3262 0ca1 80       		.byte	-128
+ 3263 0ca2 0A       		.byte	10
+ 3264 0ca3 80       		.byte	-128
+ 3265 0ca4 0E       		.byte	14
+ 3266 0ca5 80       		.byte	-128
+ 3267 0ca6 0F       		.byte	15
+ 3268 0ca7 12       		.byte	18
+ 3269 0ca8 10       		.byte	16
+ 3270 0ca9 28       		.byte	40
+ 3271 0caa 15       		.byte	21
+ 3272 0cab 10       		.byte	16
+ 3273 0cac 16       		.byte	22
+ 3274 0cad 04       		.byte	4
+ 3275 0cae 18       		.byte	24
+ 3276 0caf 01       		.byte	1
+ 3277 0cb0 1A       		.byte	26
+ 3278 0cb1 82       		.byte	-126
+ 3279 0cb2 1E       		.byte	30
+ 3280 0cb3 04       		.byte	4
+ 3281 0cb4 1F       		.byte	31
+ 3282 0cb5 01       		.byte	1
+ 3283 0cb6 20       		.byte	32
+ 3284 0cb7 04       		.byte	4
+ 3285 0cb8 23       		.byte	35
+ 3286 0cb9 01       		.byte	1
+ 3287 0cba 25       		.byte	37
+ 3288 0cbb 08       		.byte	8
+ 3289 0cbc 26       		.byte	38
+ 3290 0cbd 40       		.byte	64
+ 3291 0cbe 27       		.byte	39
+ 3292 0cbf 05       		.byte	5
+ 3293 0cc0 29       		.byte	41
+ 3294 0cc1 A2       		.byte	-94
+ 3295 0cc2 2A       		.byte	42
+ 3296 0cc3 04       		.byte	4
+ 3297 0cc4 2D       		.byte	45
+ 3298 0cc5 90       		.byte	-112
+ 3299 0cc6 2E       		.byte	46
+ 3300 0cc7 08       		.byte	8
+ 3301 0cc8 2F       		.byte	47
+ 3302 0cc9 04       		.byte	4
+ 3303 0cca 31       		.byte	49
+ 3304 0ccb 11       		.byte	17
+ 3305 0ccc 32       		.byte	50
+ 3306 0ccd 40       		.byte	64
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 59
+
+
+ 3307 0cce 33       		.byte	51
+ 3308 0ccf 04       		.byte	4
+ 3309 0cd0 35       		.byte	53
+ 3310 0cd1 51       		.byte	81
+ 3311 0cd2 37       		.byte	55
+ 3312 0cd3 04       		.byte	4
+ 3313 0cd4 38       		.byte	56
+ 3314 0cd5 88       		.byte	-120
+ 3315 0cd6 3A       		.byte	58
+ 3316 0cd7 08       		.byte	8
+ 3317 0cd8 3B       		.byte	59
+ 3318 0cd9 30       		.byte	48
+ 3319 0cda 3E       		.byte	62
+ 3320 0cdb 04       		.byte	4
+ 3321 0cdc 3F       		.byte	63
+ 3322 0cdd 90       		.byte	-112
+ 3323 0cde 45       		.byte	69
+ 3324 0cdf 08       		.byte	8
+ 3325 0ce0 46       		.byte	70
+ 3326 0ce1 20       		.byte	32
+ 3327 0ce2 5F       		.byte	95
+ 3328 0ce3 01       		.byte	1
+ 3329 0ce4 66       		.byte	102
+ 3330 0ce5 22       		.byte	34
+ 3331 0ce6 67       		.byte	103
+ 3332 0ce7 02       		.byte	2
+ 3333 0ce8 80       		.byte	-128
+ 3334 0ce9 04       		.byte	4
+ 3335 0cea 81       		.byte	-127
+ 3336 0ceb 01       		.byte	1
+ 3337 0cec 84       		.byte	-124
+ 3338 0ced 01       		.byte	1
+ 3339 0cee 88       		.byte	-120
+ 3340 0cef 80       		.byte	-128
+ 3341 0cf0 89       		.byte	-119
+ 3342 0cf1 20       		.byte	32
+ 3343 0cf2 8A       		.byte	-118
+ 3344 0cf3 02       		.byte	2
+ 3345 0cf4 90       		.byte	-112
+ 3346 0cf5 88       		.byte	-120
+ 3347 0cf6 93       		.byte	-109
+ 3348 0cf7 28       		.byte	40
+ 3349 0cf8 94       		.byte	-108
+ 3350 0cf9 04       		.byte	4
+ 3351 0cfa 96       		.byte	-106
+ 3352 0cfb 82       		.byte	-126
+ 3353 0cfc 99       		.byte	-103
+ 3354 0cfd 90       		.byte	-112
+ 3355 0cfe 9C       		.byte	-100
+ 3356 0cff 81       		.byte	-127
+ 3357 0d00 9F       		.byte	-97
+ 3358 0d01 05       		.byte	5
+ 3359 0d02 A0       		.byte	-96
+ 3360 0d03 28       		.byte	40
+ 3361 0d04 A3       		.byte	-93
+ 3362 0d05 41       		.byte	65
+ 3363 0d06 B6       		.byte	-74
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 60
+
+
+ 3364 0d07 10       		.byte	16
+ 3365 0d08 C0       		.byte	-64
+ 3366 0d09 68       		.byte	104
+ 3367 0d0a C2       		.byte	-62
+ 3368 0d0b B9       		.byte	-71
+ 3369 0d0c C4       		.byte	-60
+ 3370 0d0d 46       		.byte	70
+ 3371 0d0e CA       		.byte	-54
+ 3372 0d0f 7F       		.byte	127
+ 3373 0d10 CC       		.byte	-52
+ 3374 0d11 FF       		.byte	-1
+ 3375 0d12 CE       		.byte	-50
+ 3376 0d13 7E       		.byte	126
+ 3377 0d14 D6       		.byte	-42
+ 3378 0d15 80       		.byte	-128
+ 3379 0d16 D8       		.byte	-40
+ 3380 0d17 B0       		.byte	-80
+ 3381 0d18 E2       		.byte	-30
+ 3382 0d19 80       		.byte	-128
+ 3383 0d1a E8       		.byte	-24
+ 3384 0d1b 40       		.byte	64
+ 3385 0d1c 33       		.byte	51
+ 3386 0d1d 80       		.byte	-128
+ 3387 0d1e 34       		.byte	52
+ 3388 0d1f 40       		.byte	64
+ 3389 0d20 CC       		.byte	-52
+ 3390 0d21 30       		.byte	48
+ 3391 0d22 84       		.byte	-124
+ 3392 0d23 40       		.byte	64
+ 3393 0d24 9C       		.byte	-100
+ 3394 0d25 40       		.byte	64
+ 3395 0d26 A7       		.byte	-89
+ 3396 0d27 80       		.byte	-128
+ 3397 0d28 E6       		.byte	-26
+ 3398 0d29 10       		.byte	16
+ 3399 0d2a 07       		.byte	7
+ 3400 0d2b 80       		.byte	-128
+ 3401 0d2c A7       		.byte	-89
+ 3402 0d2d 80       		.byte	-128
+ 3403 0d2e C0       		.byte	-64
+ 3404 0d2f 20       		.byte	32
+ 3405 0d30 87       		.byte	-121
+ 3406 0d31 80       		.byte	-128
+ 3407 0d32 9B       		.byte	-101
+ 3408 0d33 80       		.byte	-128
+ 3409 0d34 A7       		.byte	-89
+ 3410 0d35 80       		.byte	-128
+ 3411 0d36 E0       		.byte	-32
+ 3412 0d37 40       		.byte	64
+ 3413 0d38 10       		.byte	16
+ 3414 0d39 80       		.byte	-128
+ 3415 0d3a C4       		.byte	-60
+ 3416 0d3b 08       		.byte	8
+ 3417 0d3c 67       		.byte	103
+ 3418 0d3d 08       		.byte	8
+ 3419 0d3e B4       		.byte	-76
+ 3420 0d3f 80       		.byte	-128
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 61
+
+
+ 3421 0d40 D8       		.byte	-40
+ 3422 0d41 01       		.byte	1
+ 3423 0d42 EE       		.byte	-18
+ 3424 0d43 02       		.byte	2
+ 3425 0d44 B3       		.byte	-77
+ 3426 0d45 04       		.byte	4
+ 3427 0d46 E8       		.byte	-24
+ 3428 0d47 01       		.byte	1
+ 3429 0d48 8D       		.byte	-115
+ 3430 0d49 02       		.byte	2
+ 3431 0d4a E0       		.byte	-32
+ 3432 0d4b 02       		.byte	2
+ 3433 0d4c A7       		.byte	-89
+ 3434 0d4d 80       		.byte	-128
+ 3435 0d4e 04       		.byte	4
+ 3436 0d4f 20       		.byte	32
+ 3437 0d50 0B       		.byte	11
+ 3438 0d51 10       		.byte	16
+ 3439 0d52 5D       		.byte	93
+ 3440 0d53 02       		.byte	2
+ 3441 0d54 81       		.byte	-127
+ 3442 0d55 02       		.byte	2
+ 3443 0d56 87       		.byte	-121
+ 3444 0d57 10       		.byte	16
+ 3445 0d58 8B       		.byte	-117
+ 3446 0d59 80       		.byte	-128
+ 3447 0d5a 8C       		.byte	-116
+ 3448 0d5b 10       		.byte	16
+ 3449 0d5c A7       		.byte	-89
+ 3450 0d5d 80       		.byte	-128
+ 3451 0d5e C0       		.byte	-64
+ 3452 0d5f 80       		.byte	-128
+ 3453 0d60 C2       		.byte	-62
+ 3454 0d61 10       		.byte	16
+ 3455 0d62 D6       		.byte	-42
+ 3456 0d63 80       		.byte	-128
+ 3457 0d64 E0       		.byte	-32
+ 3458 0d65 10       		.byte	16
+ 3459 0d66 E6       		.byte	-26
+ 3460 0d67 20       		.byte	32
+ 3461 0d68 99       		.byte	-103
+ 3462 0d69 02       		.byte	2
+ 3463 0d6a 10       		.byte	16
+ 3464 0d6b 10       		.byte	16
+ 3465 0d6c 75       		.byte	117
+ 3466 0d6d 02       		.byte	2
+ 3467 0d6e 88       		.byte	-120
+ 3468 0d6f 10       		.byte	16
+ 3469 0d70 99       		.byte	-103
+ 3470 0d71 02       		.byte	2
+ 3471 0d72 C4       		.byte	-60
+ 3472 0d73 08       		.byte	8
+ 3473 0d74 DE       		.byte	-34
+ 3474 0d75 04       		.byte	4
+ 3475 0d76 E2       		.byte	-30
+ 3476 0d77 04       		.byte	4
+ 3477 0d78 10       		.byte	16
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 62
+
+
+ 3478 0d79 01       		.byte	1
+ 3479 0d7a 11       		.byte	17
+ 3480 0d7b 01       		.byte	1
+ 3481 0d7c 1B       		.byte	27
+ 3482 0d7d 01       		.byte	1
+ 3483 0d7e 1C       		.byte	28
+ 3484 0d7f 01       		.byte	1
+ 3485 0d80 00       		.byte	0
+ 3486 0d81 0F       		.byte	15
+ 3487 0d82 00       		.byte	0
+ 3488 0d83 00       		.byte	0
+ 3489 0d84 80       		.byte	-128
+ 3490 0d85 80       		.byte	-128
+ 3491 0d86 00       		.byte	0
+ 3492 0d87 00       		.byte	0
+ 3493 0d88 40       		.byte	64
+ 3494 0d89 00       		.byte	0
+ 3495 0d8a 00       		.byte	0
+ 3496 0d8b 00       		.byte	0
+ 3497 0d8c 01       		.byte	1
+ 3498 0d8d 01       		.byte	1
+ 3499 0d8e 00       		.byte	0
+ 3500 0d8f 00       		.byte	0
+ 3501 0d90 00       		.byte	0
+ 3502 0d91 00       		.byte	0
+ 3503 0d92 00       		.byte	0
+ 3504 0d93 00       		.byte	0
+ 3505 0d94 01       		.byte	1
+ 3506 0d95 01       		.byte	1
+ 3507 0d96 01       		.byte	1
+ 3508 0d97 01       		.byte	1
+ 3509 0d98 01       		.byte	1
+ 3510 0d99 01       		.byte	1
+ 3511 0d9a 01       		.byte	1
+ 3512 0d9b 01       		.byte	1
+ 3513 0d9c 80       		.byte	-128
+ 3514 0d9d 00       		.byte	0
+ 3515 0d9e 58       		.byte	88
+ 3516 0d9f 80       		.byte	-128
+ 3517 0da0 80       		.byte	-128
+ 3518 0da1 00       		.byte	0
+ 3519 0da2 80       		.byte	-128
+ 3520 0da3 00       		.byte	0
+ 3521 0da4 00       		.byte	0
+ 3522 0da5 00       		.byte	0
+ 3523 0da6 00       		.byte	0
+ 3524 0da7 00       		.byte	0
+ 3525 0da8 00       		.byte	0
+ 3526 0da9 0B       		.byte	11
+ 3527 0daa 0B       		.byte	11
+ 3528 0dab 00       		.byte	0
+ 3529 0dac 00       		.byte	0
+ 3530 0dad 00       		.byte	0
+ 3531 0dae 00       		.byte	0
+ 3532 0daf 00       		.byte	0
+ 3533 0db0 02       		.byte	2
+ 3534 0db1 00       		.byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 63
+
+
+ 3535 0db2 00       		.byte	0
+ 3536 0db3 E2       		.byte	-30
+ 3537 0db4 E2       		.byte	-30
+ 3538 0db5 00       		.byte	0
+ 3539 0db6 20       		.byte	32
+ 3540 0db7 00       		.byte	0
+ 3541 0db8 00       		.byte	0
+ 3542 0db9 00       		.byte	0
+ 3543 0dba 00       		.byte	0
+ 3544 0dbb 00       		.byte	0
+ 3545 0dbc 18       		.byte	24
+ 3546 0dbd E0       		.byte	-32
+ 3547 0dbe E0       		.byte	-32
+ 3548 0dbf 00       		.byte	0
+ 3549 0dc0 80       		.byte	-128
+ 3550 0dc1 00       		.byte	0
+ 3551 0dc2 00       		.byte	0
+ 3552 0dc3 00       		.byte	0
+ 3553              		.section	.cywolatch,"a",%progbits
+ 3554              		.align	2
+ 3555              		.type	cy_meta_wonvl, %object
+ 3556              		.size	cy_meta_wonvl, 4
+ 3557              	cy_meta_wonvl:
+ 3558 0000 BC       		.byte	-68
+ 3559 0001 90       		.byte	-112
+ 3560 0002 AC       		.byte	-84
+ 3561 0003 AF       		.byte	-81
+ 3562              		.section	.cycustnvl,"a",%progbits
+ 3563              		.align	2
+ 3564              		.type	cy_meta_custnvl, %object
+ 3565              		.size	cy_meta_custnvl, 4
+ 3566              	cy_meta_custnvl:
+ 3567 0000 00       		.byte	0
+ 3568 0001 00       		.byte	0
+ 3569 0002 40       		.byte	64
+ 3570 0003 05       		.byte	5
+ 3571              		.section	.cymeta,"a",%progbits
+ 3572              		.align	2
+ 3573              		.type	cy_metadata, %object
+ 3574              		.size	cy_metadata, 12
+ 3575              	cy_metadata:
+ 3576 0000 00       		.byte	0
+ 3577 0001 01       		.byte	1
+ 3578 0002 2E       		.byte	46
+ 3579 0003 16       		.byte	22
+ 3580 0004 10       		.byte	16
+ 3581 0005 69       		.byte	105
+ 3582 0006 00       		.byte	0
+ 3583 0007 01       		.byte	1
+ 3584 0008 00       		.byte	0
+ 3585 0009 00       		.byte	0
+ 3586 000a 00       		.byte	0
+ 3587 000b 00       		.byte	0
+ 3588              		.section	.cyflashprotect,"a",%progbits
+ 3589              		.align	2
+ 3590              		.type	cy_meta_flashprotect, %object
+ 3591              		.size	cy_meta_flashprotect, 256
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 64
+
+
+ 3592              	cy_meta_flashprotect:
+ 3593 0000 00000000 		.space	256
+ 3593      00000000 
+ 3593      00000000 
+ 3593      00000000 
+ 3593      00000000 
+ 3594              		.text
+ 3595              	.Letext0:
+ 3596              		.file 1 "d:\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\include\\mac
+ 3597              		.file 2 "d:\\psoc creator\\4.2\\psoc creator\\import\\gnu\\arm\\5.4.1\\arm-none-eabi\\include\\sys
+ 3598              		.file 3 "Generated_Source\\PSoC5\\cymetadata.c"
+ 3599              		.section	.debug_info,"",%progbits
+ 3600              	.Ldebug_info0:
+ 3601 0000 35010000 		.4byte	0x135
+ 3602 0004 0400     		.2byte	0x4
+ 3603 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 3604 000a 04       		.byte	0x4
+ 3605 000b 01       		.uleb128 0x1
+ 3606 000c 69000000 		.4byte	.LASF17
+ 3607 0010 0C       		.byte	0xc
+ 3608 0011 C3010000 		.4byte	.LASF18
+ 3609 0015 16000000 		.4byte	.LASF19
+ 3610 0019 00000000 		.4byte	.Ldebug_line0
+ 3611 001d 02       		.uleb128 0x2
+ 3612 001e 01       		.byte	0x1
+ 3613 001f 06       		.byte	0x6
+ 3614 0020 B7010000 		.4byte	.LASF0
+ 3615 0024 03       		.uleb128 0x3
+ 3616 0025 00000000 		.4byte	.LASF9
+ 3617 0029 01       		.byte	0x1
+ 3618 002a 1D       		.byte	0x1d
+ 3619 002b 2F000000 		.4byte	0x2f
+ 3620 002f 02       		.uleb128 0x2
+ 3621 0030 01       		.byte	0x1
+ 3622 0031 08       		.byte	0x8
+ 3623 0032 5B000000 		.4byte	.LASF1
+ 3624 0036 02       		.uleb128 0x2
+ 3625 0037 02       		.byte	0x2
+ 3626 0038 05       		.byte	0x5
+ 3627 0039 A4010000 		.4byte	.LASF2
+ 3628 003d 02       		.uleb128 0x2
+ 3629 003e 02       		.byte	0x2
+ 3630 003f 07       		.byte	0x7
+ 3631 0040 09010000 		.4byte	.LASF3
+ 3632 0044 02       		.uleb128 0x2
+ 3633 0045 04       		.byte	0x4
+ 3634 0046 05       		.byte	0x5
+ 3635 0047 AE010000 		.4byte	.LASF4
+ 3636 004b 02       		.uleb128 0x2
+ 3637 004c 04       		.byte	0x4
+ 3638 004d 07       		.byte	0x7
+ 3639 004e F7000000 		.4byte	.LASF5
+ 3640 0052 02       		.uleb128 0x2
+ 3641 0053 08       		.byte	0x8
+ 3642 0054 05       		.byte	0x5
+ 3643 0055 96010000 		.4byte	.LASF6
+ 3644 0059 02       		.uleb128 0x2
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 65
+
+
+ 3645 005a 08       		.byte	0x8
+ 3646 005b 07       		.byte	0x7
+ 3647 005c 4B010000 		.4byte	.LASF7
+ 3648 0060 04       		.uleb128 0x4
+ 3649 0061 04       		.byte	0x4
+ 3650 0062 05       		.byte	0x5
+ 3651 0063 696E7400 		.ascii	"int\000"
+ 3652 0067 02       		.uleb128 0x2
+ 3653 0068 04       		.byte	0x4
+ 3654 0069 07       		.byte	0x7
+ 3655 006a 3E010000 		.4byte	.LASF8
+ 3656 006e 03       		.uleb128 0x3
+ 3657 006f 62010000 		.4byte	.LASF10
+ 3658 0073 02       		.byte	0x2
+ 3659 0074 18       		.byte	0x18
+ 3660 0075 24000000 		.4byte	0x24
+ 3661 0079 05       		.uleb128 0x5
+ 3662 007a 91000000 		.4byte	0x91
+ 3663 007e 8A000000 		.4byte	0x8a
+ 3664 0082 06       		.uleb128 0x6
+ 3665 0083 8A000000 		.4byte	0x8a
+ 3666 0087 C30D     		.2byte	0xdc3
+ 3667 0089 00       		.byte	0
+ 3668 008a 02       		.uleb128 0x2
+ 3669 008b 04       		.byte	0x4
+ 3670 008c 07       		.byte	0x7
+ 3671 008d 8D010000 		.4byte	.LASF11
+ 3672 0091 07       		.uleb128 0x7
+ 3673 0092 6E000000 		.4byte	0x6e
+ 3674 0096 08       		.uleb128 0x8
+ 3675 0097 2C010000 		.4byte	.LASF12
+ 3676 009b 03       		.byte	0x3
+ 3677 009c 1F       		.byte	0x1f
+ 3678 009d A7000000 		.4byte	0xa7
+ 3679 00a1 05       		.uleb128 0x5
+ 3680 00a2 03       		.byte	0x3
+ 3681 00a3 00000000 		.4byte	cy_meta_configecc
+ 3682 00a7 07       		.uleb128 0x7
+ 3683 00a8 79000000 		.4byte	0x79
+ 3684 00ac 05       		.uleb128 0x5
+ 3685 00ad 91000000 		.4byte	0x91
+ 3686 00b1 BC000000 		.4byte	0xbc
+ 3687 00b5 09       		.uleb128 0x9
+ 3688 00b6 8A000000 		.4byte	0x8a
+ 3689 00ba 03       		.byte	0x3
+ 3690 00bb 00       		.byte	0
+ 3691 00bc 0A       		.uleb128 0xa
+ 3692 00bd 1C010000 		.4byte	.LASF13
+ 3693 00c1 03       		.byte	0x3
+ 3694 00c2 E501     		.2byte	0x1e5
+ 3695 00c4 CE000000 		.4byte	0xce
+ 3696 00c8 05       		.uleb128 0x5
+ 3697 00c9 03       		.byte	0x3
+ 3698 00ca 00000000 		.4byte	cy_meta_custnvl
+ 3699 00ce 07       		.uleb128 0x7
+ 3700 00cf AC000000 		.4byte	0xac
+ 3701 00d3 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 66
+
+
+ 3702 00d4 7F010000 		.4byte	.LASF14
+ 3703 00d8 03       		.byte	0x3
+ 3704 00d9 F301     		.2byte	0x1f3
+ 3705 00db E5000000 		.4byte	0xe5
+ 3706 00df 05       		.uleb128 0x5
+ 3707 00e0 03       		.byte	0x3
+ 3708 00e1 00000000 		.4byte	cy_meta_wonvl
+ 3709 00e5 07       		.uleb128 0x7
+ 3710 00e6 AC000000 		.4byte	0xac
+ 3711 00ea 05       		.uleb128 0x5
+ 3712 00eb 91000000 		.4byte	0x91
+ 3713 00ef FA000000 		.4byte	0xfa
+ 3714 00f3 09       		.uleb128 0x9
+ 3715 00f4 8A000000 		.4byte	0x8a
+ 3716 00f8 FF       		.byte	0xff
+ 3717 00f9 00       		.byte	0
+ 3718 00fa 0A       		.uleb128 0xa
+ 3719 00fb 6A010000 		.4byte	.LASF15
+ 3720 00ff 03       		.byte	0x3
+ 3721 0100 0102     		.2byte	0x201
+ 3722 0102 0C010000 		.4byte	0x10c
+ 3723 0106 05       		.uleb128 0x5
+ 3724 0107 03       		.byte	0x3
+ 3725 0108 00000000 		.4byte	cy_meta_flashprotect
+ 3726 010c 07       		.uleb128 0x7
+ 3727 010d EA000000 		.4byte	0xea
+ 3728 0111 05       		.uleb128 0x5
+ 3729 0112 91000000 		.4byte	0x91
+ 3730 0116 21010000 		.4byte	0x121
+ 3731 011a 09       		.uleb128 0x9
+ 3732 011b 8A000000 		.4byte	0x8a
+ 3733 011f 0B       		.byte	0xb
+ 3734 0120 00       		.byte	0
+ 3735 0121 0A       		.uleb128 0xa
+ 3736 0122 0A000000 		.4byte	.LASF16
+ 3737 0126 03       		.byte	0x3
+ 3738 0127 2E02     		.2byte	0x22e
+ 3739 0129 33010000 		.4byte	0x133
+ 3740 012d 05       		.uleb128 0x5
+ 3741 012e 03       		.byte	0x3
+ 3742 012f 00000000 		.4byte	cy_metadata
+ 3743 0133 07       		.uleb128 0x7
+ 3744 0134 11010000 		.4byte	0x111
+ 3745 0138 00       		.byte	0
+ 3746              		.section	.debug_abbrev,"",%progbits
+ 3747              	.Ldebug_abbrev0:
+ 3748 0000 01       		.uleb128 0x1
+ 3749 0001 11       		.uleb128 0x11
+ 3750 0002 01       		.byte	0x1
+ 3751 0003 25       		.uleb128 0x25
+ 3752 0004 0E       		.uleb128 0xe
+ 3753 0005 13       		.uleb128 0x13
+ 3754 0006 0B       		.uleb128 0xb
+ 3755 0007 03       		.uleb128 0x3
+ 3756 0008 0E       		.uleb128 0xe
+ 3757 0009 1B       		.uleb128 0x1b
+ 3758 000a 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 67
+
+
+ 3759 000b 10       		.uleb128 0x10
+ 3760 000c 17       		.uleb128 0x17
+ 3761 000d 00       		.byte	0
+ 3762 000e 00       		.byte	0
+ 3763 000f 02       		.uleb128 0x2
+ 3764 0010 24       		.uleb128 0x24
+ 3765 0011 00       		.byte	0
+ 3766 0012 0B       		.uleb128 0xb
+ 3767 0013 0B       		.uleb128 0xb
+ 3768 0014 3E       		.uleb128 0x3e
+ 3769 0015 0B       		.uleb128 0xb
+ 3770 0016 03       		.uleb128 0x3
+ 3771 0017 0E       		.uleb128 0xe
+ 3772 0018 00       		.byte	0
+ 3773 0019 00       		.byte	0
+ 3774 001a 03       		.uleb128 0x3
+ 3775 001b 16       		.uleb128 0x16
+ 3776 001c 00       		.byte	0
+ 3777 001d 03       		.uleb128 0x3
+ 3778 001e 0E       		.uleb128 0xe
+ 3779 001f 3A       		.uleb128 0x3a
+ 3780 0020 0B       		.uleb128 0xb
+ 3781 0021 3B       		.uleb128 0x3b
+ 3782 0022 0B       		.uleb128 0xb
+ 3783 0023 49       		.uleb128 0x49
+ 3784 0024 13       		.uleb128 0x13
+ 3785 0025 00       		.byte	0
+ 3786 0026 00       		.byte	0
+ 3787 0027 04       		.uleb128 0x4
+ 3788 0028 24       		.uleb128 0x24
+ 3789 0029 00       		.byte	0
+ 3790 002a 0B       		.uleb128 0xb
+ 3791 002b 0B       		.uleb128 0xb
+ 3792 002c 3E       		.uleb128 0x3e
+ 3793 002d 0B       		.uleb128 0xb
+ 3794 002e 03       		.uleb128 0x3
+ 3795 002f 08       		.uleb128 0x8
+ 3796 0030 00       		.byte	0
+ 3797 0031 00       		.byte	0
+ 3798 0032 05       		.uleb128 0x5
+ 3799 0033 01       		.uleb128 0x1
+ 3800 0034 01       		.byte	0x1
+ 3801 0035 49       		.uleb128 0x49
+ 3802 0036 13       		.uleb128 0x13
+ 3803 0037 01       		.uleb128 0x1
+ 3804 0038 13       		.uleb128 0x13
+ 3805 0039 00       		.byte	0
+ 3806 003a 00       		.byte	0
+ 3807 003b 06       		.uleb128 0x6
+ 3808 003c 21       		.uleb128 0x21
+ 3809 003d 00       		.byte	0
+ 3810 003e 49       		.uleb128 0x49
+ 3811 003f 13       		.uleb128 0x13
+ 3812 0040 2F       		.uleb128 0x2f
+ 3813 0041 05       		.uleb128 0x5
+ 3814 0042 00       		.byte	0
+ 3815 0043 00       		.byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 68
+
+
+ 3816 0044 07       		.uleb128 0x7
+ 3817 0045 26       		.uleb128 0x26
+ 3818 0046 00       		.byte	0
+ 3819 0047 49       		.uleb128 0x49
+ 3820 0048 13       		.uleb128 0x13
+ 3821 0049 00       		.byte	0
+ 3822 004a 00       		.byte	0
+ 3823 004b 08       		.uleb128 0x8
+ 3824 004c 34       		.uleb128 0x34
+ 3825 004d 00       		.byte	0
+ 3826 004e 03       		.uleb128 0x3
+ 3827 004f 0E       		.uleb128 0xe
+ 3828 0050 3A       		.uleb128 0x3a
+ 3829 0051 0B       		.uleb128 0xb
+ 3830 0052 3B       		.uleb128 0x3b
+ 3831 0053 0B       		.uleb128 0xb
+ 3832 0054 49       		.uleb128 0x49
+ 3833 0055 13       		.uleb128 0x13
+ 3834 0056 3F       		.uleb128 0x3f
+ 3835 0057 19       		.uleb128 0x19
+ 3836 0058 02       		.uleb128 0x2
+ 3837 0059 18       		.uleb128 0x18
+ 3838 005a 00       		.byte	0
+ 3839 005b 00       		.byte	0
+ 3840 005c 09       		.uleb128 0x9
+ 3841 005d 21       		.uleb128 0x21
+ 3842 005e 00       		.byte	0
+ 3843 005f 49       		.uleb128 0x49
+ 3844 0060 13       		.uleb128 0x13
+ 3845 0061 2F       		.uleb128 0x2f
+ 3846 0062 0B       		.uleb128 0xb
+ 3847 0063 00       		.byte	0
+ 3848 0064 00       		.byte	0
+ 3849 0065 0A       		.uleb128 0xa
+ 3850 0066 34       		.uleb128 0x34
+ 3851 0067 00       		.byte	0
+ 3852 0068 03       		.uleb128 0x3
+ 3853 0069 0E       		.uleb128 0xe
+ 3854 006a 3A       		.uleb128 0x3a
+ 3855 006b 0B       		.uleb128 0xb
+ 3856 006c 3B       		.uleb128 0x3b
+ 3857 006d 05       		.uleb128 0x5
+ 3858 006e 49       		.uleb128 0x49
+ 3859 006f 13       		.uleb128 0x13
+ 3860 0070 3F       		.uleb128 0x3f
+ 3861 0071 19       		.uleb128 0x19
+ 3862 0072 02       		.uleb128 0x2
+ 3863 0073 18       		.uleb128 0x18
+ 3864 0074 00       		.byte	0
+ 3865 0075 00       		.byte	0
+ 3866 0076 00       		.byte	0
+ 3867              		.section	.debug_aranges,"",%progbits
+ 3868 0000 14000000 		.4byte	0x14
+ 3869 0004 0200     		.2byte	0x2
+ 3870 0006 00000000 		.4byte	.Ldebug_info0
+ 3871 000a 04       		.byte	0x4
+ 3872 000b 00       		.byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 69
+
+
+ 3873 000c 0000     		.2byte	0
+ 3874 000e 0000     		.2byte	0
+ 3875 0010 00000000 		.4byte	0
+ 3876 0014 00000000 		.4byte	0
+ 3877              		.section	.debug_line,"",%progbits
+ 3878              	.Ldebug_line0:
+ 3879 0000 05010000 		.section	.debug_str,"MS",%progbits,1
+ 3879      0200FF00 
+ 3879      00000201 
+ 3879      FB0E0D00 
+ 3879      01010101 
+ 3880              	.LASF9:
+ 3881 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 3881      6E74385F 
+ 3881      7400
+ 3882              	.LASF16:
+ 3883 000a 63795F6D 		.ascii	"cy_metadata\000"
+ 3883      65746164 
+ 3883      61746100 
+ 3884              	.LASF19:
+ 3885 0016 433A5C55 		.ascii	"C:\\Users\\Caesar\\Desktop\\Spring\\ME135\\Timertes"
+ 3885      73657273 
+ 3885      5C436165 
+ 3885      7361725C 
+ 3885      4465736B 
+ 3886 0043 74696E67 		.ascii	"ting\\Timertesting.cydsn\000"
+ 3886      5C54696D 
+ 3886      65727465 
+ 3886      7374696E 
+ 3886      672E6379 
+ 3887              	.LASF1:
+ 3888 005b 756E7369 		.ascii	"unsigned char\000"
+ 3888      676E6564 
+ 3888      20636861 
+ 3888      7200
+ 3889              	.LASF17:
+ 3890 0069 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 3890      43313120 
+ 3890      352E342E 
+ 3890      31203230 
+ 3890      31363036 
+ 3891 009c 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 3891      20726576 
+ 3891      6973696F 
+ 3891      6E203233 
+ 3891      37373135 
+ 3892 00cf 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 3892      66756E63 
+ 3892      74696F6E 
+ 3892      2D736563 
+ 3892      74696F6E 
+ 3893              	.LASF5:
+ 3894 00f7 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3894      20756E73 
+ 3894      69676E65 
+ 3894      6420696E 
+ 3894      7400
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 70
+
+
+ 3895              	.LASF3:
+ 3896 0109 73686F72 		.ascii	"short unsigned int\000"
+ 3896      7420756E 
+ 3896      7369676E 
+ 3896      65642069 
+ 3896      6E7400
+ 3897              	.LASF13:
+ 3898 011c 63795F6D 		.ascii	"cy_meta_custnvl\000"
+ 3898      6574615F 
+ 3898      63757374 
+ 3898      6E766C00 
+ 3899              	.LASF12:
+ 3900 012c 63795F6D 		.ascii	"cy_meta_configecc\000"
+ 3900      6574615F 
+ 3900      636F6E66 
+ 3900      69676563 
+ 3900      6300
+ 3901              	.LASF8:
+ 3902 013e 756E7369 		.ascii	"unsigned int\000"
+ 3902      676E6564 
+ 3902      20696E74 
+ 3902      00
+ 3903              	.LASF7:
+ 3904 014b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3904      206C6F6E 
+ 3904      6720756E 
+ 3904      7369676E 
+ 3904      65642069 
+ 3905              	.LASF10:
+ 3906 0162 75696E74 		.ascii	"uint8_t\000"
+ 3906      385F7400 
+ 3907              	.LASF15:
+ 3908 016a 63795F6D 		.ascii	"cy_meta_flashprotect\000"
+ 3908      6574615F 
+ 3908      666C6173 
+ 3908      6870726F 
+ 3908      74656374 
+ 3909              	.LASF14:
+ 3910 017f 63795F6D 		.ascii	"cy_meta_wonvl\000"
+ 3910      6574615F 
+ 3910      776F6E76 
+ 3910      6C00
+ 3911              	.LASF11:
+ 3912 018d 73697A65 		.ascii	"sizetype\000"
+ 3912      74797065 
+ 3912      00
+ 3913              	.LASF6:
+ 3914 0196 6C6F6E67 		.ascii	"long long int\000"
+ 3914      206C6F6E 
+ 3914      6720696E 
+ 3914      7400
+ 3915              	.LASF2:
+ 3916 01a4 73686F72 		.ascii	"short int\000"
+ 3916      7420696E 
+ 3916      7400
+ 3917              	.LASF4:
+ 3918 01ae 6C6F6E67 		.ascii	"long int\000"
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\cc67n3lf.s 			page 71
+
+
+ 3918      20696E74 
+ 3918      00
+ 3919              	.LASF0:
+ 3920 01b7 7369676E 		.ascii	"signed char\000"
+ 3920      65642063 
+ 3920      68617200 
+ 3921              	.LASF18:
+ 3922 01c3 47656E65 		.ascii	"Generated_Source\\PSoC5\\cymetadata.c\000"
+ 3922      72617465 
+ 3922      645F536F 
+ 3922      75726365 
+ 3922      5C50536F 
+ 3923              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

@@ -1,0 +1,1758 @@
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"QuadDec_2.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.QuadDec_2_Init,"ax",%progbits
+  20              		.align	2
+  21              		.global	QuadDec_2_Init
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	QuadDec_2_Init, %function
+  25              	QuadDec_2_Init:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC5\\QuadDec_2.c"
+   1:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+   2:Generated_Source\PSoC5/QuadDec_2.c **** * File Name: QuadDec_2.c  
+   3:Generated_Source\PSoC5/QuadDec_2.c **** * Version 3.0
+   4:Generated_Source\PSoC5/QuadDec_2.c **** *
+   5:Generated_Source\PSoC5/QuadDec_2.c **** * Description:
+   6:Generated_Source\PSoC5/QuadDec_2.c **** *  This file provides the source code to the API for the Quadrature Decoder
+   7:Generated_Source\PSoC5/QuadDec_2.c **** *  component.
+   8:Generated_Source\PSoC5/QuadDec_2.c **** *
+   9:Generated_Source\PSoC5/QuadDec_2.c **** * Note:
+  10:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+  11:Generated_Source\PSoC5/QuadDec_2.c **** *   
+  12:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+  13:Generated_Source\PSoC5/QuadDec_2.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  14:Generated_Source\PSoC5/QuadDec_2.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:Generated_Source\PSoC5/QuadDec_2.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:Generated_Source\PSoC5/QuadDec_2.c **** * the software package with which this file was provided.
+  17:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+  18:Generated_Source\PSoC5/QuadDec_2.c **** 
+  19:Generated_Source\PSoC5/QuadDec_2.c **** #include "QuadDec_2.h"
+  20:Generated_Source\PSoC5/QuadDec_2.c **** 
+  21:Generated_Source\PSoC5/QuadDec_2.c **** #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+  22:Generated_Source\PSoC5/QuadDec_2.c ****     #include "QuadDec_2_PVT.h"
+  23:Generated_Source\PSoC5/QuadDec_2.c **** #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */
+  24:Generated_Source\PSoC5/QuadDec_2.c **** 
+  25:Generated_Source\PSoC5/QuadDec_2.c **** uint8 QuadDec_2_initVar = 0u;
+  26:Generated_Source\PSoC5/QuadDec_2.c **** 
+  27:Generated_Source\PSoC5/QuadDec_2.c **** 
+  28:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+  29:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_Init
+  30:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 2
+
+
+  31:Generated_Source\PSoC5/QuadDec_2.c **** *
+  32:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+  33:Generated_Source\PSoC5/QuadDec_2.c **** *  Inits/Restores default QuadDec configuration provided with customizer.
+  34:Generated_Source\PSoC5/QuadDec_2.c **** *
+  35:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+  36:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+  37:Generated_Source\PSoC5/QuadDec_2.c **** *
+  38:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+  39:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+  40:Generated_Source\PSoC5/QuadDec_2.c **** *
+  41:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+  42:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_Init(void) 
+  43:Generated_Source\PSoC5/QuadDec_2.c **** {
+  28              		.loc 1 43 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33 0000 7047     		bx	lr
+  34              		.cfi_endproc
+  35              	.LFE0:
+  36              		.size	QuadDec_2_Init, .-QuadDec_2_Init
+  37 0002 00BF     		.section	.text.QuadDec_2_Stop,"ax",%progbits
+  38              		.align	2
+  39              		.global	QuadDec_2_Stop
+  40              		.thumb
+  41              		.thumb_func
+  42              		.type	QuadDec_2_Stop, %function
+  43              	QuadDec_2_Stop:
+  44              	.LFB3:
+  44:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+  45:Generated_Source\PSoC5/QuadDec_2.c ****         /* Disable Interrupt. */
+  46:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntDisable(QuadDec_2_ISR_NUMBER);
+  47:Generated_Source\PSoC5/QuadDec_2.c ****         /* Set the ISR to point to the QuadDec_2_isr Interrupt. */
+  48:Generated_Source\PSoC5/QuadDec_2.c ****         (void) CyIntSetVector(QuadDec_2_ISR_NUMBER, & QuadDec_2_ISR);
+  49:Generated_Source\PSoC5/QuadDec_2.c ****         /* Set the priority. */
+  50:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntSetPriority(QuadDec_2_ISR_NUMBER, QuadDec_2_ISR_PRIORITY);
+  51:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */
+  52:Generated_Source\PSoC5/QuadDec_2.c **** }
+  53:Generated_Source\PSoC5/QuadDec_2.c **** 
+  54:Generated_Source\PSoC5/QuadDec_2.c **** 
+  55:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+  56:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_Enable
+  57:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+  58:Generated_Source\PSoC5/QuadDec_2.c **** *
+  59:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+  60:Generated_Source\PSoC5/QuadDec_2.c **** *  This function enable interrupts from Component and also enable Component's
+  61:Generated_Source\PSoC5/QuadDec_2.c **** *  ISR in case of 32-bit counter.
+  62:Generated_Source\PSoC5/QuadDec_2.c **** *
+  63:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+  64:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+  65:Generated_Source\PSoC5/QuadDec_2.c **** *
+  66:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+  67:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+  68:Generated_Source\PSoC5/QuadDec_2.c **** *
+  69:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+  70:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_Enable(void) 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 3
+
+
+  71:Generated_Source\PSoC5/QuadDec_2.c **** {
+  72:Generated_Source\PSoC5/QuadDec_2.c ****     uint8 enableInterrupts;
+  73:Generated_Source\PSoC5/QuadDec_2.c **** 
+  74:Generated_Source\PSoC5/QuadDec_2.c ****     QuadDec_2_SetInterruptMask(QuadDec_2_INIT_INT_MASK);
+  75:Generated_Source\PSoC5/QuadDec_2.c **** 
+  76:Generated_Source\PSoC5/QuadDec_2.c ****     /* Clear pending interrupts. */
+  77:Generated_Source\PSoC5/QuadDec_2.c ****     (void) QuadDec_2_GetEvents();
+  78:Generated_Source\PSoC5/QuadDec_2.c ****     
+  79:Generated_Source\PSoC5/QuadDec_2.c ****     enableInterrupts = CyEnterCriticalSection();
+  80:Generated_Source\PSoC5/QuadDec_2.c **** 
+  81:Generated_Source\PSoC5/QuadDec_2.c ****     /* Enable interrupts from Statusi register */
+  82:Generated_Source\PSoC5/QuadDec_2.c ****     QuadDec_2_SR_AUX_CONTROL |= QuadDec_2_INTERRUPTS_ENABLE;
+  83:Generated_Source\PSoC5/QuadDec_2.c **** 
+  84:Generated_Source\PSoC5/QuadDec_2.c ****     CyExitCriticalSection(enableInterrupts);        
+  85:Generated_Source\PSoC5/QuadDec_2.c **** 
+  86:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+  87:Generated_Source\PSoC5/QuadDec_2.c ****         /* Enable Component interrupts */
+  88:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntEnable(QuadDec_2_ISR_NUMBER);
+  89:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */
+  90:Generated_Source\PSoC5/QuadDec_2.c **** }
+  91:Generated_Source\PSoC5/QuadDec_2.c **** 
+  92:Generated_Source\PSoC5/QuadDec_2.c **** 
+  93:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+  94:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_Start
+  95:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+  96:Generated_Source\PSoC5/QuadDec_2.c **** *
+  97:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+  98:Generated_Source\PSoC5/QuadDec_2.c **** *  Initializes UDBs and other relevant hardware.
+  99:Generated_Source\PSoC5/QuadDec_2.c **** *  Resets counter, enables or disables all relevant interrupts.
+ 100:Generated_Source\PSoC5/QuadDec_2.c **** *  Starts monitoring the inputs and counting.
+ 101:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 102:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 103:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 104:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 105:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 106:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 107:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 108:Generated_Source\PSoC5/QuadDec_2.c **** * Global variables:
+ 109:Generated_Source\PSoC5/QuadDec_2.c **** *  QuadDec_2_initVar - used to check initial configuration, modified on
+ 110:Generated_Source\PSoC5/QuadDec_2.c **** *  first function call.
+ 111:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 112:Generated_Source\PSoC5/QuadDec_2.c **** * Reentrant:
+ 113:Generated_Source\PSoC5/QuadDec_2.c **** *  No.
+ 114:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 115:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 116:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_Start(void) 
+ 117:Generated_Source\PSoC5/QuadDec_2.c **** {
+ 118:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT)
+ 119:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt8_Start();
+ 120:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt8_WriteCounter(QuadDec_2_COUNTER_INIT_VALUE);
+ 121:Generated_Source\PSoC5/QuadDec_2.c ****     #else
+ 122:Generated_Source\PSoC5/QuadDec_2.c ****         /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT) || 
+ 123:Generated_Source\PSoC5/QuadDec_2.c ****         *  (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT) 
+ 124:Generated_Source\PSoC5/QuadDec_2.c ****         */
+ 125:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_Start();
+ 126:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_WriteCounter(QuadDec_2_COUNTER_INIT_VALUE);
+ 127:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT */
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 4
+
+
+ 128:Generated_Source\PSoC5/QuadDec_2.c ****     
+ 129:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)        
+ 130:Generated_Source\PSoC5/QuadDec_2.c ****        QuadDec_2_count32SoftPart = 0;
+ 131:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */
+ 132:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 133:Generated_Source\PSoC5/QuadDec_2.c ****     if (QuadDec_2_initVar == 0u)
+ 134:Generated_Source\PSoC5/QuadDec_2.c ****     {
+ 135:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Init();
+ 136:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_initVar = 1u;
+ 137:Generated_Source\PSoC5/QuadDec_2.c ****     }
+ 138:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 139:Generated_Source\PSoC5/QuadDec_2.c ****     QuadDec_2_Enable();
+ 140:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 141:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 142:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 143:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+ 144:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_Stop
+ 145:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ 146:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 147:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+ 148:Generated_Source\PSoC5/QuadDec_2.c **** *  Turns off UDBs and other relevant hardware.
+ 149:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 150:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 151:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 152:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 153:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 154:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 155:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 156:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 157:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_Stop(void) 
+ 158:Generated_Source\PSoC5/QuadDec_2.c **** {
+  45              		.loc 1 158 0
+  46              		.cfi_startproc
+  47              		@ args = 0, pretend = 0, frame = 0
+  48              		@ frame_needed = 0, uses_anonymous_args = 0
+  49              		.loc 1 158 0
+  50 0000 08B5     		push	{r3, lr}
+  51              		.cfi_def_cfa_offset 8
+  52              		.cfi_offset 3, -8
+  53              		.cfi_offset 14, -4
+ 159:Generated_Source\PSoC5/QuadDec_2.c ****     uint8 enableInterrupts;
+ 160:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 161:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT)
+ 162:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt8_Stop();
+ 163:Generated_Source\PSoC5/QuadDec_2.c ****     #else 
+ 164:Generated_Source\PSoC5/QuadDec_2.c ****         /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT) ||
+ 165:Generated_Source\PSoC5/QuadDec_2.c ****         *  (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+ 166:Generated_Source\PSoC5/QuadDec_2.c ****         */
+ 167:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_Stop();    /* counter disable */
+  54              		.loc 1 167 0
+  55 0002 FFF7FEFF 		bl	QuadDec_2_Cnt16_Stop
+  56              	.LVL0:
+ 168:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT) */
+ 169:Generated_Source\PSoC5/QuadDec_2.c ****  
+ 170:Generated_Source\PSoC5/QuadDec_2.c ****     enableInterrupts = CyEnterCriticalSection();
+  57              		.loc 1 170 0
+  58 0006 FFF7FEFF 		bl	CyEnterCriticalSection
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 5
+
+
+  59              	.LVL1:
+ 171:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 172:Generated_Source\PSoC5/QuadDec_2.c ****     /* Disable interrupts interrupts from Statusi register */
+ 173:Generated_Source\PSoC5/QuadDec_2.c ****     QuadDec_2_SR_AUX_CONTROL &= (uint8) (~QuadDec_2_INTERRUPTS_ENABLE);
+  60              		.loc 1 173 0
+  61 000a 044A     		ldr	r2, .L4
+  62 000c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  63 000e 03F0EF03 		and	r3, r3, #239
+  64 0012 1370     		strb	r3, [r2]
+ 174:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 175:Generated_Source\PSoC5/QuadDec_2.c ****     CyExitCriticalSection(enableInterrupts);
+  65              		.loc 1 175 0
+  66 0014 FFF7FEFF 		bl	CyExitCriticalSection
+  67              	.LVL2:
+  68 0018 08BD     		pop	{r3, pc}
+  69              	.L5:
+  70 001a 00BF     		.align	2
+  71              	.L4:
+  72 001c 9F640040 		.word	1073767583
+  73              		.cfi_endproc
+  74              	.LFE3:
+  75              		.size	QuadDec_2_Stop, .-QuadDec_2_Stop
+  76              		.section	.text.QuadDec_2_GetCounter,"ax",%progbits
+  77              		.align	2
+  78              		.global	QuadDec_2_GetCounter
+  79              		.thumb
+  80              		.thumb_func
+  81              		.type	QuadDec_2_GetCounter, %function
+  82              	QuadDec_2_GetCounter:
+  83              	.LFB4:
+ 176:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 177:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+ 178:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntDisable(QuadDec_2_ISR_NUMBER);    /* interrupt disable */
+ 179:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */
+ 180:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 181:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 182:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 183:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+ 184:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_GetCounter
+ 185:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ 186:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 187:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+ 188:Generated_Source\PSoC5/QuadDec_2.c **** *  Reports the current value of the counter.
+ 189:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 190:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 191:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 192:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 193:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 194:Generated_Source\PSoC5/QuadDec_2.c **** *  The counter value. Return type is signed and per the counter size setting.
+ 195:Generated_Source\PSoC5/QuadDec_2.c **** *  A positive value indicates clockwise movement (B before A).
+ 196:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 197:Generated_Source\PSoC5/QuadDec_2.c **** * Global variables:
+ 198:Generated_Source\PSoC5/QuadDec_2.c **** *  QuadDec_2_count32SoftPart - used to get hi 16 bit for current value
+ 199:Generated_Source\PSoC5/QuadDec_2.c **** *  of the 32-bit counter, when Counter size equal 32-bit.
+ 200:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 201:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 202:Generated_Source\PSoC5/QuadDec_2.c **** int16 QuadDec_2_GetCounter(void) 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 6
+
+
+ 203:Generated_Source\PSoC5/QuadDec_2.c **** {
+  84              		.loc 1 203 0
+  85              		.cfi_startproc
+  86              		@ args = 0, pretend = 0, frame = 0
+  87              		@ frame_needed = 0, uses_anonymous_args = 0
+  88 0000 08B5     		push	{r3, lr}
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 3, -8
+  91              		.cfi_offset 14, -4
+ 204:Generated_Source\PSoC5/QuadDec_2.c ****     int16 count;
+ 205:Generated_Source\PSoC5/QuadDec_2.c ****     uint16 tmpCnt;
+ 206:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 207:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+ 208:Generated_Source\PSoC5/QuadDec_2.c ****         int16 hwCount;
+ 209:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 210:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntDisable(QuadDec_2_ISR_NUMBER);
+ 211:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 212:Generated_Source\PSoC5/QuadDec_2.c ****         tmpCnt = QuadDec_2_Cnt16_ReadCounter();
+ 213:Generated_Source\PSoC5/QuadDec_2.c ****         hwCount = (int16) ((int32) tmpCnt - (int32) QuadDec_2_COUNTER_INIT_VALUE);
+ 214:Generated_Source\PSoC5/QuadDec_2.c ****         count = QuadDec_2_count32SoftPart + hwCount;
+ 215:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 216:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntEnable(QuadDec_2_ISR_NUMBER);
+ 217:Generated_Source\PSoC5/QuadDec_2.c ****     #else 
+ 218:Generated_Source\PSoC5/QuadDec_2.c ****         /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT) || 
+ 219:Generated_Source\PSoC5/QuadDec_2.c ****         *  (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT)
+ 220:Generated_Source\PSoC5/QuadDec_2.c ****         */
+ 221:Generated_Source\PSoC5/QuadDec_2.c ****         #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT)
+ 222:Generated_Source\PSoC5/QuadDec_2.c ****             tmpCnt = QuadDec_2_Cnt8_ReadCounter();
+ 223:Generated_Source\PSoC5/QuadDec_2.c ****         #else /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT) */
+ 224:Generated_Source\PSoC5/QuadDec_2.c ****             tmpCnt = QuadDec_2_Cnt16_ReadCounter();
+  92              		.loc 1 224 0
+  93 0002 FFF7FEFF 		bl	QuadDec_2_Cnt16_ReadCounter
+  94              	.LVL3:
+ 225:Generated_Source\PSoC5/QuadDec_2.c ****         #endif  /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT */
+ 226:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 227:Generated_Source\PSoC5/QuadDec_2.c ****         count = (int16) ((int32) tmpCnt -
+  95              		.loc 1 227 0
+  96 0006 A0F50040 		sub	r0, r0, #32768
+  97              	.LVL4:
+ 228:Generated_Source\PSoC5/QuadDec_2.c ****                 (int32) QuadDec_2_COUNTER_INIT_VALUE);
+ 229:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 230:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */ 
+ 231:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 232:Generated_Source\PSoC5/QuadDec_2.c ****     return (count);
+ 233:Generated_Source\PSoC5/QuadDec_2.c **** }
+  98              		.loc 1 233 0
+  99 000a 00B2     		sxth	r0, r0
+ 100 000c 08BD     		pop	{r3, pc}
+ 101              		.cfi_endproc
+ 102              	.LFE4:
+ 103              		.size	QuadDec_2_GetCounter, .-QuadDec_2_GetCounter
+ 104 000e 00BF     		.section	.text.QuadDec_2_SetCounter,"ax",%progbits
+ 105              		.align	2
+ 106              		.global	QuadDec_2_SetCounter
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.type	QuadDec_2_SetCounter, %function
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 7
+
+
+ 110              	QuadDec_2_SetCounter:
+ 111              	.LFB5:
+ 234:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 235:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 236:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+ 237:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_SetCounter
+ 238:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ 239:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 240:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+ 241:Generated_Source\PSoC5/QuadDec_2.c **** *  Sets the current value of the counter.
+ 242:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 243:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 244:Generated_Source\PSoC5/QuadDec_2.c **** *  value:  The new value. Parameter type is signed and per the counter size
+ 245:Generated_Source\PSoC5/QuadDec_2.c **** *  setting.
+ 246:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 247:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 248:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 249:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 250:Generated_Source\PSoC5/QuadDec_2.c **** * Global variables:
+ 251:Generated_Source\PSoC5/QuadDec_2.c **** *  QuadDec_2_count32SoftPart - modified to set hi 16 bit for current
+ 252:Generated_Source\PSoC5/QuadDec_2.c **** *  value of the 32-bit counter, when Counter size equal 32-bit.
+ 253:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 254:Generated_Source\PSoC5/QuadDec_2.c **** * Reentrant:
+ 255:Generated_Source\PSoC5/QuadDec_2.c **** *  No.
+ 256:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 257:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 258:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_SetCounter(int16 value) 
+ 259:Generated_Source\PSoC5/QuadDec_2.c **** {
+ 112              		.loc 1 259 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              	.LVL5:
+ 117 0000 08B5     		push	{r3, lr}
+ 118              		.cfi_def_cfa_offset 8
+ 119              		.cfi_offset 3, -8
+ 120              		.cfi_offset 14, -4
+ 260:Generated_Source\PSoC5/QuadDec_2.c ****     #if ((QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT) || \
+ 261:Generated_Source\PSoC5/QuadDec_2.c ****          (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT))
+ 262:Generated_Source\PSoC5/QuadDec_2.c ****         uint16 count;
+ 263:Generated_Source\PSoC5/QuadDec_2.c ****         
+ 264:Generated_Source\PSoC5/QuadDec_2.c ****         if (value >= 0)
+ 121              		.loc 1 264 0
+ 122 0002 0028     		cmp	r0, #0
+ 123              	.LVL6:
+ 124 0004 03DB     		blt	.L9
+ 265:Generated_Source\PSoC5/QuadDec_2.c ****         {
+ 266:Generated_Source\PSoC5/QuadDec_2.c ****             count = (uint16) value + QuadDec_2_COUNTER_INIT_VALUE;
+ 125              		.loc 1 266 0
+ 126 0006 80B2     		uxth	r0, r0
+ 127 0008 80F40040 		eor	r0, r0, #32768
+ 128              	.LVL7:
+ 129 000c 02E0     		b	.L10
+ 130              	.LVL8:
+ 131              	.L9:
+ 267:Generated_Source\PSoC5/QuadDec_2.c ****         }
+ 268:Generated_Source\PSoC5/QuadDec_2.c ****         else
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 8
+
+
+ 269:Generated_Source\PSoC5/QuadDec_2.c ****         {
+ 270:Generated_Source\PSoC5/QuadDec_2.c ****             count = QuadDec_2_COUNTER_INIT_VALUE - (uint16)(-value);
+ 132              		.loc 1 270 0
+ 133 000e A0F50040 		sub	r0, r0, #32768
+ 134 0012 80B2     		uxth	r0, r0
+ 135              	.LVL9:
+ 136              	.L10:
+ 271:Generated_Source\PSoC5/QuadDec_2.c ****         }
+ 272:Generated_Source\PSoC5/QuadDec_2.c ****         #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT)
+ 273:Generated_Source\PSoC5/QuadDec_2.c ****             QuadDec_2_Cnt8_WriteCounter(count);
+ 274:Generated_Source\PSoC5/QuadDec_2.c ****         #else /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT) */
+ 275:Generated_Source\PSoC5/QuadDec_2.c ****             QuadDec_2_Cnt16_WriteCounter(count);
+ 137              		.loc 1 275 0
+ 138 0014 FFF7FEFF 		bl	QuadDec_2_Cnt16_WriteCounter
+ 139              	.LVL10:
+ 140 0018 08BD     		pop	{r3, pc}
+ 141              		.cfi_endproc
+ 142              	.LFE5:
+ 143              		.size	QuadDec_2_SetCounter, .-QuadDec_2_SetCounter
+ 144 001a 00BF     		.section	.text.QuadDec_2_GetEvents,"ax",%progbits
+ 145              		.align	2
+ 146              		.global	QuadDec_2_GetEvents
+ 147              		.thumb
+ 148              		.thumb_func
+ 149              		.type	QuadDec_2_GetEvents, %function
+ 150              	QuadDec_2_GetEvents:
+ 151              	.LFB6:
+ 276:Generated_Source\PSoC5/QuadDec_2.c ****         #endif  /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT */
+ 277:Generated_Source\PSoC5/QuadDec_2.c ****     #else /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT) */
+ 278:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntDisable(QuadDec_2_ISR_NUMBER);
+ 279:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 280:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_WriteCounter(QuadDec_2_COUNTER_INIT_VALUE);
+ 281:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_count32SoftPart = value;
+ 282:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 283:Generated_Source\PSoC5/QuadDec_2.c ****         CyIntEnable(QuadDec_2_ISR_NUMBER);
+ 284:Generated_Source\PSoC5/QuadDec_2.c ****     #endif  /* (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT) ||
+ 285:Generated_Source\PSoC5/QuadDec_2.c ****              * (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_16_BIT)
+ 286:Generated_Source\PSoC5/QuadDec_2.c ****              */
+ 287:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 288:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 289:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 290:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+ 291:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_GetEvents
+ 292:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ 293:Generated_Source\PSoC5/QuadDec_2.c **** * 
+ 294:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+ 295:Generated_Source\PSoC5/QuadDec_2.c **** *   Reports the current status of events. This function clears the bits of the 
+ 296:Generated_Source\PSoC5/QuadDec_2.c **** *   status register.
+ 297:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 298:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 299:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 300:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 301:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 302:Generated_Source\PSoC5/QuadDec_2.c **** *  The events, as bits in an unsigned 8-bit value:
+ 303:Generated_Source\PSoC5/QuadDec_2.c **** *    Bit      Description
+ 304:Generated_Source\PSoC5/QuadDec_2.c **** *     0        Counter overflow.
+ 305:Generated_Source\PSoC5/QuadDec_2.c **** *     1        Counter underflow.
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 9
+
+
+ 306:Generated_Source\PSoC5/QuadDec_2.c **** *     2        Counter reset due to index, if index input is used.
+ 307:Generated_Source\PSoC5/QuadDec_2.c **** *     3        Invalid A, B inputs state transition.
+ 308:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 309:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 310:Generated_Source\PSoC5/QuadDec_2.c **** uint8 QuadDec_2_GetEvents(void) 
+ 311:Generated_Source\PSoC5/QuadDec_2.c **** {
+ 152              		.loc 1 311 0
+ 153              		.cfi_startproc
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156              		@ link register save eliminated.
+ 312:Generated_Source\PSoC5/QuadDec_2.c ****     return (QuadDec_2_STATUS_REG & QuadDec_2_INIT_INT_MASK);
+ 157              		.loc 1 312 0
+ 158 0000 024B     		ldr	r3, .L13
+ 159 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 313:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 160              		.loc 1 313 0
+ 161 0004 00F00F00 		and	r0, r0, #15
+ 162 0008 7047     		bx	lr
+ 163              	.L14:
+ 164 000a 00BF     		.align	2
+ 165              	.L13:
+ 166 000c 6F640040 		.word	1073767535
+ 167              		.cfi_endproc
+ 168              	.LFE6:
+ 169              		.size	QuadDec_2_GetEvents, .-QuadDec_2_GetEvents
+ 170              		.section	.text.QuadDec_2_SetInterruptMask,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	QuadDec_2_SetInterruptMask
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.type	QuadDec_2_SetInterruptMask, %function
+ 176              	QuadDec_2_SetInterruptMask:
+ 177              	.LFB7:
+ 314:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 315:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 316:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+ 317:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_SetInterruptMask
+ 318:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ 319:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 320:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+ 321:Generated_Source\PSoC5/QuadDec_2.c **** *  Enables / disables interrupts due to the events.
+ 322:Generated_Source\PSoC5/QuadDec_2.c **** *  For the 32-bit counter, the overflow, underflow and reset interrupts cannot
+ 323:Generated_Source\PSoC5/QuadDec_2.c **** *  be disabled, these bits are ignored.
+ 324:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 325:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 326:Generated_Source\PSoC5/QuadDec_2.c **** *  mask: Enable / disable bits in an 8-bit value, where 1 enables the interrupt.
+ 327:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 328:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 329:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 330:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 331:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 332:Generated_Source\PSoC5/QuadDec_2.c **** void QuadDec_2_SetInterruptMask(uint8 mask) 
+ 333:Generated_Source\PSoC5/QuadDec_2.c **** {
+ 178              		.loc 1 333 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 10
+
+
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              		@ link register save eliminated.
+ 183              	.LVL11:
+ 334:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT)
+ 335:Generated_Source\PSoC5/QuadDec_2.c ****         /* Underflow, Overflow and Reset interrupts for 32-bit Counter are always enable */
+ 336:Generated_Source\PSoC5/QuadDec_2.c ****         mask |= (QuadDec_2_COUNTER_OVERFLOW | QuadDec_2_COUNTER_UNDERFLOW |
+ 337:Generated_Source\PSoC5/QuadDec_2.c ****                  QuadDec_2_COUNTER_RESET);
+ 338:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_32_BIT */
+ 339:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 340:Generated_Source\PSoC5/QuadDec_2.c ****     QuadDec_2_STATUS_MASK = mask;
+ 184              		.loc 1 340 0
+ 185 0000 014B     		ldr	r3, .L16
+ 186 0002 1870     		strb	r0, [r3]
+ 187 0004 7047     		bx	lr
+ 188              	.L17:
+ 189 0006 00BF     		.align	2
+ 190              	.L16:
+ 191 0008 8F640040 		.word	1073767567
+ 192              		.cfi_endproc
+ 193              	.LFE7:
+ 194              		.size	QuadDec_2_SetInterruptMask, .-QuadDec_2_SetInterruptMask
+ 195              		.section	.text.QuadDec_2_Enable,"ax",%progbits
+ 196              		.align	2
+ 197              		.global	QuadDec_2_Enable
+ 198              		.thumb
+ 199              		.thumb_func
+ 200              		.type	QuadDec_2_Enable, %function
+ 201              	QuadDec_2_Enable:
+ 202              	.LFB1:
+  71:Generated_Source\PSoC5/QuadDec_2.c ****     uint8 enableInterrupts;
+ 203              		.loc 1 71 0
+ 204              		.cfi_startproc
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 207 0000 08B5     		push	{r3, lr}
+ 208              		.cfi_def_cfa_offset 8
+ 209              		.cfi_offset 3, -8
+ 210              		.cfi_offset 14, -4
+  74:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 211              		.loc 1 74 0
+ 212 0002 0F20     		movs	r0, #15
+ 213 0004 FFF7FEFF 		bl	QuadDec_2_SetInterruptMask
+ 214              	.LVL12:
+  77:Generated_Source\PSoC5/QuadDec_2.c ****     
+ 215              		.loc 1 77 0
+ 216 0008 FFF7FEFF 		bl	QuadDec_2_GetEvents
+ 217              	.LVL13:
+  79:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 218              		.loc 1 79 0
+ 219 000c FFF7FEFF 		bl	CyEnterCriticalSection
+ 220              	.LVL14:
+  82:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 221              		.loc 1 82 0
+ 222 0010 034A     		ldr	r2, .L20
+ 223 0012 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 224 0014 43F01003 		orr	r3, r3, #16
+ 225 0018 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 11
+
+
+  84:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 226              		.loc 1 84 0
+ 227 001a FFF7FEFF 		bl	CyExitCriticalSection
+ 228              	.LVL15:
+ 229 001e 08BD     		pop	{r3, pc}
+ 230              	.L21:
+ 231              		.align	2
+ 232              	.L20:
+ 233 0020 9F640040 		.word	1073767583
+ 234              		.cfi_endproc
+ 235              	.LFE1:
+ 236              		.size	QuadDec_2_Enable, .-QuadDec_2_Enable
+ 237              		.section	.text.QuadDec_2_Start,"ax",%progbits
+ 238              		.align	2
+ 239              		.global	QuadDec_2_Start
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.type	QuadDec_2_Start, %function
+ 243              	QuadDec_2_Start:
+ 244              	.LFB2:
+ 117:Generated_Source\PSoC5/QuadDec_2.c ****     #if (QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT)
+ 245              		.loc 1 117 0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 0
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249 0000 08B5     		push	{r3, lr}
+ 250              		.cfi_def_cfa_offset 8
+ 251              		.cfi_offset 3, -8
+ 252              		.cfi_offset 14, -4
+ 125:Generated_Source\PSoC5/QuadDec_2.c ****         QuadDec_2_Cnt16_WriteCounter(QuadDec_2_COUNTER_INIT_VALUE);
+ 253              		.loc 1 125 0
+ 254 0002 FFF7FEFF 		bl	QuadDec_2_Cnt16_Start
+ 255              	.LVL16:
+ 126:Generated_Source\PSoC5/QuadDec_2.c ****     #endif /* QuadDec_2_COUNTER_SIZE == QuadDec_2_COUNTER_SIZE_8_BIT */
+ 256              		.loc 1 126 0
+ 257 0006 4FF40040 		mov	r0, #32768
+ 258 000a FFF7FEFF 		bl	QuadDec_2_Cnt16_WriteCounter
+ 259              	.LVL17:
+ 133:Generated_Source\PSoC5/QuadDec_2.c ****     {
+ 260              		.loc 1 133 0
+ 261 000e 044B     		ldr	r3, .L25
+ 262 0010 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 263 0012 13B9     		cbnz	r3, .L23
+ 136:Generated_Source\PSoC5/QuadDec_2.c ****     }
+ 264              		.loc 1 136 0
+ 265 0014 0122     		movs	r2, #1
+ 266 0016 024B     		ldr	r3, .L25
+ 267 0018 1A70     		strb	r2, [r3]
+ 268              	.L23:
+ 139:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 269              		.loc 1 139 0
+ 270 001a FFF7FEFF 		bl	QuadDec_2_Enable
+ 271              	.LVL18:
+ 272 001e 08BD     		pop	{r3, pc}
+ 273              	.L26:
+ 274              		.align	2
+ 275              	.L25:
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 12
+
+
+ 276 0020 00000000 		.word	.LANCHOR0
+ 277              		.cfi_endproc
+ 278              	.LFE2:
+ 279              		.size	QuadDec_2_Start, .-QuadDec_2_Start
+ 280              		.section	.text.QuadDec_2_GetInterruptMask,"ax",%progbits
+ 281              		.align	2
+ 282              		.global	QuadDec_2_GetInterruptMask
+ 283              		.thumb
+ 284              		.thumb_func
+ 285              		.type	QuadDec_2_GetInterruptMask, %function
+ 286              	QuadDec_2_GetInterruptMask:
+ 287              	.LFB8:
+ 341:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 342:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 343:Generated_Source\PSoC5/QuadDec_2.c **** 
+ 344:Generated_Source\PSoC5/QuadDec_2.c **** /*******************************************************************************
+ 345:Generated_Source\PSoC5/QuadDec_2.c **** * Function Name: QuadDec_2_GetInterruptMask
+ 346:Generated_Source\PSoC5/QuadDec_2.c **** ********************************************************************************
+ 347:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 348:Generated_Source\PSoC5/QuadDec_2.c **** * Summary:
+ 349:Generated_Source\PSoC5/QuadDec_2.c **** *  Reports the current interrupt mask settings.
+ 350:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 351:Generated_Source\PSoC5/QuadDec_2.c **** * Parameters:
+ 352:Generated_Source\PSoC5/QuadDec_2.c **** *  None.
+ 353:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 354:Generated_Source\PSoC5/QuadDec_2.c **** * Return:
+ 355:Generated_Source\PSoC5/QuadDec_2.c **** *  Enable / disable bits in an 8-bit value, where 1 enables the interrupt.
+ 356:Generated_Source\PSoC5/QuadDec_2.c **** *  For the 32-bit counter, the overflow, underflow and reset enable bits are
+ 357:Generated_Source\PSoC5/QuadDec_2.c **** *  always set.
+ 358:Generated_Source\PSoC5/QuadDec_2.c **** *
+ 359:Generated_Source\PSoC5/QuadDec_2.c **** *******************************************************************************/
+ 360:Generated_Source\PSoC5/QuadDec_2.c **** uint8 QuadDec_2_GetInterruptMask(void) 
+ 361:Generated_Source\PSoC5/QuadDec_2.c **** {
+ 288              		.loc 1 361 0
+ 289              		.cfi_startproc
+ 290              		@ args = 0, pretend = 0, frame = 0
+ 291              		@ frame_needed = 0, uses_anonymous_args = 0
+ 292              		@ link register save eliminated.
+ 362:Generated_Source\PSoC5/QuadDec_2.c ****     return (QuadDec_2_STATUS_MASK & QuadDec_2_INIT_INT_MASK);
+ 293              		.loc 1 362 0
+ 294 0000 024B     		ldr	r3, .L28
+ 295 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 363:Generated_Source\PSoC5/QuadDec_2.c **** }
+ 296              		.loc 1 363 0
+ 297 0004 00F00F00 		and	r0, r0, #15
+ 298 0008 7047     		bx	lr
+ 299              	.L29:
+ 300 000a 00BF     		.align	2
+ 301              	.L28:
+ 302 000c 8F640040 		.word	1073767567
+ 303              		.cfi_endproc
+ 304              	.LFE8:
+ 305              		.size	QuadDec_2_GetInterruptMask, .-QuadDec_2_GetInterruptMask
+ 306              		.global	QuadDec_2_initVar
+ 307              		.bss
+ 308              		.set	.LANCHOR0,. + 0
+ 309              		.type	QuadDec_2_initVar, %object
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 13
+
+
+ 310              		.size	QuadDec_2_initVar, 1
+ 311              	QuadDec_2_initVar:
+ 312 0000 00       		.space	1
+ 313              		.text
+ 314              	.Letext0:
+ 315              		.file 2 "Generated_Source\\PSoC5\\cytypes.h"
+ 316              		.file 3 "Generated_Source\\PSoC5\\QuadDec_2_Cnt16.h"
+ 317              		.file 4 "Generated_Source\\PSoC5\\CyLib.h"
+ 318              		.section	.debug_info,"",%progbits
+ 319              	.Ldebug_info0:
+ 320 0000 D0020000 		.4byte	0x2d0
+ 321 0004 0400     		.2byte	0x4
+ 322 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 323 000a 04       		.byte	0x4
+ 324 000b 01       		.uleb128 0x1
+ 325 000c F2000000 		.4byte	.LASF37
+ 326 0010 0C       		.byte	0xc
+ 327 0011 BE010000 		.4byte	.LASF38
+ 328 0015 65000000 		.4byte	.LASF39
+ 329 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 330 001d 00000000 		.4byte	0
+ 331 0021 00000000 		.4byte	.Ldebug_line0
+ 332 0025 02       		.uleb128 0x2
+ 333 0026 04       		.byte	0x4
+ 334 0027 05       		.byte	0x5
+ 335 0028 696E7400 		.ascii	"int\000"
+ 336 002c 03       		.uleb128 0x3
+ 337 002d 04       		.byte	0x4
+ 338 002e 07       		.byte	0x7
+ 339 002f 67020000 		.4byte	.LASF0
+ 340 0033 03       		.uleb128 0x3
+ 341 0034 08       		.byte	0x8
+ 342 0035 05       		.byte	0x5
+ 343 0036 A8020000 		.4byte	.LASF1
+ 344 003a 03       		.uleb128 0x3
+ 345 003b 08       		.byte	0x8
+ 346 003c 04       		.byte	0x4
+ 347 003d EF020000 		.4byte	.LASF2
+ 348 0041 03       		.uleb128 0x3
+ 349 0042 01       		.byte	0x1
+ 350 0043 06       		.byte	0x6
+ 351 0044 FB020000 		.4byte	.LASF3
+ 352 0048 03       		.uleb128 0x3
+ 353 0049 01       		.byte	0x1
+ 354 004a 08       		.byte	0x8
+ 355 004b E4000000 		.4byte	.LASF4
+ 356 004f 03       		.uleb128 0x3
+ 357 0050 02       		.byte	0x2
+ 358 0051 05       		.byte	0x5
+ 359 0052 BB020000 		.4byte	.LASF5
+ 360 0056 03       		.uleb128 0x3
+ 361 0057 02       		.byte	0x2
+ 362 0058 07       		.byte	0x7
+ 363 0059 43000000 		.4byte	.LASF6
+ 364 005d 03       		.uleb128 0x3
+ 365 005e 04       		.byte	0x4
+ 366 005f 05       		.byte	0x5
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 14
+
+
+ 367 0060 CB020000 		.4byte	.LASF7
+ 368 0064 03       		.uleb128 0x3
+ 369 0065 04       		.byte	0x4
+ 370 0066 07       		.byte	0x7
+ 371 0067 55020000 		.4byte	.LASF8
+ 372 006b 03       		.uleb128 0x3
+ 373 006c 08       		.byte	0x8
+ 374 006d 07       		.byte	0x7
+ 375 006e B0000000 		.4byte	.LASF9
+ 376 0072 03       		.uleb128 0x3
+ 377 0073 04       		.byte	0x4
+ 378 0074 07       		.byte	0x7
+ 379 0075 9F020000 		.4byte	.LASF10
+ 380 0079 03       		.uleb128 0x3
+ 381 007a 01       		.byte	0x1
+ 382 007b 08       		.byte	0x8
+ 383 007c D4020000 		.4byte	.LASF11
+ 384 0080 04       		.uleb128 0x4
+ 385 0081 C5020000 		.4byte	.LASF12
+ 386 0085 02       		.byte	0x2
+ 387 0086 E401     		.2byte	0x1e4
+ 388 0088 48000000 		.4byte	0x48
+ 389 008c 04       		.uleb128 0x4
+ 390 008d 28020000 		.4byte	.LASF13
+ 391 0091 02       		.byte	0x2
+ 392 0092 E501     		.2byte	0x1e5
+ 393 0094 56000000 		.4byte	0x56
+ 394 0098 04       		.uleb128 0x4
+ 395 0099 96010000 		.4byte	.LASF14
+ 396 009d 02       		.byte	0x2
+ 397 009e E801     		.2byte	0x1e8
+ 398 00a0 4F000000 		.4byte	0x4f
+ 399 00a4 04       		.uleb128 0x4
+ 400 00a5 B1010000 		.4byte	.LASF15
+ 401 00a9 02       		.byte	0x2
+ 402 00aa E901     		.2byte	0x1e9
+ 403 00ac 5D000000 		.4byte	0x5d
+ 404 00b0 03       		.uleb128 0x3
+ 405 00b1 04       		.byte	0x4
+ 406 00b2 04       		.byte	0x4
+ 407 00b3 AA000000 		.4byte	.LASF16
+ 408 00b7 03       		.uleb128 0x3
+ 409 00b8 08       		.byte	0x8
+ 410 00b9 04       		.byte	0x4
+ 411 00ba 21020000 		.4byte	.LASF17
+ 412 00be 04       		.uleb128 0x4
+ 413 00bf 80010000 		.4byte	.LASF18
+ 414 00c3 02       		.byte	0x2
+ 415 00c4 8E02     		.2byte	0x28e
+ 416 00c6 CA000000 		.4byte	0xca
+ 417 00ca 05       		.uleb128 0x5
+ 418 00cb 80000000 		.4byte	0x80
+ 419 00cf 06       		.uleb128 0x6
+ 420 00d0 56000000 		.4byte	.LASF40
+ 421 00d4 01       		.byte	0x1
+ 422 00d5 2A       		.byte	0x2a
+ 423 00d6 00000000 		.4byte	.LFB0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 15
+
+
+ 424 00da 02000000 		.4byte	.LFE0-.LFB0
+ 425 00de 01       		.uleb128 0x1
+ 426 00df 9C       		.byte	0x9c
+ 427 00e0 07       		.uleb128 0x7
+ 428 00e1 2F020000 		.4byte	.LASF22
+ 429 00e5 01       		.byte	0x1
+ 430 00e6 9D       		.byte	0x9d
+ 431 00e7 00000000 		.4byte	.LFB3
+ 432 00eb 20000000 		.4byte	.LFE3-.LFB3
+ 433 00ef 01       		.uleb128 0x1
+ 434 00f0 9C       		.byte	0x9c
+ 435 00f1 20010000 		.4byte	0x120
+ 436 00f5 08       		.uleb128 0x8
+ 437 00f6 FC010000 		.4byte	.LASF19
+ 438 00fa 01       		.byte	0x1
+ 439 00fb 9F       		.byte	0x9f
+ 440 00fc 80000000 		.4byte	0x80
+ 441 0100 00000000 		.4byte	.LLST0
+ 442 0104 09       		.uleb128 0x9
+ 443 0105 06000000 		.4byte	.LVL0
+ 444 0109 91020000 		.4byte	0x291
+ 445 010d 09       		.uleb128 0x9
+ 446 010e 0A000000 		.4byte	.LVL1
+ 447 0112 9C020000 		.4byte	0x29c
+ 448 0116 09       		.uleb128 0x9
+ 449 0117 18000000 		.4byte	.LVL2
+ 450 011b A7020000 		.4byte	0x2a7
+ 451 011f 00       		.byte	0
+ 452 0120 0A       		.uleb128 0xa
+ 453 0121 8A020000 		.4byte	.LASF41
+ 454 0125 01       		.byte	0x1
+ 455 0126 CA       		.byte	0xca
+ 456 0127 98000000 		.4byte	0x98
+ 457 012b 00000000 		.4byte	.LFB4
+ 458 012f 0E000000 		.4byte	.LFE4-.LFB4
+ 459 0133 01       		.uleb128 0x1
+ 460 0134 9C       		.byte	0x9c
+ 461 0135 5F010000 		.4byte	0x15f
+ 462 0139 0B       		.uleb128 0xb
+ 463 013a 22000000 		.4byte	.LASF20
+ 464 013e 01       		.byte	0x1
+ 465 013f CC       		.byte	0xcc
+ 466 0140 98000000 		.4byte	0x98
+ 467 0144 01       		.uleb128 0x1
+ 468 0145 50       		.byte	0x50
+ 469 0146 08       		.uleb128 0x8
+ 470 0147 B7010000 		.4byte	.LASF21
+ 471 014b 01       		.byte	0x1
+ 472 014c CD       		.byte	0xcd
+ 473 014d 8C000000 		.4byte	0x8c
+ 474 0151 13000000 		.4byte	.LLST1
+ 475 0155 09       		.uleb128 0x9
+ 476 0156 06000000 		.4byte	.LVL3
+ 477 015a B2020000 		.4byte	0x2b2
+ 478 015e 00       		.byte	0
+ 479 015f 0C       		.uleb128 0xc
+ 480 0160 19030000 		.4byte	.LASF23
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 16
+
+
+ 481 0164 01       		.byte	0x1
+ 482 0165 0201     		.2byte	0x102
+ 483 0167 00000000 		.4byte	.LFB5
+ 484 016b 1A000000 		.4byte	.LFE5-.LFB5
+ 485 016f 01       		.uleb128 0x1
+ 486 0170 9C       		.byte	0x9c
+ 487 0171 9F010000 		.4byte	0x19f
+ 488 0175 0D       		.uleb128 0xd
+ 489 0176 1C000000 		.4byte	.LASF25
+ 490 017a 01       		.byte	0x1
+ 491 017b 0201     		.2byte	0x102
+ 492 017d 98000000 		.4byte	0x98
+ 493 0181 26000000 		.4byte	.LLST2
+ 494 0185 0E       		.uleb128 0xe
+ 495 0186 22000000 		.4byte	.LASF20
+ 496 018a 01       		.byte	0x1
+ 497 018b 0601     		.2byte	0x106
+ 498 018d 8C000000 		.4byte	0x8c
+ 499 0191 47000000 		.4byte	.LLST3
+ 500 0195 09       		.uleb128 0x9
+ 501 0196 18000000 		.4byte	.LVL10
+ 502 019a BD020000 		.4byte	0x2bd
+ 503 019e 00       		.byte	0
+ 504 019f 0F       		.uleb128 0xf
+ 505 01a0 0D020000 		.4byte	.LASF29
+ 506 01a4 01       		.byte	0x1
+ 507 01a5 3601     		.2byte	0x136
+ 508 01a7 80000000 		.4byte	0x80
+ 509 01ab 00000000 		.4byte	.LFB6
+ 510 01af 10000000 		.4byte	.LFE6-.LFB6
+ 511 01b3 01       		.uleb128 0x1
+ 512 01b4 9C       		.byte	0x9c
+ 513 01b5 0C       		.uleb128 0xc
+ 514 01b6 28000000 		.4byte	.LASF24
+ 515 01ba 01       		.byte	0x1
+ 516 01bb 4C01     		.2byte	0x14c
+ 517 01bd 00000000 		.4byte	.LFB7
+ 518 01c1 0C000000 		.4byte	.LFE7-.LFB7
+ 519 01c5 01       		.uleb128 0x1
+ 520 01c6 9C       		.byte	0x9c
+ 521 01c7 DA010000 		.4byte	0x1da
+ 522 01cb 10       		.uleb128 0x10
+ 523 01cc B6020000 		.4byte	.LASF26
+ 524 01d0 01       		.byte	0x1
+ 525 01d1 4C01     		.2byte	0x14c
+ 526 01d3 80000000 		.4byte	0x80
+ 527 01d7 01       		.uleb128 0x1
+ 528 01d8 50       		.byte	0x50
+ 529 01d9 00       		.byte	0
+ 530 01da 07       		.uleb128 0x7
+ 531 01db 85010000 		.4byte	.LASF27
+ 532 01df 01       		.byte	0x1
+ 533 01e0 46       		.byte	0x46
+ 534 01e1 00000000 		.4byte	.LFB1
+ 535 01e5 24000000 		.4byte	.LFE1-.LFB1
+ 536 01e9 01       		.uleb128 0x1
+ 537 01ea 9C       		.byte	0x9c
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 17
+
+
+ 538 01eb 2D020000 		.4byte	0x22d
+ 539 01ef 08       		.uleb128 0x8
+ 540 01f0 FC010000 		.4byte	.LASF19
+ 541 01f4 01       		.byte	0x1
+ 542 01f5 48       		.byte	0x48
+ 543 01f6 80000000 		.4byte	0x80
+ 544 01fa 65000000 		.4byte	.LLST4
+ 545 01fe 11       		.uleb128 0x11
+ 546 01ff 08000000 		.4byte	.LVL12
+ 547 0203 B5010000 		.4byte	0x1b5
+ 548 0207 11020000 		.4byte	0x211
+ 549 020b 12       		.uleb128 0x12
+ 550 020c 01       		.uleb128 0x1
+ 551 020d 50       		.byte	0x50
+ 552 020e 01       		.uleb128 0x1
+ 553 020f 3F       		.byte	0x3f
+ 554 0210 00       		.byte	0
+ 555 0211 09       		.uleb128 0x9
+ 556 0212 0C000000 		.4byte	.LVL13
+ 557 0216 9F010000 		.4byte	0x19f
+ 558 021a 09       		.uleb128 0x9
+ 559 021b 10000000 		.4byte	.LVL14
+ 560 021f 9C020000 		.4byte	0x29c
+ 561 0223 09       		.uleb128 0x9
+ 562 0224 1E000000 		.4byte	.LVL15
+ 563 0228 A7020000 		.4byte	0x2a7
+ 564 022c 00       		.byte	0
+ 565 022d 07       		.uleb128 0x7
+ 566 022e 2E030000 		.4byte	.LASF28
+ 567 0232 01       		.byte	0x1
+ 568 0233 74       		.byte	0x74
+ 569 0234 00000000 		.4byte	.LFB2
+ 570 0238 24000000 		.4byte	.LFE2-.LFB2
+ 571 023c 01       		.uleb128 0x1
+ 572 023d 9C       		.byte	0x9c
+ 573 023e 6A020000 		.4byte	0x26a
+ 574 0242 09       		.uleb128 0x9
+ 575 0243 06000000 		.4byte	.LVL16
+ 576 0247 C8020000 		.4byte	0x2c8
+ 577 024b 11       		.uleb128 0x11
+ 578 024c 0E000000 		.4byte	.LVL17
+ 579 0250 BD020000 		.4byte	0x2bd
+ 580 0254 60020000 		.4byte	0x260
+ 581 0258 12       		.uleb128 0x12
+ 582 0259 01       		.uleb128 0x1
+ 583 025a 50       		.byte	0x50
+ 584 025b 03       		.uleb128 0x3
+ 585 025c 0B       		.byte	0xb
+ 586 025d 0080     		.2byte	0x8000
+ 587 025f 00       		.byte	0
+ 588 0260 09       		.uleb128 0x9
+ 589 0261 1E000000 		.4byte	.LVL18
+ 590 0265 DA010000 		.4byte	0x1da
+ 591 0269 00       		.byte	0
+ 592 026a 0F       		.uleb128 0xf
+ 593 026b E1010000 		.4byte	.LASF30
+ 594 026f 01       		.byte	0x1
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 18
+
+
+ 595 0270 6801     		.2byte	0x168
+ 596 0272 80000000 		.4byte	0x80
+ 597 0276 00000000 		.4byte	.LFB8
+ 598 027a 10000000 		.4byte	.LFE8-.LFB8
+ 599 027e 01       		.uleb128 0x1
+ 600 027f 9C       		.byte	0x9c
+ 601 0280 13       		.uleb128 0x13
+ 602 0281 07030000 		.4byte	.LASF42
+ 603 0285 01       		.byte	0x1
+ 604 0286 19       		.byte	0x19
+ 605 0287 80000000 		.4byte	0x80
+ 606 028b 05       		.uleb128 0x5
+ 607 028c 03       		.byte	0x3
+ 608 028d 00000000 		.4byte	QuadDec_2_initVar
+ 609 0291 14       		.uleb128 0x14
+ 610 0292 9C010000 		.4byte	.LASF31
+ 611 0296 9C010000 		.4byte	.LASF31
+ 612 029a 03       		.byte	0x3
+ 613 029b 50       		.byte	0x50
+ 614 029c 14       		.uleb128 0x14
+ 615 029d 3E020000 		.4byte	.LASF32
+ 616 02a1 3E020000 		.4byte	.LASF32
+ 617 02a5 04       		.byte	0x4
+ 618 02a6 7D       		.byte	0x7d
+ 619 02a7 14       		.uleb128 0x14
+ 620 02a8 74020000 		.4byte	.LASF33
+ 621 02ac 74020000 		.4byte	.LASF33
+ 622 02b0 04       		.byte	0x4
+ 623 02b1 7E       		.byte	0x7e
+ 624 02b2 14       		.uleb128 0x14
+ 625 02b3 00000000 		.4byte	.LASF34
+ 626 02b7 00000000 		.4byte	.LASF34
+ 627 02bb 03       		.byte	0x3
+ 628 02bc 5D       		.byte	0x5d
+ 629 02bd 14       		.uleb128 0x14
+ 630 02be C7000000 		.4byte	.LASF35
+ 631 02c2 C7000000 		.4byte	.LASF35
+ 632 02c6 03       		.byte	0x3
+ 633 02c7 5A       		.byte	0x5a
+ 634 02c8 14       		.uleb128 0x14
+ 635 02c9 D9020000 		.4byte	.LASF36
+ 636 02cd D9020000 		.4byte	.LASF36
+ 637 02d1 03       		.byte	0x3
+ 638 02d2 4F       		.byte	0x4f
+ 639 02d3 00       		.byte	0
+ 640              		.section	.debug_abbrev,"",%progbits
+ 641              	.Ldebug_abbrev0:
+ 642 0000 01       		.uleb128 0x1
+ 643 0001 11       		.uleb128 0x11
+ 644 0002 01       		.byte	0x1
+ 645 0003 25       		.uleb128 0x25
+ 646 0004 0E       		.uleb128 0xe
+ 647 0005 13       		.uleb128 0x13
+ 648 0006 0B       		.uleb128 0xb
+ 649 0007 03       		.uleb128 0x3
+ 650 0008 0E       		.uleb128 0xe
+ 651 0009 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 19
+
+
+ 652 000a 0E       		.uleb128 0xe
+ 653 000b 55       		.uleb128 0x55
+ 654 000c 17       		.uleb128 0x17
+ 655 000d 11       		.uleb128 0x11
+ 656 000e 01       		.uleb128 0x1
+ 657 000f 10       		.uleb128 0x10
+ 658 0010 17       		.uleb128 0x17
+ 659 0011 00       		.byte	0
+ 660 0012 00       		.byte	0
+ 661 0013 02       		.uleb128 0x2
+ 662 0014 24       		.uleb128 0x24
+ 663 0015 00       		.byte	0
+ 664 0016 0B       		.uleb128 0xb
+ 665 0017 0B       		.uleb128 0xb
+ 666 0018 3E       		.uleb128 0x3e
+ 667 0019 0B       		.uleb128 0xb
+ 668 001a 03       		.uleb128 0x3
+ 669 001b 08       		.uleb128 0x8
+ 670 001c 00       		.byte	0
+ 671 001d 00       		.byte	0
+ 672 001e 03       		.uleb128 0x3
+ 673 001f 24       		.uleb128 0x24
+ 674 0020 00       		.byte	0
+ 675 0021 0B       		.uleb128 0xb
+ 676 0022 0B       		.uleb128 0xb
+ 677 0023 3E       		.uleb128 0x3e
+ 678 0024 0B       		.uleb128 0xb
+ 679 0025 03       		.uleb128 0x3
+ 680 0026 0E       		.uleb128 0xe
+ 681 0027 00       		.byte	0
+ 682 0028 00       		.byte	0
+ 683 0029 04       		.uleb128 0x4
+ 684 002a 16       		.uleb128 0x16
+ 685 002b 00       		.byte	0
+ 686 002c 03       		.uleb128 0x3
+ 687 002d 0E       		.uleb128 0xe
+ 688 002e 3A       		.uleb128 0x3a
+ 689 002f 0B       		.uleb128 0xb
+ 690 0030 3B       		.uleb128 0x3b
+ 691 0031 05       		.uleb128 0x5
+ 692 0032 49       		.uleb128 0x49
+ 693 0033 13       		.uleb128 0x13
+ 694 0034 00       		.byte	0
+ 695 0035 00       		.byte	0
+ 696 0036 05       		.uleb128 0x5
+ 697 0037 35       		.uleb128 0x35
+ 698 0038 00       		.byte	0
+ 699 0039 49       		.uleb128 0x49
+ 700 003a 13       		.uleb128 0x13
+ 701 003b 00       		.byte	0
+ 702 003c 00       		.byte	0
+ 703 003d 06       		.uleb128 0x6
+ 704 003e 2E       		.uleb128 0x2e
+ 705 003f 00       		.byte	0
+ 706 0040 3F       		.uleb128 0x3f
+ 707 0041 19       		.uleb128 0x19
+ 708 0042 03       		.uleb128 0x3
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 20
+
+
+ 709 0043 0E       		.uleb128 0xe
+ 710 0044 3A       		.uleb128 0x3a
+ 711 0045 0B       		.uleb128 0xb
+ 712 0046 3B       		.uleb128 0x3b
+ 713 0047 0B       		.uleb128 0xb
+ 714 0048 27       		.uleb128 0x27
+ 715 0049 19       		.uleb128 0x19
+ 716 004a 11       		.uleb128 0x11
+ 717 004b 01       		.uleb128 0x1
+ 718 004c 12       		.uleb128 0x12
+ 719 004d 06       		.uleb128 0x6
+ 720 004e 40       		.uleb128 0x40
+ 721 004f 18       		.uleb128 0x18
+ 722 0050 9742     		.uleb128 0x2117
+ 723 0052 19       		.uleb128 0x19
+ 724 0053 00       		.byte	0
+ 725 0054 00       		.byte	0
+ 726 0055 07       		.uleb128 0x7
+ 727 0056 2E       		.uleb128 0x2e
+ 728 0057 01       		.byte	0x1
+ 729 0058 3F       		.uleb128 0x3f
+ 730 0059 19       		.uleb128 0x19
+ 731 005a 03       		.uleb128 0x3
+ 732 005b 0E       		.uleb128 0xe
+ 733 005c 3A       		.uleb128 0x3a
+ 734 005d 0B       		.uleb128 0xb
+ 735 005e 3B       		.uleb128 0x3b
+ 736 005f 0B       		.uleb128 0xb
+ 737 0060 27       		.uleb128 0x27
+ 738 0061 19       		.uleb128 0x19
+ 739 0062 11       		.uleb128 0x11
+ 740 0063 01       		.uleb128 0x1
+ 741 0064 12       		.uleb128 0x12
+ 742 0065 06       		.uleb128 0x6
+ 743 0066 40       		.uleb128 0x40
+ 744 0067 18       		.uleb128 0x18
+ 745 0068 9742     		.uleb128 0x2117
+ 746 006a 19       		.uleb128 0x19
+ 747 006b 01       		.uleb128 0x1
+ 748 006c 13       		.uleb128 0x13
+ 749 006d 00       		.byte	0
+ 750 006e 00       		.byte	0
+ 751 006f 08       		.uleb128 0x8
+ 752 0070 34       		.uleb128 0x34
+ 753 0071 00       		.byte	0
+ 754 0072 03       		.uleb128 0x3
+ 755 0073 0E       		.uleb128 0xe
+ 756 0074 3A       		.uleb128 0x3a
+ 757 0075 0B       		.uleb128 0xb
+ 758 0076 3B       		.uleb128 0x3b
+ 759 0077 0B       		.uleb128 0xb
+ 760 0078 49       		.uleb128 0x49
+ 761 0079 13       		.uleb128 0x13
+ 762 007a 02       		.uleb128 0x2
+ 763 007b 17       		.uleb128 0x17
+ 764 007c 00       		.byte	0
+ 765 007d 00       		.byte	0
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 21
+
+
+ 766 007e 09       		.uleb128 0x9
+ 767 007f 898201   		.uleb128 0x4109
+ 768 0082 00       		.byte	0
+ 769 0083 11       		.uleb128 0x11
+ 770 0084 01       		.uleb128 0x1
+ 771 0085 31       		.uleb128 0x31
+ 772 0086 13       		.uleb128 0x13
+ 773 0087 00       		.byte	0
+ 774 0088 00       		.byte	0
+ 775 0089 0A       		.uleb128 0xa
+ 776 008a 2E       		.uleb128 0x2e
+ 777 008b 01       		.byte	0x1
+ 778 008c 3F       		.uleb128 0x3f
+ 779 008d 19       		.uleb128 0x19
+ 780 008e 03       		.uleb128 0x3
+ 781 008f 0E       		.uleb128 0xe
+ 782 0090 3A       		.uleb128 0x3a
+ 783 0091 0B       		.uleb128 0xb
+ 784 0092 3B       		.uleb128 0x3b
+ 785 0093 0B       		.uleb128 0xb
+ 786 0094 27       		.uleb128 0x27
+ 787 0095 19       		.uleb128 0x19
+ 788 0096 49       		.uleb128 0x49
+ 789 0097 13       		.uleb128 0x13
+ 790 0098 11       		.uleb128 0x11
+ 791 0099 01       		.uleb128 0x1
+ 792 009a 12       		.uleb128 0x12
+ 793 009b 06       		.uleb128 0x6
+ 794 009c 40       		.uleb128 0x40
+ 795 009d 18       		.uleb128 0x18
+ 796 009e 9742     		.uleb128 0x2117
+ 797 00a0 19       		.uleb128 0x19
+ 798 00a1 01       		.uleb128 0x1
+ 799 00a2 13       		.uleb128 0x13
+ 800 00a3 00       		.byte	0
+ 801 00a4 00       		.byte	0
+ 802 00a5 0B       		.uleb128 0xb
+ 803 00a6 34       		.uleb128 0x34
+ 804 00a7 00       		.byte	0
+ 805 00a8 03       		.uleb128 0x3
+ 806 00a9 0E       		.uleb128 0xe
+ 807 00aa 3A       		.uleb128 0x3a
+ 808 00ab 0B       		.uleb128 0xb
+ 809 00ac 3B       		.uleb128 0x3b
+ 810 00ad 0B       		.uleb128 0xb
+ 811 00ae 49       		.uleb128 0x49
+ 812 00af 13       		.uleb128 0x13
+ 813 00b0 02       		.uleb128 0x2
+ 814 00b1 18       		.uleb128 0x18
+ 815 00b2 00       		.byte	0
+ 816 00b3 00       		.byte	0
+ 817 00b4 0C       		.uleb128 0xc
+ 818 00b5 2E       		.uleb128 0x2e
+ 819 00b6 01       		.byte	0x1
+ 820 00b7 3F       		.uleb128 0x3f
+ 821 00b8 19       		.uleb128 0x19
+ 822 00b9 03       		.uleb128 0x3
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 22
+
+
+ 823 00ba 0E       		.uleb128 0xe
+ 824 00bb 3A       		.uleb128 0x3a
+ 825 00bc 0B       		.uleb128 0xb
+ 826 00bd 3B       		.uleb128 0x3b
+ 827 00be 05       		.uleb128 0x5
+ 828 00bf 27       		.uleb128 0x27
+ 829 00c0 19       		.uleb128 0x19
+ 830 00c1 11       		.uleb128 0x11
+ 831 00c2 01       		.uleb128 0x1
+ 832 00c3 12       		.uleb128 0x12
+ 833 00c4 06       		.uleb128 0x6
+ 834 00c5 40       		.uleb128 0x40
+ 835 00c6 18       		.uleb128 0x18
+ 836 00c7 9742     		.uleb128 0x2117
+ 837 00c9 19       		.uleb128 0x19
+ 838 00ca 01       		.uleb128 0x1
+ 839 00cb 13       		.uleb128 0x13
+ 840 00cc 00       		.byte	0
+ 841 00cd 00       		.byte	0
+ 842 00ce 0D       		.uleb128 0xd
+ 843 00cf 05       		.uleb128 0x5
+ 844 00d0 00       		.byte	0
+ 845 00d1 03       		.uleb128 0x3
+ 846 00d2 0E       		.uleb128 0xe
+ 847 00d3 3A       		.uleb128 0x3a
+ 848 00d4 0B       		.uleb128 0xb
+ 849 00d5 3B       		.uleb128 0x3b
+ 850 00d6 05       		.uleb128 0x5
+ 851 00d7 49       		.uleb128 0x49
+ 852 00d8 13       		.uleb128 0x13
+ 853 00d9 02       		.uleb128 0x2
+ 854 00da 17       		.uleb128 0x17
+ 855 00db 00       		.byte	0
+ 856 00dc 00       		.byte	0
+ 857 00dd 0E       		.uleb128 0xe
+ 858 00de 34       		.uleb128 0x34
+ 859 00df 00       		.byte	0
+ 860 00e0 03       		.uleb128 0x3
+ 861 00e1 0E       		.uleb128 0xe
+ 862 00e2 3A       		.uleb128 0x3a
+ 863 00e3 0B       		.uleb128 0xb
+ 864 00e4 3B       		.uleb128 0x3b
+ 865 00e5 05       		.uleb128 0x5
+ 866 00e6 49       		.uleb128 0x49
+ 867 00e7 13       		.uleb128 0x13
+ 868 00e8 02       		.uleb128 0x2
+ 869 00e9 17       		.uleb128 0x17
+ 870 00ea 00       		.byte	0
+ 871 00eb 00       		.byte	0
+ 872 00ec 0F       		.uleb128 0xf
+ 873 00ed 2E       		.uleb128 0x2e
+ 874 00ee 00       		.byte	0
+ 875 00ef 3F       		.uleb128 0x3f
+ 876 00f0 19       		.uleb128 0x19
+ 877 00f1 03       		.uleb128 0x3
+ 878 00f2 0E       		.uleb128 0xe
+ 879 00f3 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 23
+
+
+ 880 00f4 0B       		.uleb128 0xb
+ 881 00f5 3B       		.uleb128 0x3b
+ 882 00f6 05       		.uleb128 0x5
+ 883 00f7 27       		.uleb128 0x27
+ 884 00f8 19       		.uleb128 0x19
+ 885 00f9 49       		.uleb128 0x49
+ 886 00fa 13       		.uleb128 0x13
+ 887 00fb 11       		.uleb128 0x11
+ 888 00fc 01       		.uleb128 0x1
+ 889 00fd 12       		.uleb128 0x12
+ 890 00fe 06       		.uleb128 0x6
+ 891 00ff 40       		.uleb128 0x40
+ 892 0100 18       		.uleb128 0x18
+ 893 0101 9742     		.uleb128 0x2117
+ 894 0103 19       		.uleb128 0x19
+ 895 0104 00       		.byte	0
+ 896 0105 00       		.byte	0
+ 897 0106 10       		.uleb128 0x10
+ 898 0107 05       		.uleb128 0x5
+ 899 0108 00       		.byte	0
+ 900 0109 03       		.uleb128 0x3
+ 901 010a 0E       		.uleb128 0xe
+ 902 010b 3A       		.uleb128 0x3a
+ 903 010c 0B       		.uleb128 0xb
+ 904 010d 3B       		.uleb128 0x3b
+ 905 010e 05       		.uleb128 0x5
+ 906 010f 49       		.uleb128 0x49
+ 907 0110 13       		.uleb128 0x13
+ 908 0111 02       		.uleb128 0x2
+ 909 0112 18       		.uleb128 0x18
+ 910 0113 00       		.byte	0
+ 911 0114 00       		.byte	0
+ 912 0115 11       		.uleb128 0x11
+ 913 0116 898201   		.uleb128 0x4109
+ 914 0119 01       		.byte	0x1
+ 915 011a 11       		.uleb128 0x11
+ 916 011b 01       		.uleb128 0x1
+ 917 011c 31       		.uleb128 0x31
+ 918 011d 13       		.uleb128 0x13
+ 919 011e 01       		.uleb128 0x1
+ 920 011f 13       		.uleb128 0x13
+ 921 0120 00       		.byte	0
+ 922 0121 00       		.byte	0
+ 923 0122 12       		.uleb128 0x12
+ 924 0123 8A8201   		.uleb128 0x410a
+ 925 0126 00       		.byte	0
+ 926 0127 02       		.uleb128 0x2
+ 927 0128 18       		.uleb128 0x18
+ 928 0129 9142     		.uleb128 0x2111
+ 929 012b 18       		.uleb128 0x18
+ 930 012c 00       		.byte	0
+ 931 012d 00       		.byte	0
+ 932 012e 13       		.uleb128 0x13
+ 933 012f 34       		.uleb128 0x34
+ 934 0130 00       		.byte	0
+ 935 0131 03       		.uleb128 0x3
+ 936 0132 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 24
+
+
+ 937 0133 3A       		.uleb128 0x3a
+ 938 0134 0B       		.uleb128 0xb
+ 939 0135 3B       		.uleb128 0x3b
+ 940 0136 0B       		.uleb128 0xb
+ 941 0137 49       		.uleb128 0x49
+ 942 0138 13       		.uleb128 0x13
+ 943 0139 3F       		.uleb128 0x3f
+ 944 013a 19       		.uleb128 0x19
+ 945 013b 02       		.uleb128 0x2
+ 946 013c 18       		.uleb128 0x18
+ 947 013d 00       		.byte	0
+ 948 013e 00       		.byte	0
+ 949 013f 14       		.uleb128 0x14
+ 950 0140 2E       		.uleb128 0x2e
+ 951 0141 00       		.byte	0
+ 952 0142 3F       		.uleb128 0x3f
+ 953 0143 19       		.uleb128 0x19
+ 954 0144 3C       		.uleb128 0x3c
+ 955 0145 19       		.uleb128 0x19
+ 956 0146 6E       		.uleb128 0x6e
+ 957 0147 0E       		.uleb128 0xe
+ 958 0148 03       		.uleb128 0x3
+ 959 0149 0E       		.uleb128 0xe
+ 960 014a 3A       		.uleb128 0x3a
+ 961 014b 0B       		.uleb128 0xb
+ 962 014c 3B       		.uleb128 0x3b
+ 963 014d 0B       		.uleb128 0xb
+ 964 014e 00       		.byte	0
+ 965 014f 00       		.byte	0
+ 966 0150 00       		.byte	0
+ 967              		.section	.debug_loc,"",%progbits
+ 968              	.Ldebug_loc0:
+ 969              	.LLST0:
+ 970 0000 0A000000 		.4byte	.LVL1
+ 971 0004 17000000 		.4byte	.LVL2-1
+ 972 0008 0100     		.2byte	0x1
+ 973 000a 50       		.byte	0x50
+ 974 000b 00000000 		.4byte	0
+ 975 000f 00000000 		.4byte	0
+ 976              	.LLST1:
+ 977 0013 06000000 		.4byte	.LVL3
+ 978 0017 0A000000 		.4byte	.LVL4
+ 979 001b 0100     		.2byte	0x1
+ 980 001d 50       		.byte	0x50
+ 981 001e 00000000 		.4byte	0
+ 982 0022 00000000 		.4byte	0
+ 983              	.LLST2:
+ 984 0026 00000000 		.4byte	.LVL5
+ 985 002a 04000000 		.4byte	.LVL6
+ 986 002e 0100     		.2byte	0x1
+ 987 0030 50       		.byte	0x50
+ 988 0031 04000000 		.4byte	.LVL6
+ 989 0035 1A000000 		.4byte	.LFE5
+ 990 0039 0400     		.2byte	0x4
+ 991 003b F3       		.byte	0xf3
+ 992 003c 01       		.uleb128 0x1
+ 993 003d 50       		.byte	0x50
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 25
+
+
+ 994 003e 9F       		.byte	0x9f
+ 995 003f 00000000 		.4byte	0
+ 996 0043 00000000 		.4byte	0
+ 997              	.LLST3:
+ 998 0047 0C000000 		.4byte	.LVL7
+ 999 004b 0E000000 		.4byte	.LVL8
+ 1000 004f 0100     		.2byte	0x1
+ 1001 0051 50       		.byte	0x50
+ 1002 0052 14000000 		.4byte	.LVL9
+ 1003 0056 17000000 		.4byte	.LVL10-1
+ 1004 005a 0100     		.2byte	0x1
+ 1005 005c 50       		.byte	0x50
+ 1006 005d 00000000 		.4byte	0
+ 1007 0061 00000000 		.4byte	0
+ 1008              	.LLST4:
+ 1009 0065 10000000 		.4byte	.LVL14
+ 1010 0069 1D000000 		.4byte	.LVL15-1
+ 1011 006d 0100     		.2byte	0x1
+ 1012 006f 50       		.byte	0x50
+ 1013 0070 00000000 		.4byte	0
+ 1014 0074 00000000 		.4byte	0
+ 1015              		.section	.debug_aranges,"",%progbits
+ 1016 0000 5C000000 		.4byte	0x5c
+ 1017 0004 0200     		.2byte	0x2
+ 1018 0006 00000000 		.4byte	.Ldebug_info0
+ 1019 000a 04       		.byte	0x4
+ 1020 000b 00       		.byte	0
+ 1021 000c 0000     		.2byte	0
+ 1022 000e 0000     		.2byte	0
+ 1023 0010 00000000 		.4byte	.LFB0
+ 1024 0014 02000000 		.4byte	.LFE0-.LFB0
+ 1025 0018 00000000 		.4byte	.LFB3
+ 1026 001c 20000000 		.4byte	.LFE3-.LFB3
+ 1027 0020 00000000 		.4byte	.LFB4
+ 1028 0024 0E000000 		.4byte	.LFE4-.LFB4
+ 1029 0028 00000000 		.4byte	.LFB5
+ 1030 002c 1A000000 		.4byte	.LFE5-.LFB5
+ 1031 0030 00000000 		.4byte	.LFB6
+ 1032 0034 10000000 		.4byte	.LFE6-.LFB6
+ 1033 0038 00000000 		.4byte	.LFB7
+ 1034 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1035 0040 00000000 		.4byte	.LFB1
+ 1036 0044 24000000 		.4byte	.LFE1-.LFB1
+ 1037 0048 00000000 		.4byte	.LFB2
+ 1038 004c 24000000 		.4byte	.LFE2-.LFB2
+ 1039 0050 00000000 		.4byte	.LFB8
+ 1040 0054 10000000 		.4byte	.LFE8-.LFB8
+ 1041 0058 00000000 		.4byte	0
+ 1042 005c 00000000 		.4byte	0
+ 1043              		.section	.debug_ranges,"",%progbits
+ 1044              	.Ldebug_ranges0:
+ 1045 0000 00000000 		.4byte	.LFB0
+ 1046 0004 02000000 		.4byte	.LFE0
+ 1047 0008 00000000 		.4byte	.LFB3
+ 1048 000c 20000000 		.4byte	.LFE3
+ 1049 0010 00000000 		.4byte	.LFB4
+ 1050 0014 0E000000 		.4byte	.LFE4
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 26
+
+
+ 1051 0018 00000000 		.4byte	.LFB5
+ 1052 001c 1A000000 		.4byte	.LFE5
+ 1053 0020 00000000 		.4byte	.LFB6
+ 1054 0024 10000000 		.4byte	.LFE6
+ 1055 0028 00000000 		.4byte	.LFB7
+ 1056 002c 0C000000 		.4byte	.LFE7
+ 1057 0030 00000000 		.4byte	.LFB1
+ 1058 0034 24000000 		.4byte	.LFE1
+ 1059 0038 00000000 		.4byte	.LFB2
+ 1060 003c 24000000 		.4byte	.LFE2
+ 1061 0040 00000000 		.4byte	.LFB8
+ 1062 0044 10000000 		.4byte	.LFE8
+ 1063 0048 00000000 		.4byte	0
+ 1064 004c 00000000 		.4byte	0
+ 1065              		.section	.debug_line,"",%progbits
+ 1066              	.Ldebug_line0:
+ 1067 0000 1A010000 		.section	.debug_str,"MS",%progbits,1
+ 1067      02006600 
+ 1067      00000201 
+ 1067      FB0E0D00 
+ 1067      01010101 
+ 1068              	.LASF34:
+ 1069 0000 51756164 		.ascii	"QuadDec_2_Cnt16_ReadCounter\000"
+ 1069      4465635F 
+ 1069      325F436E 
+ 1069      7431365F 
+ 1069      52656164 
+ 1070              	.LASF25:
+ 1071 001c 76616C75 		.ascii	"value\000"
+ 1071      6500
+ 1072              	.LASF20:
+ 1073 0022 636F756E 		.ascii	"count\000"
+ 1073      7400
+ 1074              	.LASF24:
+ 1075 0028 51756164 		.ascii	"QuadDec_2_SetInterruptMask\000"
+ 1075      4465635F 
+ 1075      325F5365 
+ 1075      74496E74 
+ 1075      65727275 
+ 1076              	.LASF6:
+ 1077 0043 73686F72 		.ascii	"short unsigned int\000"
+ 1077      7420756E 
+ 1077      7369676E 
+ 1077      65642069 
+ 1077      6E7400
+ 1078              	.LASF40:
+ 1079 0056 51756164 		.ascii	"QuadDec_2_Init\000"
+ 1079      4465635F 
+ 1079      325F496E 
+ 1079      697400
+ 1080              	.LASF39:
+ 1081 0065 433A5C55 		.ascii	"C:\\Users\\Caesar\\Desktop\\Spring\\ME135\\Timertes"
+ 1081      73657273 
+ 1081      5C436165 
+ 1081      7361725C 
+ 1081      4465736B 
+ 1082 0092 74696E67 		.ascii	"ting\\Timertesting.cydsn\000"
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 27
+
+
+ 1082      5C54696D 
+ 1082      65727465 
+ 1082      7374696E 
+ 1082      672E6379 
+ 1083              	.LASF16:
+ 1084 00aa 666C6F61 		.ascii	"float\000"
+ 1084      7400
+ 1085              	.LASF9:
+ 1086 00b0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1086      206C6F6E 
+ 1086      6720756E 
+ 1086      7369676E 
+ 1086      65642069 
+ 1087              	.LASF35:
+ 1088 00c7 51756164 		.ascii	"QuadDec_2_Cnt16_WriteCounter\000"
+ 1088      4465635F 
+ 1088      325F436E 
+ 1088      7431365F 
+ 1088      57726974 
+ 1089              	.LASF4:
+ 1090 00e4 756E7369 		.ascii	"unsigned char\000"
+ 1090      676E6564 
+ 1090      20636861 
+ 1090      7200
+ 1091              	.LASF37:
+ 1092 00f2 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1092      43313120 
+ 1092      352E342E 
+ 1092      31203230 
+ 1092      31363036 
+ 1093 0125 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1093      20726576 
+ 1093      6973696F 
+ 1093      6E203233 
+ 1093      37373135 
+ 1094 0158 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1094      66756E63 
+ 1094      74696F6E 
+ 1094      2D736563 
+ 1094      74696F6E 
+ 1095              	.LASF18:
+ 1096 0180 72656738 		.ascii	"reg8\000"
+ 1096      00
+ 1097              	.LASF27:
+ 1098 0185 51756164 		.ascii	"QuadDec_2_Enable\000"
+ 1098      4465635F 
+ 1098      325F456E 
+ 1098      61626C65 
+ 1098      00
+ 1099              	.LASF14:
+ 1100 0196 696E7431 		.ascii	"int16\000"
+ 1100      3600
+ 1101              	.LASF31:
+ 1102 019c 51756164 		.ascii	"QuadDec_2_Cnt16_Stop\000"
+ 1102      4465635F 
+ 1102      325F436E 
+ 1102      7431365F 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 28
+
+
+ 1102      53746F70 
+ 1103              	.LASF15:
+ 1104 01b1 696E7433 		.ascii	"int32\000"
+ 1104      3200
+ 1105              	.LASF21:
+ 1106 01b7 746D7043 		.ascii	"tmpCnt\000"
+ 1106      6E7400
+ 1107              	.LASF38:
+ 1108 01be 47656E65 		.ascii	"Generated_Source\\PSoC5\\QuadDec_2.c\000"
+ 1108      72617465 
+ 1108      645F536F 
+ 1108      75726365 
+ 1108      5C50536F 
+ 1109              	.LASF30:
+ 1110 01e1 51756164 		.ascii	"QuadDec_2_GetInterruptMask\000"
+ 1110      4465635F 
+ 1110      325F4765 
+ 1110      74496E74 
+ 1110      65727275 
+ 1111              	.LASF19:
+ 1112 01fc 656E6162 		.ascii	"enableInterrupts\000"
+ 1112      6C65496E 
+ 1112      74657272 
+ 1112      75707473 
+ 1112      00
+ 1113              	.LASF29:
+ 1114 020d 51756164 		.ascii	"QuadDec_2_GetEvents\000"
+ 1114      4465635F 
+ 1114      325F4765 
+ 1114      74457665 
+ 1114      6E747300 
+ 1115              	.LASF17:
+ 1116 0221 646F7562 		.ascii	"double\000"
+ 1116      6C6500
+ 1117              	.LASF13:
+ 1118 0228 75696E74 		.ascii	"uint16\000"
+ 1118      313600
+ 1119              	.LASF22:
+ 1120 022f 51756164 		.ascii	"QuadDec_2_Stop\000"
+ 1120      4465635F 
+ 1120      325F5374 
+ 1120      6F7000
+ 1121              	.LASF32:
+ 1122 023e 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1122      74657243 
+ 1122      72697469 
+ 1122      63616C53 
+ 1122      65637469 
+ 1123              	.LASF8:
+ 1124 0255 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1124      20756E73 
+ 1124      69676E65 
+ 1124      6420696E 
+ 1124      7400
+ 1125              	.LASF0:
+ 1126 0267 756E7369 		.ascii	"unsigned int\000"
+ 1126      676E6564 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 29
+
+
+ 1126      20696E74 
+ 1126      00
+ 1127              	.LASF33:
+ 1128 0274 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1128      69744372 
+ 1128      69746963 
+ 1128      616C5365 
+ 1128      6374696F 
+ 1129              	.LASF41:
+ 1130 028a 51756164 		.ascii	"QuadDec_2_GetCounter\000"
+ 1130      4465635F 
+ 1130      325F4765 
+ 1130      74436F75 
+ 1130      6E746572 
+ 1131              	.LASF10:
+ 1132 029f 73697A65 		.ascii	"sizetype\000"
+ 1132      74797065 
+ 1132      00
+ 1133              	.LASF1:
+ 1134 02a8 6C6F6E67 		.ascii	"long long int\000"
+ 1134      206C6F6E 
+ 1134      6720696E 
+ 1134      7400
+ 1135              	.LASF26:
+ 1136 02b6 6D61736B 		.ascii	"mask\000"
+ 1136      00
+ 1137              	.LASF5:
+ 1138 02bb 73686F72 		.ascii	"short int\000"
+ 1138      7420696E 
+ 1138      7400
+ 1139              	.LASF12:
+ 1140 02c5 75696E74 		.ascii	"uint8\000"
+ 1140      3800
+ 1141              	.LASF7:
+ 1142 02cb 6C6F6E67 		.ascii	"long int\000"
+ 1142      20696E74 
+ 1142      00
+ 1143              	.LASF11:
+ 1144 02d4 63686172 		.ascii	"char\000"
+ 1144      00
+ 1145              	.LASF36:
+ 1146 02d9 51756164 		.ascii	"QuadDec_2_Cnt16_Start\000"
+ 1146      4465635F 
+ 1146      325F436E 
+ 1146      7431365F 
+ 1146      53746172 
+ 1147              	.LASF2:
+ 1148 02ef 6C6F6E67 		.ascii	"long double\000"
+ 1148      20646F75 
+ 1148      626C6500 
+ 1149              	.LASF3:
+ 1150 02fb 7369676E 		.ascii	"signed char\000"
+ 1150      65642063 
+ 1150      68617200 
+ 1151              	.LASF42:
+ 1152 0307 51756164 		.ascii	"QuadDec_2_initVar\000"
+ 1152      4465635F 
+ARM GAS  C:\Users\Caesar\AppData\Local\Temp\ccwmX7We.s 			page 30
+
+
+ 1152      325F696E 
+ 1152      69745661 
+ 1152      7200
+ 1153              	.LASF23:
+ 1154 0319 51756164 		.ascii	"QuadDec_2_SetCounter\000"
+ 1154      4465635F 
+ 1154      325F5365 
+ 1154      74436F75 
+ 1154      6E746572 
+ 1155              	.LASF28:
+ 1156 032e 51756164 		.ascii	"QuadDec_2_Start\000"
+ 1156      4465635F 
+ 1156      325F5374 
+ 1156      61727400 
+ 1157              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

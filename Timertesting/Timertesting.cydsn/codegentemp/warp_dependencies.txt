@@ -1,0 +1,12 @@
+D:/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/ieee/work/stdlogic.vif : 
+
+D:/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/mod_genv.vif : 
+
+D:/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/cypress.v : 
+
+D:/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/cy_psoc3_inc.v : 
+
+D:/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/rtlpkg.vif : 
+
+D:/PSoC\ Creator/4.2/PSoC\ Creator/warp/lib/common/stdlogic/cy_psoc3.vif : 
+

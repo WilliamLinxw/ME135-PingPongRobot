@@ -1,0 +1,6 @@
+C:\Users\Caesar\Desktop\Spring\ME135\Timertesting\Timertesting.cydsn\Timertesting.cyprj|5a483ad1-aef8-4cb8-afe9-da84a3b07244
+D:\PSoC Creator\4.2\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|905ea1b9-9254-4dc6-a7b0-b1dd428cb212
+C:\Users\Caesar\Documents\PSoC Creator\4.2\Downloads ( 4.2).cylib\Downloads ( 4.2).cyprj|3ea96928-019d-4581-8363-dbc3a13ce991
+D:\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|e1fad6ef-a48b-463c-b20e-d7cd667fe0d1
+D:\PSoC Creator\4.2\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|5d07d2e2-fa61-4196-86a8-a7f592c32627
+D:\PSoC Creator\4.2\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b80e45d4-f5ec-4438-9e46-e303aefc7bf8
